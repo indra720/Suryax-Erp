@@ -11,5 +11,6 @@ export const Route = createFileRoute("/documents")({
       { property: "og:description", content: "Agreements, legal papers and project documents." },
     ],
   }),
+  // new testing code
   component: () => <CrudPage config={documentsConfig} />,
 });
