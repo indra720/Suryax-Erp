@@ -34,6 +34,16 @@ import { Route as SiteVisitsRouteImport } from './routes/site-visits'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as UsersRolesRouteImport } from './routes/users-roles'
+import { Route as AdminMastersBdayAnnivRouteImport } from './routes/admin/masters/bday-anniv'
+import { Route as AdminMastersBrokerRouteImport } from './routes/admin/masters/broker'
+import { Route as AdminMastersBudgetRouteImport } from './routes/admin/masters/budget'
+import { Route as AdminMastersCustomerRouteImport } from './routes/admin/masters/customer'
+import { Route as AdminMastersExpenseEntryRouteImport } from './routes/admin/masters/expense-entry'
+import { Route as AdminMastersGeneralRouteImport } from './routes/admin/masters/general'
+import { Route as AdminMastersInquiryStatusRouteImport } from './routes/admin/masters/inquiry-status'
+import { Route as AdminMastersLocalityRouteImport } from './routes/admin/masters/locality'
+import { Route as AdminMastersSourceRouteImport } from './routes/admin/masters/source'
+import { Route as AdminMastersVisitorEntryRouteImport } from './routes/admin/masters/visitor-entry'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -160,6 +170,59 @@ const UsersRolesRoute = UsersRolesRouteImport.update({
   path: '/users-roles',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminMastersBdayAnnivRoute = AdminMastersBdayAnnivRouteImport.update({
+  id: '/admin/masters/bday-anniv',
+  path: '/admin/masters/bday-anniv',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMastersBrokerRoute = AdminMastersBrokerRouteImport.update({
+  id: '/admin/masters/broker',
+  path: '/admin/masters/broker',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMastersBudgetRoute = AdminMastersBudgetRouteImport.update({
+  id: '/admin/masters/budget',
+  path: '/admin/masters/budget',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMastersCustomerRoute = AdminMastersCustomerRouteImport.update({
+  id: '/admin/masters/customer',
+  path: '/admin/masters/customer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMastersExpenseEntryRoute =
+  AdminMastersExpenseEntryRouteImport.update({
+    id: '/admin/masters/expense-entry',
+    path: '/admin/masters/expense-entry',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminMastersGeneralRoute = AdminMastersGeneralRouteImport.update({
+  id: '/admin/masters/general',
+  path: '/admin/masters/general',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMastersInquiryStatusRoute =
+  AdminMastersInquiryStatusRouteImport.update({
+    id: '/admin/masters/inquiry-status',
+    path: '/admin/masters/inquiry-status',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminMastersLocalityRoute = AdminMastersLocalityRouteImport.update({
+  id: '/admin/masters/locality',
+  path: '/admin/masters/locality',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMastersSourceRoute = AdminMastersSourceRouteImport.update({
+  id: '/admin/masters/source',
+  path: '/admin/masters/source',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMastersVisitorEntryRoute =
+  AdminMastersVisitorEntryRouteImport.update({
+    id: '/admin/masters/visitor-entry',
+    path: '/admin/masters/visitor-entry',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -187,6 +250,16 @@ export interface FileRoutesByFullPath {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/admin/masters/bday-anniv': typeof AdminMastersBdayAnnivRoute
+  '/admin/masters/broker': typeof AdminMastersBrokerRoute
+  '/admin/masters/budget': typeof AdminMastersBudgetRoute
+  '/admin/masters/customer': typeof AdminMastersCustomerRoute
+  '/admin/masters/expense-entry': typeof AdminMastersExpenseEntryRoute
+  '/admin/masters/general': typeof AdminMastersGeneralRoute
+  '/admin/masters/inquiry-status': typeof AdminMastersInquiryStatusRoute
+  '/admin/masters/locality': typeof AdminMastersLocalityRoute
+  '/admin/masters/source': typeof AdminMastersSourceRoute
+  '/admin/masters/visitor-entry': typeof AdminMastersVisitorEntryRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -214,6 +287,16 @@ export interface FileRoutesByTo {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/admin/masters/bday-anniv': typeof AdminMastersBdayAnnivRoute
+  '/admin/masters/broker': typeof AdminMastersBrokerRoute
+  '/admin/masters/budget': typeof AdminMastersBudgetRoute
+  '/admin/masters/customer': typeof AdminMastersCustomerRoute
+  '/admin/masters/expense-entry': typeof AdminMastersExpenseEntryRoute
+  '/admin/masters/general': typeof AdminMastersGeneralRoute
+  '/admin/masters/inquiry-status': typeof AdminMastersInquiryStatusRoute
+  '/admin/masters/locality': typeof AdminMastersLocalityRoute
+  '/admin/masters/source': typeof AdminMastersSourceRoute
+  '/admin/masters/visitor-entry': typeof AdminMastersVisitorEntryRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -242,6 +325,16 @@ export interface FileRoutesById {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/admin/masters/bday-anniv': typeof AdminMastersBdayAnnivRoute
+  '/admin/masters/broker': typeof AdminMastersBrokerRoute
+  '/admin/masters/budget': typeof AdminMastersBudgetRoute
+  '/admin/masters/customer': typeof AdminMastersCustomerRoute
+  '/admin/masters/expense-entry': typeof AdminMastersExpenseEntryRoute
+  '/admin/masters/general': typeof AdminMastersGeneralRoute
+  '/admin/masters/inquiry-status': typeof AdminMastersInquiryStatusRoute
+  '/admin/masters/locality': typeof AdminMastersLocalityRoute
+  '/admin/masters/source': typeof AdminMastersSourceRoute
+  '/admin/masters/visitor-entry': typeof AdminMastersVisitorEntryRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -271,6 +364,16 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/admin/masters/bday-anniv'
+    | '/admin/masters/broker'
+    | '/admin/masters/budget'
+    | '/admin/masters/customer'
+    | '/admin/masters/expense-entry'
+    | '/admin/masters/general'
+    | '/admin/masters/inquiry-status'
+    | '/admin/masters/locality'
+    | '/admin/masters/source'
+    | '/admin/masters/visitor-entry'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -298,6 +401,16 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/admin/masters/bday-anniv'
+    | '/admin/masters/broker'
+    | '/admin/masters/budget'
+    | '/admin/masters/customer'
+    | '/admin/masters/expense-entry'
+    | '/admin/masters/general'
+    | '/admin/masters/inquiry-status'
+    | '/admin/masters/locality'
+    | '/admin/masters/source'
+    | '/admin/masters/visitor-entry'
   id:
     | '__root__'
     | '/'
@@ -325,6 +438,16 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/admin/masters/bday-anniv'
+    | '/admin/masters/broker'
+    | '/admin/masters/budget'
+    | '/admin/masters/customer'
+    | '/admin/masters/expense-entry'
+    | '/admin/masters/general'
+    | '/admin/masters/inquiry-status'
+    | '/admin/masters/locality'
+    | '/admin/masters/source'
+    | '/admin/masters/visitor-entry'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -353,6 +476,16 @@ export interface RootRouteChildren {
   TasksRoute: typeof TasksRoute
   TeamRoute: typeof TeamRoute
   UsersRolesRoute: typeof UsersRolesRoute
+  AdminMastersBdayAnnivRoute: typeof AdminMastersBdayAnnivRoute
+  AdminMastersBrokerRoute: typeof AdminMastersBrokerRoute
+  AdminMastersBudgetRoute: typeof AdminMastersBudgetRoute
+  AdminMastersCustomerRoute: typeof AdminMastersCustomerRoute
+  AdminMastersExpenseEntryRoute: typeof AdminMastersExpenseEntryRoute
+  AdminMastersGeneralRoute: typeof AdminMastersGeneralRoute
+  AdminMastersInquiryStatusRoute: typeof AdminMastersInquiryStatusRoute
+  AdminMastersLocalityRoute: typeof AdminMastersLocalityRoute
+  AdminMastersSourceRoute: typeof AdminMastersSourceRoute
+  AdminMastersVisitorEntryRoute: typeof AdminMastersVisitorEntryRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -532,6 +665,76 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersRolesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/masters/bday-anniv': {
+      id: '/admin/masters/bday-anniv'
+      path: '/admin/masters/bday-anniv'
+      fullPath: '/admin/masters/bday-anniv'
+      preLoaderRoute: typeof AdminMastersBdayAnnivRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/masters/broker': {
+      id: '/admin/masters/broker'
+      path: '/admin/masters/broker'
+      fullPath: '/admin/masters/broker'
+      preLoaderRoute: typeof AdminMastersBrokerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/masters/budget': {
+      id: '/admin/masters/budget'
+      path: '/admin/masters/budget'
+      fullPath: '/admin/masters/budget'
+      preLoaderRoute: typeof AdminMastersBudgetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/masters/customer': {
+      id: '/admin/masters/customer'
+      path: '/admin/masters/customer'
+      fullPath: '/admin/masters/customer'
+      preLoaderRoute: typeof AdminMastersCustomerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/masters/expense-entry': {
+      id: '/admin/masters/expense-entry'
+      path: '/admin/masters/expense-entry'
+      fullPath: '/admin/masters/expense-entry'
+      preLoaderRoute: typeof AdminMastersExpenseEntryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/masters/general': {
+      id: '/admin/masters/general'
+      path: '/admin/masters/general'
+      fullPath: '/admin/masters/general'
+      preLoaderRoute: typeof AdminMastersGeneralRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/masters/inquiry-status': {
+      id: '/admin/masters/inquiry-status'
+      path: '/admin/masters/inquiry-status'
+      fullPath: '/admin/masters/inquiry-status'
+      preLoaderRoute: typeof AdminMastersInquiryStatusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/masters/locality': {
+      id: '/admin/masters/locality'
+      path: '/admin/masters/locality'
+      fullPath: '/admin/masters/locality'
+      preLoaderRoute: typeof AdminMastersLocalityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/masters/source': {
+      id: '/admin/masters/source'
+      path: '/admin/masters/source'
+      fullPath: '/admin/masters/source'
+      preLoaderRoute: typeof AdminMastersSourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/masters/visitor-entry': {
+      id: '/admin/masters/visitor-entry'
+      path: '/admin/masters/visitor-entry'
+      fullPath: '/admin/masters/visitor-entry'
+      preLoaderRoute: typeof AdminMastersVisitorEntryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -561,6 +764,16 @@ const rootRouteChildren: RootRouteChildren = {
   TasksRoute: TasksRoute,
   TeamRoute: TeamRoute,
   UsersRolesRoute: UsersRolesRoute,
+  AdminMastersBdayAnnivRoute: AdminMastersBdayAnnivRoute,
+  AdminMastersBrokerRoute: AdminMastersBrokerRoute,
+  AdminMastersBudgetRoute: AdminMastersBudgetRoute,
+  AdminMastersCustomerRoute: AdminMastersCustomerRoute,
+  AdminMastersExpenseEntryRoute: AdminMastersExpenseEntryRoute,
+  AdminMastersGeneralRoute: AdminMastersGeneralRoute,
+  AdminMastersInquiryStatusRoute: AdminMastersInquiryStatusRoute,
+  AdminMastersLocalityRoute: AdminMastersLocalityRoute,
+  AdminMastersSourceRoute: AdminMastersSourceRoute,
+  AdminMastersVisitorEntryRoute: AdminMastersVisitorEntryRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

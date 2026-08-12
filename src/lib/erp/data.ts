@@ -330,8 +330,10 @@ export const funnelStages = [
   { stage: "Closed", value: 287, pct: 100, color: "#F4A51C" },
 ];
 
-export const sparkData = (seed: number) =>
-  Array.from({ length: 10 }, (_, i) => ({
-    x: i,
-    y: 20 + ((Math.sin(i * 1.2 + seed) + 1) * 18 + i * 3),
+export const sparkData = (seed: number) => {
+  const points = 8;
+  return Array.from({ length: points }, (_, idx) => ({
+    x: idx,
+    y: 30 + Math.abs(Math.sin(seed + idx * 1.7)) * 50 + (idx % 2 === 0 ? 10 : -5),
   }));
+};

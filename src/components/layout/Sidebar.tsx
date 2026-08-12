@@ -1,9 +1,88 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Building2, ChevronRight, X } from "lucide-react";
-import { navSections } from "@/lib/erp/nav";
+import { Building2, ChevronRight, X, ChevronDown } from "lucide-react";
+import { navSections, type NavItem } from "@/lib/erp/nav";
 import { cn } from "@/lib/utils";
 import promo from "@/assets/promo-villa.jpg";
-import logo from "../../assets/logo.png"
+import logo from "../../assets/logo.png";
+import { useState } from "react";
+
+function NavLinkItem({
+  item,
+  pathname,
+  collapsed,
+  onCloseMobile,
+}: {
+  item: NavItem;
+  pathname: string;
+  collapsed: boolean;
+  onCloseMobile: () => void;
+}) {
+  const [isOpen, setIsOpen] = useState(false);
+  const hasChildren = item.items && item.items.length > 0;
+  const active = item.url
+    ? item.url === "/"
+      ? pathname === "/"
+      : pathname.startsWith(item.url)
+    : item.items?.some((i) => (i.url ? pathname.startsWith(i.url) : false));
+
+  if (hasChildren) {
+    return (
+      <li className="space-y-[3px]">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className={cn(
+            "flex w-full h-[40px] items-center gap-2.5 rounded-[10px] px-2.5 text-[13.5px] font-medium transition-colors text-sidebar-fg hover:bg-white/[0.07]",
+            collapsed && "justify-center px-0",
+          )}
+        >
+          <item.icon className={cn("size-[17px] shrink-0", active ? "text-white" : "text-sidebar-icon")} />
+          {!collapsed && (
+            <>
+              <span className="truncate">{item.title}</span>
+              {isOpen ? (
+                <ChevronDown className="ml-auto size-3.5" />
+              ) : (
+                <ChevronRight className="ml-auto size-3.5" />
+              )}
+            </>
+          )}
+        </button>
+        {isOpen && !collapsed && (
+          <ul className="pl-4 space-y-[2px]">
+            {item.items!.map((child) => (
+              <NavLinkItem key={child.title} item={child} pathname={pathname} collapsed={collapsed} onCloseMobile={onCloseMobile} />
+            ))}
+          </ul>
+        )}
+      </li>
+    );
+  }
+
+  return (
+    <li>
+      <Link
+        to={item.url!}
+        onClick={onCloseMobile}
+        title={item.title}
+        className={cn(
+          "flex h-[40px] items-center gap-2.5 rounded-[10px] px-2.5 text-[13.5px] font-medium transition-colors",
+          active
+            ? "bg-gradient-to-r from-[#331fa3] to-[#6732F2] text-white shadow-[0_0_10px_#6732F2]"
+            : "text-sidebar-fg hover:bg-white/[0.07]",
+          collapsed && "justify-center px-0",
+        )}
+      >
+        <item.icon className={cn("size-[17px] shrink-0", active ? "text-white" : "text-sidebar-icon")} />
+        {!collapsed && (
+          <>
+            <span className="truncate">{item.title}</span>
+          </>
+        )}
+      </Link>
+    </li>
+  );
+}
+
 export function Sidebar({
   collapsed,
   mobileOpen,
@@ -53,7 +132,6 @@ export function Sidebar({
             <X className="size-5" />
           </button>
         </div>
-        {/* Nav section  */}
         <nav className="no-scrollbar flex-1 overflow-y-auto px-3 pb-4 py-3">
           {navSections.map((section, si) => (
             <div key={si} className="mb-1">
@@ -62,50 +140,13 @@ export function Sidebar({
                   {section.label}
                 </p>
               )}
-              {section.label && collapsed && <div className="my-2 h-px bg-white/10" />}
               <ul className="space-y-[3px]">
-                {section.items.map((item) => {
-                  const active =
-                    item.url === "/" ? pathname === "/" : pathname.startsWith(item.url);
-                  return (
-                    <li key={item.url}>
-                      <Link
-                        to={item.url}
-                        onClick={onCloseMobile}
-                        title={item.title}
-                        className={cn(
-                          "flex h-[40px] items-center gap-2.5 rounded-[10px] px-2.5  text-[13.5px] font-medium transition-colors",
-                          active
-                            ? "bg-gradient-to-r from-[#331fa3] to-[#6732F2] text-white shadow-[0_0_10px_#6732F2] "
-                            : "text-sidebar-fg hover:bg-white/[0.07]",
-                          collapsed && "justify-center px-0",
-                        )}
-                      >
-                        <item.icon
-                          className={cn(
-                            "size-[17px] shrink-0",
-                            active ? "text-white" : "text-sidebar-icon",
-                          )}
-                        />
-                        {!collapsed && (
-                          <>
-                            <span className="truncate">{item.title}</span>
-                            <ChevronRight
-                              className={cn(
-                                "ml-auto size-3.5",
-                                active ? "text-white/70" : "text-sidebar-icon/60",
-                              )}
-                            />
-                          </>
-                        )}
-                      </Link>
-                    </li>
-                  );
-                })}
+                {section.items.map((item) => (
+                  <NavLinkItem key={item.title} item={item} pathname={pathname} collapsed={collapsed} onCloseMobile={onCloseMobile} />
+                ))}
               </ul>
             </div>
           ))}
-
           {!collapsed && (
             <div className="relative mt-4 overflow-hidden rounded-[14px] bg-gradient-to-br from-[#3A1FA8] to-[#1B2270] p-3">
               <img

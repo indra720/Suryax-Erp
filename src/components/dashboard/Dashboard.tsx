@@ -15,16 +15,20 @@ import {
 } from "recharts";
 import {
   ArrowUpRight,
+  BookMarked,
+  Building,
   Building2,
   CalendarCheck,
   Home,
   IndianRupee,
   MapPin,
+  Megaphone,
   Send,
   Sparkles,
   TrendingUp,
   UserCheck,
   Users,
+  UsersRound,
 } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { Card, CardHead, StatusBadge } from "@/components/erp/ui";
@@ -137,7 +141,6 @@ export function Dashboard() {
             src={heroImg}
             alt="Suryax residential towers at dusk"
             width={1300}
-
             className="absolute inset-0 size-full  object-cover"
           />
           <div className="absolute inset-0 w-full " />
@@ -196,93 +199,106 @@ export function Dashboard() {
       {/* KPI CARDS */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         {kpis.map((k, i) => (
-          <Card key={k.label} className="p-4">
-            <div className="flex items-start gap-3">
+          // <Card key={k.label} className="p-3 relative overflow-hidden h-[96px]">
+          //   <div className="flex items-start gap-2.5">
+          //     <span
+          //       className={cn(
+          //         "grid size-8 shrink-0 place-items-center rounded-[10px]",
+          //         toneBg[k.tone],
+          //       )}
+          //     >
+          //       <k.icon className="size-4" />
+          //     </span>
+          //     <div className="min-w-0">
+          //       <p className="text-[11px] font-medium text-text-secondary">{k.label}</p>
+          //       <p className="text-[20px] leading-tight font-bold tracking-tight">{k.value}</p>
+          //       <p className="text-[9.5px] font-medium" style={{ color: k.color }}>
+          //         ↑ {k.delta} <span className="text-text-muted">vs last month</span>
+          //       </p>
+          //     </div>
+          //     <Sparkles className="size-4 shrink-0 opacity-70" style={{ color: k.color }} />
+          //   </div>
+
+          //   <div className="mt-2 h-7 w-1/2 transaction transform rotate-45">
+          //     <ResponsiveContainer width="100%" height="100%">
+          //       <AreaChart data={sparkData(i)} margin={{ top: 10, right: 0, left: 0, bottom: 0 }}>
+          //         <Area
+          //           type="linear"
+          //           dataKey="y"
+          //           stroke={k.color}
+          //           strokeWidth={1.5}
+          //           fill={k.color}
+          //           fillOpacity={0.2}
+          //           dot={false}
+          //           isAnimationActive={false}
+          //         />
+          //       </AreaChart>
+          //     </ResponsiveContainer>
+          //   </div>
+          // </Card>
+          <Card key={k.label} className="p-3 relative overflow-hidden h-[96px]">
+            <div className="flex items-start gap-2.5">
               <span
                 className={cn(
-                  "grid size-10 shrink-0 place-items-center rounded-[12px]",
+                  "grid size-8 shrink-0 place-items-center rounded-[10px]",
                   toneBg[k.tone],
                 )}
               >
-                <k.icon className="size-5" />
+                <k.icon className="size-4" />
               </span>
               <div className="min-w-0">
-                <p className="text-[12.5px] font-medium text-text-secondary">{k.label}</p>
-                <p className="text-[25px] leading-tight font-bold tracking-tight">{k.value}</p>
-                <p className="text-[11.5px] font-medium text-success">
+                <p className="text-[11px] font-medium text-text-secondary">{k.label}</p>
+                <p className="text-[20px] leading-tight font-bold tracking-tight">{k.value}</p>
+                <p className="text-[9.5px] font-medium" style={{ color: k.color }}>
                   ↑ {k.delta} <span className="text-text-muted">vs last month</span>
                 </p>
               </div>
+              <Sparkles className="size-4 shrink-0 opacity-70" style={{ color: k.color }} />
             </div>
-            <div className="mt-2 h-9">
+
+            <div className="absolute bottom-0 right-0 h-6 w-24 transform -skew-y-6">
               <ResponsiveContainer width="100%" height="100%">
-                <LineChart data={sparkData(i)}>
-                  <Line type="monotone" dataKey="y" stroke={k.color} strokeWidth={2} dot={false} />
-                </LineChart>
+                <AreaChart data={sparkData(i)} margin={{ top: 5, right: 0, left: 0, bottom: 0 }}>
+                  <Area
+                    type="linear"
+                    dataKey="y"
+                    stroke={k.color}
+                    strokeWidth={1.5}
+                    fill={k.color}
+                    fillOpacity={0.2}
+                    dot={false}
+                    isAnimationActive={false}
+                  />
+                </AreaChart>
               </ResponsiveContainer>
             </div>
           </Card>
         ))}
       </div>
 
-      {/* <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-        {kpis.map((k, i) => (
-          <Card
-            key={k.label}
-            className="p-4"
-            style={{
-              borderTop: `2px solid ${k.color}`,
-              borderRight: `2px solid ${k.color}`,
-            }}
-          >
-            <div className="flex items-start justify-between gap-3">
-              <div className="flex items-start gap-3">
-                <span
-                  className={cn(
-                    "grid size-10 shrink-0 place-items-center rounded-[12px]",
-                    toneBg[k.tone],
-                  )}
-                >
-                  <k.icon className="size-5" />
-                </span>
-                <div className="min-w-0 flex flex-col gap-1 ">
-                  <p className="text-[12.5px] font-medium text-text-secondary">{k.label}</p>
-                  <p className="text-[20px] leading-tight font-bold tracking-tight">{k.value}</p>
-                  <p className="text-[11.5px] font-medium" style={{ color: k.color }}>
-                    ↑ {k.delta} <span className="text-text-muted">vs last month</span>
-                  </p>
-                </div>
-              </div>
-
-              <Sparkles className="size-4 shrink-0 opacity-70" style={{ color: k.color }} />
+      {/* ADDITIONAL KPI GRID */}
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+        {[
+          { label: "Associates", value: "301", icon: UsersRound, color: "#4F20D8" },
+          { label: "Bookings", value: "26", icon: BookMarked, color: "#2459D6" },
+          { label: "Projects", value: "1", icon: Building2, color: "#E94B5F" },
+          { label: "Leads", value: "9", icon: Users, color: "#13A66A" },
+          { label: "SiteVisits", value: "0", icon: MapPin, color: "#F4A51C" },
+          { label: "MagicBricks", value: "0", icon: Home, color: "#5B2BE0" },
+          { label: "Facebook", value: "0", icon: Megaphone, color: "#3b5998" },
+          { label: "Housing.com", value: "0", icon: Building, color: "#E4405F" },
+          { label: "99acres.com", value: "0", icon: Building, color: "#e46f00" },
+          { label: "WebSite", value: "0", icon: Send, color: "#6732F2" },
+        ].map((k) => (
+          <Card key={k.label} className="p-3" style={{ borderLeft: `4px solid ${k.color}` }}>
+            <div className="flex items-center gap-2">
+              <k.icon className="size-4" style={{ color: k.color }} />
+              <p className="text-[11px] font-medium text-text-secondary truncate">{k.label}</p>
             </div>
-
-            <div className="mt-4 flex items-end justify-end gap-2">
-              <div className="h-9 w-20 shrink-0">
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={sparkData(i)}>
-                    <defs>
-                      <linearGradient id={`spark-${i}`} x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor={k.color} stopOpacity={0.35} />
-                        <stop offset="100%" stopColor={k.color} stopOpacity={0.02} />
-                      </linearGradient>
-                    </defs>
-                    <Area
-                      type="monotone"
-                      dataKey="y"
-                      stroke={k.color}
-                      strokeWidth={2}
-                      fill={`url(#spark-${i})`}
-                      dot={false}
-                      isAnimationActive={false}
-                    />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
+            <p className="mt-1 text-[18px] font-bold tracking-tight">{k.value}</p>
           </Card>
         ))}
-      </div> */}
+      </div>
 
       {/* ROW 2 */}
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 xl:grid-cols-[5fr_3fr_2.6fr]">
