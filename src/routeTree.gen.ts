@@ -34,6 +34,19 @@ import { Route as SiteVisitsRouteImport } from './routes/site-visits'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as UsersRolesRouteImport } from './routes/users-roles'
+import { Route as AdminAboutPrivacyRouteImport } from './routes/admin/about/privacy'
+import { Route as AdminAboutTermsRouteImport } from './routes/admin/about/terms'
+import { Route as AdminAssociatesAttendanceRouteImport } from './routes/admin/associates/attendance'
+import { Route as AdminAssociatesCommissionRouteImport } from './routes/admin/associates/commission'
+import { Route as AdminAssociatesGenerateAttendanceRouteImport } from './routes/admin/associates/generate-attendance'
+import { Route as AdminAssociatesListRouteImport } from './routes/admin/associates/list'
+import { Route as AdminAssociatesTransferRouteImport } from './routes/admin/associates/transfer'
+import { Route as AdminAssociatesTreeRouteImport } from './routes/admin/associates/tree'
+import { Route as AdminCallSmsLeadAssignRouteImport } from './routes/admin/call-sms/lead-assign'
+import { Route as AdminCrmBookingDisbursementRouteImport } from './routes/admin/crm/booking-disbursement'
+import { Route as AdminCrmBookingDraftTemplateRouteImport } from './routes/admin/crm/booking-draft-template'
+import { Route as AdminLeadsAssignmentRouteImport } from './routes/admin/leads/assignment'
+import { Route as AdminLeadsTimelineRouteImport } from './routes/admin/leads/timeline'
 import { Route as AdminMastersBdayAnnivRouteImport } from './routes/admin/masters/bday-anniv'
 import { Route as AdminMastersBrokerRouteImport } from './routes/admin/masters/broker'
 import { Route as AdminMastersBudgetRouteImport } from './routes/admin/masters/budget'
@@ -44,6 +57,52 @@ import { Route as AdminMastersInquiryStatusRouteImport } from './routes/admin/ma
 import { Route as AdminMastersLocalityRouteImport } from './routes/admin/masters/locality'
 import { Route as AdminMastersSourceRouteImport } from './routes/admin/masters/source'
 import { Route as AdminMastersVisitorEntryRouteImport } from './routes/admin/masters/visitor-entry'
+import { Route as AdminMemberPanelExtraFieldRouteImport } from './routes/admin/member-panel/extra-field'
+import { Route as AdminMemberPanelOpenRouteImport } from './routes/admin/member-panel/open'
+import { Route as AdminMemberPanelSettingRouteImport } from './routes/admin/member-panel/setting'
+import { Route as AdminMemberPanelUserPermissionRouteImport } from './routes/admin/member-panel/user-permission'
+import { Route as AdminPostSalesBookingDemandRouteImport } from './routes/admin/post-sales/booking-demand'
+import { Route as AdminPostSalesDayBookRouteImport } from './routes/admin/post-sales/day-book'
+import { Route as AdminPostSalesLoanProgressRouteImport } from './routes/admin/post-sales/loan-progress'
+import { Route as AdminPostSalesProjectDemandRouteImport } from './routes/admin/post-sales/project-demand'
+import { Route as AdminProjectsApartmentCommercialRouteImport } from './routes/admin/projects/apartment-commercial'
+import { Route as AdminProjectsFacebookFormMapRouteImport } from './routes/admin/projects/facebook-form-map'
+import { Route as AdminProjectsInventoryListRouteImport } from './routes/admin/projects/inventory-list'
+import { Route as AdminProjectsMemberListRouteImport } from './routes/admin/projects/member-list'
+import { Route as AdminProjectsPlotListRouteImport } from './routes/admin/projects/plot-list'
+import { Route as AdminProjectsProjectListRouteImport } from './routes/admin/projects/project-list'
+import { Route as AdminProjectsRowhouseListRouteImport } from './routes/admin/projects/rowhouse-list'
+import { Route as AdminProjectsUnitBoundariesRouteImport } from './routes/admin/projects/unit-boundaries'
+import { Route as AdminProjectsUpdateInventoryRouteImport } from './routes/admin/projects/update-inventory'
+import { Route as AdminProjectsWebsiteCampaignMapRouteImport } from './routes/admin/projects/website-campaign-map'
+import { Route as AdminProjectsWhatsappCampaignMapRouteImport } from './routes/admin/projects/whatsapp-campaign-map'
+import { Route as AdminReportsAssociateRouteImport } from './routes/admin/reports/associate'
+import { Route as AdminReportsBookingRouteImport } from './routes/admin/reports/booking'
+import { Route as AdminReportsCustomerRouteImport } from './routes/admin/reports/customer'
+import { Route as AdminReportsEmiRouteImport } from './routes/admin/reports/emi'
+import { Route as AdminReportsLeadRouteImport } from './routes/admin/reports/lead'
+import { Route as AdminReportsLogsRouteImport } from './routes/admin/reports/logs'
+import { Route as AdminReportsProjectRouteImport } from './routes/admin/reports/project'
+import { Route as AdminReportsSiteVisitRouteImport } from './routes/admin/reports/site-visit'
+import { Route as AdminSettingsBannerRouteImport } from './routes/admin/settings/banner'
+import { Route as AdminSettingsCommissionSlabRouteImport } from './routes/admin/settings/commission-slab'
+import { Route as AdminSettingsDashboardPermissionRouteImport } from './routes/admin/settings/dashboard-permission'
+import { Route as AdminSettingsExtResourceRouteImport } from './routes/admin/settings/ext-resource'
+import { Route as AdminSettingsUserPermissionRouteImport } from './routes/admin/settings/user-permission'
+import { Route as AdminSettingsWhatsappRouteImport } from './routes/admin/settings/whatsapp'
+import { Route as AdminSettingsWhatsappScheduleRouteImport } from './routes/admin/settings/whatsapp-schedule'
+import { Route as AdminSocialExternalResourceRouteImport } from './routes/admin/social/external-resource'
+import { Route as AdminSocialIntegrationRouteImport } from './routes/admin/social/integration'
+import { Route as AdminPostSalesAssociatePaymentsAdvanceAdjustmentRouteImport } from './routes/admin/post-sales/associate-payments/advance-adjustment'
+import { Route as AdminPostSalesAssociatePaymentsGenerateCommissionRouteImport } from './routes/admin/post-sales/associate-payments/generate-commission'
+import { Route as AdminPostSalesAssociatePaymentsListRouteImport } from './routes/admin/post-sales/associate-payments/list'
+import { Route as AdminPostSalesAssociatePaymentsPaymentReportRouteImport } from './routes/admin/post-sales/associate-payments/payment-report'
+import { Route as AdminPostSalesAssociatePaymentsPaymentToVendorRouteImport } from './routes/admin/post-sales/associate-payments/payment-to-vendor'
+import { Route as AdminProjectsApartmentCommercialBuildingRouteImport } from './routes/admin/projects/apartment-commercial/building'
+import { Route as AdminProjectsApartmentCommercialCommercialRouteImport } from './routes/admin/projects/apartment-commercial/commercial'
+import { Route as AdminProjectsApartmentCommercialFlatRouteImport } from './routes/admin/projects/apartment-commercial/flat'
+import { Route as AdminProjectsApartmentCommercialFloorRouteImport } from './routes/admin/projects/apartment-commercial/floor'
+import { Route as AdminProjectsApartmentCommercialListRouteImport } from './routes/admin/projects/apartment-commercial/list'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -170,6 +229,76 @@ const UsersRolesRoute = UsersRolesRouteImport.update({
   path: '/users-roles',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminAboutPrivacyRoute = AdminAboutPrivacyRouteImport.update({
+  id: '/admin/about/privacy',
+  path: '/admin/about/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAboutTermsRoute = AdminAboutTermsRouteImport.update({
+  id: '/admin/about/terms',
+  path: '/admin/about/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAssociatesAttendanceRoute =
+  AdminAssociatesAttendanceRouteImport.update({
+    id: '/admin/associates/attendance',
+    path: '/admin/associates/attendance',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminAssociatesCommissionRoute =
+  AdminAssociatesCommissionRouteImport.update({
+    id: '/admin/associates/commission',
+    path: '/admin/associates/commission',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminAssociatesGenerateAttendanceRoute =
+  AdminAssociatesGenerateAttendanceRouteImport.update({
+    id: '/admin/associates/generate-attendance',
+    path: '/admin/associates/generate-attendance',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminAssociatesListRoute = AdminAssociatesListRouteImport.update({
+  id: '/admin/associates/list',
+  path: '/admin/associates/list',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAssociatesTransferRoute = AdminAssociatesTransferRouteImport.update({
+  id: '/admin/associates/transfer',
+  path: '/admin/associates/transfer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminAssociatesTreeRoute = AdminAssociatesTreeRouteImport.update({
+  id: '/admin/associates/tree',
+  path: '/admin/associates/tree',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCallSmsLeadAssignRoute = AdminCallSmsLeadAssignRouteImport.update({
+  id: '/admin/call-sms/lead-assign',
+  path: '/admin/call-sms/lead-assign',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminCrmBookingDisbursementRoute =
+  AdminCrmBookingDisbursementRouteImport.update({
+    id: '/admin/crm/booking-disbursement',
+    path: '/admin/crm/booking-disbursement',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminCrmBookingDraftTemplateRoute =
+  AdminCrmBookingDraftTemplateRouteImport.update({
+    id: '/admin/crm/booking-draft-template',
+    path: '/admin/crm/booking-draft-template',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminLeadsAssignmentRoute = AdminLeadsAssignmentRouteImport.update({
+  id: '/admin/leads/assignment',
+  path: '/admin/leads/assignment',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLeadsTimelineRoute = AdminLeadsTimelineRouteImport.update({
+  id: '/admin/leads/timeline',
+  path: '/admin/leads/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminMastersBdayAnnivRoute = AdminMastersBdayAnnivRouteImport.update({
   id: '/admin/masters/bday-anniv',
   path: '/admin/masters/bday-anniv',
@@ -223,6 +352,266 @@ const AdminMastersVisitorEntryRoute =
     path: '/admin/masters/visitor-entry',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AdminMemberPanelExtraFieldRoute =
+  AdminMemberPanelExtraFieldRouteImport.update({
+    id: '/admin/member-panel/extra-field',
+    path: '/admin/member-panel/extra-field',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminMemberPanelOpenRoute = AdminMemberPanelOpenRouteImport.update({
+  id: '/admin/member-panel/open',
+  path: '/admin/member-panel/open',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMemberPanelSettingRoute = AdminMemberPanelSettingRouteImport.update({
+  id: '/admin/member-panel/setting',
+  path: '/admin/member-panel/setting',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMemberPanelUserPermissionRoute =
+  AdminMemberPanelUserPermissionRouteImport.update({
+    id: '/admin/member-panel/user-permission',
+    path: '/admin/member-panel/user-permission',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminPostSalesBookingDemandRoute =
+  AdminPostSalesBookingDemandRouteImport.update({
+    id: '/admin/post-sales/booking-demand',
+    path: '/admin/post-sales/booking-demand',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminPostSalesDayBookRoute = AdminPostSalesDayBookRouteImport.update({
+  id: '/admin/post-sales/day-book',
+  path: '/admin/post-sales/day-book',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPostSalesLoanProgressRoute =
+  AdminPostSalesLoanProgressRouteImport.update({
+    id: '/admin/post-sales/loan-progress',
+    path: '/admin/post-sales/loan-progress',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminPostSalesProjectDemandRoute =
+  AdminPostSalesProjectDemandRouteImport.update({
+    id: '/admin/post-sales/project-demand',
+    path: '/admin/post-sales/project-demand',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminProjectsApartmentCommercialRoute =
+  AdminProjectsApartmentCommercialRouteImport.update({
+    id: '/admin/projects/apartment-commercial',
+    path: '/admin/projects/apartment-commercial',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminProjectsFacebookFormMapRoute =
+  AdminProjectsFacebookFormMapRouteImport.update({
+    id: '/admin/projects/facebook-form-map',
+    path: '/admin/projects/facebook-form-map',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminProjectsInventoryListRoute =
+  AdminProjectsInventoryListRouteImport.update({
+    id: '/admin/projects/inventory-list',
+    path: '/admin/projects/inventory-list',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminProjectsMemberListRoute = AdminProjectsMemberListRouteImport.update({
+  id: '/admin/projects/member-list',
+  path: '/admin/projects/member-list',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProjectsPlotListRoute = AdminProjectsPlotListRouteImport.update({
+  id: '/admin/projects/plot-list',
+  path: '/admin/projects/plot-list',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProjectsProjectListRoute =
+  AdminProjectsProjectListRouteImport.update({
+    id: '/admin/projects/project-list',
+    path: '/admin/projects/project-list',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminProjectsRowhouseListRoute =
+  AdminProjectsRowhouseListRouteImport.update({
+    id: '/admin/projects/rowhouse-list',
+    path: '/admin/projects/rowhouse-list',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminProjectsUnitBoundariesRoute =
+  AdminProjectsUnitBoundariesRouteImport.update({
+    id: '/admin/projects/unit-boundaries',
+    path: '/admin/projects/unit-boundaries',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminProjectsUpdateInventoryRoute =
+  AdminProjectsUpdateInventoryRouteImport.update({
+    id: '/admin/projects/update-inventory',
+    path: '/admin/projects/update-inventory',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminProjectsWebsiteCampaignMapRoute =
+  AdminProjectsWebsiteCampaignMapRouteImport.update({
+    id: '/admin/projects/website-campaign-map',
+    path: '/admin/projects/website-campaign-map',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminProjectsWhatsappCampaignMapRoute =
+  AdminProjectsWhatsappCampaignMapRouteImport.update({
+    id: '/admin/projects/whatsapp-campaign-map',
+    path: '/admin/projects/whatsapp-campaign-map',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminReportsAssociateRoute = AdminReportsAssociateRouteImport.update({
+  id: '/admin/reports/associate',
+  path: '/admin/reports/associate',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReportsBookingRoute = AdminReportsBookingRouteImport.update({
+  id: '/admin/reports/booking',
+  path: '/admin/reports/booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReportsCustomerRoute = AdminReportsCustomerRouteImport.update({
+  id: '/admin/reports/customer',
+  path: '/admin/reports/customer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReportsEmiRoute = AdminReportsEmiRouteImport.update({
+  id: '/admin/reports/emi',
+  path: '/admin/reports/emi',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReportsLeadRoute = AdminReportsLeadRouteImport.update({
+  id: '/admin/reports/lead',
+  path: '/admin/reports/lead',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReportsLogsRoute = AdminReportsLogsRouteImport.update({
+  id: '/admin/reports/logs',
+  path: '/admin/reports/logs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReportsProjectRoute = AdminReportsProjectRouteImport.update({
+  id: '/admin/reports/project',
+  path: '/admin/reports/project',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminReportsSiteVisitRoute = AdminReportsSiteVisitRouteImport.update({
+  id: '/admin/reports/site-visit',
+  path: '/admin/reports/site-visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSettingsBannerRoute = AdminSettingsBannerRouteImport.update({
+  id: '/admin/settings/banner',
+  path: '/admin/settings/banner',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSettingsCommissionSlabRoute =
+  AdminSettingsCommissionSlabRouteImport.update({
+    id: '/admin/settings/commission-slab',
+    path: '/admin/settings/commission-slab',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminSettingsDashboardPermissionRoute =
+  AdminSettingsDashboardPermissionRouteImport.update({
+    id: '/admin/settings/dashboard-permission',
+    path: '/admin/settings/dashboard-permission',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminSettingsExtResourceRoute =
+  AdminSettingsExtResourceRouteImport.update({
+    id: '/admin/settings/ext-resource',
+    path: '/admin/settings/ext-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminSettingsUserPermissionRoute =
+  AdminSettingsUserPermissionRouteImport.update({
+    id: '/admin/settings/user-permission',
+    path: '/admin/settings/user-permission',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminSettingsWhatsappRoute = AdminSettingsWhatsappRouteImport.update({
+  id: '/admin/settings/whatsapp',
+  path: '/admin/settings/whatsapp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminSettingsWhatsappScheduleRoute =
+  AdminSettingsWhatsappScheduleRouteImport.update({
+    id: '/admin/settings/whatsapp-schedule',
+    path: '/admin/settings/whatsapp-schedule',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminSocialExternalResourceRoute =
+  AdminSocialExternalResourceRouteImport.update({
+    id: '/admin/social/external-resource',
+    path: '/admin/social/external-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminSocialIntegrationRoute = AdminSocialIntegrationRouteImport.update({
+  id: '/admin/social/integration',
+  path: '/admin/social/integration',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute =
+  AdminPostSalesAssociatePaymentsAdvanceAdjustmentRouteImport.update({
+    id: '/admin/post-sales/associate-payments/advance-adjustment',
+    path: '/admin/post-sales/associate-payments/advance-adjustment',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminPostSalesAssociatePaymentsGenerateCommissionRoute =
+  AdminPostSalesAssociatePaymentsGenerateCommissionRouteImport.update({
+    id: '/admin/post-sales/associate-payments/generate-commission',
+    path: '/admin/post-sales/associate-payments/generate-commission',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminPostSalesAssociatePaymentsListRoute =
+  AdminPostSalesAssociatePaymentsListRouteImport.update({
+    id: '/admin/post-sales/associate-payments/list',
+    path: '/admin/post-sales/associate-payments/list',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminPostSalesAssociatePaymentsPaymentReportRoute =
+  AdminPostSalesAssociatePaymentsPaymentReportRouteImport.update({
+    id: '/admin/post-sales/associate-payments/payment-report',
+    path: '/admin/post-sales/associate-payments/payment-report',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminPostSalesAssociatePaymentsPaymentToVendorRoute =
+  AdminPostSalesAssociatePaymentsPaymentToVendorRouteImport.update({
+    id: '/admin/post-sales/associate-payments/payment-to-vendor',
+    path: '/admin/post-sales/associate-payments/payment-to-vendor',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminProjectsApartmentCommercialBuildingRoute =
+  AdminProjectsApartmentCommercialBuildingRouteImport.update({
+    id: '/building',
+    path: '/building',
+    getParentRoute: () => AdminProjectsApartmentCommercialRoute,
+  } as any)
+const AdminProjectsApartmentCommercialCommercialRoute =
+  AdminProjectsApartmentCommercialCommercialRouteImport.update({
+    id: '/commercial',
+    path: '/commercial',
+    getParentRoute: () => AdminProjectsApartmentCommercialRoute,
+  } as any)
+const AdminProjectsApartmentCommercialFlatRoute =
+  AdminProjectsApartmentCommercialFlatRouteImport.update({
+    id: '/flat',
+    path: '/flat',
+    getParentRoute: () => AdminProjectsApartmentCommercialRoute,
+  } as any)
+const AdminProjectsApartmentCommercialFloorRoute =
+  AdminProjectsApartmentCommercialFloorRouteImport.update({
+    id: '/floor',
+    path: '/floor',
+    getParentRoute: () => AdminProjectsApartmentCommercialRoute,
+  } as any)
+const AdminProjectsApartmentCommercialListRoute =
+  AdminProjectsApartmentCommercialListRouteImport.update({
+    id: '/list',
+    path: '/list',
+    getParentRoute: () => AdminProjectsApartmentCommercialRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -250,6 +639,19 @@ export interface FileRoutesByFullPath {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/admin/about/privacy': typeof AdminAboutPrivacyRoute
+  '/admin/about/terms': typeof AdminAboutTermsRoute
+  '/admin/associates/attendance': typeof AdminAssociatesAttendanceRoute
+  '/admin/associates/commission': typeof AdminAssociatesCommissionRoute
+  '/admin/associates/generate-attendance': typeof AdminAssociatesGenerateAttendanceRoute
+  '/admin/associates/list': typeof AdminAssociatesListRoute
+  '/admin/associates/transfer': typeof AdminAssociatesTransferRoute
+  '/admin/associates/tree': typeof AdminAssociatesTreeRoute
+  '/admin/call-sms/lead-assign': typeof AdminCallSmsLeadAssignRoute
+  '/admin/crm/booking-disbursement': typeof AdminCrmBookingDisbursementRoute
+  '/admin/crm/booking-draft-template': typeof AdminCrmBookingDraftTemplateRoute
+  '/admin/leads/assignment': typeof AdminLeadsAssignmentRoute
+  '/admin/leads/timeline': typeof AdminLeadsTimelineRoute
   '/admin/masters/bday-anniv': typeof AdminMastersBdayAnnivRoute
   '/admin/masters/broker': typeof AdminMastersBrokerRoute
   '/admin/masters/budget': typeof AdminMastersBudgetRoute
@@ -260,6 +662,52 @@ export interface FileRoutesByFullPath {
   '/admin/masters/locality': typeof AdminMastersLocalityRoute
   '/admin/masters/source': typeof AdminMastersSourceRoute
   '/admin/masters/visitor-entry': typeof AdminMastersVisitorEntryRoute
+  '/admin/member-panel/extra-field': typeof AdminMemberPanelExtraFieldRoute
+  '/admin/member-panel/open': typeof AdminMemberPanelOpenRoute
+  '/admin/member-panel/setting': typeof AdminMemberPanelSettingRoute
+  '/admin/member-panel/user-permission': typeof AdminMemberPanelUserPermissionRoute
+  '/admin/post-sales/booking-demand': typeof AdminPostSalesBookingDemandRoute
+  '/admin/post-sales/day-book': typeof AdminPostSalesDayBookRoute
+  '/admin/post-sales/loan-progress': typeof AdminPostSalesLoanProgressRoute
+  '/admin/post-sales/project-demand': typeof AdminPostSalesProjectDemandRoute
+  '/admin/projects/apartment-commercial': typeof AdminProjectsApartmentCommercialRouteWithChildren
+  '/admin/projects/facebook-form-map': typeof AdminProjectsFacebookFormMapRoute
+  '/admin/projects/inventory-list': typeof AdminProjectsInventoryListRoute
+  '/admin/projects/member-list': typeof AdminProjectsMemberListRoute
+  '/admin/projects/plot-list': typeof AdminProjectsPlotListRoute
+  '/admin/projects/project-list': typeof AdminProjectsProjectListRoute
+  '/admin/projects/rowhouse-list': typeof AdminProjectsRowhouseListRoute
+  '/admin/projects/unit-boundaries': typeof AdminProjectsUnitBoundariesRoute
+  '/admin/projects/update-inventory': typeof AdminProjectsUpdateInventoryRoute
+  '/admin/projects/website-campaign-map': typeof AdminProjectsWebsiteCampaignMapRoute
+  '/admin/projects/whatsapp-campaign-map': typeof AdminProjectsWhatsappCampaignMapRoute
+  '/admin/reports/associate': typeof AdminReportsAssociateRoute
+  '/admin/reports/booking': typeof AdminReportsBookingRoute
+  '/admin/reports/customer': typeof AdminReportsCustomerRoute
+  '/admin/reports/emi': typeof AdminReportsEmiRoute
+  '/admin/reports/lead': typeof AdminReportsLeadRoute
+  '/admin/reports/logs': typeof AdminReportsLogsRoute
+  '/admin/reports/project': typeof AdminReportsProjectRoute
+  '/admin/reports/site-visit': typeof AdminReportsSiteVisitRoute
+  '/admin/settings/banner': typeof AdminSettingsBannerRoute
+  '/admin/settings/commission-slab': typeof AdminSettingsCommissionSlabRoute
+  '/admin/settings/dashboard-permission': typeof AdminSettingsDashboardPermissionRoute
+  '/admin/settings/ext-resource': typeof AdminSettingsExtResourceRoute
+  '/admin/settings/user-permission': typeof AdminSettingsUserPermissionRoute
+  '/admin/settings/whatsapp': typeof AdminSettingsWhatsappRoute
+  '/admin/settings/whatsapp-schedule': typeof AdminSettingsWhatsappScheduleRoute
+  '/admin/social/external-resource': typeof AdminSocialExternalResourceRoute
+  '/admin/social/integration': typeof AdminSocialIntegrationRoute
+  '/admin/post-sales/associate-payments/advance-adjustment': typeof AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute
+  '/admin/post-sales/associate-payments/generate-commission': typeof AdminPostSalesAssociatePaymentsGenerateCommissionRoute
+  '/admin/post-sales/associate-payments/list': typeof AdminPostSalesAssociatePaymentsListRoute
+  '/admin/post-sales/associate-payments/payment-report': typeof AdminPostSalesAssociatePaymentsPaymentReportRoute
+  '/admin/post-sales/associate-payments/payment-to-vendor': typeof AdminPostSalesAssociatePaymentsPaymentToVendorRoute
+  '/admin/projects/apartment-commercial/building': typeof AdminProjectsApartmentCommercialBuildingRoute
+  '/admin/projects/apartment-commercial/commercial': typeof AdminProjectsApartmentCommercialCommercialRoute
+  '/admin/projects/apartment-commercial/flat': typeof AdminProjectsApartmentCommercialFlatRoute
+  '/admin/projects/apartment-commercial/floor': typeof AdminProjectsApartmentCommercialFloorRoute
+  '/admin/projects/apartment-commercial/list': typeof AdminProjectsApartmentCommercialListRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -287,6 +735,19 @@ export interface FileRoutesByTo {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/admin/about/privacy': typeof AdminAboutPrivacyRoute
+  '/admin/about/terms': typeof AdminAboutTermsRoute
+  '/admin/associates/attendance': typeof AdminAssociatesAttendanceRoute
+  '/admin/associates/commission': typeof AdminAssociatesCommissionRoute
+  '/admin/associates/generate-attendance': typeof AdminAssociatesGenerateAttendanceRoute
+  '/admin/associates/list': typeof AdminAssociatesListRoute
+  '/admin/associates/transfer': typeof AdminAssociatesTransferRoute
+  '/admin/associates/tree': typeof AdminAssociatesTreeRoute
+  '/admin/call-sms/lead-assign': typeof AdminCallSmsLeadAssignRoute
+  '/admin/crm/booking-disbursement': typeof AdminCrmBookingDisbursementRoute
+  '/admin/crm/booking-draft-template': typeof AdminCrmBookingDraftTemplateRoute
+  '/admin/leads/assignment': typeof AdminLeadsAssignmentRoute
+  '/admin/leads/timeline': typeof AdminLeadsTimelineRoute
   '/admin/masters/bday-anniv': typeof AdminMastersBdayAnnivRoute
   '/admin/masters/broker': typeof AdminMastersBrokerRoute
   '/admin/masters/budget': typeof AdminMastersBudgetRoute
@@ -297,6 +758,52 @@ export interface FileRoutesByTo {
   '/admin/masters/locality': typeof AdminMastersLocalityRoute
   '/admin/masters/source': typeof AdminMastersSourceRoute
   '/admin/masters/visitor-entry': typeof AdminMastersVisitorEntryRoute
+  '/admin/member-panel/extra-field': typeof AdminMemberPanelExtraFieldRoute
+  '/admin/member-panel/open': typeof AdminMemberPanelOpenRoute
+  '/admin/member-panel/setting': typeof AdminMemberPanelSettingRoute
+  '/admin/member-panel/user-permission': typeof AdminMemberPanelUserPermissionRoute
+  '/admin/post-sales/booking-demand': typeof AdminPostSalesBookingDemandRoute
+  '/admin/post-sales/day-book': typeof AdminPostSalesDayBookRoute
+  '/admin/post-sales/loan-progress': typeof AdminPostSalesLoanProgressRoute
+  '/admin/post-sales/project-demand': typeof AdminPostSalesProjectDemandRoute
+  '/admin/projects/apartment-commercial': typeof AdminProjectsApartmentCommercialRouteWithChildren
+  '/admin/projects/facebook-form-map': typeof AdminProjectsFacebookFormMapRoute
+  '/admin/projects/inventory-list': typeof AdminProjectsInventoryListRoute
+  '/admin/projects/member-list': typeof AdminProjectsMemberListRoute
+  '/admin/projects/plot-list': typeof AdminProjectsPlotListRoute
+  '/admin/projects/project-list': typeof AdminProjectsProjectListRoute
+  '/admin/projects/rowhouse-list': typeof AdminProjectsRowhouseListRoute
+  '/admin/projects/unit-boundaries': typeof AdminProjectsUnitBoundariesRoute
+  '/admin/projects/update-inventory': typeof AdminProjectsUpdateInventoryRoute
+  '/admin/projects/website-campaign-map': typeof AdminProjectsWebsiteCampaignMapRoute
+  '/admin/projects/whatsapp-campaign-map': typeof AdminProjectsWhatsappCampaignMapRoute
+  '/admin/reports/associate': typeof AdminReportsAssociateRoute
+  '/admin/reports/booking': typeof AdminReportsBookingRoute
+  '/admin/reports/customer': typeof AdminReportsCustomerRoute
+  '/admin/reports/emi': typeof AdminReportsEmiRoute
+  '/admin/reports/lead': typeof AdminReportsLeadRoute
+  '/admin/reports/logs': typeof AdminReportsLogsRoute
+  '/admin/reports/project': typeof AdminReportsProjectRoute
+  '/admin/reports/site-visit': typeof AdminReportsSiteVisitRoute
+  '/admin/settings/banner': typeof AdminSettingsBannerRoute
+  '/admin/settings/commission-slab': typeof AdminSettingsCommissionSlabRoute
+  '/admin/settings/dashboard-permission': typeof AdminSettingsDashboardPermissionRoute
+  '/admin/settings/ext-resource': typeof AdminSettingsExtResourceRoute
+  '/admin/settings/user-permission': typeof AdminSettingsUserPermissionRoute
+  '/admin/settings/whatsapp': typeof AdminSettingsWhatsappRoute
+  '/admin/settings/whatsapp-schedule': typeof AdminSettingsWhatsappScheduleRoute
+  '/admin/social/external-resource': typeof AdminSocialExternalResourceRoute
+  '/admin/social/integration': typeof AdminSocialIntegrationRoute
+  '/admin/post-sales/associate-payments/advance-adjustment': typeof AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute
+  '/admin/post-sales/associate-payments/generate-commission': typeof AdminPostSalesAssociatePaymentsGenerateCommissionRoute
+  '/admin/post-sales/associate-payments/list': typeof AdminPostSalesAssociatePaymentsListRoute
+  '/admin/post-sales/associate-payments/payment-report': typeof AdminPostSalesAssociatePaymentsPaymentReportRoute
+  '/admin/post-sales/associate-payments/payment-to-vendor': typeof AdminPostSalesAssociatePaymentsPaymentToVendorRoute
+  '/admin/projects/apartment-commercial/building': typeof AdminProjectsApartmentCommercialBuildingRoute
+  '/admin/projects/apartment-commercial/commercial': typeof AdminProjectsApartmentCommercialCommercialRoute
+  '/admin/projects/apartment-commercial/flat': typeof AdminProjectsApartmentCommercialFlatRoute
+  '/admin/projects/apartment-commercial/floor': typeof AdminProjectsApartmentCommercialFloorRoute
+  '/admin/projects/apartment-commercial/list': typeof AdminProjectsApartmentCommercialListRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -325,6 +832,19 @@ export interface FileRoutesById {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/admin/about/privacy': typeof AdminAboutPrivacyRoute
+  '/admin/about/terms': typeof AdminAboutTermsRoute
+  '/admin/associates/attendance': typeof AdminAssociatesAttendanceRoute
+  '/admin/associates/commission': typeof AdminAssociatesCommissionRoute
+  '/admin/associates/generate-attendance': typeof AdminAssociatesGenerateAttendanceRoute
+  '/admin/associates/list': typeof AdminAssociatesListRoute
+  '/admin/associates/transfer': typeof AdminAssociatesTransferRoute
+  '/admin/associates/tree': typeof AdminAssociatesTreeRoute
+  '/admin/call-sms/lead-assign': typeof AdminCallSmsLeadAssignRoute
+  '/admin/crm/booking-disbursement': typeof AdminCrmBookingDisbursementRoute
+  '/admin/crm/booking-draft-template': typeof AdminCrmBookingDraftTemplateRoute
+  '/admin/leads/assignment': typeof AdminLeadsAssignmentRoute
+  '/admin/leads/timeline': typeof AdminLeadsTimelineRoute
   '/admin/masters/bday-anniv': typeof AdminMastersBdayAnnivRoute
   '/admin/masters/broker': typeof AdminMastersBrokerRoute
   '/admin/masters/budget': typeof AdminMastersBudgetRoute
@@ -335,6 +855,52 @@ export interface FileRoutesById {
   '/admin/masters/locality': typeof AdminMastersLocalityRoute
   '/admin/masters/source': typeof AdminMastersSourceRoute
   '/admin/masters/visitor-entry': typeof AdminMastersVisitorEntryRoute
+  '/admin/member-panel/extra-field': typeof AdminMemberPanelExtraFieldRoute
+  '/admin/member-panel/open': typeof AdminMemberPanelOpenRoute
+  '/admin/member-panel/setting': typeof AdminMemberPanelSettingRoute
+  '/admin/member-panel/user-permission': typeof AdminMemberPanelUserPermissionRoute
+  '/admin/post-sales/booking-demand': typeof AdminPostSalesBookingDemandRoute
+  '/admin/post-sales/day-book': typeof AdminPostSalesDayBookRoute
+  '/admin/post-sales/loan-progress': typeof AdminPostSalesLoanProgressRoute
+  '/admin/post-sales/project-demand': typeof AdminPostSalesProjectDemandRoute
+  '/admin/projects/apartment-commercial': typeof AdminProjectsApartmentCommercialRouteWithChildren
+  '/admin/projects/facebook-form-map': typeof AdminProjectsFacebookFormMapRoute
+  '/admin/projects/inventory-list': typeof AdminProjectsInventoryListRoute
+  '/admin/projects/member-list': typeof AdminProjectsMemberListRoute
+  '/admin/projects/plot-list': typeof AdminProjectsPlotListRoute
+  '/admin/projects/project-list': typeof AdminProjectsProjectListRoute
+  '/admin/projects/rowhouse-list': typeof AdminProjectsRowhouseListRoute
+  '/admin/projects/unit-boundaries': typeof AdminProjectsUnitBoundariesRoute
+  '/admin/projects/update-inventory': typeof AdminProjectsUpdateInventoryRoute
+  '/admin/projects/website-campaign-map': typeof AdminProjectsWebsiteCampaignMapRoute
+  '/admin/projects/whatsapp-campaign-map': typeof AdminProjectsWhatsappCampaignMapRoute
+  '/admin/reports/associate': typeof AdminReportsAssociateRoute
+  '/admin/reports/booking': typeof AdminReportsBookingRoute
+  '/admin/reports/customer': typeof AdminReportsCustomerRoute
+  '/admin/reports/emi': typeof AdminReportsEmiRoute
+  '/admin/reports/lead': typeof AdminReportsLeadRoute
+  '/admin/reports/logs': typeof AdminReportsLogsRoute
+  '/admin/reports/project': typeof AdminReportsProjectRoute
+  '/admin/reports/site-visit': typeof AdminReportsSiteVisitRoute
+  '/admin/settings/banner': typeof AdminSettingsBannerRoute
+  '/admin/settings/commission-slab': typeof AdminSettingsCommissionSlabRoute
+  '/admin/settings/dashboard-permission': typeof AdminSettingsDashboardPermissionRoute
+  '/admin/settings/ext-resource': typeof AdminSettingsExtResourceRoute
+  '/admin/settings/user-permission': typeof AdminSettingsUserPermissionRoute
+  '/admin/settings/whatsapp': typeof AdminSettingsWhatsappRoute
+  '/admin/settings/whatsapp-schedule': typeof AdminSettingsWhatsappScheduleRoute
+  '/admin/social/external-resource': typeof AdminSocialExternalResourceRoute
+  '/admin/social/integration': typeof AdminSocialIntegrationRoute
+  '/admin/post-sales/associate-payments/advance-adjustment': typeof AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute
+  '/admin/post-sales/associate-payments/generate-commission': typeof AdminPostSalesAssociatePaymentsGenerateCommissionRoute
+  '/admin/post-sales/associate-payments/list': typeof AdminPostSalesAssociatePaymentsListRoute
+  '/admin/post-sales/associate-payments/payment-report': typeof AdminPostSalesAssociatePaymentsPaymentReportRoute
+  '/admin/post-sales/associate-payments/payment-to-vendor': typeof AdminPostSalesAssociatePaymentsPaymentToVendorRoute
+  '/admin/projects/apartment-commercial/building': typeof AdminProjectsApartmentCommercialBuildingRoute
+  '/admin/projects/apartment-commercial/commercial': typeof AdminProjectsApartmentCommercialCommercialRoute
+  '/admin/projects/apartment-commercial/flat': typeof AdminProjectsApartmentCommercialFlatRoute
+  '/admin/projects/apartment-commercial/floor': typeof AdminProjectsApartmentCommercialFloorRoute
+  '/admin/projects/apartment-commercial/list': typeof AdminProjectsApartmentCommercialListRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -364,6 +930,19 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/admin/about/privacy'
+    | '/admin/about/terms'
+    | '/admin/associates/attendance'
+    | '/admin/associates/commission'
+    | '/admin/associates/generate-attendance'
+    | '/admin/associates/list'
+    | '/admin/associates/transfer'
+    | '/admin/associates/tree'
+    | '/admin/call-sms/lead-assign'
+    | '/admin/crm/booking-disbursement'
+    | '/admin/crm/booking-draft-template'
+    | '/admin/leads/assignment'
+    | '/admin/leads/timeline'
     | '/admin/masters/bday-anniv'
     | '/admin/masters/broker'
     | '/admin/masters/budget'
@@ -374,6 +953,52 @@ export interface FileRouteTypes {
     | '/admin/masters/locality'
     | '/admin/masters/source'
     | '/admin/masters/visitor-entry'
+    | '/admin/member-panel/extra-field'
+    | '/admin/member-panel/open'
+    | '/admin/member-panel/setting'
+    | '/admin/member-panel/user-permission'
+    | '/admin/post-sales/booking-demand'
+    | '/admin/post-sales/day-book'
+    | '/admin/post-sales/loan-progress'
+    | '/admin/post-sales/project-demand'
+    | '/admin/projects/apartment-commercial'
+    | '/admin/projects/facebook-form-map'
+    | '/admin/projects/inventory-list'
+    | '/admin/projects/member-list'
+    | '/admin/projects/plot-list'
+    | '/admin/projects/project-list'
+    | '/admin/projects/rowhouse-list'
+    | '/admin/projects/unit-boundaries'
+    | '/admin/projects/update-inventory'
+    | '/admin/projects/website-campaign-map'
+    | '/admin/projects/whatsapp-campaign-map'
+    | '/admin/reports/associate'
+    | '/admin/reports/booking'
+    | '/admin/reports/customer'
+    | '/admin/reports/emi'
+    | '/admin/reports/lead'
+    | '/admin/reports/logs'
+    | '/admin/reports/project'
+    | '/admin/reports/site-visit'
+    | '/admin/settings/banner'
+    | '/admin/settings/commission-slab'
+    | '/admin/settings/dashboard-permission'
+    | '/admin/settings/ext-resource'
+    | '/admin/settings/user-permission'
+    | '/admin/settings/whatsapp'
+    | '/admin/settings/whatsapp-schedule'
+    | '/admin/social/external-resource'
+    | '/admin/social/integration'
+    | '/admin/post-sales/associate-payments/advance-adjustment'
+    | '/admin/post-sales/associate-payments/generate-commission'
+    | '/admin/post-sales/associate-payments/list'
+    | '/admin/post-sales/associate-payments/payment-report'
+    | '/admin/post-sales/associate-payments/payment-to-vendor'
+    | '/admin/projects/apartment-commercial/building'
+    | '/admin/projects/apartment-commercial/commercial'
+    | '/admin/projects/apartment-commercial/flat'
+    | '/admin/projects/apartment-commercial/floor'
+    | '/admin/projects/apartment-commercial/list'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -401,6 +1026,19 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/admin/about/privacy'
+    | '/admin/about/terms'
+    | '/admin/associates/attendance'
+    | '/admin/associates/commission'
+    | '/admin/associates/generate-attendance'
+    | '/admin/associates/list'
+    | '/admin/associates/transfer'
+    | '/admin/associates/tree'
+    | '/admin/call-sms/lead-assign'
+    | '/admin/crm/booking-disbursement'
+    | '/admin/crm/booking-draft-template'
+    | '/admin/leads/assignment'
+    | '/admin/leads/timeline'
     | '/admin/masters/bday-anniv'
     | '/admin/masters/broker'
     | '/admin/masters/budget'
@@ -411,6 +1049,52 @@ export interface FileRouteTypes {
     | '/admin/masters/locality'
     | '/admin/masters/source'
     | '/admin/masters/visitor-entry'
+    | '/admin/member-panel/extra-field'
+    | '/admin/member-panel/open'
+    | '/admin/member-panel/setting'
+    | '/admin/member-panel/user-permission'
+    | '/admin/post-sales/booking-demand'
+    | '/admin/post-sales/day-book'
+    | '/admin/post-sales/loan-progress'
+    | '/admin/post-sales/project-demand'
+    | '/admin/projects/apartment-commercial'
+    | '/admin/projects/facebook-form-map'
+    | '/admin/projects/inventory-list'
+    | '/admin/projects/member-list'
+    | '/admin/projects/plot-list'
+    | '/admin/projects/project-list'
+    | '/admin/projects/rowhouse-list'
+    | '/admin/projects/unit-boundaries'
+    | '/admin/projects/update-inventory'
+    | '/admin/projects/website-campaign-map'
+    | '/admin/projects/whatsapp-campaign-map'
+    | '/admin/reports/associate'
+    | '/admin/reports/booking'
+    | '/admin/reports/customer'
+    | '/admin/reports/emi'
+    | '/admin/reports/lead'
+    | '/admin/reports/logs'
+    | '/admin/reports/project'
+    | '/admin/reports/site-visit'
+    | '/admin/settings/banner'
+    | '/admin/settings/commission-slab'
+    | '/admin/settings/dashboard-permission'
+    | '/admin/settings/ext-resource'
+    | '/admin/settings/user-permission'
+    | '/admin/settings/whatsapp'
+    | '/admin/settings/whatsapp-schedule'
+    | '/admin/social/external-resource'
+    | '/admin/social/integration'
+    | '/admin/post-sales/associate-payments/advance-adjustment'
+    | '/admin/post-sales/associate-payments/generate-commission'
+    | '/admin/post-sales/associate-payments/list'
+    | '/admin/post-sales/associate-payments/payment-report'
+    | '/admin/post-sales/associate-payments/payment-to-vendor'
+    | '/admin/projects/apartment-commercial/building'
+    | '/admin/projects/apartment-commercial/commercial'
+    | '/admin/projects/apartment-commercial/flat'
+    | '/admin/projects/apartment-commercial/floor'
+    | '/admin/projects/apartment-commercial/list'
   id:
     | '__root__'
     | '/'
@@ -438,6 +1122,19 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/admin/about/privacy'
+    | '/admin/about/terms'
+    | '/admin/associates/attendance'
+    | '/admin/associates/commission'
+    | '/admin/associates/generate-attendance'
+    | '/admin/associates/list'
+    | '/admin/associates/transfer'
+    | '/admin/associates/tree'
+    | '/admin/call-sms/lead-assign'
+    | '/admin/crm/booking-disbursement'
+    | '/admin/crm/booking-draft-template'
+    | '/admin/leads/assignment'
+    | '/admin/leads/timeline'
     | '/admin/masters/bday-anniv'
     | '/admin/masters/broker'
     | '/admin/masters/budget'
@@ -448,6 +1145,52 @@ export interface FileRouteTypes {
     | '/admin/masters/locality'
     | '/admin/masters/source'
     | '/admin/masters/visitor-entry'
+    | '/admin/member-panel/extra-field'
+    | '/admin/member-panel/open'
+    | '/admin/member-panel/setting'
+    | '/admin/member-panel/user-permission'
+    | '/admin/post-sales/booking-demand'
+    | '/admin/post-sales/day-book'
+    | '/admin/post-sales/loan-progress'
+    | '/admin/post-sales/project-demand'
+    | '/admin/projects/apartment-commercial'
+    | '/admin/projects/facebook-form-map'
+    | '/admin/projects/inventory-list'
+    | '/admin/projects/member-list'
+    | '/admin/projects/plot-list'
+    | '/admin/projects/project-list'
+    | '/admin/projects/rowhouse-list'
+    | '/admin/projects/unit-boundaries'
+    | '/admin/projects/update-inventory'
+    | '/admin/projects/website-campaign-map'
+    | '/admin/projects/whatsapp-campaign-map'
+    | '/admin/reports/associate'
+    | '/admin/reports/booking'
+    | '/admin/reports/customer'
+    | '/admin/reports/emi'
+    | '/admin/reports/lead'
+    | '/admin/reports/logs'
+    | '/admin/reports/project'
+    | '/admin/reports/site-visit'
+    | '/admin/settings/banner'
+    | '/admin/settings/commission-slab'
+    | '/admin/settings/dashboard-permission'
+    | '/admin/settings/ext-resource'
+    | '/admin/settings/user-permission'
+    | '/admin/settings/whatsapp'
+    | '/admin/settings/whatsapp-schedule'
+    | '/admin/social/external-resource'
+    | '/admin/social/integration'
+    | '/admin/post-sales/associate-payments/advance-adjustment'
+    | '/admin/post-sales/associate-payments/generate-commission'
+    | '/admin/post-sales/associate-payments/list'
+    | '/admin/post-sales/associate-payments/payment-report'
+    | '/admin/post-sales/associate-payments/payment-to-vendor'
+    | '/admin/projects/apartment-commercial/building'
+    | '/admin/projects/apartment-commercial/commercial'
+    | '/admin/projects/apartment-commercial/flat'
+    | '/admin/projects/apartment-commercial/floor'
+    | '/admin/projects/apartment-commercial/list'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -476,6 +1219,19 @@ export interface RootRouteChildren {
   TasksRoute: typeof TasksRoute
   TeamRoute: typeof TeamRoute
   UsersRolesRoute: typeof UsersRolesRoute
+  AdminAboutPrivacyRoute: typeof AdminAboutPrivacyRoute
+  AdminAboutTermsRoute: typeof AdminAboutTermsRoute
+  AdminAssociatesAttendanceRoute: typeof AdminAssociatesAttendanceRoute
+  AdminAssociatesCommissionRoute: typeof AdminAssociatesCommissionRoute
+  AdminAssociatesGenerateAttendanceRoute: typeof AdminAssociatesGenerateAttendanceRoute
+  AdminAssociatesListRoute: typeof AdminAssociatesListRoute
+  AdminAssociatesTransferRoute: typeof AdminAssociatesTransferRoute
+  AdminAssociatesTreeRoute: typeof AdminAssociatesTreeRoute
+  AdminCallSmsLeadAssignRoute: typeof AdminCallSmsLeadAssignRoute
+  AdminCrmBookingDisbursementRoute: typeof AdminCrmBookingDisbursementRoute
+  AdminCrmBookingDraftTemplateRoute: typeof AdminCrmBookingDraftTemplateRoute
+  AdminLeadsAssignmentRoute: typeof AdminLeadsAssignmentRoute
+  AdminLeadsTimelineRoute: typeof AdminLeadsTimelineRoute
   AdminMastersBdayAnnivRoute: typeof AdminMastersBdayAnnivRoute
   AdminMastersBrokerRoute: typeof AdminMastersBrokerRoute
   AdminMastersBudgetRoute: typeof AdminMastersBudgetRoute
@@ -486,6 +1242,47 @@ export interface RootRouteChildren {
   AdminMastersLocalityRoute: typeof AdminMastersLocalityRoute
   AdminMastersSourceRoute: typeof AdminMastersSourceRoute
   AdminMastersVisitorEntryRoute: typeof AdminMastersVisitorEntryRoute
+  AdminMemberPanelExtraFieldRoute: typeof AdminMemberPanelExtraFieldRoute
+  AdminMemberPanelOpenRoute: typeof AdminMemberPanelOpenRoute
+  AdminMemberPanelSettingRoute: typeof AdminMemberPanelSettingRoute
+  AdminMemberPanelUserPermissionRoute: typeof AdminMemberPanelUserPermissionRoute
+  AdminPostSalesBookingDemandRoute: typeof AdminPostSalesBookingDemandRoute
+  AdminPostSalesDayBookRoute: typeof AdminPostSalesDayBookRoute
+  AdminPostSalesLoanProgressRoute: typeof AdminPostSalesLoanProgressRoute
+  AdminPostSalesProjectDemandRoute: typeof AdminPostSalesProjectDemandRoute
+  AdminProjectsApartmentCommercialRoute: typeof AdminProjectsApartmentCommercialRouteWithChildren
+  AdminProjectsFacebookFormMapRoute: typeof AdminProjectsFacebookFormMapRoute
+  AdminProjectsInventoryListRoute: typeof AdminProjectsInventoryListRoute
+  AdminProjectsMemberListRoute: typeof AdminProjectsMemberListRoute
+  AdminProjectsPlotListRoute: typeof AdminProjectsPlotListRoute
+  AdminProjectsProjectListRoute: typeof AdminProjectsProjectListRoute
+  AdminProjectsRowhouseListRoute: typeof AdminProjectsRowhouseListRoute
+  AdminProjectsUnitBoundariesRoute: typeof AdminProjectsUnitBoundariesRoute
+  AdminProjectsUpdateInventoryRoute: typeof AdminProjectsUpdateInventoryRoute
+  AdminProjectsWebsiteCampaignMapRoute: typeof AdminProjectsWebsiteCampaignMapRoute
+  AdminProjectsWhatsappCampaignMapRoute: typeof AdminProjectsWhatsappCampaignMapRoute
+  AdminReportsAssociateRoute: typeof AdminReportsAssociateRoute
+  AdminReportsBookingRoute: typeof AdminReportsBookingRoute
+  AdminReportsCustomerRoute: typeof AdminReportsCustomerRoute
+  AdminReportsEmiRoute: typeof AdminReportsEmiRoute
+  AdminReportsLeadRoute: typeof AdminReportsLeadRoute
+  AdminReportsLogsRoute: typeof AdminReportsLogsRoute
+  AdminReportsProjectRoute: typeof AdminReportsProjectRoute
+  AdminReportsSiteVisitRoute: typeof AdminReportsSiteVisitRoute
+  AdminSettingsBannerRoute: typeof AdminSettingsBannerRoute
+  AdminSettingsCommissionSlabRoute: typeof AdminSettingsCommissionSlabRoute
+  AdminSettingsDashboardPermissionRoute: typeof AdminSettingsDashboardPermissionRoute
+  AdminSettingsExtResourceRoute: typeof AdminSettingsExtResourceRoute
+  AdminSettingsUserPermissionRoute: typeof AdminSettingsUserPermissionRoute
+  AdminSettingsWhatsappRoute: typeof AdminSettingsWhatsappRoute
+  AdminSettingsWhatsappScheduleRoute: typeof AdminSettingsWhatsappScheduleRoute
+  AdminSocialExternalResourceRoute: typeof AdminSocialExternalResourceRoute
+  AdminSocialIntegrationRoute: typeof AdminSocialIntegrationRoute
+  AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute: typeof AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute
+  AdminPostSalesAssociatePaymentsGenerateCommissionRoute: typeof AdminPostSalesAssociatePaymentsGenerateCommissionRoute
+  AdminPostSalesAssociatePaymentsListRoute: typeof AdminPostSalesAssociatePaymentsListRoute
+  AdminPostSalesAssociatePaymentsPaymentReportRoute: typeof AdminPostSalesAssociatePaymentsPaymentReportRoute
+  AdminPostSalesAssociatePaymentsPaymentToVendorRoute: typeof AdminPostSalesAssociatePaymentsPaymentToVendorRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -665,6 +1462,97 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersRolesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/about/privacy': {
+      id: '/admin/about/privacy'
+      path: '/admin/about/privacy'
+      fullPath: '/admin/about/privacy'
+      preLoaderRoute: typeof AdminAboutPrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/about/terms': {
+      id: '/admin/about/terms'
+      path: '/admin/about/terms'
+      fullPath: '/admin/about/terms'
+      preLoaderRoute: typeof AdminAboutTermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/associates/attendance': {
+      id: '/admin/associates/attendance'
+      path: '/admin/associates/attendance'
+      fullPath: '/admin/associates/attendance'
+      preLoaderRoute: typeof AdminAssociatesAttendanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/associates/commission': {
+      id: '/admin/associates/commission'
+      path: '/admin/associates/commission'
+      fullPath: '/admin/associates/commission'
+      preLoaderRoute: typeof AdminAssociatesCommissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/associates/generate-attendance': {
+      id: '/admin/associates/generate-attendance'
+      path: '/admin/associates/generate-attendance'
+      fullPath: '/admin/associates/generate-attendance'
+      preLoaderRoute: typeof AdminAssociatesGenerateAttendanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/associates/list': {
+      id: '/admin/associates/list'
+      path: '/admin/associates/list'
+      fullPath: '/admin/associates/list'
+      preLoaderRoute: typeof AdminAssociatesListRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/associates/transfer': {
+      id: '/admin/associates/transfer'
+      path: '/admin/associates/transfer'
+      fullPath: '/admin/associates/transfer'
+      preLoaderRoute: typeof AdminAssociatesTransferRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/associates/tree': {
+      id: '/admin/associates/tree'
+      path: '/admin/associates/tree'
+      fullPath: '/admin/associates/tree'
+      preLoaderRoute: typeof AdminAssociatesTreeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/call-sms/lead-assign': {
+      id: '/admin/call-sms/lead-assign'
+      path: '/admin/call-sms/lead-assign'
+      fullPath: '/admin/call-sms/lead-assign'
+      preLoaderRoute: typeof AdminCallSmsLeadAssignRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/crm/booking-disbursement': {
+      id: '/admin/crm/booking-disbursement'
+      path: '/admin/crm/booking-disbursement'
+      fullPath: '/admin/crm/booking-disbursement'
+      preLoaderRoute: typeof AdminCrmBookingDisbursementRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/crm/booking-draft-template': {
+      id: '/admin/crm/booking-draft-template'
+      path: '/admin/crm/booking-draft-template'
+      fullPath: '/admin/crm/booking-draft-template'
+      preLoaderRoute: typeof AdminCrmBookingDraftTemplateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/leads/assignment': {
+      id: '/admin/leads/assignment'
+      path: '/admin/leads/assignment'
+      fullPath: '/admin/leads/assignment'
+      preLoaderRoute: typeof AdminLeadsAssignmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/leads/timeline': {
+      id: '/admin/leads/timeline'
+      path: '/admin/leads/timeline'
+      fullPath: '/admin/leads/timeline'
+      preLoaderRoute: typeof AdminLeadsTimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/masters/bday-anniv': {
       id: '/admin/masters/bday-anniv'
       path: '/admin/masters/bday-anniv'
@@ -735,8 +1623,357 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminMastersVisitorEntryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/member-panel/extra-field': {
+      id: '/admin/member-panel/extra-field'
+      path: '/admin/member-panel/extra-field'
+      fullPath: '/admin/member-panel/extra-field'
+      preLoaderRoute: typeof AdminMemberPanelExtraFieldRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/member-panel/open': {
+      id: '/admin/member-panel/open'
+      path: '/admin/member-panel/open'
+      fullPath: '/admin/member-panel/open'
+      preLoaderRoute: typeof AdminMemberPanelOpenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/member-panel/setting': {
+      id: '/admin/member-panel/setting'
+      path: '/admin/member-panel/setting'
+      fullPath: '/admin/member-panel/setting'
+      preLoaderRoute: typeof AdminMemberPanelSettingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/member-panel/user-permission': {
+      id: '/admin/member-panel/user-permission'
+      path: '/admin/member-panel/user-permission'
+      fullPath: '/admin/member-panel/user-permission'
+      preLoaderRoute: typeof AdminMemberPanelUserPermissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/post-sales/booking-demand': {
+      id: '/admin/post-sales/booking-demand'
+      path: '/admin/post-sales/booking-demand'
+      fullPath: '/admin/post-sales/booking-demand'
+      preLoaderRoute: typeof AdminPostSalesBookingDemandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/post-sales/day-book': {
+      id: '/admin/post-sales/day-book'
+      path: '/admin/post-sales/day-book'
+      fullPath: '/admin/post-sales/day-book'
+      preLoaderRoute: typeof AdminPostSalesDayBookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/post-sales/loan-progress': {
+      id: '/admin/post-sales/loan-progress'
+      path: '/admin/post-sales/loan-progress'
+      fullPath: '/admin/post-sales/loan-progress'
+      preLoaderRoute: typeof AdminPostSalesLoanProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/post-sales/project-demand': {
+      id: '/admin/post-sales/project-demand'
+      path: '/admin/post-sales/project-demand'
+      fullPath: '/admin/post-sales/project-demand'
+      preLoaderRoute: typeof AdminPostSalesProjectDemandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/apartment-commercial': {
+      id: '/admin/projects/apartment-commercial'
+      path: '/admin/projects/apartment-commercial'
+      fullPath: '/admin/projects/apartment-commercial'
+      preLoaderRoute: typeof AdminProjectsApartmentCommercialRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/facebook-form-map': {
+      id: '/admin/projects/facebook-form-map'
+      path: '/admin/projects/facebook-form-map'
+      fullPath: '/admin/projects/facebook-form-map'
+      preLoaderRoute: typeof AdminProjectsFacebookFormMapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/inventory-list': {
+      id: '/admin/projects/inventory-list'
+      path: '/admin/projects/inventory-list'
+      fullPath: '/admin/projects/inventory-list'
+      preLoaderRoute: typeof AdminProjectsInventoryListRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/member-list': {
+      id: '/admin/projects/member-list'
+      path: '/admin/projects/member-list'
+      fullPath: '/admin/projects/member-list'
+      preLoaderRoute: typeof AdminProjectsMemberListRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/plot-list': {
+      id: '/admin/projects/plot-list'
+      path: '/admin/projects/plot-list'
+      fullPath: '/admin/projects/plot-list'
+      preLoaderRoute: typeof AdminProjectsPlotListRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/project-list': {
+      id: '/admin/projects/project-list'
+      path: '/admin/projects/project-list'
+      fullPath: '/admin/projects/project-list'
+      preLoaderRoute: typeof AdminProjectsProjectListRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/rowhouse-list': {
+      id: '/admin/projects/rowhouse-list'
+      path: '/admin/projects/rowhouse-list'
+      fullPath: '/admin/projects/rowhouse-list'
+      preLoaderRoute: typeof AdminProjectsRowhouseListRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/unit-boundaries': {
+      id: '/admin/projects/unit-boundaries'
+      path: '/admin/projects/unit-boundaries'
+      fullPath: '/admin/projects/unit-boundaries'
+      preLoaderRoute: typeof AdminProjectsUnitBoundariesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/update-inventory': {
+      id: '/admin/projects/update-inventory'
+      path: '/admin/projects/update-inventory'
+      fullPath: '/admin/projects/update-inventory'
+      preLoaderRoute: typeof AdminProjectsUpdateInventoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/website-campaign-map': {
+      id: '/admin/projects/website-campaign-map'
+      path: '/admin/projects/website-campaign-map'
+      fullPath: '/admin/projects/website-campaign-map'
+      preLoaderRoute: typeof AdminProjectsWebsiteCampaignMapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/whatsapp-campaign-map': {
+      id: '/admin/projects/whatsapp-campaign-map'
+      path: '/admin/projects/whatsapp-campaign-map'
+      fullPath: '/admin/projects/whatsapp-campaign-map'
+      preLoaderRoute: typeof AdminProjectsWhatsappCampaignMapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports/associate': {
+      id: '/admin/reports/associate'
+      path: '/admin/reports/associate'
+      fullPath: '/admin/reports/associate'
+      preLoaderRoute: typeof AdminReportsAssociateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports/booking': {
+      id: '/admin/reports/booking'
+      path: '/admin/reports/booking'
+      fullPath: '/admin/reports/booking'
+      preLoaderRoute: typeof AdminReportsBookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports/customer': {
+      id: '/admin/reports/customer'
+      path: '/admin/reports/customer'
+      fullPath: '/admin/reports/customer'
+      preLoaderRoute: typeof AdminReportsCustomerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports/emi': {
+      id: '/admin/reports/emi'
+      path: '/admin/reports/emi'
+      fullPath: '/admin/reports/emi'
+      preLoaderRoute: typeof AdminReportsEmiRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports/lead': {
+      id: '/admin/reports/lead'
+      path: '/admin/reports/lead'
+      fullPath: '/admin/reports/lead'
+      preLoaderRoute: typeof AdminReportsLeadRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports/logs': {
+      id: '/admin/reports/logs'
+      path: '/admin/reports/logs'
+      fullPath: '/admin/reports/logs'
+      preLoaderRoute: typeof AdminReportsLogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports/project': {
+      id: '/admin/reports/project'
+      path: '/admin/reports/project'
+      fullPath: '/admin/reports/project'
+      preLoaderRoute: typeof AdminReportsProjectRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/reports/site-visit': {
+      id: '/admin/reports/site-visit'
+      path: '/admin/reports/site-visit'
+      fullPath: '/admin/reports/site-visit'
+      preLoaderRoute: typeof AdminReportsSiteVisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings/banner': {
+      id: '/admin/settings/banner'
+      path: '/admin/settings/banner'
+      fullPath: '/admin/settings/banner'
+      preLoaderRoute: typeof AdminSettingsBannerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings/commission-slab': {
+      id: '/admin/settings/commission-slab'
+      path: '/admin/settings/commission-slab'
+      fullPath: '/admin/settings/commission-slab'
+      preLoaderRoute: typeof AdminSettingsCommissionSlabRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings/dashboard-permission': {
+      id: '/admin/settings/dashboard-permission'
+      path: '/admin/settings/dashboard-permission'
+      fullPath: '/admin/settings/dashboard-permission'
+      preLoaderRoute: typeof AdminSettingsDashboardPermissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings/ext-resource': {
+      id: '/admin/settings/ext-resource'
+      path: '/admin/settings/ext-resource'
+      fullPath: '/admin/settings/ext-resource'
+      preLoaderRoute: typeof AdminSettingsExtResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings/user-permission': {
+      id: '/admin/settings/user-permission'
+      path: '/admin/settings/user-permission'
+      fullPath: '/admin/settings/user-permission'
+      preLoaderRoute: typeof AdminSettingsUserPermissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings/whatsapp': {
+      id: '/admin/settings/whatsapp'
+      path: '/admin/settings/whatsapp'
+      fullPath: '/admin/settings/whatsapp'
+      preLoaderRoute: typeof AdminSettingsWhatsappRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings/whatsapp-schedule': {
+      id: '/admin/settings/whatsapp-schedule'
+      path: '/admin/settings/whatsapp-schedule'
+      fullPath: '/admin/settings/whatsapp-schedule'
+      preLoaderRoute: typeof AdminSettingsWhatsappScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/social/external-resource': {
+      id: '/admin/social/external-resource'
+      path: '/admin/social/external-resource'
+      fullPath: '/admin/social/external-resource'
+      preLoaderRoute: typeof AdminSocialExternalResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/social/integration': {
+      id: '/admin/social/integration'
+      path: '/admin/social/integration'
+      fullPath: '/admin/social/integration'
+      preLoaderRoute: typeof AdminSocialIntegrationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/post-sales/associate-payments/advance-adjustment': {
+      id: '/admin/post-sales/associate-payments/advance-adjustment'
+      path: '/admin/post-sales/associate-payments/advance-adjustment'
+      fullPath: '/admin/post-sales/associate-payments/advance-adjustment'
+      preLoaderRoute: typeof AdminPostSalesAssociatePaymentsAdvanceAdjustmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/post-sales/associate-payments/generate-commission': {
+      id: '/admin/post-sales/associate-payments/generate-commission'
+      path: '/admin/post-sales/associate-payments/generate-commission'
+      fullPath: '/admin/post-sales/associate-payments/generate-commission'
+      preLoaderRoute: typeof AdminPostSalesAssociatePaymentsGenerateCommissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/post-sales/associate-payments/list': {
+      id: '/admin/post-sales/associate-payments/list'
+      path: '/admin/post-sales/associate-payments/list'
+      fullPath: '/admin/post-sales/associate-payments/list'
+      preLoaderRoute: typeof AdminPostSalesAssociatePaymentsListRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/post-sales/associate-payments/payment-report': {
+      id: '/admin/post-sales/associate-payments/payment-report'
+      path: '/admin/post-sales/associate-payments/payment-report'
+      fullPath: '/admin/post-sales/associate-payments/payment-report'
+      preLoaderRoute: typeof AdminPostSalesAssociatePaymentsPaymentReportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/post-sales/associate-payments/payment-to-vendor': {
+      id: '/admin/post-sales/associate-payments/payment-to-vendor'
+      path: '/admin/post-sales/associate-payments/payment-to-vendor'
+      fullPath: '/admin/post-sales/associate-payments/payment-to-vendor'
+      preLoaderRoute: typeof AdminPostSalesAssociatePaymentsPaymentToVendorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/projects/apartment-commercial/building': {
+      id: '/admin/projects/apartment-commercial/building'
+      path: '/building'
+      fullPath: '/admin/projects/apartment-commercial/building'
+      preLoaderRoute: typeof AdminProjectsApartmentCommercialBuildingRouteImport
+      parentRoute: typeof AdminProjectsApartmentCommercialRoute
+    }
+    '/admin/projects/apartment-commercial/commercial': {
+      id: '/admin/projects/apartment-commercial/commercial'
+      path: '/commercial'
+      fullPath: '/admin/projects/apartment-commercial/commercial'
+      preLoaderRoute: typeof AdminProjectsApartmentCommercialCommercialRouteImport
+      parentRoute: typeof AdminProjectsApartmentCommercialRoute
+    }
+    '/admin/projects/apartment-commercial/flat': {
+      id: '/admin/projects/apartment-commercial/flat'
+      path: '/flat'
+      fullPath: '/admin/projects/apartment-commercial/flat'
+      preLoaderRoute: typeof AdminProjectsApartmentCommercialFlatRouteImport
+      parentRoute: typeof AdminProjectsApartmentCommercialRoute
+    }
+    '/admin/projects/apartment-commercial/floor': {
+      id: '/admin/projects/apartment-commercial/floor'
+      path: '/floor'
+      fullPath: '/admin/projects/apartment-commercial/floor'
+      preLoaderRoute: typeof AdminProjectsApartmentCommercialFloorRouteImport
+      parentRoute: typeof AdminProjectsApartmentCommercialRoute
+    }
+    '/admin/projects/apartment-commercial/list': {
+      id: '/admin/projects/apartment-commercial/list'
+      path: '/list'
+      fullPath: '/admin/projects/apartment-commercial/list'
+      preLoaderRoute: typeof AdminProjectsApartmentCommercialListRouteImport
+      parentRoute: typeof AdminProjectsApartmentCommercialRoute
+    }
   }
 }
+
+interface AdminProjectsApartmentCommercialRouteChildren {
+  AdminProjectsApartmentCommercialBuildingRoute: typeof AdminProjectsApartmentCommercialBuildingRoute
+  AdminProjectsApartmentCommercialCommercialRoute: typeof AdminProjectsApartmentCommercialCommercialRoute
+  AdminProjectsApartmentCommercialFlatRoute: typeof AdminProjectsApartmentCommercialFlatRoute
+  AdminProjectsApartmentCommercialFloorRoute: typeof AdminProjectsApartmentCommercialFloorRoute
+  AdminProjectsApartmentCommercialListRoute: typeof AdminProjectsApartmentCommercialListRoute
+}
+
+const AdminProjectsApartmentCommercialRouteChildren: AdminProjectsApartmentCommercialRouteChildren =
+  {
+    AdminProjectsApartmentCommercialBuildingRoute:
+      AdminProjectsApartmentCommercialBuildingRoute,
+    AdminProjectsApartmentCommercialCommercialRoute:
+      AdminProjectsApartmentCommercialCommercialRoute,
+    AdminProjectsApartmentCommercialFlatRoute:
+      AdminProjectsApartmentCommercialFlatRoute,
+    AdminProjectsApartmentCommercialFloorRoute:
+      AdminProjectsApartmentCommercialFloorRoute,
+    AdminProjectsApartmentCommercialListRoute:
+      AdminProjectsApartmentCommercialListRoute,
+  }
+
+const AdminProjectsApartmentCommercialRouteWithChildren =
+  AdminProjectsApartmentCommercialRoute._addFileChildren(
+    AdminProjectsApartmentCommercialRouteChildren,
+  )
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -764,6 +2001,20 @@ const rootRouteChildren: RootRouteChildren = {
   TasksRoute: TasksRoute,
   TeamRoute: TeamRoute,
   UsersRolesRoute: UsersRolesRoute,
+  AdminAboutPrivacyRoute: AdminAboutPrivacyRoute,
+  AdminAboutTermsRoute: AdminAboutTermsRoute,
+  AdminAssociatesAttendanceRoute: AdminAssociatesAttendanceRoute,
+  AdminAssociatesCommissionRoute: AdminAssociatesCommissionRoute,
+  AdminAssociatesGenerateAttendanceRoute:
+    AdminAssociatesGenerateAttendanceRoute,
+  AdminAssociatesListRoute: AdminAssociatesListRoute,
+  AdminAssociatesTransferRoute: AdminAssociatesTransferRoute,
+  AdminAssociatesTreeRoute: AdminAssociatesTreeRoute,
+  AdminCallSmsLeadAssignRoute: AdminCallSmsLeadAssignRoute,
+  AdminCrmBookingDisbursementRoute: AdminCrmBookingDisbursementRoute,
+  AdminCrmBookingDraftTemplateRoute: AdminCrmBookingDraftTemplateRoute,
+  AdminLeadsAssignmentRoute: AdminLeadsAssignmentRoute,
+  AdminLeadsTimelineRoute: AdminLeadsTimelineRoute,
   AdminMastersBdayAnnivRoute: AdminMastersBdayAnnivRoute,
   AdminMastersBrokerRoute: AdminMastersBrokerRoute,
   AdminMastersBudgetRoute: AdminMastersBudgetRoute,
@@ -774,6 +2025,53 @@ const rootRouteChildren: RootRouteChildren = {
   AdminMastersLocalityRoute: AdminMastersLocalityRoute,
   AdminMastersSourceRoute: AdminMastersSourceRoute,
   AdminMastersVisitorEntryRoute: AdminMastersVisitorEntryRoute,
+  AdminMemberPanelExtraFieldRoute: AdminMemberPanelExtraFieldRoute,
+  AdminMemberPanelOpenRoute: AdminMemberPanelOpenRoute,
+  AdminMemberPanelSettingRoute: AdminMemberPanelSettingRoute,
+  AdminMemberPanelUserPermissionRoute: AdminMemberPanelUserPermissionRoute,
+  AdminPostSalesBookingDemandRoute: AdminPostSalesBookingDemandRoute,
+  AdminPostSalesDayBookRoute: AdminPostSalesDayBookRoute,
+  AdminPostSalesLoanProgressRoute: AdminPostSalesLoanProgressRoute,
+  AdminPostSalesProjectDemandRoute: AdminPostSalesProjectDemandRoute,
+  AdminProjectsApartmentCommercialRoute:
+    AdminProjectsApartmentCommercialRouteWithChildren,
+  AdminProjectsFacebookFormMapRoute: AdminProjectsFacebookFormMapRoute,
+  AdminProjectsInventoryListRoute: AdminProjectsInventoryListRoute,
+  AdminProjectsMemberListRoute: AdminProjectsMemberListRoute,
+  AdminProjectsPlotListRoute: AdminProjectsPlotListRoute,
+  AdminProjectsProjectListRoute: AdminProjectsProjectListRoute,
+  AdminProjectsRowhouseListRoute: AdminProjectsRowhouseListRoute,
+  AdminProjectsUnitBoundariesRoute: AdminProjectsUnitBoundariesRoute,
+  AdminProjectsUpdateInventoryRoute: AdminProjectsUpdateInventoryRoute,
+  AdminProjectsWebsiteCampaignMapRoute: AdminProjectsWebsiteCampaignMapRoute,
+  AdminProjectsWhatsappCampaignMapRoute: AdminProjectsWhatsappCampaignMapRoute,
+  AdminReportsAssociateRoute: AdminReportsAssociateRoute,
+  AdminReportsBookingRoute: AdminReportsBookingRoute,
+  AdminReportsCustomerRoute: AdminReportsCustomerRoute,
+  AdminReportsEmiRoute: AdminReportsEmiRoute,
+  AdminReportsLeadRoute: AdminReportsLeadRoute,
+  AdminReportsLogsRoute: AdminReportsLogsRoute,
+  AdminReportsProjectRoute: AdminReportsProjectRoute,
+  AdminReportsSiteVisitRoute: AdminReportsSiteVisitRoute,
+  AdminSettingsBannerRoute: AdminSettingsBannerRoute,
+  AdminSettingsCommissionSlabRoute: AdminSettingsCommissionSlabRoute,
+  AdminSettingsDashboardPermissionRoute: AdminSettingsDashboardPermissionRoute,
+  AdminSettingsExtResourceRoute: AdminSettingsExtResourceRoute,
+  AdminSettingsUserPermissionRoute: AdminSettingsUserPermissionRoute,
+  AdminSettingsWhatsappRoute: AdminSettingsWhatsappRoute,
+  AdminSettingsWhatsappScheduleRoute: AdminSettingsWhatsappScheduleRoute,
+  AdminSocialExternalResourceRoute: AdminSocialExternalResourceRoute,
+  AdminSocialIntegrationRoute: AdminSocialIntegrationRoute,
+  AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute:
+    AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute,
+  AdminPostSalesAssociatePaymentsGenerateCommissionRoute:
+    AdminPostSalesAssociatePaymentsGenerateCommissionRoute,
+  AdminPostSalesAssociatePaymentsListRoute:
+    AdminPostSalesAssociatePaymentsListRoute,
+  AdminPostSalesAssociatePaymentsPaymentReportRoute:
+    AdminPostSalesAssociatePaymentsPaymentReportRoute,
+  AdminPostSalesAssociatePaymentsPaymentToVendorRoute:
+    AdminPostSalesAssociatePaymentsPaymentToVendorRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

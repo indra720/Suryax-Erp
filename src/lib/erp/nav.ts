@@ -83,7 +83,17 @@ export const navSections: NavSection[] = [
         title: "Project",
         icon: Building2,
         items: [
-          { title: "Apartment / Commercial", url: "/admin/projects/apartment-commercial", icon: Building },
+          {
+            title: "Apartment / Commercial",
+            icon: Building,
+            items: [
+              { title: "Apartment List", url: "/admin/projects/apartment-commercial/list", icon: Building },
+              { title: "Building List", url: "/admin/projects/apartment-commercial/building", icon: Building },
+              { title: "Floor List", url: "/admin/projects/apartment-commercial/floor", icon: Building },
+              { title: "Flat List", url: "/admin/projects/apartment-commercial/flat", icon: Building },
+              { title: "Commercial List", url: "/admin/projects/apartment-commercial/commercial", icon: Building },
+            ]
+          },
           { title: "Project List", url: "/projects", icon: Building2 },
           { title: "Plot List", url: "/admin/projects/plot-list", icon: MapPin },
           { title: "Rowhouse List", url: "/admin/projects/rowhouse-list", icon: Home },
@@ -120,42 +130,52 @@ export const navSections: NavSection[] = [
         icon: Wallet,
         items: [
           { title: "Payment", url: "/payments", icon: Wallet },
-          { title: "Loan Progress", url: "/admin/crm/loan-progress", icon: FileText },
-          { title: "Associate Payments", url: "/admin/post-sales/associate-payments", icon: IndianRupee },
+          { title: "Loan Progress", url: "/admin/post-sales/loan-progress", icon: FileText },
+          {
+            title: "Associate Payments",
+            icon: IndianRupee,
+            items: [
+              { title: "Payment to Associate", url: "/admin/post-sales/associate-payments/list", icon: IndianRupee },
+              { title: "Advance Adjustment", url: "/admin/post-sales/associate-payments/advance-adjustment", icon: IndianRupee },
+              { title: "Generate Commission", url: "/admin/post-sales/associate-payments/generate-commission", icon: IndianRupee },
+              { title: "Payment Report", url: "/admin/post-sales/associate-payments/payment-report", icon: IndianRupee },
+              { title: "Payment to Vendor", url: "/admin/post-sales/associate-payments/payment-to-vendor", icon: IndianRupee },
+            ]
+          },
           { title: "Project Demand", url: "/admin/post-sales/project-demand", icon: FileText },
           { title: "Booking Demand", url: "/admin/post-sales/booking-demand", icon: FileText },
           { title: "Day Book", url: "/admin/post-sales/day-book", icon: BookMarked },
         ],
       },
-      { title: "Call/SMS", url: "/admin/call-sms", icon: PhoneCall },
       {
-        title: "Social",
-        icon: MessageSquare,
+        title: "Call/SMS",
+        icon: PhoneCall,
         items: [
-          { title: "External Resource", url: "/admin/social/external-resource", icon: Megaphone },
-          { title: "Integration", url: "/admin/social/integration", icon: MessageSquare },
+          {
+            title: "Social",
+            icon: MessageSquare,
+            items: [
+              { title: "External Resource", url: "/admin/social/external-resource", icon: Megaphone },
+              { title: "Integration", url: "/admin/social/integration", icon: MessageSquare },
+            ],
+          },
+          {
+            title: "Reports",
+            icon: BarChart3,
+            items: [
+              { title: "Associate Reports", url: "/admin/reports/associate", icon: UsersRound },
+              { title: "Booking Reports", url: "/admin/reports/booking", icon: BookMarked },
+              { title: "Customer Reports", url: "/admin/reports/customer", icon: Users },
+              { title: "Project Reports", url: "/admin/reports/project", icon: Building2 },
+              { title: "Lead Reports", url: "/admin/reports/lead", icon: Users },
+              { title: "Site Visit Reports", url: "/admin/reports/site-visit", icon: MapPin },
+              { title: "EMI Reports", url: "/admin/reports/emi", icon: IndianRupee },
+              { title: "System Logs", url: "/admin/reports/logs", icon: ShieldCheck },
+              { title: "Lead Assign by", url: "/admin/call-sms/lead-assign", icon: UsersRound },
+            ],
+          },
         ],
       },
-    ],
-  },
-  {
-    label: "Reports",
-    items: [
-      {
-        title: "Reports",
-        icon: BarChart3,
-        items: [
-          { title: "Associate Reports", url: "/admin/reports/associate", icon: UsersRound },
-          { title: "Booking Reports", url: "/admin/reports/booking", icon: BookMarked },
-          { title: "Customer Reports", url: "/admin/reports/customer", icon: Users },
-          { title: "Project Reports", url: "/admin/reports/project", icon: Building2 },
-          { title: "Lead Reports", url: "/admin/reports/lead", icon: Users },
-          { title: "Site Visit Reports", url: "/admin/reports/site-visit", icon: MapPin },
-          { title: "EMI Reports", url: "/admin/reports/emi", icon: IndianRupee },
-          { title: "System Logs", url: "/admin/reports/logs", icon: ShieldCheck },
-        ],
-      },
-      { title: "Lead Assign by", url: "/admin/reports/lead-assign", icon: UsersRound },
     ],
   },
   {
