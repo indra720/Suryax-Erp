@@ -112,12 +112,12 @@ export function Sidebar({
       >
         <div className="flex h-16 shrink-0 items-center gap-2.5 px-4">
           <span className="grid size-14 shrink-0 place-items-center rounded-[10px] ">
-            <img src={logo} alt="Suryax Logo" sizes="36px" />
+            <img src={logo} alt="Vrindavan Logo" sizes="36px" />
           </span>
           {!collapsed && (
             <div className="min-w-0">
               <p className="text-[16px] leading-none font-extrabold tracking-wide text-white">
-                SURYAX
+                VRINDAVAN
               </p>
               <p className="mt-1 text-[9px] font-semibold tracking-[0.12em] text-white uppercase">
                 Real Estate ERP

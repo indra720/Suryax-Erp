@@ -24,6 +24,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { navSections } from "@/lib/erp/nav";
+import { useAuth } from "@/lib/services/auth";
 
 const notifications = [
   { title: "New lead assigned", desc: "Rahul Sharma • Suryax Greens", time: "2m" },
@@ -34,6 +35,7 @@ const notifications = [
 
 export function Navbar({ onToggleSidebar }: { onToggleSidebar: () => void }) {
   const navigate = useNavigate();
+  const { user, logout } = useAuth();
   const [dark, setDark] = useState(false);
   const [query, setQuery] = useState("");
 
@@ -153,12 +155,16 @@ export function Navbar({ onToggleSidebar }: { onToggleSidebar: () => void }) {
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button className="ml-1 flex items-center gap-2 rounded-[10px] py-1 pr-2 pl-1 hover:bg-muted">
-              <span className="grid size-9 place-items-center rounded-full bg-brand text-[13px] font-semibold text-white">
-                SA
+              <span className="grid size-9 place-items-center rounded-full bg-brand text-[13px] font-semibold text-white uppercase">
+                {user?.name ? user.name.slice(0, 2) : "VR"}
               </span>
               <span className="hidden text-left md:block">
-                <span className="block text-[13px] leading-tight font-semibold">Super Admin</span>
-                <span className="block text-[11px] text-text-muted">Administrator</span>
+                <span className="block text-[13px] leading-tight font-semibold">
+                  {user?.name || "Vrindavan User"}
+                </span>
+                <span className="block text-[11px] text-text-muted capitalize">
+                  {user?.role || "Staff Member"}
+                </span>
               </span>
               <ChevronDown className="size-4 text-text-muted" />
             </button>
@@ -174,7 +180,14 @@ export function Navbar({ onToggleSidebar }: { onToggleSidebar: () => void }) {
               <Activity className="size-4" /> Activity Log
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem onSelect={() => toast.success("Logged out successfully")}>
+            <DropdownMenuItem
+              onSelect={() => {
+                logout();
+                toast.success("Logged out successfully");
+                navigate({ to: "/login" });
+              }}
+              className="text-danger focus:text-danger"
+            >
               <LogOut className="size-4" /> Logout
             </DropdownMenuItem>
           </DropdownMenuContent>

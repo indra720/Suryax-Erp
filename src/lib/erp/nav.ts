@@ -38,6 +38,21 @@ export const navSections: NavSection[] = [
     items: [{ title: "Dashboard", url: "/", icon: LayoutDashboard }],
   },
   {
+    label: "Superadmin Controls",
+    items: [
+      { title: "User Management Hub", url: "/superadmin/manage-users", icon: Users },
+      { title: "Company-Wide Leads", url: "/superadmin/leads", icon: Building2 },
+      { title: "Productivity & Reports", url: "/superadmin/reports", icon: BarChart3 },
+    ],
+  },
+  {
+    label: "Telecalling CRM",
+    items: [
+      { title: "Calling Dashboard", url: "/staff/dashboard", icon: PhoneCall },
+      { title: "Staff Calling Leads", url: "/staff/leads", icon: ListChecks },
+    ],
+  },
+  {
     label: "Masters",
     items: [
       {

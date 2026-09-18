@@ -21,6 +21,7 @@ import { Route as FollowupsRouteImport } from './routes/followups'
 import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as InvoicesRouteImport } from './routes/invoices'
 import { Route as LeadsRouteImport } from './routes/leads'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as NotificationsRouteImport } from './routes/notifications'
 import { Route as OrganizationRouteImport } from './routes/organization'
 import { Route as PaymentsRouteImport } from './routes/payments'
@@ -34,6 +35,9 @@ import { Route as SiteVisitsRouteImport } from './routes/site-visits'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as UsersRolesRouteImport } from './routes/users-roles'
+import { Route as StaffDashboardRouteImport } from './routes/staff/dashboard'
+import { Route as StaffLeadsRouteImport } from './routes/staff/leads'
+import { Route as SuperadminManageUsersRouteImport } from './routes/superadmin/manage-users'
 import { Route as AdminAboutPrivacyRouteImport } from './routes/admin/about/privacy'
 import { Route as AdminAboutTermsRouteImport } from './routes/admin/about/terms'
 import { Route as AdminAssociatesAttendanceRouteImport } from './routes/admin/associates/attendance'
@@ -164,6 +168,11 @@ const LeadsRoute = LeadsRouteImport.update({
   path: '/leads',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const NotificationsRoute = NotificationsRouteImport.update({
   id: '/notifications',
   path: '/notifications',
@@ -227,6 +236,21 @@ const TeamRoute = TeamRouteImport.update({
 const UsersRolesRoute = UsersRolesRouteImport.update({
   id: '/users-roles',
   path: '/users-roles',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffDashboardRoute = StaffDashboardRouteImport.update({
+  id: '/staff/dashboard',
+  path: '/staff/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffLeadsRoute = StaffLeadsRouteImport.update({
+  id: '/staff/leads',
+  path: '/staff/leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminManageUsersRoute = SuperadminManageUsersRouteImport.update({
+  id: '/superadmin/manage-users',
+  path: '/superadmin/manage-users',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminAboutPrivacyRoute = AdminAboutPrivacyRouteImport.update({
@@ -626,6 +650,7 @@ export interface FileRoutesByFullPath {
   '/inventory': typeof InventoryRoute
   '/invoices': typeof InvoicesRoute
   '/leads': typeof LeadsRoute
+  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/organization': typeof OrganizationRoute
   '/payments': typeof PaymentsRoute
@@ -639,6 +664,9 @@ export interface FileRoutesByFullPath {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/staff/dashboard': typeof StaffDashboardRoute
+  '/staff/leads': typeof StaffLeadsRoute
+  '/superadmin/manage-users': typeof SuperadminManageUsersRoute
   '/admin/about/privacy': typeof AdminAboutPrivacyRoute
   '/admin/about/terms': typeof AdminAboutTermsRoute
   '/admin/associates/attendance': typeof AdminAssociatesAttendanceRoute
@@ -722,6 +750,7 @@ export interface FileRoutesByTo {
   '/inventory': typeof InventoryRoute
   '/invoices': typeof InvoicesRoute
   '/leads': typeof LeadsRoute
+  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/organization': typeof OrganizationRoute
   '/payments': typeof PaymentsRoute
@@ -735,6 +764,9 @@ export interface FileRoutesByTo {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/staff/dashboard': typeof StaffDashboardRoute
+  '/staff/leads': typeof StaffLeadsRoute
+  '/superadmin/manage-users': typeof SuperadminManageUsersRoute
   '/admin/about/privacy': typeof AdminAboutPrivacyRoute
   '/admin/about/terms': typeof AdminAboutTermsRoute
   '/admin/associates/attendance': typeof AdminAssociatesAttendanceRoute
@@ -819,6 +851,7 @@ export interface FileRoutesById {
   '/inventory': typeof InventoryRoute
   '/invoices': typeof InvoicesRoute
   '/leads': typeof LeadsRoute
+  '/login': typeof LoginRoute
   '/notifications': typeof NotificationsRoute
   '/organization': typeof OrganizationRoute
   '/payments': typeof PaymentsRoute
@@ -832,6 +865,9 @@ export interface FileRoutesById {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/staff/dashboard': typeof StaffDashboardRoute
+  '/staff/leads': typeof StaffLeadsRoute
+  '/superadmin/manage-users': typeof SuperadminManageUsersRoute
   '/admin/about/privacy': typeof AdminAboutPrivacyRoute
   '/admin/about/terms': typeof AdminAboutTermsRoute
   '/admin/associates/attendance': typeof AdminAssociatesAttendanceRoute
@@ -917,6 +953,7 @@ export interface FileRouteTypes {
     | '/inventory'
     | '/invoices'
     | '/leads'
+    | '/login'
     | '/notifications'
     | '/organization'
     | '/payments'
@@ -930,6 +967,9 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/staff/dashboard'
+    | '/staff/leads'
+    | '/superadmin/manage-users'
     | '/admin/about/privacy'
     | '/admin/about/terms'
     | '/admin/associates/attendance'
@@ -1013,6 +1053,7 @@ export interface FileRouteTypes {
     | '/inventory'
     | '/invoices'
     | '/leads'
+    | '/login'
     | '/notifications'
     | '/organization'
     | '/payments'
@@ -1026,6 +1067,9 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/staff/dashboard'
+    | '/staff/leads'
+    | '/superadmin/manage-users'
     | '/admin/about/privacy'
     | '/admin/about/terms'
     | '/admin/associates/attendance'
@@ -1109,6 +1153,7 @@ export interface FileRouteTypes {
     | '/inventory'
     | '/invoices'
     | '/leads'
+    | '/login'
     | '/notifications'
     | '/organization'
     | '/payments'
@@ -1122,6 +1167,9 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/staff/dashboard'
+    | '/staff/leads'
+    | '/superadmin/manage-users'
     | '/admin/about/privacy'
     | '/admin/about/terms'
     | '/admin/associates/attendance'
@@ -1206,6 +1254,7 @@ export interface RootRouteChildren {
   InventoryRoute: typeof InventoryRoute
   InvoicesRoute: typeof InvoicesRoute
   LeadsRoute: typeof LeadsRoute
+  LoginRoute: typeof LoginRoute
   NotificationsRoute: typeof NotificationsRoute
   OrganizationRoute: typeof OrganizationRoute
   PaymentsRoute: typeof PaymentsRoute
@@ -1219,6 +1268,9 @@ export interface RootRouteChildren {
   TasksRoute: typeof TasksRoute
   TeamRoute: typeof TeamRoute
   UsersRolesRoute: typeof UsersRolesRoute
+  StaffDashboardRoute: typeof StaffDashboardRoute
+  StaffLeadsRoute: typeof StaffLeadsRoute
+  SuperadminManageUsersRoute: typeof SuperadminManageUsersRoute
   AdminAboutPrivacyRoute: typeof AdminAboutPrivacyRoute
   AdminAboutTermsRoute: typeof AdminAboutTermsRoute
   AdminAssociatesAttendanceRoute: typeof AdminAssociatesAttendanceRoute
@@ -1371,6 +1423,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LeadsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/notifications': {
       id: '/notifications'
       path: '/notifications'
@@ -1460,6 +1519,27 @@ declare module '@tanstack/react-router' {
       path: '/users-roles'
       fullPath: '/users-roles'
       preLoaderRoute: typeof UsersRolesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/dashboard': {
+      id: '/staff/dashboard'
+      path: '/staff/dashboard'
+      fullPath: '/staff/dashboard'
+      preLoaderRoute: typeof StaffDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/leads': {
+      id: '/staff/leads'
+      path: '/staff/leads'
+      fullPath: '/staff/leads'
+      preLoaderRoute: typeof StaffLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/manage-users': {
+      id: '/superadmin/manage-users'
+      path: '/superadmin/manage-users'
+      fullPath: '/superadmin/manage-users'
+      preLoaderRoute: typeof SuperadminManageUsersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/about/privacy': {
@@ -1988,6 +2068,7 @@ const rootRouteChildren: RootRouteChildren = {
   InventoryRoute: InventoryRoute,
   InvoicesRoute: InvoicesRoute,
   LeadsRoute: LeadsRoute,
+  LoginRoute: LoginRoute,
   NotificationsRoute: NotificationsRoute,
   OrganizationRoute: OrganizationRoute,
   PaymentsRoute: PaymentsRoute,
@@ -2001,6 +2082,9 @@ const rootRouteChildren: RootRouteChildren = {
   TasksRoute: TasksRoute,
   TeamRoute: TeamRoute,
   UsersRolesRoute: UsersRolesRoute,
+  StaffDashboardRoute: StaffDashboardRoute,
+  StaffLeadsRoute: StaffLeadsRoute,
+  SuperadminManageUsersRoute: SuperadminManageUsersRoute,
   AdminAboutPrivacyRoute: AdminAboutPrivacyRoute,
   AdminAboutTermsRoute: AdminAboutTermsRoute,
   AdminAssociatesAttendanceRoute: AdminAssociatesAttendanceRoute,

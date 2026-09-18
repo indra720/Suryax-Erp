@@ -1,6 +1,10 @@
-# Suryax Real Estate Hub
+# Vrindavan Real Estate ERP
 
-BUILD A COMPLETE REAL ESTATE ERP FRONTEND WEB APPLICATION
+> **Documentation Quick Links**:
+> - [Master Technical Specification & Architecture](file:///d:/Crm/Vrindavan/Suryax-Erp/docs/VRINDAVAN_ERP_DOCUMENTATION.md)
+> - [Backend API Reference & Contracts](file:///d:/Crm/Vrindavan/Suryax-Erp/docs/API_REFERENCE.md)
+
+BUILD A COMPLETE REAL ESTATE ERP & SALES CRM FRONTEND WEB APPLICATION
 
 IMPORTANT:
 

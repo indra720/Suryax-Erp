@@ -4,6 +4,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -79,13 +80,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Suryax Real Estate ERP" },
+      { title: "Vrindavan Real Estate ERP" },
       {
         name: "description",
-        content: "Premium real estate ERP for leads, projects, bookings, finance and operations.",
+        content: "Premium real estate ERP and Sales CRM for leads, projects, bookings, finance and operations.",
       },
-      { name: "author", content: "Suryax Developers" },
-      { property: "og:title", content: "Suryax Real Estate ERP" },
+      { name: "author", content: "Vrindavan Developers" },
+      { property: "og:title", content: "Vrindavan Real Estate ERP" },
       {
         property: "og:description",
         content: "Premium real estate ERP for leads, projects, bookings, finance and operations.",
@@ -126,13 +127,19 @@ function RootShell({ children }: { children: ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isAuthRoute = pathname === "/login";
 
   return (
     <QueryClientProvider client={queryClient}>
-      <AppShell>
-        {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+      {isAuthRoute ? (
         <Outlet />
-      </AppShell>
+      ) : (
+        <AppShell>
+          {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
+          <Outlet />
+        </AppShell>
+      )}
       <Toaster position="top-right" richColors />
     </QueryClientProvider>
   );
