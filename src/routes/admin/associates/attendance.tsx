@@ -110,16 +110,15 @@ function AttendancePage() {
   const [openAddDialog, setOpenAddDialog] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#f8f9fb]">
+    <div className="space-y-3 w-full max-w-full">
       {/* PAGE HEADER */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-3 bg-white border-b border-gray-200">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 px-4 py-2.5 bg-white border border-gray-200 rounded-xl shadow-xs">
         <h1 className="text-xl font-semibold text-gray-800">Attendance</h1>
         <p className="text-sm text-gray-500">Home Page / Attendance</p>
       </div>
 
-      <div className="p-3 sm:p-4 space-y-4">
-        {/* ===================== SEARCH PANEL ===================== */}
-        <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+      {/* ===================== SEARCH PANEL ===================== */}
+      <div className="bg-white border border-gray-200 rounded-xl shadow-xs overflow-hidden">
           <button
             onClick={() => setSearchOpen(!searchOpen)}
             className="w-full flex items-center justify-between px-4 py-2.5 bg-gray-50 border-b border-gray-200 hover:bg-gray-100 transition-colors"
@@ -174,7 +173,7 @@ function AttendancePage() {
         </div>
 
         {/* ===================== LIST SECTION ===================== */}
-        <div className="bg-white border border-gray-200 rounded-lg shadow-sm overflow-hidden">
+        <div className="bg-white border border-gray-200 rounded-xl shadow-xs overflow-hidden">
           {/* List Header */}
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 px-4 py-3 border-b border-gray-100">
             <h2 className="text-base font-semibold text-gray-800">List</h2>
@@ -383,6 +382,5 @@ function AttendancePage() {
           </div>
         </div>
       </div>
-    </div>
   );
 }

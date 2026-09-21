@@ -14,9 +14,9 @@ function BrokerPage() {
   ]);
 
   return (
-    <div className="space-y-4 p-4">
-      <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-        <h1 className="text-lg font-bold">Broker Master</h1>
+    <div className="space-y-3 w-full max-w-full">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-white border border-gray-200 rounded-xl shadow-xs">
+        <h1 className="text-lg font-bold text-gray-800">Broker Master</h1>
         <Dialog>
           <DialogTrigger asChild>
             <button className="flex items-center gap-1.5 bg-[#6732F2] text-white text-xs font-semibold px-3 py-1.5 rounded">
@@ -30,7 +30,7 @@ function BrokerPage() {
         </Dialog>
       </div>
 
-      <Card className="p-4 bg-white border border-gray-200">
+      <Card className="p-4 bg-white border border-gray-200 rounded-xl shadow-xs">
         <h3 className="text-xs font-bold mb-3">Search Panel</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 items-end">
           <div><label className="text-xs font-bold block mb-1">Broker Name</label><input type="text" placeholder="Enter Name" className="w-full border rounded p-1.5 text-xs" /></div>
@@ -41,9 +41,9 @@ function BrokerPage() {
         </div>
       </Card>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {brokers.map((b) => (
-          <Card key={b.id} className="p-4 bg-white border border-gray-200 flex justify-between items-center">
+          <Card key={b.id} className="p-4 bg-white border border-gray-200 rounded-xl shadow-xs flex justify-between items-center">
             <div>
               <h3 className="text-sm font-bold">{b.name}</h3>
               <p className="text-[10px] text-gray-500">Code: {b.code} | Status: {b.status}</p>

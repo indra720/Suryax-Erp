@@ -64,7 +64,7 @@ export function getRoleRedirect(role: UserRole | string): string {
     case "superadmin":
       return "/";
     case "admin":
-      return "/leads";
+      return "/admin/dashboard";
     case "team-leader":
       return "/team-leader";
     case "staff":

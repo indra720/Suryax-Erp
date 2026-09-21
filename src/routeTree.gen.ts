@@ -35,9 +35,13 @@ import { Route as SiteVisitsRouteImport } from './routes/site-visits'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as UsersRolesRouteImport } from './routes/users-roles'
+import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as StaffDashboardRouteImport } from './routes/staff/dashboard'
 import { Route as StaffLeadsRouteImport } from './routes/staff/leads'
+import { Route as SuperadminAddSellRouteImport } from './routes/superadmin/add-sell'
+import { Route as SuperadminDashboardRouteImport } from './routes/superadmin/dashboard'
 import { Route as SuperadminManageUsersRouteImport } from './routes/superadmin/manage-users'
+import { Route as SuperadminTimesheetRouteImport } from './routes/superadmin/timesheet'
 import { Route as AdminAboutPrivacyRouteImport } from './routes/admin/about/privacy'
 import { Route as AdminAboutTermsRouteImport } from './routes/admin/about/terms'
 import { Route as AdminAssociatesAttendanceRouteImport } from './routes/admin/associates/attendance'
@@ -97,6 +101,20 @@ import { Route as AdminSettingsWhatsappRouteImport } from './routes/admin/settin
 import { Route as AdminSettingsWhatsappScheduleRouteImport } from './routes/admin/settings/whatsapp-schedule'
 import { Route as AdminSocialExternalResourceRouteImport } from './routes/admin/social/external-resource'
 import { Route as AdminSocialIntegrationRouteImport } from './routes/admin/social/integration'
+import { Route as SuperadminLeadsIndexRouteImport } from './routes/superadmin/leads/index'
+import { Route as SuperadminLeadsFollowupsRouteImport } from './routes/superadmin/leads/followups'
+import { Route as SuperadminLeadsHistoryRouteImport } from './routes/superadmin/leads/history'
+import { Route as SuperadminLeadsImportRouteImport } from './routes/superadmin/leads/import'
+import { Route as SuperadminReportsIndexRouteImport } from './routes/superadmin/reports/index'
+import { Route as SuperadminReportsEarningsRouteImport } from './routes/superadmin/reports/earnings'
+import { Route as SuperadminUsersAdminRouteImport } from './routes/superadmin/users/admin'
+import { Route as SuperadminUsersAssociatesRouteImport } from './routes/superadmin/users/associates'
+import { Route as SuperadminUsersAssociatesIncentivesRouteImport } from './routes/superadmin/users/associates-incentives'
+import { Route as SuperadminUsersHrRouteImport } from './routes/superadmin/users/hr'
+import { Route as SuperadminUsersItStaffRouteImport } from './routes/superadmin/users/it-staff'
+import { Route as SuperadminUsersStaffRouteImport } from './routes/superadmin/users/staff'
+import { Route as SuperadminUsersStaffEarnRouteImport } from './routes/superadmin/users/staff-earn'
+import { Route as SuperadminUsersTeamLeaderRouteImport } from './routes/superadmin/users/team-leader'
 import { Route as AdminPostSalesAssociatePaymentsAdvanceAdjustmentRouteImport } from './routes/admin/post-sales/associate-payments/advance-adjustment'
 import { Route as AdminPostSalesAssociatePaymentsGenerateCommissionRouteImport } from './routes/admin/post-sales/associate-payments/generate-commission'
 import { Route as AdminPostSalesAssociatePaymentsListRouteImport } from './routes/admin/post-sales/associate-payments/list'
@@ -238,6 +256,11 @@ const UsersRolesRoute = UsersRolesRouteImport.update({
   path: '/users-roles',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminDashboardRoute = AdminDashboardRouteImport.update({
+  id: '/admin/dashboard',
+  path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StaffDashboardRoute = StaffDashboardRouteImport.update({
   id: '/staff/dashboard',
   path: '/staff/dashboard',
@@ -248,9 +271,24 @@ const StaffLeadsRoute = StaffLeadsRouteImport.update({
   path: '/staff/leads',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SuperadminAddSellRoute = SuperadminAddSellRouteImport.update({
+  id: '/superadmin/add-sell',
+  path: '/superadmin/add-sell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminDashboardRoute = SuperadminDashboardRouteImport.update({
+  id: '/superadmin/dashboard',
+  path: '/superadmin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SuperadminManageUsersRoute = SuperadminManageUsersRouteImport.update({
   id: '/superadmin/manage-users',
   path: '/superadmin/manage-users',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminTimesheetRoute = SuperadminTimesheetRouteImport.update({
+  id: '/superadmin/timesheet',
+  path: '/superadmin/timesheet',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminAboutPrivacyRoute = AdminAboutPrivacyRouteImport.update({
@@ -576,6 +614,82 @@ const AdminSocialIntegrationRoute = AdminSocialIntegrationRouteImport.update({
   path: '/admin/social/integration',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SuperadminLeadsIndexRoute = SuperadminLeadsIndexRouteImport.update({
+  id: '/superadmin/leads/',
+  path: '/superadmin/leads/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminLeadsFollowupsRoute =
+  SuperadminLeadsFollowupsRouteImport.update({
+    id: '/superadmin/leads/followups',
+    path: '/superadmin/leads/followups',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SuperadminLeadsHistoryRoute = SuperadminLeadsHistoryRouteImport.update({
+  id: '/superadmin/leads/history',
+  path: '/superadmin/leads/history',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminLeadsImportRoute = SuperadminLeadsImportRouteImport.update({
+  id: '/superadmin/leads/import',
+  path: '/superadmin/leads/import',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminReportsIndexRoute = SuperadminReportsIndexRouteImport.update({
+  id: '/superadmin/reports/',
+  path: '/superadmin/reports/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminReportsEarningsRoute =
+  SuperadminReportsEarningsRouteImport.update({
+    id: '/superadmin/reports/earnings',
+    path: '/superadmin/reports/earnings',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SuperadminUsersAdminRoute = SuperadminUsersAdminRouteImport.update({
+  id: '/superadmin/users/admin',
+  path: '/superadmin/users/admin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminUsersAssociatesRoute =
+  SuperadminUsersAssociatesRouteImport.update({
+    id: '/superadmin/users/associates',
+    path: '/superadmin/users/associates',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SuperadminUsersAssociatesIncentivesRoute =
+  SuperadminUsersAssociatesIncentivesRouteImport.update({
+    id: '/superadmin/users/associates-incentives',
+    path: '/superadmin/users/associates-incentives',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SuperadminUsersHrRoute = SuperadminUsersHrRouteImport.update({
+  id: '/superadmin/users/hr',
+  path: '/superadmin/users/hr',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminUsersItStaffRoute = SuperadminUsersItStaffRouteImport.update({
+  id: '/superadmin/users/it-staff',
+  path: '/superadmin/users/it-staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminUsersStaffRoute = SuperadminUsersStaffRouteImport.update({
+  id: '/superadmin/users/staff',
+  path: '/superadmin/users/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminUsersStaffEarnRoute =
+  SuperadminUsersStaffEarnRouteImport.update({
+    id: '/superadmin/users/staff-earn',
+    path: '/superadmin/users/staff-earn',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SuperadminUsersTeamLeaderRoute =
+  SuperadminUsersTeamLeaderRouteImport.update({
+    id: '/superadmin/users/team-leader',
+    path: '/superadmin/users/team-leader',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute =
   AdminPostSalesAssociatePaymentsAdvanceAdjustmentRouteImport.update({
     id: '/admin/post-sales/associate-payments/advance-adjustment',
@@ -664,9 +778,13 @@ export interface FileRoutesByFullPath {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/staff/dashboard': typeof StaffDashboardRoute
   '/staff/leads': typeof StaffLeadsRoute
+  '/superadmin/add-sell': typeof SuperadminAddSellRoute
+  '/superadmin/dashboard': typeof SuperadminDashboardRoute
   '/superadmin/manage-users': typeof SuperadminManageUsersRoute
+  '/superadmin/timesheet': typeof SuperadminTimesheetRoute
   '/admin/about/privacy': typeof AdminAboutPrivacyRoute
   '/admin/about/terms': typeof AdminAboutTermsRoute
   '/admin/associates/attendance': typeof AdminAssociatesAttendanceRoute
@@ -726,6 +844,20 @@ export interface FileRoutesByFullPath {
   '/admin/settings/whatsapp-schedule': typeof AdminSettingsWhatsappScheduleRoute
   '/admin/social/external-resource': typeof AdminSocialExternalResourceRoute
   '/admin/social/integration': typeof AdminSocialIntegrationRoute
+  '/superadmin/leads/followups': typeof SuperadminLeadsFollowupsRoute
+  '/superadmin/leads/history': typeof SuperadminLeadsHistoryRoute
+  '/superadmin/leads/import': typeof SuperadminLeadsImportRoute
+  '/superadmin/reports/earnings': typeof SuperadminReportsEarningsRoute
+  '/superadmin/users/admin': typeof SuperadminUsersAdminRoute
+  '/superadmin/users/associates': typeof SuperadminUsersAssociatesRoute
+  '/superadmin/users/associates-incentives': typeof SuperadminUsersAssociatesIncentivesRoute
+  '/superadmin/users/hr': typeof SuperadminUsersHrRoute
+  '/superadmin/users/it-staff': typeof SuperadminUsersItStaffRoute
+  '/superadmin/users/staff': typeof SuperadminUsersStaffRoute
+  '/superadmin/users/staff-earn': typeof SuperadminUsersStaffEarnRoute
+  '/superadmin/users/team-leader': typeof SuperadminUsersTeamLeaderRoute
+  '/superadmin/leads/': typeof SuperadminLeadsIndexRoute
+  '/superadmin/reports/': typeof SuperadminReportsIndexRoute
   '/admin/post-sales/associate-payments/advance-adjustment': typeof AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute
   '/admin/post-sales/associate-payments/generate-commission': typeof AdminPostSalesAssociatePaymentsGenerateCommissionRoute
   '/admin/post-sales/associate-payments/list': typeof AdminPostSalesAssociatePaymentsListRoute
@@ -764,9 +896,13 @@ export interface FileRoutesByTo {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/staff/dashboard': typeof StaffDashboardRoute
   '/staff/leads': typeof StaffLeadsRoute
+  '/superadmin/add-sell': typeof SuperadminAddSellRoute
+  '/superadmin/dashboard': typeof SuperadminDashboardRoute
   '/superadmin/manage-users': typeof SuperadminManageUsersRoute
+  '/superadmin/timesheet': typeof SuperadminTimesheetRoute
   '/admin/about/privacy': typeof AdminAboutPrivacyRoute
   '/admin/about/terms': typeof AdminAboutTermsRoute
   '/admin/associates/attendance': typeof AdminAssociatesAttendanceRoute
@@ -826,6 +962,20 @@ export interface FileRoutesByTo {
   '/admin/settings/whatsapp-schedule': typeof AdminSettingsWhatsappScheduleRoute
   '/admin/social/external-resource': typeof AdminSocialExternalResourceRoute
   '/admin/social/integration': typeof AdminSocialIntegrationRoute
+  '/superadmin/leads/followups': typeof SuperadminLeadsFollowupsRoute
+  '/superadmin/leads/history': typeof SuperadminLeadsHistoryRoute
+  '/superadmin/leads/import': typeof SuperadminLeadsImportRoute
+  '/superadmin/reports/earnings': typeof SuperadminReportsEarningsRoute
+  '/superadmin/users/admin': typeof SuperadminUsersAdminRoute
+  '/superadmin/users/associates': typeof SuperadminUsersAssociatesRoute
+  '/superadmin/users/associates-incentives': typeof SuperadminUsersAssociatesIncentivesRoute
+  '/superadmin/users/hr': typeof SuperadminUsersHrRoute
+  '/superadmin/users/it-staff': typeof SuperadminUsersItStaffRoute
+  '/superadmin/users/staff': typeof SuperadminUsersStaffRoute
+  '/superadmin/users/staff-earn': typeof SuperadminUsersStaffEarnRoute
+  '/superadmin/users/team-leader': typeof SuperadminUsersTeamLeaderRoute
+  '/superadmin/leads': typeof SuperadminLeadsIndexRoute
+  '/superadmin/reports': typeof SuperadminReportsIndexRoute
   '/admin/post-sales/associate-payments/advance-adjustment': typeof AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute
   '/admin/post-sales/associate-payments/generate-commission': typeof AdminPostSalesAssociatePaymentsGenerateCommissionRoute
   '/admin/post-sales/associate-payments/list': typeof AdminPostSalesAssociatePaymentsListRoute
@@ -865,9 +1015,13 @@ export interface FileRoutesById {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/admin/dashboard': typeof AdminDashboardRoute
   '/staff/dashboard': typeof StaffDashboardRoute
   '/staff/leads': typeof StaffLeadsRoute
+  '/superadmin/add-sell': typeof SuperadminAddSellRoute
+  '/superadmin/dashboard': typeof SuperadminDashboardRoute
   '/superadmin/manage-users': typeof SuperadminManageUsersRoute
+  '/superadmin/timesheet': typeof SuperadminTimesheetRoute
   '/admin/about/privacy': typeof AdminAboutPrivacyRoute
   '/admin/about/terms': typeof AdminAboutTermsRoute
   '/admin/associates/attendance': typeof AdminAssociatesAttendanceRoute
@@ -927,6 +1081,20 @@ export interface FileRoutesById {
   '/admin/settings/whatsapp-schedule': typeof AdminSettingsWhatsappScheduleRoute
   '/admin/social/external-resource': typeof AdminSocialExternalResourceRoute
   '/admin/social/integration': typeof AdminSocialIntegrationRoute
+  '/superadmin/leads/followups': typeof SuperadminLeadsFollowupsRoute
+  '/superadmin/leads/history': typeof SuperadminLeadsHistoryRoute
+  '/superadmin/leads/import': typeof SuperadminLeadsImportRoute
+  '/superadmin/reports/earnings': typeof SuperadminReportsEarningsRoute
+  '/superadmin/users/admin': typeof SuperadminUsersAdminRoute
+  '/superadmin/users/associates': typeof SuperadminUsersAssociatesRoute
+  '/superadmin/users/associates-incentives': typeof SuperadminUsersAssociatesIncentivesRoute
+  '/superadmin/users/hr': typeof SuperadminUsersHrRoute
+  '/superadmin/users/it-staff': typeof SuperadminUsersItStaffRoute
+  '/superadmin/users/staff': typeof SuperadminUsersStaffRoute
+  '/superadmin/users/staff-earn': typeof SuperadminUsersStaffEarnRoute
+  '/superadmin/users/team-leader': typeof SuperadminUsersTeamLeaderRoute
+  '/superadmin/leads/': typeof SuperadminLeadsIndexRoute
+  '/superadmin/reports/': typeof SuperadminReportsIndexRoute
   '/admin/post-sales/associate-payments/advance-adjustment': typeof AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute
   '/admin/post-sales/associate-payments/generate-commission': typeof AdminPostSalesAssociatePaymentsGenerateCommissionRoute
   '/admin/post-sales/associate-payments/list': typeof AdminPostSalesAssociatePaymentsListRoute
@@ -967,9 +1135,13 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/admin/dashboard'
     | '/staff/dashboard'
     | '/staff/leads'
+    | '/superadmin/add-sell'
+    | '/superadmin/dashboard'
     | '/superadmin/manage-users'
+    | '/superadmin/timesheet'
     | '/admin/about/privacy'
     | '/admin/about/terms'
     | '/admin/associates/attendance'
@@ -1029,6 +1201,20 @@ export interface FileRouteTypes {
     | '/admin/settings/whatsapp-schedule'
     | '/admin/social/external-resource'
     | '/admin/social/integration'
+    | '/superadmin/leads/followups'
+    | '/superadmin/leads/history'
+    | '/superadmin/leads/import'
+    | '/superadmin/reports/earnings'
+    | '/superadmin/users/admin'
+    | '/superadmin/users/associates'
+    | '/superadmin/users/associates-incentives'
+    | '/superadmin/users/hr'
+    | '/superadmin/users/it-staff'
+    | '/superadmin/users/staff'
+    | '/superadmin/users/staff-earn'
+    | '/superadmin/users/team-leader'
+    | '/superadmin/leads/'
+    | '/superadmin/reports/'
     | '/admin/post-sales/associate-payments/advance-adjustment'
     | '/admin/post-sales/associate-payments/generate-commission'
     | '/admin/post-sales/associate-payments/list'
@@ -1067,9 +1253,13 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/admin/dashboard'
     | '/staff/dashboard'
     | '/staff/leads'
+    | '/superadmin/add-sell'
+    | '/superadmin/dashboard'
     | '/superadmin/manage-users'
+    | '/superadmin/timesheet'
     | '/admin/about/privacy'
     | '/admin/about/terms'
     | '/admin/associates/attendance'
@@ -1129,6 +1319,20 @@ export interface FileRouteTypes {
     | '/admin/settings/whatsapp-schedule'
     | '/admin/social/external-resource'
     | '/admin/social/integration'
+    | '/superadmin/leads/followups'
+    | '/superadmin/leads/history'
+    | '/superadmin/leads/import'
+    | '/superadmin/reports/earnings'
+    | '/superadmin/users/admin'
+    | '/superadmin/users/associates'
+    | '/superadmin/users/associates-incentives'
+    | '/superadmin/users/hr'
+    | '/superadmin/users/it-staff'
+    | '/superadmin/users/staff'
+    | '/superadmin/users/staff-earn'
+    | '/superadmin/users/team-leader'
+    | '/superadmin/leads'
+    | '/superadmin/reports'
     | '/admin/post-sales/associate-payments/advance-adjustment'
     | '/admin/post-sales/associate-payments/generate-commission'
     | '/admin/post-sales/associate-payments/list'
@@ -1167,9 +1371,13 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/admin/dashboard'
     | '/staff/dashboard'
     | '/staff/leads'
+    | '/superadmin/add-sell'
+    | '/superadmin/dashboard'
     | '/superadmin/manage-users'
+    | '/superadmin/timesheet'
     | '/admin/about/privacy'
     | '/admin/about/terms'
     | '/admin/associates/attendance'
@@ -1229,6 +1437,20 @@ export interface FileRouteTypes {
     | '/admin/settings/whatsapp-schedule'
     | '/admin/social/external-resource'
     | '/admin/social/integration'
+    | '/superadmin/leads/followups'
+    | '/superadmin/leads/history'
+    | '/superadmin/leads/import'
+    | '/superadmin/reports/earnings'
+    | '/superadmin/users/admin'
+    | '/superadmin/users/associates'
+    | '/superadmin/users/associates-incentives'
+    | '/superadmin/users/hr'
+    | '/superadmin/users/it-staff'
+    | '/superadmin/users/staff'
+    | '/superadmin/users/staff-earn'
+    | '/superadmin/users/team-leader'
+    | '/superadmin/leads/'
+    | '/superadmin/reports/'
     | '/admin/post-sales/associate-payments/advance-adjustment'
     | '/admin/post-sales/associate-payments/generate-commission'
     | '/admin/post-sales/associate-payments/list'
@@ -1268,9 +1490,13 @@ export interface RootRouteChildren {
   TasksRoute: typeof TasksRoute
   TeamRoute: typeof TeamRoute
   UsersRolesRoute: typeof UsersRolesRoute
+  AdminDashboardRoute: typeof AdminDashboardRoute
   StaffDashboardRoute: typeof StaffDashboardRoute
   StaffLeadsRoute: typeof StaffLeadsRoute
+  SuperadminAddSellRoute: typeof SuperadminAddSellRoute
+  SuperadminDashboardRoute: typeof SuperadminDashboardRoute
   SuperadminManageUsersRoute: typeof SuperadminManageUsersRoute
+  SuperadminTimesheetRoute: typeof SuperadminTimesheetRoute
   AdminAboutPrivacyRoute: typeof AdminAboutPrivacyRoute
   AdminAboutTermsRoute: typeof AdminAboutTermsRoute
   AdminAssociatesAttendanceRoute: typeof AdminAssociatesAttendanceRoute
@@ -1330,6 +1556,20 @@ export interface RootRouteChildren {
   AdminSettingsWhatsappScheduleRoute: typeof AdminSettingsWhatsappScheduleRoute
   AdminSocialExternalResourceRoute: typeof AdminSocialExternalResourceRoute
   AdminSocialIntegrationRoute: typeof AdminSocialIntegrationRoute
+  SuperadminLeadsFollowupsRoute: typeof SuperadminLeadsFollowupsRoute
+  SuperadminLeadsHistoryRoute: typeof SuperadminLeadsHistoryRoute
+  SuperadminLeadsImportRoute: typeof SuperadminLeadsImportRoute
+  SuperadminReportsEarningsRoute: typeof SuperadminReportsEarningsRoute
+  SuperadminUsersAdminRoute: typeof SuperadminUsersAdminRoute
+  SuperadminUsersAssociatesRoute: typeof SuperadminUsersAssociatesRoute
+  SuperadminUsersAssociatesIncentivesRoute: typeof SuperadminUsersAssociatesIncentivesRoute
+  SuperadminUsersHrRoute: typeof SuperadminUsersHrRoute
+  SuperadminUsersItStaffRoute: typeof SuperadminUsersItStaffRoute
+  SuperadminUsersStaffRoute: typeof SuperadminUsersStaffRoute
+  SuperadminUsersStaffEarnRoute: typeof SuperadminUsersStaffEarnRoute
+  SuperadminUsersTeamLeaderRoute: typeof SuperadminUsersTeamLeaderRoute
+  SuperadminLeadsIndexRoute: typeof SuperadminLeadsIndexRoute
+  SuperadminReportsIndexRoute: typeof SuperadminReportsIndexRoute
   AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute: typeof AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute
   AdminPostSalesAssociatePaymentsGenerateCommissionRoute: typeof AdminPostSalesAssociatePaymentsGenerateCommissionRoute
   AdminPostSalesAssociatePaymentsListRoute: typeof AdminPostSalesAssociatePaymentsListRoute
@@ -1521,6 +1761,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersRolesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/dashboard': {
+      id: '/admin/dashboard'
+      path: '/admin/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/staff/dashboard': {
       id: '/staff/dashboard'
       path: '/staff/dashboard'
@@ -1535,11 +1782,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StaffLeadsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/superadmin/add-sell': {
+      id: '/superadmin/add-sell'
+      path: '/superadmin/add-sell'
+      fullPath: '/superadmin/add-sell'
+      preLoaderRoute: typeof SuperadminAddSellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/dashboard': {
+      id: '/superadmin/dashboard'
+      path: '/superadmin/dashboard'
+      fullPath: '/superadmin/dashboard'
+      preLoaderRoute: typeof SuperadminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/superadmin/manage-users': {
       id: '/superadmin/manage-users'
       path: '/superadmin/manage-users'
       fullPath: '/superadmin/manage-users'
       preLoaderRoute: typeof SuperadminManageUsersRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/timesheet': {
+      id: '/superadmin/timesheet'
+      path: '/superadmin/timesheet'
+      fullPath: '/superadmin/timesheet'
+      preLoaderRoute: typeof SuperadminTimesheetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/about/privacy': {
@@ -1955,6 +2223,104 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminSocialIntegrationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/superadmin/leads/': {
+      id: '/superadmin/leads/'
+      path: '/superadmin/leads'
+      fullPath: '/superadmin/leads/'
+      preLoaderRoute: typeof SuperadminLeadsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/leads/followups': {
+      id: '/superadmin/leads/followups'
+      path: '/superadmin/leads/followups'
+      fullPath: '/superadmin/leads/followups'
+      preLoaderRoute: typeof SuperadminLeadsFollowupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/leads/history': {
+      id: '/superadmin/leads/history'
+      path: '/superadmin/leads/history'
+      fullPath: '/superadmin/leads/history'
+      preLoaderRoute: typeof SuperadminLeadsHistoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/leads/import': {
+      id: '/superadmin/leads/import'
+      path: '/superadmin/leads/import'
+      fullPath: '/superadmin/leads/import'
+      preLoaderRoute: typeof SuperadminLeadsImportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/reports/': {
+      id: '/superadmin/reports/'
+      path: '/superadmin/reports'
+      fullPath: '/superadmin/reports/'
+      preLoaderRoute: typeof SuperadminReportsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/reports/earnings': {
+      id: '/superadmin/reports/earnings'
+      path: '/superadmin/reports/earnings'
+      fullPath: '/superadmin/reports/earnings'
+      preLoaderRoute: typeof SuperadminReportsEarningsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/users/admin': {
+      id: '/superadmin/users/admin'
+      path: '/superadmin/users/admin'
+      fullPath: '/superadmin/users/admin'
+      preLoaderRoute: typeof SuperadminUsersAdminRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/users/associates': {
+      id: '/superadmin/users/associates'
+      path: '/superadmin/users/associates'
+      fullPath: '/superadmin/users/associates'
+      preLoaderRoute: typeof SuperadminUsersAssociatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/users/associates-incentives': {
+      id: '/superadmin/users/associates-incentives'
+      path: '/superadmin/users/associates-incentives'
+      fullPath: '/superadmin/users/associates-incentives'
+      preLoaderRoute: typeof SuperadminUsersAssociatesIncentivesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/users/hr': {
+      id: '/superadmin/users/hr'
+      path: '/superadmin/users/hr'
+      fullPath: '/superadmin/users/hr'
+      preLoaderRoute: typeof SuperadminUsersHrRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/users/it-staff': {
+      id: '/superadmin/users/it-staff'
+      path: '/superadmin/users/it-staff'
+      fullPath: '/superadmin/users/it-staff'
+      preLoaderRoute: typeof SuperadminUsersItStaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/users/staff': {
+      id: '/superadmin/users/staff'
+      path: '/superadmin/users/staff'
+      fullPath: '/superadmin/users/staff'
+      preLoaderRoute: typeof SuperadminUsersStaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/users/staff-earn': {
+      id: '/superadmin/users/staff-earn'
+      path: '/superadmin/users/staff-earn'
+      fullPath: '/superadmin/users/staff-earn'
+      preLoaderRoute: typeof SuperadminUsersStaffEarnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/users/team-leader': {
+      id: '/superadmin/users/team-leader'
+      path: '/superadmin/users/team-leader'
+      fullPath: '/superadmin/users/team-leader'
+      preLoaderRoute: typeof SuperadminUsersTeamLeaderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/post-sales/associate-payments/advance-adjustment': {
       id: '/admin/post-sales/associate-payments/advance-adjustment'
       path: '/admin/post-sales/associate-payments/advance-adjustment'
@@ -2082,9 +2448,13 @@ const rootRouteChildren: RootRouteChildren = {
   TasksRoute: TasksRoute,
   TeamRoute: TeamRoute,
   UsersRolesRoute: UsersRolesRoute,
+  AdminDashboardRoute: AdminDashboardRoute,
   StaffDashboardRoute: StaffDashboardRoute,
   StaffLeadsRoute: StaffLeadsRoute,
+  SuperadminAddSellRoute: SuperadminAddSellRoute,
+  SuperadminDashboardRoute: SuperadminDashboardRoute,
   SuperadminManageUsersRoute: SuperadminManageUsersRoute,
+  SuperadminTimesheetRoute: SuperadminTimesheetRoute,
   AdminAboutPrivacyRoute: AdminAboutPrivacyRoute,
   AdminAboutTermsRoute: AdminAboutTermsRoute,
   AdminAssociatesAttendanceRoute: AdminAssociatesAttendanceRoute,
@@ -2146,6 +2516,21 @@ const rootRouteChildren: RootRouteChildren = {
   AdminSettingsWhatsappScheduleRoute: AdminSettingsWhatsappScheduleRoute,
   AdminSocialExternalResourceRoute: AdminSocialExternalResourceRoute,
   AdminSocialIntegrationRoute: AdminSocialIntegrationRoute,
+  SuperadminLeadsFollowupsRoute: SuperadminLeadsFollowupsRoute,
+  SuperadminLeadsHistoryRoute: SuperadminLeadsHistoryRoute,
+  SuperadminLeadsImportRoute: SuperadminLeadsImportRoute,
+  SuperadminReportsEarningsRoute: SuperadminReportsEarningsRoute,
+  SuperadminUsersAdminRoute: SuperadminUsersAdminRoute,
+  SuperadminUsersAssociatesRoute: SuperadminUsersAssociatesRoute,
+  SuperadminUsersAssociatesIncentivesRoute:
+    SuperadminUsersAssociatesIncentivesRoute,
+  SuperadminUsersHrRoute: SuperadminUsersHrRoute,
+  SuperadminUsersItStaffRoute: SuperadminUsersItStaffRoute,
+  SuperadminUsersStaffRoute: SuperadminUsersStaffRoute,
+  SuperadminUsersStaffEarnRoute: SuperadminUsersStaffEarnRoute,
+  SuperadminUsersTeamLeaderRoute: SuperadminUsersTeamLeaderRoute,
+  SuperadminLeadsIndexRoute: SuperadminLeadsIndexRoute,
+  SuperadminReportsIndexRoute: SuperadminReportsIndexRoute,
   AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute:
     AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute,
   AdminPostSalesAssociatePaymentsGenerateCommissionRoute:

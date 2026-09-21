@@ -196,7 +196,7 @@ const roleBadgeStyles: Record<string, string> = {
 
 const roleLabels: Record<string, string> = {
   superadmin: "Superadmin",
-  admin: "Branch Admin",
+  admin: "Admin",
   "team-leader": "Team Leader",
   staff: "Telecaller Staff",
   hr: "HR Executive",
@@ -249,7 +249,7 @@ export function ManageUsersPage() {
             id: adm.id || adm.user?.id,
             user_id: adm.user?.id || adm.user_id,
             username: adm.user?.username || adm.email?.split("@")[0] || `Admin-${adm.id}`,
-            name: adm.name || adm.user?.first_name || adm.user?.username || "Branch Admin",
+            name: adm.name || adm.user?.first_name || adm.user?.username || "Admin",
             email: adm.email || adm.user?.email || "admin@vrindavan.com",
             mobile: adm.mobile || adm.phone || "--",
             role: "admin",
@@ -336,7 +336,7 @@ export function ManageUsersPage() {
             address: st.address || "",
             team_leader: st.team_leader_name || st.team_leader?.name || "Assigned TL",
             team_leader_id: st.team_leader?.id || st.team_leader,
-            admin: st.admin?.name || "Branch Admin",
+            admin: st.admin?.name || "Admin",
             admin_id: st.admin?.id || st.admin,
             created_date: st.user?.created_date || st.created_date || "",
           });
@@ -1116,7 +1116,7 @@ export function ManageUsersPage() {
                   <SelectContent>
                     <SelectItem value="staff">Telecaller Staff</SelectItem>
                     <SelectItem value="team-leader">Team Leader</SelectItem>
-                    <SelectItem value="admin">Branch Admin</SelectItem>
+                    <SelectItem value="admin">Admin</SelectItem>
                     <SelectItem value="hr">HR Executive</SelectItem>
                     <SelectItem value="freelancer">Associate / Freelancer</SelectItem>
                     <SelectItem value="it_staff">IT Staff</SelectItem>
@@ -1799,7 +1799,7 @@ export function ManageUsersPage() {
                   </span>
                 </div>
                 <div className="flex justify-between py-1 border-b border-border/50">
-                  <span className="text-text-muted">Branch Admin</span>
+                  <span className="text-text-muted">Admin</span>
                   <span className="font-medium text-foreground">
                     {selectedUserForView.admin || "--"}
                   </span>

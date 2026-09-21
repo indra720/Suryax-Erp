@@ -175,19 +175,19 @@ function GeneralMastersPage() {
   const config = moduleConfigs[activeSub] || { formFields: [], columns: [], data: [] };
 
   return (
-    <div className="space-y-4 p-4 lg:p-6 bg-[#f3f4f6] min-h-screen">
-      <div className="flex items-center justify-between border-b border-gray-200 pb-3">
+    <div className="space-y-3 w-full max-w-full">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-white border border-gray-200 rounded-xl shadow-xs">
         <div>
           <h1 className="text-xl font-bold text-gray-800">Masters</h1>
-          <p className="text-xs text-gray-500">Foundational CRM configuration</p>
+          <p className="text-xs text-muted-foreground">Foundational CRM configuration</p>
         </div>
-        <Link to="/" className="text-sm font-semibold text-brand hover:underline">
+        <Link to="/" className="text-xs font-semibold text-brand hover:underline">
           Home Page
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 xl:grid-cols-[220px_350px_1fr] gap-4">
-        <Card className="p-0 overflow-hidden border border-gray-200 shadow-sm bg-white h-fit">
+      <div className="grid grid-cols-1 xl:grid-cols-[220px_350px_1fr] gap-3">
+        <Card className="p-0 overflow-hidden border border-gray-200 rounded-xl shadow-xs bg-white h-fit">
           <div className="bg-[#331fa3] px-4 py-3 text-white text-sm font-bold tracking-wide rounded-t-lg">
             General Masters
           </div>
@@ -209,7 +209,7 @@ function GeneralMastersPage() {
           </ul>
         </Card>
 
-        <Card className="p-4 border border-gray-200 shadow-sm bg-white h-fit">
+        <Card className="p-4 border border-gray-200 rounded-xl shadow-xs bg-white h-fit">
           <h2 className="text-sm font-bold text-gray-800 border-b pb-2 mb-3">
             {activeSub} details Master
           </h2>
@@ -245,7 +245,7 @@ function GeneralMastersPage() {
           </form>
         </Card>
 
-        <Card className="p-4 border border-gray-200 shadow-sm bg-white overflow-hidden">
+        <Card className="p-4 border border-gray-200 rounded-xl shadow-xs bg-white overflow-hidden">
           <div className="flex items-center justify-between gap-3 mb-4">
             <div className="flex items-center gap-2 text-xs text-gray-600">
               <span>Show</span>
