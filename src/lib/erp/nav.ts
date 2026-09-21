@@ -22,6 +22,10 @@ import {
   Building,
   ShieldCheck,
   IndianRupee,
+  Briefcase,
+  UploadCloud,
+  History,
+  DollarSign,
   type LucideIcon,
 } from "lucide-react";
 
@@ -40,9 +44,54 @@ export const navSections: NavSection[] = [
   {
     label: "Superadmin Controls",
     items: [
-      { title: "User Management Hub", url: "/superadmin/manage-users", icon: Users },
-      { title: "Company-Wide Leads", url: "/superadmin/leads", icon: Building2 },
-      { title: "Productivity & Reports", url: "/superadmin/reports", icon: BarChart3 },
+      {
+        title: "Executive Dashboard",
+        url: "/superadmin/dashboard",
+        icon: LayoutDashboard,
+      },
+      {
+        title: "Users",
+        icon: Users,
+        items: [
+          { title: "Staff Users", url: "/superadmin/users/staff", icon: PhoneCall },
+          { title: "Team Leaders", url: "/superadmin/users/team-leader", icon: Briefcase },
+          { title: "Admins", url: "/superadmin/users/admin", icon: ShieldCheck },
+          { title: "Associates", url: "/superadmin/users/associates", icon: UsersRound },
+          { title: "IT Staff", url: "/superadmin/users/it-staff", icon: Boxes },
+          { title: "HR Users", url: "/superadmin/users/hr", icon: UserCheck },
+          { title: "All Users Hub", url: "/superadmin/manage-users", icon: Users },
+          { title: "Staff Earn Calendar", url: "/superadmin/users/staff-earn", icon: CalendarDays },
+          { title: "Associate Incentives", url: "/superadmin/users/associates-incentives", icon: IndianRupee },
+        ],
+      },
+      {
+        title: "Company-Wide Leads",
+        icon: Building2,
+        items: [
+          { title: "All Leads Pipeline", url: "/superadmin/leads", icon: Building2 },
+          { title: "Follow-up Queues", url: "/superadmin/leads/followups", icon: ListChecks },
+          { title: "Bulk Lead Import", url: "/superadmin/leads/import", icon: UploadCloud },
+          { title: "Lead History & Timeline", url: "/superadmin/leads/history", icon: History },
+        ],
+      },
+      {
+        title: "Add Sell Booking",
+        url: "/superadmin/add-sell",
+        icon: FileText,
+      },
+      {
+        title: "Productivity & Reports",
+        icon: BarChart3,
+        items: [
+          { title: "Staff Productivity Index", url: "/superadmin/reports", icon: BarChart3 },
+          { title: "Earnings & Incentives", url: "/superadmin/reports/earnings", icon: DollarSign },
+        ],
+      },
+      {
+        title: "Audit Timesheet & Logs",
+        url: "/superadmin/timesheet",
+        icon: CalendarDays,
+      },
     ],
   },
   {

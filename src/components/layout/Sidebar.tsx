@@ -5,6 +5,7 @@ import { cn } from "@/lib/utils";
 import promo from "@/assets/promo-villa.jpg";
 import logo from "../../assets/logo.png";
 import { useState } from "react";
+import { useAuth } from "@/lib/services/auth";
 
 function NavLinkItem({
   item,
@@ -94,6 +95,29 @@ export function Sidebar({
 }) {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const width = collapsed ? "w-[72px]" : "w-[240px]";
+  const { user } = useAuth();
+  const isAdmin = user?.role === "admin";
+
+  const computedSections = navSections
+    .filter((section) => {
+      // Hide Superadmin Controls from Admin
+      if (isAdmin && section.label === "Superadmin Controls") {
+        return false;
+      }
+      return true;
+    })
+    .map((section) => {
+      // If admin, point the primary Dashboard link to /admin/dashboard
+      if (isAdmin && !section.label) {
+        return {
+          ...section,
+          items: section.items.map((it) =>
+            it.title === "Dashboard" ? { ...it, url: "/admin/dashboard" } : it
+          ),
+        };
+      }
+      return section;
+    });
 
   return (
     <>
@@ -133,7 +157,7 @@ export function Sidebar({
           </button>
         </div>
         <nav className="no-scrollbar flex-1 overflow-y-auto px-3 pb-4 py-3">
-          {navSections.map((section, si) => (
+          {computedSections.map((section, si) => (
             <div key={si} className="mb-1">
               {section.label && !collapsed && (
                 <p className="mt-3 mb-1 px-2 text-[11px] font-semibold tracking-[0.06em] text-sidebar-label uppercase">

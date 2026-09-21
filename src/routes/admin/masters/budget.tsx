@@ -23,10 +23,10 @@ function BudgetPage() {
   ]);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 w-full max-w-full">
       {/* HEADER */}
-      <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-        <h1 className="text-lg font-bold">Budget Master</h1>
+      <div className="flex items-center justify-between px-4 py-2.5 bg-white border border-gray-200 rounded-xl shadow-xs">
+        <h1 className="text-lg font-bold text-gray-800">Budget Master</h1>
         <Dialog>
           <DialogTrigger asChild>
             <button className="flex items-center gap-1.5 bg-brand text-white text-xs font-semibold px-3 py-1.5 rounded">
@@ -50,7 +50,7 @@ function BudgetPage() {
       </div>
 
       {/* DATA TABLE */}
-      <Card className="p-4 bg-white border border-gray-200">
+      <Card className="p-4 bg-white border border-gray-200 rounded-xl shadow-xs">
         <div className="flex justify-between items-center mb-3 text-xs">
           <div>Show <select className="border rounded p-1"><option>10</option></select> entries</div>
           <div className="flex items-center border rounded px-2"><Search className="size-3.5 text-gray-400 mr-1" /><input className="p-1 outline-none" placeholder="Search..." /></div>

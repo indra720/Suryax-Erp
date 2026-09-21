@@ -16,11 +16,11 @@ function GenerateAttendancePage() {
   const [openDialog, setOpenDialog] = useState(false);
 
   return (
-    <div className="min-h-screen bg-[#f8f9fb] space-y-4">
-      <div className="flex items-center justify-between p-4 bg-white border-b">
+    <div className="space-y-3 w-full max-w-full">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-white border border-gray-200 rounded-xl shadow-xs">
         <h1 className="text-xl font-semibold text-gray-800">Generate Attendance</h1>
       </div>
-      <div className="p-4">
+      <div className="bg-white border border-gray-200 rounded-xl shadow-xs p-4">
         <Dialog open={openDialog} onOpenChange={setOpenDialog}>
           <DialogTrigger asChild>
             <button className="bg-[#6732F2] text-white text-xs font-semibold px-4 py-2 rounded hover:bg-[#5a2ad6]">

@@ -15,10 +15,10 @@ function CustomerPage() {
   ]);
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3 w-full max-w-full">
       {/* HEADER */}
-      <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-        <h1 className="text-lg font-bold">Customer Master</h1>
+      <div className="flex items-center justify-between px-4 py-2.5 bg-white border border-gray-200 rounded-xl shadow-xs">
+        <h1 className="text-lg font-bold text-gray-800">Customer Master</h1>
         <Dialog>
           <DialogTrigger asChild>
             <button className="flex items-center gap-1.5 bg-brand text-white text-xs font-semibold px-3 py-1.5 rounded">
@@ -61,7 +61,7 @@ function CustomerPage() {
       </div>
 
       {/* SEARCH PANEL */}
-      <Card className="p-4 bg-white border border-gray-200">
+      <Card className="p-4 bg-white border border-gray-200 rounded-xl shadow-xs">
         <h3 className="text-xs font-bold mb-3">Search Panel</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3 items-end">
           <div><label className="text-xs font-bold block mb-1">From Date</label><input type="date" className="w-full border rounded p-1.5 text-xs" /></div>
@@ -75,9 +75,9 @@ function CustomerPage() {
       </Card>
 
       {/* CUSTOMER CARDS GRID */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {customers.map((c) => (
-          <Card key={c.id} className="p-4 bg-white border border-gray-200">
+          <Card key={c.id} className="p-4 bg-white border border-gray-200 rounded-xl shadow-xs">
             <div className="flex items-center gap-4">
               <Avatar className="size-16">
                 <AvatarImage src={c.avatar} />

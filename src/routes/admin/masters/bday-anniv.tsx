@@ -30,13 +30,13 @@ function BdayAnnivPage() {
   const currentData = activeTab === 'birthday' ? bdayData : annivData;
 
   return (
-    <div className="space-y-4">
-      <div className="flex items-center justify-between border-b border-gray-200 pb-3">
-        <h1 className="text-lg font-bold">Birthday / Anniversary</h1>
+    <div className="space-y-3 w-full max-w-full">
+      <div className="flex items-center justify-between px-4 py-2.5 bg-white border border-gray-200 rounded-xl shadow-xs">
+        <h1 className="text-lg font-bold text-gray-800">Birthday / Anniversary</h1>
       </div>
 
       {/* SEARCH PANEL */}
-      <Card className="p-4 bg-white border border-gray-200">
+      <Card className="p-4 bg-white border border-gray-200 rounded-xl shadow-xs">
         <h3 className="text-xs font-bold mb-3">Search Panel</h3>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 items-end">
           <div><label className="text-xs font-bold block mb-1">From Date</label><input type="date" className="w-full border rounded p-1.5 text-xs" defaultValue="2026-08-12"/></div>
@@ -50,7 +50,7 @@ function BdayAnnivPage() {
       </Card>
 
       {/* MAIN CONTENT */}
-      <Card className="p-4 bg-white border border-gray-200">
+      <Card className="p-4 bg-white border border-gray-200 rounded-xl shadow-xs">
         <div className="flex border-b mb-4">
             <button onClick={() => setActiveTab('birthday')} className={`px-4 py-2 text-xs font-bold ${activeTab === 'birthday' ? 'border-b-2 border-brand text-brand' : 'text-gray-500'}`}>Birthday</button>
             <button onClick={() => setActiveTab('anniversary')} className={`px-4 py-2 text-xs font-bold ${activeTab === 'anniversary' ? 'border-b-2 border-brand text-brand' : 'text-gray-500'}`}>Anniversary</button>
