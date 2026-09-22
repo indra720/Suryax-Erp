@@ -52,8 +52,16 @@ export function Navbar({ onToggleSidebar }: { onToggleSidebar: () => void }) {
     localStorage.setItem("suryax-erp:theme", next ? "dark" : "light");
   };
 
+  const isSuperAdmin = user?.role === "superadmin";
+  const isAdmin = user?.role === "admin";
+
   const results = query
     ? navSections
+        .filter((s) => {
+          if (isAdmin && s.label === "Superadmin Controls") return false;
+          if (isSuperAdmin && s.label === "Admin CRM Controls") return false;
+          return true;
+        })
         .flatMap((s) => s.items)
         .filter((i) => i.title.toLowerCase().includes(query.toLowerCase()))
         .slice(0, 6)

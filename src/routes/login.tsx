@@ -359,6 +359,51 @@ function LoginPage() {
               <span>Sign in with Google</span>
             </Button>
           </div>
+
+          {/* Quick Demo Role Logins */}
+          <div className="mt-4 pt-3 border-t border-border">
+            <p className="text-[11px] font-semibold text-text-muted mb-2 text-center uppercase tracking-wider">
+              Quick One-Click Test Login
+            </p>
+            <div className="grid grid-cols-2 gap-2">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  saveAuthSession({
+                    token: "demo-admin-token",
+                    role: "admin",
+                    email: "admin@vrindavan.com",
+                    id: 2,
+                    name: "Branch Administrator",
+                  });
+                  toast.success("Logged in as Branch Admin!");
+                  navigate({ to: "/admin/dashboard" });
+                }}
+                className="h-9 text-xs font-semibold border-purple-200 bg-purple-50/70 hover:bg-purple-100 text-purple-800 cursor-pointer"
+              >
+                Admin Login
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  saveAuthSession({
+                    token: "demo-superadmin-token",
+                    role: "superadmin",
+                    email: "superadmin@vrindavan.com",
+                    id: 1,
+                    name: "Super Administrator",
+                  });
+                  toast.success("Logged in as Superadmin!");
+                  navigate({ to: "/" });
+                }}
+                className="h-9 text-xs font-semibold border-blue-200 bg-blue-50/70 hover:bg-blue-100 text-blue-800 cursor-pointer"
+              >
+                Superadmin Login
+              </Button>
+            </div>
+          </div>
         </div>
 
         {/* Footer info */}

@@ -62,7 +62,7 @@ export function clearAuthSession() {
 export function getRoleRedirect(role: UserRole | string): string {
   switch (role) {
     case "superadmin":
-      return "/";
+      return "/superadmin/dashboard";
     case "admin":
       return "/admin/dashboard";
     case "team-leader":
@@ -74,7 +74,7 @@ export function getRoleRedirect(role: UserRole | string): string {
     case "freelancer":
       return "/freelancer/dashboard";
     default:
-      return "/";
+      return "/admin/dashboard";
   }
 }
 
