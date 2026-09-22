@@ -25,6 +25,11 @@ import {
   Briefcase,
   UploadCloud,
   History,
+  CheckCircle,
+  XCircle,
+  Eye,
+  Clock,
+  FilePlus,
   DollarSign,
   type LucideIcon,
 } from "lucide-react";
@@ -42,13 +47,78 @@ export const navSections: NavSection[] = [
     items: [{ title: "Dashboard", url: "/", icon: LayoutDashboard }],
   },
   {
-    label: "Superadmin Controls",
+    label: "Admin CRM Controls",
     items: [
       {
-        title: "Executive Dashboard",
-        url: "/superadmin/dashboard",
-        icon: LayoutDashboard,
+        title: "Users Management",
+        icon: Users,
+        items: [
+          { title: "Team Leaders", url: "/admin/users/team-leader", icon: Briefcase },
+          { title: "Staff Telecallers", url: "/admin/users/staff", icon: PhoneCall },
+          { title: "Staff Earnings", url: "/admin/users/staff/earn", icon: DollarSign },
+          { title: "Staff Incentives", url: "/admin/users/staff/incentives", icon: IndianRupee },
+        ],
       },
+      {
+        title: "Productivity",
+        icon: BarChart3,
+        items: [
+          { title: "Team Leader Productivity", url: "/admin/productivity/team-leader", icon: Briefcase },
+          { title: "Staff Productivity", url: "/admin/productivity/staff", icon: PhoneCall },
+          { title: "Associates Productivity", url: "/admin/productivity/associates", icon: UsersRound },
+        ],
+      },
+      {
+        title: "Leads Reports",
+        icon: FileText,
+        items: [
+          { title: "All Leads", url: "/admin/leads-report/total-leads", icon: Building2 },
+          { title: "Interested (Hot)", url: "/admin/leads-report/interested", icon: CheckCircle },
+          { title: "Site Visits", url: "/admin/leads-report/visit", icon: Eye },
+          { title: "Not Picked", url: "/admin/leads-report/not-picked", icon: PhoneCall },
+          { title: "Other Location", url: "/admin/leads-report/other-location", icon: MapPin },
+          { title: "Not Interested", url: "/admin/leads-report/not-interested", icon: XCircle },
+          { title: "Lost Leads", url: "/admin/leads-report/lost", icon: History },
+          { title: "Total Earnings", url: "/admin/leads-report/total-earning", icon: IndianRupee },
+        ],
+      },
+      {
+        title: "Marketing Channels",
+        icon: Megaphone,
+        items: [
+          { title: "WhatsApp Broadcast", url: "/admin/marketing/whatsapp", icon: MessageSquare },
+          { title: "Google Ads", url: "/admin/marketing/google", icon: Megaphone },
+          { title: "Facebook Lead Ads", url: "/admin/marketing/facebook", icon: Megaphone },
+          { title: "LinkedIn B2B", url: "/admin/marketing/linkedin", icon: Megaphone },
+        ],
+      },
+      {
+        title: "Time Sheet",
+        url: "/admin/timesheet",
+        icon: CalendarDays,
+      },
+      {
+        title: "Projects",
+        icon: Building,
+        items: [
+          { title: "Dashboard", url: "/admin/project/dashboard", icon: LayoutDashboard },
+          { title: "Projects", url: "/admin/project/all", icon: Building },
+          { title: "Sprints", url: "/admin/project/sprints", icon: Clock },
+          { title: "MileStone", url: "/admin/project/MileStone", icon: CheckCircle },
+          { title: "Tasks", url: "/admin/project/tasks", icon: ListChecks },
+          { title: "Team", url: "/admin/project/team", icon: Users },
+        ],
+      },
+      {
+        title: "Add Sell Booking",
+        url: "/admin/add-sell",
+        icon: FilePlus,
+      },
+    ],
+  },
+  {
+    label: "Superadmin Controls",
+    items: [
       {
         title: "Users",
         icon: Users,

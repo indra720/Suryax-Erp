@@ -35,7 +35,9 @@ import { Route as SiteVisitsRouteImport } from './routes/site-visits'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as UsersRolesRouteImport } from './routes/users-roles'
+import { Route as AdminAddSellRouteImport } from './routes/admin/add-sell'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
+import { Route as AdminTimesheetRouteImport } from './routes/admin/timesheet'
 import { Route as StaffDashboardRouteImport } from './routes/staff/dashboard'
 import { Route as StaffLeadsRouteImport } from './routes/staff/leads'
 import { Route as SuperadminAddSellRouteImport } from './routes/superadmin/add-sell'
@@ -53,8 +55,20 @@ import { Route as AdminAssociatesTreeRouteImport } from './routes/admin/associat
 import { Route as AdminCallSmsLeadAssignRouteImport } from './routes/admin/call-sms/lead-assign'
 import { Route as AdminCrmBookingDisbursementRouteImport } from './routes/admin/crm/booking-disbursement'
 import { Route as AdminCrmBookingDraftTemplateRouteImport } from './routes/admin/crm/booking-draft-template'
+import { Route as AdminLeadsReportInterestedRouteImport } from './routes/admin/leads-report/interested'
+import { Route as AdminLeadsReportLostRouteImport } from './routes/admin/leads-report/lost'
+import { Route as AdminLeadsReportNotInterestedRouteImport } from './routes/admin/leads-report/not-interested'
+import { Route as AdminLeadsReportNotPickedRouteImport } from './routes/admin/leads-report/not-picked'
+import { Route as AdminLeadsReportOtherLocationRouteImport } from './routes/admin/leads-report/other-location'
+import { Route as AdminLeadsReportTotalEarningRouteImport } from './routes/admin/leads-report/total-earning'
+import { Route as AdminLeadsReportTotalLeadsRouteImport } from './routes/admin/leads-report/total-leads'
+import { Route as AdminLeadsReportVisitRouteImport } from './routes/admin/leads-report/visit'
 import { Route as AdminLeadsAssignmentRouteImport } from './routes/admin/leads/assignment'
 import { Route as AdminLeadsTimelineRouteImport } from './routes/admin/leads/timeline'
+import { Route as AdminMarketingFacebookRouteImport } from './routes/admin/marketing/facebook'
+import { Route as AdminMarketingGoogleRouteImport } from './routes/admin/marketing/google'
+import { Route as AdminMarketingLinkedinRouteImport } from './routes/admin/marketing/linkedin'
+import { Route as AdminMarketingWhatsappRouteImport } from './routes/admin/marketing/whatsapp'
 import { Route as AdminMastersBdayAnnivRouteImport } from './routes/admin/masters/bday-anniv'
 import { Route as AdminMastersBrokerRouteImport } from './routes/admin/masters/broker'
 import { Route as AdminMastersBudgetRouteImport } from './routes/admin/masters/budget'
@@ -73,6 +87,15 @@ import { Route as AdminPostSalesBookingDemandRouteImport } from './routes/admin/
 import { Route as AdminPostSalesDayBookRouteImport } from './routes/admin/post-sales/day-book'
 import { Route as AdminPostSalesLoanProgressRouteImport } from './routes/admin/post-sales/loan-progress'
 import { Route as AdminPostSalesProjectDemandRouteImport } from './routes/admin/post-sales/project-demand'
+import { Route as AdminProductivityAssociatesRouteImport } from './routes/admin/productivity/associates'
+import { Route as AdminProductivityStaffRouteImport } from './routes/admin/productivity/staff'
+import { Route as AdminProductivityTeamLeaderRouteImport } from './routes/admin/productivity/team-leader'
+import { Route as AdminProjectMileStoneRouteImport } from './routes/admin/project/MileStone'
+import { Route as AdminProjectAllRouteImport } from './routes/admin/project/all'
+import { Route as AdminProjectDashboardRouteImport } from './routes/admin/project/dashboard'
+import { Route as AdminProjectSprintsRouteImport } from './routes/admin/project/sprints'
+import { Route as AdminProjectTasksRouteImport } from './routes/admin/project/tasks'
+import { Route as AdminProjectTeamRouteImport } from './routes/admin/project/team'
 import { Route as AdminProjectsApartmentCommercialRouteImport } from './routes/admin/projects/apartment-commercial'
 import { Route as AdminProjectsFacebookFormMapRouteImport } from './routes/admin/projects/facebook-form-map'
 import { Route as AdminProjectsInventoryListRouteImport } from './routes/admin/projects/inventory-list'
@@ -101,6 +124,8 @@ import { Route as AdminSettingsWhatsappRouteImport } from './routes/admin/settin
 import { Route as AdminSettingsWhatsappScheduleRouteImport } from './routes/admin/settings/whatsapp-schedule'
 import { Route as AdminSocialExternalResourceRouteImport } from './routes/admin/social/external-resource'
 import { Route as AdminSocialIntegrationRouteImport } from './routes/admin/social/integration'
+import { Route as AdminUsersStaffRouteImport } from './routes/admin/users/staff'
+import { Route as AdminUsersTeamLeaderRouteImport } from './routes/admin/users/team-leader'
 import { Route as SuperadminLeadsIndexRouteImport } from './routes/superadmin/leads/index'
 import { Route as SuperadminLeadsFollowupsRouteImport } from './routes/superadmin/leads/followups'
 import { Route as SuperadminLeadsHistoryRouteImport } from './routes/superadmin/leads/history'
@@ -125,6 +150,8 @@ import { Route as AdminProjectsApartmentCommercialCommercialRouteImport } from '
 import { Route as AdminProjectsApartmentCommercialFlatRouteImport } from './routes/admin/projects/apartment-commercial/flat'
 import { Route as AdminProjectsApartmentCommercialFloorRouteImport } from './routes/admin/projects/apartment-commercial/floor'
 import { Route as AdminProjectsApartmentCommercialListRouteImport } from './routes/admin/projects/apartment-commercial/list'
+import { Route as AdminUsersStaffEarnRouteImport } from './routes/admin/users/staff/earn'
+import { Route as AdminUsersStaffIncentivesRouteImport } from './routes/admin/users/staff/incentives'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -256,9 +283,19 @@ const UsersRolesRoute = UsersRolesRouteImport.update({
   path: '/users-roles',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminAddSellRoute = AdminAddSellRouteImport.update({
+  id: '/admin/add-sell',
+  path: '/admin/add-sell',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminDashboardRoute = AdminDashboardRouteImport.update({
   id: '/admin/dashboard',
   path: '/admin/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminTimesheetRoute = AdminTimesheetRouteImport.update({
+  id: '/admin/timesheet',
+  path: '/admin/timesheet',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StaffDashboardRoute = StaffDashboardRouteImport.update({
@@ -351,6 +388,52 @@ const AdminCrmBookingDraftTemplateRoute =
     path: '/admin/crm/booking-draft-template',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AdminLeadsReportInterestedRoute =
+  AdminLeadsReportInterestedRouteImport.update({
+    id: '/admin/leads-report/interested',
+    path: '/admin/leads-report/interested',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminLeadsReportLostRoute = AdminLeadsReportLostRouteImport.update({
+  id: '/admin/leads-report/lost',
+  path: '/admin/leads-report/lost',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminLeadsReportNotInterestedRoute =
+  AdminLeadsReportNotInterestedRouteImport.update({
+    id: '/admin/leads-report/not-interested',
+    path: '/admin/leads-report/not-interested',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminLeadsReportNotPickedRoute =
+  AdminLeadsReportNotPickedRouteImport.update({
+    id: '/admin/leads-report/not-picked',
+    path: '/admin/leads-report/not-picked',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminLeadsReportOtherLocationRoute =
+  AdminLeadsReportOtherLocationRouteImport.update({
+    id: '/admin/leads-report/other-location',
+    path: '/admin/leads-report/other-location',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminLeadsReportTotalEarningRoute =
+  AdminLeadsReportTotalEarningRouteImport.update({
+    id: '/admin/leads-report/total-earning',
+    path: '/admin/leads-report/total-earning',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminLeadsReportTotalLeadsRoute =
+  AdminLeadsReportTotalLeadsRouteImport.update({
+    id: '/admin/leads-report/total-leads',
+    path: '/admin/leads-report/total-leads',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminLeadsReportVisitRoute = AdminLeadsReportVisitRouteImport.update({
+  id: '/admin/leads-report/visit',
+  path: '/admin/leads-report/visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminLeadsAssignmentRoute = AdminLeadsAssignmentRouteImport.update({
   id: '/admin/leads/assignment',
   path: '/admin/leads/assignment',
@@ -359,6 +442,26 @@ const AdminLeadsAssignmentRoute = AdminLeadsAssignmentRouteImport.update({
 const AdminLeadsTimelineRoute = AdminLeadsTimelineRouteImport.update({
   id: '/admin/leads/timeline',
   path: '/admin/leads/timeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMarketingFacebookRoute = AdminMarketingFacebookRouteImport.update({
+  id: '/admin/marketing/facebook',
+  path: '/admin/marketing/facebook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMarketingGoogleRoute = AdminMarketingGoogleRouteImport.update({
+  id: '/admin/marketing/google',
+  path: '/admin/marketing/google',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMarketingLinkedinRoute = AdminMarketingLinkedinRouteImport.update({
+  id: '/admin/marketing/linkedin',
+  path: '/admin/marketing/linkedin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminMarketingWhatsappRoute = AdminMarketingWhatsappRouteImport.update({
+  id: '/admin/marketing/whatsapp',
+  path: '/admin/marketing/whatsapp',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminMastersBdayAnnivRoute = AdminMastersBdayAnnivRouteImport.update({
@@ -459,6 +562,53 @@ const AdminPostSalesProjectDemandRoute =
     path: '/admin/post-sales/project-demand',
     getParentRoute: () => rootRouteImport,
   } as any)
+const AdminProductivityAssociatesRoute =
+  AdminProductivityAssociatesRouteImport.update({
+    id: '/admin/productivity/associates',
+    path: '/admin/productivity/associates',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminProductivityStaffRoute = AdminProductivityStaffRouteImport.update({
+  id: '/admin/productivity/staff',
+  path: '/admin/productivity/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProductivityTeamLeaderRoute =
+  AdminProductivityTeamLeaderRouteImport.update({
+    id: '/admin/productivity/team-leader',
+    path: '/admin/productivity/team-leader',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminProjectMileStoneRoute = AdminProjectMileStoneRouteImport.update({
+  id: '/admin/project/MileStone',
+  path: '/admin/project/MileStone',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProjectAllRoute = AdminProjectAllRouteImport.update({
+  id: '/admin/project/all',
+  path: '/admin/project/all',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProjectDashboardRoute = AdminProjectDashboardRouteImport.update({
+  id: '/admin/project/dashboard',
+  path: '/admin/project/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProjectSprintsRoute = AdminProjectSprintsRouteImport.update({
+  id: '/admin/project/sprints',
+  path: '/admin/project/sprints',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProjectTasksRoute = AdminProjectTasksRouteImport.update({
+  id: '/admin/project/tasks',
+  path: '/admin/project/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminProjectTeamRoute = AdminProjectTeamRouteImport.update({
+  id: '/admin/project/team',
+  path: '/admin/project/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminProjectsApartmentCommercialRoute =
   AdminProjectsApartmentCommercialRouteImport.update({
     id: '/admin/projects/apartment-commercial',
@@ -614,6 +764,16 @@ const AdminSocialIntegrationRoute = AdminSocialIntegrationRouteImport.update({
   path: '/admin/social/integration',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminUsersStaffRoute = AdminUsersStaffRouteImport.update({
+  id: '/admin/users/staff',
+  path: '/admin/users/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AdminUsersTeamLeaderRoute = AdminUsersTeamLeaderRouteImport.update({
+  id: '/admin/users/team-leader',
+  path: '/admin/users/team-leader',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SuperadminLeadsIndexRoute = SuperadminLeadsIndexRouteImport.update({
   id: '/superadmin/leads/',
   path: '/superadmin/leads/',
@@ -750,6 +910,17 @@ const AdminProjectsApartmentCommercialListRoute =
     path: '/list',
     getParentRoute: () => AdminProjectsApartmentCommercialRoute,
   } as any)
+const AdminUsersStaffEarnRoute = AdminUsersStaffEarnRouteImport.update({
+  id: '/earn',
+  path: '/earn',
+  getParentRoute: () => AdminUsersStaffRoute,
+} as any)
+const AdminUsersStaffIncentivesRoute =
+  AdminUsersStaffIncentivesRouteImport.update({
+    id: '/incentives',
+    path: '/incentives',
+    getParentRoute: () => AdminUsersStaffRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -778,7 +949,9 @@ export interface FileRoutesByFullPath {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/admin/add-sell': typeof AdminAddSellRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/timesheet': typeof AdminTimesheetRoute
   '/staff/dashboard': typeof StaffDashboardRoute
   '/staff/leads': typeof StaffLeadsRoute
   '/superadmin/add-sell': typeof SuperadminAddSellRoute
@@ -796,8 +969,20 @@ export interface FileRoutesByFullPath {
   '/admin/call-sms/lead-assign': typeof AdminCallSmsLeadAssignRoute
   '/admin/crm/booking-disbursement': typeof AdminCrmBookingDisbursementRoute
   '/admin/crm/booking-draft-template': typeof AdminCrmBookingDraftTemplateRoute
+  '/admin/leads-report/interested': typeof AdminLeadsReportInterestedRoute
+  '/admin/leads-report/lost': typeof AdminLeadsReportLostRoute
+  '/admin/leads-report/not-interested': typeof AdminLeadsReportNotInterestedRoute
+  '/admin/leads-report/not-picked': typeof AdminLeadsReportNotPickedRoute
+  '/admin/leads-report/other-location': typeof AdminLeadsReportOtherLocationRoute
+  '/admin/leads-report/total-earning': typeof AdminLeadsReportTotalEarningRoute
+  '/admin/leads-report/total-leads': typeof AdminLeadsReportTotalLeadsRoute
+  '/admin/leads-report/visit': typeof AdminLeadsReportVisitRoute
   '/admin/leads/assignment': typeof AdminLeadsAssignmentRoute
   '/admin/leads/timeline': typeof AdminLeadsTimelineRoute
+  '/admin/marketing/facebook': typeof AdminMarketingFacebookRoute
+  '/admin/marketing/google': typeof AdminMarketingGoogleRoute
+  '/admin/marketing/linkedin': typeof AdminMarketingLinkedinRoute
+  '/admin/marketing/whatsapp': typeof AdminMarketingWhatsappRoute
   '/admin/masters/bday-anniv': typeof AdminMastersBdayAnnivRoute
   '/admin/masters/broker': typeof AdminMastersBrokerRoute
   '/admin/masters/budget': typeof AdminMastersBudgetRoute
@@ -816,6 +1001,15 @@ export interface FileRoutesByFullPath {
   '/admin/post-sales/day-book': typeof AdminPostSalesDayBookRoute
   '/admin/post-sales/loan-progress': typeof AdminPostSalesLoanProgressRoute
   '/admin/post-sales/project-demand': typeof AdminPostSalesProjectDemandRoute
+  '/admin/productivity/associates': typeof AdminProductivityAssociatesRoute
+  '/admin/productivity/staff': typeof AdminProductivityStaffRoute
+  '/admin/productivity/team-leader': typeof AdminProductivityTeamLeaderRoute
+  '/admin/project/MileStone': typeof AdminProjectMileStoneRoute
+  '/admin/project/all': typeof AdminProjectAllRoute
+  '/admin/project/dashboard': typeof AdminProjectDashboardRoute
+  '/admin/project/sprints': typeof AdminProjectSprintsRoute
+  '/admin/project/tasks': typeof AdminProjectTasksRoute
+  '/admin/project/team': typeof AdminProjectTeamRoute
   '/admin/projects/apartment-commercial': typeof AdminProjectsApartmentCommercialRouteWithChildren
   '/admin/projects/facebook-form-map': typeof AdminProjectsFacebookFormMapRoute
   '/admin/projects/inventory-list': typeof AdminProjectsInventoryListRoute
@@ -844,6 +1038,8 @@ export interface FileRoutesByFullPath {
   '/admin/settings/whatsapp-schedule': typeof AdminSettingsWhatsappScheduleRoute
   '/admin/social/external-resource': typeof AdminSocialExternalResourceRoute
   '/admin/social/integration': typeof AdminSocialIntegrationRoute
+  '/admin/users/staff': typeof AdminUsersStaffRouteWithChildren
+  '/admin/users/team-leader': typeof AdminUsersTeamLeaderRoute
   '/superadmin/leads/followups': typeof SuperadminLeadsFollowupsRoute
   '/superadmin/leads/history': typeof SuperadminLeadsHistoryRoute
   '/superadmin/leads/import': typeof SuperadminLeadsImportRoute
@@ -868,6 +1064,8 @@ export interface FileRoutesByFullPath {
   '/admin/projects/apartment-commercial/flat': typeof AdminProjectsApartmentCommercialFlatRoute
   '/admin/projects/apartment-commercial/floor': typeof AdminProjectsApartmentCommercialFloorRoute
   '/admin/projects/apartment-commercial/list': typeof AdminProjectsApartmentCommercialListRoute
+  '/admin/users/staff/earn': typeof AdminUsersStaffEarnRoute
+  '/admin/users/staff/incentives': typeof AdminUsersStaffIncentivesRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -896,7 +1094,9 @@ export interface FileRoutesByTo {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/admin/add-sell': typeof AdminAddSellRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/timesheet': typeof AdminTimesheetRoute
   '/staff/dashboard': typeof StaffDashboardRoute
   '/staff/leads': typeof StaffLeadsRoute
   '/superadmin/add-sell': typeof SuperadminAddSellRoute
@@ -914,8 +1114,20 @@ export interface FileRoutesByTo {
   '/admin/call-sms/lead-assign': typeof AdminCallSmsLeadAssignRoute
   '/admin/crm/booking-disbursement': typeof AdminCrmBookingDisbursementRoute
   '/admin/crm/booking-draft-template': typeof AdminCrmBookingDraftTemplateRoute
+  '/admin/leads-report/interested': typeof AdminLeadsReportInterestedRoute
+  '/admin/leads-report/lost': typeof AdminLeadsReportLostRoute
+  '/admin/leads-report/not-interested': typeof AdminLeadsReportNotInterestedRoute
+  '/admin/leads-report/not-picked': typeof AdminLeadsReportNotPickedRoute
+  '/admin/leads-report/other-location': typeof AdminLeadsReportOtherLocationRoute
+  '/admin/leads-report/total-earning': typeof AdminLeadsReportTotalEarningRoute
+  '/admin/leads-report/total-leads': typeof AdminLeadsReportTotalLeadsRoute
+  '/admin/leads-report/visit': typeof AdminLeadsReportVisitRoute
   '/admin/leads/assignment': typeof AdminLeadsAssignmentRoute
   '/admin/leads/timeline': typeof AdminLeadsTimelineRoute
+  '/admin/marketing/facebook': typeof AdminMarketingFacebookRoute
+  '/admin/marketing/google': typeof AdminMarketingGoogleRoute
+  '/admin/marketing/linkedin': typeof AdminMarketingLinkedinRoute
+  '/admin/marketing/whatsapp': typeof AdminMarketingWhatsappRoute
   '/admin/masters/bday-anniv': typeof AdminMastersBdayAnnivRoute
   '/admin/masters/broker': typeof AdminMastersBrokerRoute
   '/admin/masters/budget': typeof AdminMastersBudgetRoute
@@ -934,6 +1146,15 @@ export interface FileRoutesByTo {
   '/admin/post-sales/day-book': typeof AdminPostSalesDayBookRoute
   '/admin/post-sales/loan-progress': typeof AdminPostSalesLoanProgressRoute
   '/admin/post-sales/project-demand': typeof AdminPostSalesProjectDemandRoute
+  '/admin/productivity/associates': typeof AdminProductivityAssociatesRoute
+  '/admin/productivity/staff': typeof AdminProductivityStaffRoute
+  '/admin/productivity/team-leader': typeof AdminProductivityTeamLeaderRoute
+  '/admin/project/MileStone': typeof AdminProjectMileStoneRoute
+  '/admin/project/all': typeof AdminProjectAllRoute
+  '/admin/project/dashboard': typeof AdminProjectDashboardRoute
+  '/admin/project/sprints': typeof AdminProjectSprintsRoute
+  '/admin/project/tasks': typeof AdminProjectTasksRoute
+  '/admin/project/team': typeof AdminProjectTeamRoute
   '/admin/projects/apartment-commercial': typeof AdminProjectsApartmentCommercialRouteWithChildren
   '/admin/projects/facebook-form-map': typeof AdminProjectsFacebookFormMapRoute
   '/admin/projects/inventory-list': typeof AdminProjectsInventoryListRoute
@@ -962,6 +1183,8 @@ export interface FileRoutesByTo {
   '/admin/settings/whatsapp-schedule': typeof AdminSettingsWhatsappScheduleRoute
   '/admin/social/external-resource': typeof AdminSocialExternalResourceRoute
   '/admin/social/integration': typeof AdminSocialIntegrationRoute
+  '/admin/users/staff': typeof AdminUsersStaffRouteWithChildren
+  '/admin/users/team-leader': typeof AdminUsersTeamLeaderRoute
   '/superadmin/leads/followups': typeof SuperadminLeadsFollowupsRoute
   '/superadmin/leads/history': typeof SuperadminLeadsHistoryRoute
   '/superadmin/leads/import': typeof SuperadminLeadsImportRoute
@@ -986,6 +1209,8 @@ export interface FileRoutesByTo {
   '/admin/projects/apartment-commercial/flat': typeof AdminProjectsApartmentCommercialFlatRoute
   '/admin/projects/apartment-commercial/floor': typeof AdminProjectsApartmentCommercialFloorRoute
   '/admin/projects/apartment-commercial/list': typeof AdminProjectsApartmentCommercialListRoute
+  '/admin/users/staff/earn': typeof AdminUsersStaffEarnRoute
+  '/admin/users/staff/incentives': typeof AdminUsersStaffIncentivesRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -1015,7 +1240,9 @@ export interface FileRoutesById {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/admin/add-sell': typeof AdminAddSellRoute
   '/admin/dashboard': typeof AdminDashboardRoute
+  '/admin/timesheet': typeof AdminTimesheetRoute
   '/staff/dashboard': typeof StaffDashboardRoute
   '/staff/leads': typeof StaffLeadsRoute
   '/superadmin/add-sell': typeof SuperadminAddSellRoute
@@ -1033,8 +1260,20 @@ export interface FileRoutesById {
   '/admin/call-sms/lead-assign': typeof AdminCallSmsLeadAssignRoute
   '/admin/crm/booking-disbursement': typeof AdminCrmBookingDisbursementRoute
   '/admin/crm/booking-draft-template': typeof AdminCrmBookingDraftTemplateRoute
+  '/admin/leads-report/interested': typeof AdminLeadsReportInterestedRoute
+  '/admin/leads-report/lost': typeof AdminLeadsReportLostRoute
+  '/admin/leads-report/not-interested': typeof AdminLeadsReportNotInterestedRoute
+  '/admin/leads-report/not-picked': typeof AdminLeadsReportNotPickedRoute
+  '/admin/leads-report/other-location': typeof AdminLeadsReportOtherLocationRoute
+  '/admin/leads-report/total-earning': typeof AdminLeadsReportTotalEarningRoute
+  '/admin/leads-report/total-leads': typeof AdminLeadsReportTotalLeadsRoute
+  '/admin/leads-report/visit': typeof AdminLeadsReportVisitRoute
   '/admin/leads/assignment': typeof AdminLeadsAssignmentRoute
   '/admin/leads/timeline': typeof AdminLeadsTimelineRoute
+  '/admin/marketing/facebook': typeof AdminMarketingFacebookRoute
+  '/admin/marketing/google': typeof AdminMarketingGoogleRoute
+  '/admin/marketing/linkedin': typeof AdminMarketingLinkedinRoute
+  '/admin/marketing/whatsapp': typeof AdminMarketingWhatsappRoute
   '/admin/masters/bday-anniv': typeof AdminMastersBdayAnnivRoute
   '/admin/masters/broker': typeof AdminMastersBrokerRoute
   '/admin/masters/budget': typeof AdminMastersBudgetRoute
@@ -1053,6 +1292,15 @@ export interface FileRoutesById {
   '/admin/post-sales/day-book': typeof AdminPostSalesDayBookRoute
   '/admin/post-sales/loan-progress': typeof AdminPostSalesLoanProgressRoute
   '/admin/post-sales/project-demand': typeof AdminPostSalesProjectDemandRoute
+  '/admin/productivity/associates': typeof AdminProductivityAssociatesRoute
+  '/admin/productivity/staff': typeof AdminProductivityStaffRoute
+  '/admin/productivity/team-leader': typeof AdminProductivityTeamLeaderRoute
+  '/admin/project/MileStone': typeof AdminProjectMileStoneRoute
+  '/admin/project/all': typeof AdminProjectAllRoute
+  '/admin/project/dashboard': typeof AdminProjectDashboardRoute
+  '/admin/project/sprints': typeof AdminProjectSprintsRoute
+  '/admin/project/tasks': typeof AdminProjectTasksRoute
+  '/admin/project/team': typeof AdminProjectTeamRoute
   '/admin/projects/apartment-commercial': typeof AdminProjectsApartmentCommercialRouteWithChildren
   '/admin/projects/facebook-form-map': typeof AdminProjectsFacebookFormMapRoute
   '/admin/projects/inventory-list': typeof AdminProjectsInventoryListRoute
@@ -1081,6 +1329,8 @@ export interface FileRoutesById {
   '/admin/settings/whatsapp-schedule': typeof AdminSettingsWhatsappScheduleRoute
   '/admin/social/external-resource': typeof AdminSocialExternalResourceRoute
   '/admin/social/integration': typeof AdminSocialIntegrationRoute
+  '/admin/users/staff': typeof AdminUsersStaffRouteWithChildren
+  '/admin/users/team-leader': typeof AdminUsersTeamLeaderRoute
   '/superadmin/leads/followups': typeof SuperadminLeadsFollowupsRoute
   '/superadmin/leads/history': typeof SuperadminLeadsHistoryRoute
   '/superadmin/leads/import': typeof SuperadminLeadsImportRoute
@@ -1105,6 +1355,8 @@ export interface FileRoutesById {
   '/admin/projects/apartment-commercial/flat': typeof AdminProjectsApartmentCommercialFlatRoute
   '/admin/projects/apartment-commercial/floor': typeof AdminProjectsApartmentCommercialFloorRoute
   '/admin/projects/apartment-commercial/list': typeof AdminProjectsApartmentCommercialListRoute
+  '/admin/users/staff/earn': typeof AdminUsersStaffEarnRoute
+  '/admin/users/staff/incentives': typeof AdminUsersStaffIncentivesRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -1135,7 +1387,9 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/admin/add-sell'
     | '/admin/dashboard'
+    | '/admin/timesheet'
     | '/staff/dashboard'
     | '/staff/leads'
     | '/superadmin/add-sell'
@@ -1153,8 +1407,20 @@ export interface FileRouteTypes {
     | '/admin/call-sms/lead-assign'
     | '/admin/crm/booking-disbursement'
     | '/admin/crm/booking-draft-template'
+    | '/admin/leads-report/interested'
+    | '/admin/leads-report/lost'
+    | '/admin/leads-report/not-interested'
+    | '/admin/leads-report/not-picked'
+    | '/admin/leads-report/other-location'
+    | '/admin/leads-report/total-earning'
+    | '/admin/leads-report/total-leads'
+    | '/admin/leads-report/visit'
     | '/admin/leads/assignment'
     | '/admin/leads/timeline'
+    | '/admin/marketing/facebook'
+    | '/admin/marketing/google'
+    | '/admin/marketing/linkedin'
+    | '/admin/marketing/whatsapp'
     | '/admin/masters/bday-anniv'
     | '/admin/masters/broker'
     | '/admin/masters/budget'
@@ -1173,6 +1439,15 @@ export interface FileRouteTypes {
     | '/admin/post-sales/day-book'
     | '/admin/post-sales/loan-progress'
     | '/admin/post-sales/project-demand'
+    | '/admin/productivity/associates'
+    | '/admin/productivity/staff'
+    | '/admin/productivity/team-leader'
+    | '/admin/project/MileStone'
+    | '/admin/project/all'
+    | '/admin/project/dashboard'
+    | '/admin/project/sprints'
+    | '/admin/project/tasks'
+    | '/admin/project/team'
     | '/admin/projects/apartment-commercial'
     | '/admin/projects/facebook-form-map'
     | '/admin/projects/inventory-list'
@@ -1201,6 +1476,8 @@ export interface FileRouteTypes {
     | '/admin/settings/whatsapp-schedule'
     | '/admin/social/external-resource'
     | '/admin/social/integration'
+    | '/admin/users/staff'
+    | '/admin/users/team-leader'
     | '/superadmin/leads/followups'
     | '/superadmin/leads/history'
     | '/superadmin/leads/import'
@@ -1225,6 +1502,8 @@ export interface FileRouteTypes {
     | '/admin/projects/apartment-commercial/flat'
     | '/admin/projects/apartment-commercial/floor'
     | '/admin/projects/apartment-commercial/list'
+    | '/admin/users/staff/earn'
+    | '/admin/users/staff/incentives'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -1253,7 +1532,9 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/admin/add-sell'
     | '/admin/dashboard'
+    | '/admin/timesheet'
     | '/staff/dashboard'
     | '/staff/leads'
     | '/superadmin/add-sell'
@@ -1271,8 +1552,20 @@ export interface FileRouteTypes {
     | '/admin/call-sms/lead-assign'
     | '/admin/crm/booking-disbursement'
     | '/admin/crm/booking-draft-template'
+    | '/admin/leads-report/interested'
+    | '/admin/leads-report/lost'
+    | '/admin/leads-report/not-interested'
+    | '/admin/leads-report/not-picked'
+    | '/admin/leads-report/other-location'
+    | '/admin/leads-report/total-earning'
+    | '/admin/leads-report/total-leads'
+    | '/admin/leads-report/visit'
     | '/admin/leads/assignment'
     | '/admin/leads/timeline'
+    | '/admin/marketing/facebook'
+    | '/admin/marketing/google'
+    | '/admin/marketing/linkedin'
+    | '/admin/marketing/whatsapp'
     | '/admin/masters/bday-anniv'
     | '/admin/masters/broker'
     | '/admin/masters/budget'
@@ -1291,6 +1584,15 @@ export interface FileRouteTypes {
     | '/admin/post-sales/day-book'
     | '/admin/post-sales/loan-progress'
     | '/admin/post-sales/project-demand'
+    | '/admin/productivity/associates'
+    | '/admin/productivity/staff'
+    | '/admin/productivity/team-leader'
+    | '/admin/project/MileStone'
+    | '/admin/project/all'
+    | '/admin/project/dashboard'
+    | '/admin/project/sprints'
+    | '/admin/project/tasks'
+    | '/admin/project/team'
     | '/admin/projects/apartment-commercial'
     | '/admin/projects/facebook-form-map'
     | '/admin/projects/inventory-list'
@@ -1319,6 +1621,8 @@ export interface FileRouteTypes {
     | '/admin/settings/whatsapp-schedule'
     | '/admin/social/external-resource'
     | '/admin/social/integration'
+    | '/admin/users/staff'
+    | '/admin/users/team-leader'
     | '/superadmin/leads/followups'
     | '/superadmin/leads/history'
     | '/superadmin/leads/import'
@@ -1343,6 +1647,8 @@ export interface FileRouteTypes {
     | '/admin/projects/apartment-commercial/flat'
     | '/admin/projects/apartment-commercial/floor'
     | '/admin/projects/apartment-commercial/list'
+    | '/admin/users/staff/earn'
+    | '/admin/users/staff/incentives'
   id:
     | '__root__'
     | '/'
@@ -1371,7 +1677,9 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/admin/add-sell'
     | '/admin/dashboard'
+    | '/admin/timesheet'
     | '/staff/dashboard'
     | '/staff/leads'
     | '/superadmin/add-sell'
@@ -1389,8 +1697,20 @@ export interface FileRouteTypes {
     | '/admin/call-sms/lead-assign'
     | '/admin/crm/booking-disbursement'
     | '/admin/crm/booking-draft-template'
+    | '/admin/leads-report/interested'
+    | '/admin/leads-report/lost'
+    | '/admin/leads-report/not-interested'
+    | '/admin/leads-report/not-picked'
+    | '/admin/leads-report/other-location'
+    | '/admin/leads-report/total-earning'
+    | '/admin/leads-report/total-leads'
+    | '/admin/leads-report/visit'
     | '/admin/leads/assignment'
     | '/admin/leads/timeline'
+    | '/admin/marketing/facebook'
+    | '/admin/marketing/google'
+    | '/admin/marketing/linkedin'
+    | '/admin/marketing/whatsapp'
     | '/admin/masters/bday-anniv'
     | '/admin/masters/broker'
     | '/admin/masters/budget'
@@ -1409,6 +1729,15 @@ export interface FileRouteTypes {
     | '/admin/post-sales/day-book'
     | '/admin/post-sales/loan-progress'
     | '/admin/post-sales/project-demand'
+    | '/admin/productivity/associates'
+    | '/admin/productivity/staff'
+    | '/admin/productivity/team-leader'
+    | '/admin/project/MileStone'
+    | '/admin/project/all'
+    | '/admin/project/dashboard'
+    | '/admin/project/sprints'
+    | '/admin/project/tasks'
+    | '/admin/project/team'
     | '/admin/projects/apartment-commercial'
     | '/admin/projects/facebook-form-map'
     | '/admin/projects/inventory-list'
@@ -1437,6 +1766,8 @@ export interface FileRouteTypes {
     | '/admin/settings/whatsapp-schedule'
     | '/admin/social/external-resource'
     | '/admin/social/integration'
+    | '/admin/users/staff'
+    | '/admin/users/team-leader'
     | '/superadmin/leads/followups'
     | '/superadmin/leads/history'
     | '/superadmin/leads/import'
@@ -1461,6 +1792,8 @@ export interface FileRouteTypes {
     | '/admin/projects/apartment-commercial/flat'
     | '/admin/projects/apartment-commercial/floor'
     | '/admin/projects/apartment-commercial/list'
+    | '/admin/users/staff/earn'
+    | '/admin/users/staff/incentives'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -1490,7 +1823,9 @@ export interface RootRouteChildren {
   TasksRoute: typeof TasksRoute
   TeamRoute: typeof TeamRoute
   UsersRolesRoute: typeof UsersRolesRoute
+  AdminAddSellRoute: typeof AdminAddSellRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
+  AdminTimesheetRoute: typeof AdminTimesheetRoute
   StaffDashboardRoute: typeof StaffDashboardRoute
   StaffLeadsRoute: typeof StaffLeadsRoute
   SuperadminAddSellRoute: typeof SuperadminAddSellRoute
@@ -1508,8 +1843,20 @@ export interface RootRouteChildren {
   AdminCallSmsLeadAssignRoute: typeof AdminCallSmsLeadAssignRoute
   AdminCrmBookingDisbursementRoute: typeof AdminCrmBookingDisbursementRoute
   AdminCrmBookingDraftTemplateRoute: typeof AdminCrmBookingDraftTemplateRoute
+  AdminLeadsReportInterestedRoute: typeof AdminLeadsReportInterestedRoute
+  AdminLeadsReportLostRoute: typeof AdminLeadsReportLostRoute
+  AdminLeadsReportNotInterestedRoute: typeof AdminLeadsReportNotInterestedRoute
+  AdminLeadsReportNotPickedRoute: typeof AdminLeadsReportNotPickedRoute
+  AdminLeadsReportOtherLocationRoute: typeof AdminLeadsReportOtherLocationRoute
+  AdminLeadsReportTotalEarningRoute: typeof AdminLeadsReportTotalEarningRoute
+  AdminLeadsReportTotalLeadsRoute: typeof AdminLeadsReportTotalLeadsRoute
+  AdminLeadsReportVisitRoute: typeof AdminLeadsReportVisitRoute
   AdminLeadsAssignmentRoute: typeof AdminLeadsAssignmentRoute
   AdminLeadsTimelineRoute: typeof AdminLeadsTimelineRoute
+  AdminMarketingFacebookRoute: typeof AdminMarketingFacebookRoute
+  AdminMarketingGoogleRoute: typeof AdminMarketingGoogleRoute
+  AdminMarketingLinkedinRoute: typeof AdminMarketingLinkedinRoute
+  AdminMarketingWhatsappRoute: typeof AdminMarketingWhatsappRoute
   AdminMastersBdayAnnivRoute: typeof AdminMastersBdayAnnivRoute
   AdminMastersBrokerRoute: typeof AdminMastersBrokerRoute
   AdminMastersBudgetRoute: typeof AdminMastersBudgetRoute
@@ -1528,6 +1875,15 @@ export interface RootRouteChildren {
   AdminPostSalesDayBookRoute: typeof AdminPostSalesDayBookRoute
   AdminPostSalesLoanProgressRoute: typeof AdminPostSalesLoanProgressRoute
   AdminPostSalesProjectDemandRoute: typeof AdminPostSalesProjectDemandRoute
+  AdminProductivityAssociatesRoute: typeof AdminProductivityAssociatesRoute
+  AdminProductivityStaffRoute: typeof AdminProductivityStaffRoute
+  AdminProductivityTeamLeaderRoute: typeof AdminProductivityTeamLeaderRoute
+  AdminProjectMileStoneRoute: typeof AdminProjectMileStoneRoute
+  AdminProjectAllRoute: typeof AdminProjectAllRoute
+  AdminProjectDashboardRoute: typeof AdminProjectDashboardRoute
+  AdminProjectSprintsRoute: typeof AdminProjectSprintsRoute
+  AdminProjectTasksRoute: typeof AdminProjectTasksRoute
+  AdminProjectTeamRoute: typeof AdminProjectTeamRoute
   AdminProjectsApartmentCommercialRoute: typeof AdminProjectsApartmentCommercialRouteWithChildren
   AdminProjectsFacebookFormMapRoute: typeof AdminProjectsFacebookFormMapRoute
   AdminProjectsInventoryListRoute: typeof AdminProjectsInventoryListRoute
@@ -1556,6 +1912,8 @@ export interface RootRouteChildren {
   AdminSettingsWhatsappScheduleRoute: typeof AdminSettingsWhatsappScheduleRoute
   AdminSocialExternalResourceRoute: typeof AdminSocialExternalResourceRoute
   AdminSocialIntegrationRoute: typeof AdminSocialIntegrationRoute
+  AdminUsersStaffRoute: typeof AdminUsersStaffRouteWithChildren
+  AdminUsersTeamLeaderRoute: typeof AdminUsersTeamLeaderRoute
   SuperadminLeadsFollowupsRoute: typeof SuperadminLeadsFollowupsRoute
   SuperadminLeadsHistoryRoute: typeof SuperadminLeadsHistoryRoute
   SuperadminLeadsImportRoute: typeof SuperadminLeadsImportRoute
@@ -1761,11 +2119,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersRolesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/add-sell': {
+      id: '/admin/add-sell'
+      path: '/admin/add-sell'
+      fullPath: '/admin/add-sell'
+      preLoaderRoute: typeof AdminAddSellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/dashboard': {
       id: '/admin/dashboard'
       path: '/admin/dashboard'
       fullPath: '/admin/dashboard'
       preLoaderRoute: typeof AdminDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/timesheet': {
+      id: '/admin/timesheet'
+      path: '/admin/timesheet'
+      fullPath: '/admin/timesheet'
+      preLoaderRoute: typeof AdminTimesheetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/staff/dashboard': {
@@ -1887,6 +2259,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminCrmBookingDraftTemplateRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/leads-report/interested': {
+      id: '/admin/leads-report/interested'
+      path: '/admin/leads-report/interested'
+      fullPath: '/admin/leads-report/interested'
+      preLoaderRoute: typeof AdminLeadsReportInterestedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/leads-report/lost': {
+      id: '/admin/leads-report/lost'
+      path: '/admin/leads-report/lost'
+      fullPath: '/admin/leads-report/lost'
+      preLoaderRoute: typeof AdminLeadsReportLostRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/leads-report/not-interested': {
+      id: '/admin/leads-report/not-interested'
+      path: '/admin/leads-report/not-interested'
+      fullPath: '/admin/leads-report/not-interested'
+      preLoaderRoute: typeof AdminLeadsReportNotInterestedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/leads-report/not-picked': {
+      id: '/admin/leads-report/not-picked'
+      path: '/admin/leads-report/not-picked'
+      fullPath: '/admin/leads-report/not-picked'
+      preLoaderRoute: typeof AdminLeadsReportNotPickedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/leads-report/other-location': {
+      id: '/admin/leads-report/other-location'
+      path: '/admin/leads-report/other-location'
+      fullPath: '/admin/leads-report/other-location'
+      preLoaderRoute: typeof AdminLeadsReportOtherLocationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/leads-report/total-earning': {
+      id: '/admin/leads-report/total-earning'
+      path: '/admin/leads-report/total-earning'
+      fullPath: '/admin/leads-report/total-earning'
+      preLoaderRoute: typeof AdminLeadsReportTotalEarningRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/leads-report/total-leads': {
+      id: '/admin/leads-report/total-leads'
+      path: '/admin/leads-report/total-leads'
+      fullPath: '/admin/leads-report/total-leads'
+      preLoaderRoute: typeof AdminLeadsReportTotalLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/leads-report/visit': {
+      id: '/admin/leads-report/visit'
+      path: '/admin/leads-report/visit'
+      fullPath: '/admin/leads-report/visit'
+      preLoaderRoute: typeof AdminLeadsReportVisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/leads/assignment': {
       id: '/admin/leads/assignment'
       path: '/admin/leads/assignment'
@@ -1899,6 +2327,34 @@ declare module '@tanstack/react-router' {
       path: '/admin/leads/timeline'
       fullPath: '/admin/leads/timeline'
       preLoaderRoute: typeof AdminLeadsTimelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/marketing/facebook': {
+      id: '/admin/marketing/facebook'
+      path: '/admin/marketing/facebook'
+      fullPath: '/admin/marketing/facebook'
+      preLoaderRoute: typeof AdminMarketingFacebookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/marketing/google': {
+      id: '/admin/marketing/google'
+      path: '/admin/marketing/google'
+      fullPath: '/admin/marketing/google'
+      preLoaderRoute: typeof AdminMarketingGoogleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/marketing/linkedin': {
+      id: '/admin/marketing/linkedin'
+      path: '/admin/marketing/linkedin'
+      fullPath: '/admin/marketing/linkedin'
+      preLoaderRoute: typeof AdminMarketingLinkedinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/marketing/whatsapp': {
+      id: '/admin/marketing/whatsapp'
+      path: '/admin/marketing/whatsapp'
+      fullPath: '/admin/marketing/whatsapp'
+      preLoaderRoute: typeof AdminMarketingWhatsappRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/masters/bday-anniv': {
@@ -2025,6 +2481,69 @@ declare module '@tanstack/react-router' {
       path: '/admin/post-sales/project-demand'
       fullPath: '/admin/post-sales/project-demand'
       preLoaderRoute: typeof AdminPostSalesProjectDemandRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/productivity/associates': {
+      id: '/admin/productivity/associates'
+      path: '/admin/productivity/associates'
+      fullPath: '/admin/productivity/associates'
+      preLoaderRoute: typeof AdminProductivityAssociatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/productivity/staff': {
+      id: '/admin/productivity/staff'
+      path: '/admin/productivity/staff'
+      fullPath: '/admin/productivity/staff'
+      preLoaderRoute: typeof AdminProductivityStaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/productivity/team-leader': {
+      id: '/admin/productivity/team-leader'
+      path: '/admin/productivity/team-leader'
+      fullPath: '/admin/productivity/team-leader'
+      preLoaderRoute: typeof AdminProductivityTeamLeaderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/project/MileStone': {
+      id: '/admin/project/MileStone'
+      path: '/admin/project/MileStone'
+      fullPath: '/admin/project/MileStone'
+      preLoaderRoute: typeof AdminProjectMileStoneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/project/all': {
+      id: '/admin/project/all'
+      path: '/admin/project/all'
+      fullPath: '/admin/project/all'
+      preLoaderRoute: typeof AdminProjectAllRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/project/dashboard': {
+      id: '/admin/project/dashboard'
+      path: '/admin/project/dashboard'
+      fullPath: '/admin/project/dashboard'
+      preLoaderRoute: typeof AdminProjectDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/project/sprints': {
+      id: '/admin/project/sprints'
+      path: '/admin/project/sprints'
+      fullPath: '/admin/project/sprints'
+      preLoaderRoute: typeof AdminProjectSprintsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/project/tasks': {
+      id: '/admin/project/tasks'
+      path: '/admin/project/tasks'
+      fullPath: '/admin/project/tasks'
+      preLoaderRoute: typeof AdminProjectTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/project/team': {
+      id: '/admin/project/team'
+      path: '/admin/project/team'
+      fullPath: '/admin/project/team'
+      preLoaderRoute: typeof AdminProjectTeamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/projects/apartment-commercial': {
@@ -2223,6 +2742,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminSocialIntegrationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/users/staff': {
+      id: '/admin/users/staff'
+      path: '/admin/users/staff'
+      fullPath: '/admin/users/staff'
+      preLoaderRoute: typeof AdminUsersStaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/users/team-leader': {
+      id: '/admin/users/team-leader'
+      path: '/admin/users/team-leader'
+      fullPath: '/admin/users/team-leader'
+      preLoaderRoute: typeof AdminUsersTeamLeaderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/superadmin/leads/': {
       id: '/superadmin/leads/'
       path: '/superadmin/leads'
@@ -2391,6 +2924,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminProjectsApartmentCommercialListRouteImport
       parentRoute: typeof AdminProjectsApartmentCommercialRoute
     }
+    '/admin/users/staff/earn': {
+      id: '/admin/users/staff/earn'
+      path: '/earn'
+      fullPath: '/admin/users/staff/earn'
+      preLoaderRoute: typeof AdminUsersStaffEarnRouteImport
+      parentRoute: typeof AdminUsersStaffRoute
+    }
+    '/admin/users/staff/incentives': {
+      id: '/admin/users/staff/incentives'
+      path: '/incentives'
+      fullPath: '/admin/users/staff/incentives'
+      preLoaderRoute: typeof AdminUsersStaffIncentivesRouteImport
+      parentRoute: typeof AdminUsersStaffRoute
+    }
   }
 }
 
@@ -2421,6 +2968,20 @@ const AdminProjectsApartmentCommercialRouteWithChildren =
     AdminProjectsApartmentCommercialRouteChildren,
   )
 
+interface AdminUsersStaffRouteChildren {
+  AdminUsersStaffEarnRoute: typeof AdminUsersStaffEarnRoute
+  AdminUsersStaffIncentivesRoute: typeof AdminUsersStaffIncentivesRoute
+}
+
+const AdminUsersStaffRouteChildren: AdminUsersStaffRouteChildren = {
+  AdminUsersStaffEarnRoute: AdminUsersStaffEarnRoute,
+  AdminUsersStaffIncentivesRoute: AdminUsersStaffIncentivesRoute,
+}
+
+const AdminUsersStaffRouteWithChildren = AdminUsersStaffRoute._addFileChildren(
+  AdminUsersStaffRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookingsRoute: BookingsRoute,
@@ -2448,7 +3009,9 @@ const rootRouteChildren: RootRouteChildren = {
   TasksRoute: TasksRoute,
   TeamRoute: TeamRoute,
   UsersRolesRoute: UsersRolesRoute,
+  AdminAddSellRoute: AdminAddSellRoute,
   AdminDashboardRoute: AdminDashboardRoute,
+  AdminTimesheetRoute: AdminTimesheetRoute,
   StaffDashboardRoute: StaffDashboardRoute,
   StaffLeadsRoute: StaffLeadsRoute,
   SuperadminAddSellRoute: SuperadminAddSellRoute,
@@ -2467,8 +3030,20 @@ const rootRouteChildren: RootRouteChildren = {
   AdminCallSmsLeadAssignRoute: AdminCallSmsLeadAssignRoute,
   AdminCrmBookingDisbursementRoute: AdminCrmBookingDisbursementRoute,
   AdminCrmBookingDraftTemplateRoute: AdminCrmBookingDraftTemplateRoute,
+  AdminLeadsReportInterestedRoute: AdminLeadsReportInterestedRoute,
+  AdminLeadsReportLostRoute: AdminLeadsReportLostRoute,
+  AdminLeadsReportNotInterestedRoute: AdminLeadsReportNotInterestedRoute,
+  AdminLeadsReportNotPickedRoute: AdminLeadsReportNotPickedRoute,
+  AdminLeadsReportOtherLocationRoute: AdminLeadsReportOtherLocationRoute,
+  AdminLeadsReportTotalEarningRoute: AdminLeadsReportTotalEarningRoute,
+  AdminLeadsReportTotalLeadsRoute: AdminLeadsReportTotalLeadsRoute,
+  AdminLeadsReportVisitRoute: AdminLeadsReportVisitRoute,
   AdminLeadsAssignmentRoute: AdminLeadsAssignmentRoute,
   AdminLeadsTimelineRoute: AdminLeadsTimelineRoute,
+  AdminMarketingFacebookRoute: AdminMarketingFacebookRoute,
+  AdminMarketingGoogleRoute: AdminMarketingGoogleRoute,
+  AdminMarketingLinkedinRoute: AdminMarketingLinkedinRoute,
+  AdminMarketingWhatsappRoute: AdminMarketingWhatsappRoute,
   AdminMastersBdayAnnivRoute: AdminMastersBdayAnnivRoute,
   AdminMastersBrokerRoute: AdminMastersBrokerRoute,
   AdminMastersBudgetRoute: AdminMastersBudgetRoute,
@@ -2487,6 +3062,15 @@ const rootRouteChildren: RootRouteChildren = {
   AdminPostSalesDayBookRoute: AdminPostSalesDayBookRoute,
   AdminPostSalesLoanProgressRoute: AdminPostSalesLoanProgressRoute,
   AdminPostSalesProjectDemandRoute: AdminPostSalesProjectDemandRoute,
+  AdminProductivityAssociatesRoute: AdminProductivityAssociatesRoute,
+  AdminProductivityStaffRoute: AdminProductivityStaffRoute,
+  AdminProductivityTeamLeaderRoute: AdminProductivityTeamLeaderRoute,
+  AdminProjectMileStoneRoute: AdminProjectMileStoneRoute,
+  AdminProjectAllRoute: AdminProjectAllRoute,
+  AdminProjectDashboardRoute: AdminProjectDashboardRoute,
+  AdminProjectSprintsRoute: AdminProjectSprintsRoute,
+  AdminProjectTasksRoute: AdminProjectTasksRoute,
+  AdminProjectTeamRoute: AdminProjectTeamRoute,
   AdminProjectsApartmentCommercialRoute:
     AdminProjectsApartmentCommercialRouteWithChildren,
   AdminProjectsFacebookFormMapRoute: AdminProjectsFacebookFormMapRoute,
@@ -2516,6 +3100,8 @@ const rootRouteChildren: RootRouteChildren = {
   AdminSettingsWhatsappScheduleRoute: AdminSettingsWhatsappScheduleRoute,
   AdminSocialExternalResourceRoute: AdminSocialExternalResourceRoute,
   AdminSocialIntegrationRoute: AdminSocialIntegrationRoute,
+  AdminUsersStaffRoute: AdminUsersStaffRouteWithChildren,
+  AdminUsersTeamLeaderRoute: AdminUsersTeamLeaderRoute,
   SuperadminLeadsFollowupsRoute: SuperadminLeadsFollowupsRoute,
   SuperadminLeadsHistoryRoute: SuperadminLeadsHistoryRoute,
   SuperadminLeadsImportRoute: SuperadminLeadsImportRoute,

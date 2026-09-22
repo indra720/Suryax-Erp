@@ -4,8 +4,22 @@ import { navSections, type NavItem } from "@/lib/erp/nav";
 import { cn } from "@/lib/utils";
 import promo from "@/assets/promo-villa.jpg";
 import logo from "../../assets/logo.png";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useAuth } from "@/lib/services/auth";
+
+import {
+  Collapsible,
+  CollapsibleContent,
+  CollapsibleTrigger,
+} from "@/components/ui/collapsible";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 function NavLinkItem({
   item,
@@ -18,40 +32,91 @@ function NavLinkItem({
   collapsed: boolean;
   onCloseMobile: () => void;
 }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const hasChildren = item.items && item.items.length > 0;
+  const hasChildren = Boolean(item.items && item.items.length > 0);
   const active = item.url
     ? item.url === "/"
       ? pathname === "/"
       : pathname.startsWith(item.url)
     : item.items?.some((i) => (i.url ? pathname.startsWith(i.url) : false));
 
+  const [isOpen, setIsOpen] = useState(Boolean(active));
+
+  useEffect(() => {
+    if (active) {
+      setIsOpen(true);
+    }
+  }, [active]);
+
   if (hasChildren) {
+    if (collapsed) {
+      return (
+        <li className="list-none my-1">
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <button
+                type="button"
+                className={cn(
+                  "flex size-10 items-center justify-center rounded-[10px] text-sidebar-fg hover:bg-white/[0.07] mx-auto transition-colors",
+                  active && "bg-gradient-to-r from-[#331fa3] to-[#6732F2] text-white shadow-[0_0_10px_#6732F2]"
+                )}
+                title={item.title}
+              >
+                <item.icon className={cn("size-[18px]", active ? "text-white" : "text-sidebar-icon")} />
+              </button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent side="right" align="start" className="bg-[#1A1648] text-white border-white/10 min-w-[190px] p-1.5 shadow-2xl z-50">
+              <DropdownMenuLabel className="text-xs text-gray-400 font-semibold px-2 py-1 uppercase tracking-wider">
+                {item.title}
+              </DropdownMenuLabel>
+              <DropdownMenuSeparator className="bg-white/10 my-1" />
+              {item.items!.map((child) => (
+                <DropdownMenuItem key={child.title || child.url} asChild>
+                  <Link
+                    to={child.url || "#"}
+                    onClick={onCloseMobile}
+                    className="flex items-center gap-2 px-2.5 py-1.5 text-xs text-gray-200 hover:text-white hover:bg-white/10 rounded-md cursor-pointer"
+                  >
+                    {child.icon && <child.icon className="size-3.5 shrink-0" />}
+                    <span className="truncate">{child.title}</span>
+                  </Link>
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </li>
+      );
+    }
+
     return (
-      <li className="space-y-[3px]">
+      <li className="list-none space-y-1">
         <button
-          onClick={() => setIsOpen(!isOpen)}
+          type="button"
+          onClick={() => setIsOpen((prev) => !prev)}
           className={cn(
-            "flex w-full h-[40px] items-center gap-2.5 rounded-[10px] px-2.5 text-[13.5px] font-medium transition-colors text-sidebar-fg hover:bg-white/[0.07]",
-            collapsed && "justify-center px-0",
+            "flex w-full h-[40px] items-center gap-2.5 rounded-[10px] px-2.5 text-[13.5px] font-medium transition-colors text-sidebar-fg hover:bg-white/[0.07] select-none cursor-pointer",
+            active && !isOpen && "bg-white/[0.08] text-white",
+            isOpen && "text-white"
           )}
         >
-          <item.icon className={cn("size-[17px] shrink-0", active ? "text-white" : "text-sidebar-icon")} />
-          {!collapsed && (
-            <>
-              <span className="truncate">{item.title}</span>
-              {isOpen ? (
-                <ChevronDown className="ml-auto size-3.5" />
-              ) : (
-                <ChevronRight className="ml-auto size-3.5" />
-              )}
-            </>
-          )}
+          <item.icon className={cn("size-[17px] shrink-0", active || isOpen ? "text-white" : "text-sidebar-icon")} />
+          <span className="truncate flex-1 text-left">{item.title}</span>
+          <ChevronDown
+            className={cn(
+              "size-3.5 transition-transform duration-200 shrink-0 text-sidebar-icon",
+              isOpen && "rotate-180 text-white"
+            )}
+          />
         </button>
-        {isOpen && !collapsed && (
-          <ul className="pl-4 space-y-[2px]">
+        {isOpen && (
+          <ul className="pl-3 mt-1 space-y-[2px] border-l border-white/15 ml-4">
             {item.items!.map((child) => (
-              <NavLinkItem key={child.title} item={child} pathname={pathname} collapsed={collapsed} onCloseMobile={onCloseMobile} />
+              <NavLinkItem
+                key={child.title || child.url}
+                item={child}
+                pathname={pathname}
+                collapsed={collapsed}
+                onCloseMobile={onCloseMobile}
+              />
             ))}
           </ul>
         )}
@@ -60,9 +125,9 @@ function NavLinkItem({
   }
 
   return (
-    <li>
+    <li className="list-none">
       <Link
-        to={item.url!}
+        to={item.url || "#"}
         onClick={onCloseMobile}
         title={item.title}
         className={cn(
@@ -75,9 +140,7 @@ function NavLinkItem({
       >
         <item.icon className={cn("size-[17px] shrink-0", active ? "text-white" : "text-sidebar-icon")} />
         {!collapsed && (
-          <>
-            <span className="truncate">{item.title}</span>
-          </>
+          <span className="truncate">{item.title}</span>
         )}
       </Link>
     </li>
@@ -96,23 +159,44 @@ export function Sidebar({
   const pathname = useRouterState({ select: (s) => s.location.pathname });
   const width = collapsed ? "w-[72px]" : "w-[240px]";
   const { user } = useAuth();
-  const isAdmin = user?.role === "admin";
+  // Strict role-based isolation:
+  const isSuperAdmin = pathname.startsWith("/superadmin") || (user?.role === "superadmin" && !pathname.startsWith("/admin"));
+  const isAdmin = !isSuperAdmin && (pathname.startsWith("/admin") || user?.role === "admin");
+  const isStaff = !isSuperAdmin && !isAdmin && (pathname.startsWith("/staff") || user?.role === "staff");
 
   const computedSections = navSections
     .filter((section) => {
-      // Hide Superadmin Controls from Admin
-      if (isAdmin && section.label === "Superadmin Controls") {
+      // 1. Hide Superadmin Controls from Admin and other non-superadmin roles
+      if (!isSuperAdmin && section.label === "Superadmin Controls") {
+        return false;
+      }
+      // 2. Hide Admin CRM Controls from Superadmin and Staff
+      if (isSuperAdmin && section.label === "Admin CRM Controls") {
+        return false;
+      }
+      if (isStaff && (section.label === "Admin CRM Controls" || section.label === "Superadmin Controls")) {
         return false;
       }
       return true;
     })
     .map((section) => {
-      // If admin, point the primary Dashboard link to /admin/dashboard
-      if (isAdmin && !section.label) {
+      // Route the primary top dashboard link strictly according to role
+      if (!section.label) {
+        let dashboardTitle = "Admin Dashboard";
+        let dashboardUrl = "/admin/dashboard";
+
+        if (isSuperAdmin) {
+          dashboardTitle = "Superadmin Dashboard";
+          dashboardUrl = "/superadmin/dashboard";
+        } else if (isStaff) {
+          dashboardTitle = "Staff Dashboard";
+          dashboardUrl = "/staff/dashboard";
+        }
+
         return {
           ...section,
           items: section.items.map((it) =>
-            it.title === "Dashboard" ? { ...it, url: "/admin/dashboard" } : it
+            it.title.includes("Dashboard") ? { ...it, title: dashboardTitle, url: dashboardUrl } : it
           ),
         };
       }
