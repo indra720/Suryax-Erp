@@ -160,21 +160,62 @@ export function Sidebar({
   const width = collapsed ? "w-[72px]" : "w-[240px]";
   const { user } = useAuth();
   // Strict role-based isolation:
-  const isSuperAdmin = pathname.startsWith("/superadmin") || (user?.role === "superadmin" && !pathname.startsWith("/admin"));
-  const isAdmin = !isSuperAdmin && (pathname.startsWith("/admin") || user?.role === "admin");
-  const isStaff = !isSuperAdmin && !isAdmin && (pathname.startsWith("/staff") || user?.role === "staff");
+  const isHr = pathname.startsWith("/hr-dashboard") || (user?.role === "hr" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin") && !pathname.startsWith("/team-leader") && !pathname.startsWith("/staff"));
+  const isSuperAdmin = !isHr && (pathname.startsWith("/superadmin") || (user?.role === "superadmin" && !pathname.startsWith("/admin") && !pathname.startsWith("/team-leader")));
+  const isTeamLeader = !isHr && (pathname.startsWith("/team-leader") || (user?.role === "team-leader" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin")));
+  const isAdmin = !isHr && !isSuperAdmin && !isTeamLeader && (pathname.startsWith("/admin") || user?.role === "admin");
+  const isStaff = !isHr && !isSuperAdmin && !isAdmin && !isTeamLeader && (pathname.startsWith("/staff") || user?.role === "staff");
 
   const computedSections = navSections
     .filter((section) => {
-      // 1. Hide Superadmin Controls from Admin and other non-superadmin roles
+      // 1. HR isolation: when HR, see ONLY top dashboard and HR Portal
+      if (isHr) {
+        if (!section.label) return true;
+        return section.label === "HR Portal";
+      }
+
+      // 2. Hide HR Portal from other roles
+      if (section.label === "HR Portal") {
+        return false;
+      }
+
+      // 3. Staff isolation: when Staff, see ONLY top dashboard and Staff Portal
+      if (isStaff) {
+        if (!section.label) return true;
+        return section.label === "Staff Portal";
+      }
+
+      // 4. Hide Staff Portal from all non-staff roles
+      if (section.label === "Staff Portal") {
+        return false;
+      }
+
+      // 5. Team Leader: see ONLY Team Leader Portal and non-admin controls
+      if (isTeamLeader) {
+        if (
+          section.label === "Admin CRM Controls" ||
+          section.label === "Superadmin Controls" ||
+          section.label === "Telecalling CRM" ||
+          section.label === "Masters" ||
+          section.label === "CRM" ||
+          section.label === "Settings/Others"
+        ) {
+          return false;
+        }
+        return true;
+      }
+
+      // 6. Hide Team Leader Portal from Admin, Superadmin
+      if (section.label === "Team Leader Portal") {
+        return false;
+      }
+
+      // 7. Hide Superadmin Controls from Admin and other non-superadmin roles
       if (!isSuperAdmin && section.label === "Superadmin Controls") {
         return false;
       }
-      // 2. Hide Admin CRM Controls from Superadmin and Staff
+      // 8. Hide Admin CRM Controls from Superadmin
       if (isSuperAdmin && section.label === "Admin CRM Controls") {
-        return false;
-      }
-      if (isStaff && (section.label === "Admin CRM Controls" || section.label === "Superadmin Controls")) {
         return false;
       }
       return true;
@@ -188,9 +229,15 @@ export function Sidebar({
         if (isSuperAdmin) {
           dashboardTitle = "Superadmin Dashboard";
           dashboardUrl = "/superadmin/dashboard";
+        } else if (isTeamLeader) {
+          dashboardTitle = "Team Leader Dashboard";
+          dashboardUrl = "/team-leader";
         } else if (isStaff) {
           dashboardTitle = "Staff Dashboard";
           dashboardUrl = "/staff/dashboard";
+        } else if (isHr) {
+          dashboardTitle = "HR Dashboard";
+          dashboardUrl = "/hr-dashboard";
         }
 
         return {
