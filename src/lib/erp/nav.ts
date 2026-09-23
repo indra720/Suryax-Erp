@@ -31,6 +31,8 @@ import {
   Clock,
   FilePlus,
   DollarSign,
+  FolderKanban,
+  FileCheck,
   type LucideIcon,
 } from "lucide-react";
 
@@ -161,6 +163,233 @@ export const navSections: NavSection[] = [
         title: "Audit Timesheet & Logs",
         url: "/superadmin/timesheet",
         icon: CalendarDays,
+      },
+      {
+        title: "Projects (PMS)",
+        icon: Building,
+        items: [
+          { title: "Dashboard", url: "/superadmin/project/dashboard", icon: LayoutDashboard },
+          { title: "Projects", url: "/superadmin/project/all", icon: Building },
+          { title: "Sprints", url: "/superadmin/project/sprints", icon: Clock },
+          { title: "MileStone", url: "/superadmin/project/MileStone", icon: CheckCircle },
+          { title: "Tasks", url: "/superadmin/project/tasks", icon: ListChecks },
+          { title: "Team", url: "/superadmin/project/team", icon: Users },
+        ],
+      },
+    ],
+  },
+  {
+    label: "Team Leader Portal",
+    items: [
+      {
+        title: "Projects",
+        icon: Building,
+        items: [
+          { title: "Dashboard", url: "/team-leader/project/dashboard", icon: LayoutDashboard },
+          { title: "Projects", url: "/team-leader/project/all", icon: Building },
+          { title: "Sprints", url: "/team-leader/project/sprints", icon: Clock },
+          { title: "MileStone", url: "/team-leader/project/MileStone", icon: CheckCircle },
+          { title: "Tasks", url: "/team-leader/project/tasks", icon: ListChecks },
+          { title: "Team", url: "/team-leader/project/team", icon: Users },
+        ],
+      },
+      {
+        title: "Productivity",
+        icon: BarChart3,
+        items: [
+          { title: "Staff Productivity", url: "/team-leader/productivity/staff", icon: PhoneCall },
+          { title: "Associates Productivity", url: "/team-leader/productivity/associates", icon: UsersRound },
+        ],
+      },
+      {
+        title: "Leads",
+        url: "/team-leader/leads",
+        icon: FolderOpen,
+      },
+      {
+        title: "Leads Report",
+        icon: FileText,
+        items: [
+          { title: "Today Followups", url: "/team-leader/leads-report/today-followups", icon: Clock },
+          { title: "Pending Followups", url: "/team-leader/leads-report/pending-followups", icon: History },
+          { title: "Tomorrow Followups", url: "/team-leader/leads-report/tomorrow-followups", icon: CalendarDays },
+          { title: "Interested", url: "/team-leader/leads-report/interested", icon: CheckCircle },
+          { title: "Visit", url: "/team-leader/leads-report/visit", icon: Eye },
+        ],
+      },
+      {
+        title: "Marketing",
+        icon: Megaphone,
+        items: [
+          { title: "WhatsApp", url: "/team-leader/marketing/whatsapp", icon: MessageSquare },
+          { title: "Google", url: "/team-leader/marketing/google", icon: Megaphone },
+          { title: "Facebook", url: "/team-leader/marketing/facebook", icon: Megaphone },
+          { title: "LinkedIn", url: "/team-leader/marketing/linkedin", icon: Megaphone },
+        ],
+      },
+      {
+        title: "Time Sheet",
+        url: "/team-leader/timesheet",
+        icon: CalendarDays,
+      },
+      {
+        title: "Add Sell",
+        url: "/team-leader/add-sell",
+        icon: FilePlus,
+      },
+    ],
+  },
+  {
+    label: "Staff Portal",
+    items: [
+      {
+        title: "Staff Dashboard",
+        url: "/staff/dashboard",
+        icon: LayoutDashboard,
+      },
+      {
+        title: "Projects",
+        icon: FolderKanban,
+        items: [
+          { title: "My Projects", url: "/staff/projects", icon: FolderOpen },
+          { title: "My Tasks", url: "/staff/tasks", icon: ListChecks },
+        ],
+      },
+      {
+        title: "Productivity",
+        url: "/staff/productivity",
+        icon: BarChart3,
+      },
+      {
+        title: "Incentives",
+        url: "/staff/incentives",
+        icon: IndianRupee,
+      },
+      {
+        title: "Earn & Attendance",
+        url: "/staff/earn",
+        icon: CalendarDays,
+      },
+      {
+        title: "Calling Leads",
+        url: "/staff/leads",
+        icon: PhoneCall,
+      },
+      {
+        title: "Leads Report",
+        icon: FileText,
+        items: [
+          { title: "Total Leads", url: "/staff/reports/total-leads", icon: Building2 },
+          { title: "Interested", url: "/staff/reports/interested", icon: CheckCircle },
+          { title: "Not Interested", url: "/staff/reports/not-interested", icon: XCircle },
+          { title: "Visit Scheduled", url: "/staff/reports/visit", icon: Eye },
+          { title: "Not Picked", url: "/staff/reports/not-picked", icon: PhoneCall },
+          { title: "Other Location", url: "/staff/reports/other-location", icon: MapPin },
+          { title: "Today Followups", url: "/staff/reports/today-followups", icon: Clock },
+          { title: "Tomorrow Followups", url: "/staff/reports/tomorrow-followups", icon: CalendarDays },
+          { title: "Pending Followups", url: "/staff/reports/pending-followups", icon: History },
+        ],
+      },
+      {
+        title: "Marketing",
+        icon: Megaphone,
+        items: [
+          { title: "WhatsApp", url: "/staff/marketing/whatsapp", icon: MessageSquare },
+          { title: "Google", url: "/staff/marketing/google", icon: Megaphone },
+          { title: "Facebook", url: "/staff/marketing/facebook", icon: Megaphone },
+          { title: "LinkedIn", url: "/staff/marketing/linkedin", icon: Megaphone },
+        ],
+      },
+      {
+        title: "Time Sheet",
+        url: "/staff/timesheet",
+        icon: Clock,
+      },
+      {
+        title: "HR Overview",
+        url: "/staff/overview",
+        icon: UsersRound,
+      },
+    ],
+  },
+  {
+    label: "HR Portal",
+    items: [
+      {
+        title: "HR Dashboard",
+        url: "/hr-dashboard",
+        icon: LayoutDashboard,
+      },
+      {
+        title: "Employees",
+        icon: Users,
+        items: [
+          { title: "All Employees", url: "/hr-dashboard/employees/all", icon: Users },
+          { title: "Onboarding", url: "/hr-dashboard/employees/onboarding", icon: UserCheck },
+          { title: "ID Studio", url: "/hr-dashboard/employees/id-studio", icon: FileText },
+          { title: "Asset Management", url: "/hr-dashboard/employees/manage-assets", icon: Boxes },
+        ],
+      },
+      {
+        title: "Attendance",
+        icon: Clock,
+        items: [
+          { title: "Attendance List", url: "/hr-dashboard/attendance/list", icon: ListChecks },
+          { title: "Attendance Calendar", url: "/hr-dashboard/attendance/calendar", icon: CalendarDays },
+          { title: "Activity Logs", url: "/hr-dashboard/attendance/logs", icon: History },
+          { title: "Leave Requests", url: "/hr-dashboard/attendance/leave-requests", icon: CheckCircle },
+          { title: "Leave Type", url: "/hr-dashboard/attendance/leave-type", icon: FileText },
+          { title: "Adjust Paid Leave", url: "/hr-dashboard/attendance/adjust-leave", icon: FileCheck },
+        ],
+      },
+      {
+        title: "Manual Attendance",
+        url: "/hr-dashboard/manual-attendance",
+        icon: ListChecks,
+      },
+      {
+        title: "Tasks & Workflows",
+        icon: FolderKanban,
+        items: [
+          { title: "Task Board", url: "/hr-dashboard/tasks/board", icon: ListChecks },
+          { title: "Face Update Requests", url: "/hr-dashboard/tasks/face-updates", icon: UserCheck },
+        ],
+      },
+      {
+        title: "Finance & Payroll",
+        icon: IndianRupee,
+        items: [
+          { title: "Employee Salary", url: "/hr-dashboard/finance/salary", icon: IndianRupee },
+          { title: "Loan Requests", url: "/hr-dashboard/finance/loans", icon: Wallet },
+          { title: "Reimbursements", url: "/hr-dashboard/finance/reimbursements", icon: Receipt },
+          { title: "Payslips", url: "/hr-dashboard/finance/payslips", icon: FileText },
+        ],
+      },
+      {
+        title: "Shift Management",
+        icon: Clock,
+        items: [
+          { title: "Custom Shifts", url: "/hr-dashboard/shifts/custom", icon: Clock },
+          { title: "Shift Assignment", url: "/hr-dashboard/shifts/assignment", icon: CalendarDays },
+        ],
+      },
+      {
+        title: "Company Settings",
+        icon: Building,
+        items: [
+          { title: "Holidays Calendar", url: "/hr-dashboard/settings/holidays", icon: CalendarDays },
+          { title: "Rules & Regulations", url: "/hr-dashboard/settings/rules", icon: ShieldCheck },
+        ],
+      },
+      {
+        title: "Support Tickets",
+        url: "/hr-dashboard/support/tickets",
+        icon: MessageSquare,
+      },
+      {
+        title: "HR Profile",
+        url: "/hr-dashboard/profile",
+        icon: UsersRound,
       },
     ],
   },

@@ -62,8 +62,8 @@ export function Navbar({ onToggleSidebar }: { onToggleSidebar: () => void }) {
           if (isSuperAdmin && s.label === "Admin CRM Controls") return false;
           return true;
         })
-        .flatMap((s) => s.items)
-        .filter((i) => i.title.toLowerCase().includes(query.toLowerCase()))
+        .flatMap((s) => s.items.flatMap((i) => (i.items ? i.items : [i])))
+        .filter((i) => i.url && i.title.toLowerCase().includes(query.toLowerCase()))
         .slice(0, 6)
     : [];
 

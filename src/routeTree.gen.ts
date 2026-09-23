@@ -38,12 +38,29 @@ import { Route as UsersRolesRouteImport } from './routes/users-roles'
 import { Route as AdminAddSellRouteImport } from './routes/admin/add-sell'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminTimesheetRouteImport } from './routes/admin/timesheet'
+import { Route as HrDashboardIndexRouteImport } from './routes/hr-dashboard/index'
 import { Route as StaffDashboardRouteImport } from './routes/staff/dashboard'
+import { Route as StaffEarnRouteImport } from './routes/staff/earn'
+import { Route as StaffIncentivesRouteImport } from './routes/staff/incentives'
 import { Route as StaffLeadsRouteImport } from './routes/staff/leads'
+import { Route as StaffNotificationsRouteImport } from './routes/staff/notifications'
+import { Route as StaffOverviewRouteImport } from './routes/staff/overview'
+import { Route as StaffProductivityRouteImport } from './routes/staff/productivity'
+import { Route as StaffProfileRouteImport } from './routes/staff/profile'
+import { Route as StaffProjectsRouteImport } from './routes/staff/projects'
+import { Route as StaffTasksRouteImport } from './routes/staff/tasks'
+import { Route as StaffTimesheetRouteImport } from './routes/staff/timesheet'
 import { Route as SuperadminAddSellRouteImport } from './routes/superadmin/add-sell'
 import { Route as SuperadminDashboardRouteImport } from './routes/superadmin/dashboard'
 import { Route as SuperadminManageUsersRouteImport } from './routes/superadmin/manage-users'
 import { Route as SuperadminTimesheetRouteImport } from './routes/superadmin/timesheet'
+import { Route as TeamLeaderIndexRouteImport } from './routes/team-leader/index'
+import { Route as TeamLeaderAddSellRouteImport } from './routes/team-leader/add-sell'
+import { Route as TeamLeaderEarnRouteImport } from './routes/team-leader/earn'
+import { Route as TeamLeaderIncentivesRouteImport } from './routes/team-leader/incentives'
+import { Route as TeamLeaderNotificationsRouteImport } from './routes/team-leader/notifications'
+import { Route as TeamLeaderProfileRouteImport } from './routes/team-leader/profile'
+import { Route as TeamLeaderTimesheetRouteImport } from './routes/team-leader/timesheet'
 import { Route as AdminAboutPrivacyRouteImport } from './routes/admin/about/privacy'
 import { Route as AdminAboutTermsRouteImport } from './routes/admin/about/terms'
 import { Route as AdminAssociatesAttendanceRouteImport } from './routes/admin/associates/attendance'
@@ -126,10 +143,32 @@ import { Route as AdminSocialExternalResourceRouteImport } from './routes/admin/
 import { Route as AdminSocialIntegrationRouteImport } from './routes/admin/social/integration'
 import { Route as AdminUsersStaffRouteImport } from './routes/admin/users/staff'
 import { Route as AdminUsersTeamLeaderRouteImport } from './routes/admin/users/team-leader'
+import { Route as StaffMarketingFacebookRouteImport } from './routes/staff/marketing/facebook'
+import { Route as StaffMarketingGoogleRouteImport } from './routes/staff/marketing/google'
+import { Route as StaffMarketingLinkedinRouteImport } from './routes/staff/marketing/linkedin'
+import { Route as StaffMarketingWhatsappRouteImport } from './routes/staff/marketing/whatsapp'
+import { Route as StaffOverviewAttendanceRouteImport } from './routes/staff/overview/attendance'
+import { Route as StaffOverviewLeaveRouteImport } from './routes/staff/overview/leave'
+import { Route as StaffOverviewLocationRouteImport } from './routes/staff/overview/location'
+import { Route as StaffReportsInterestedRouteImport } from './routes/staff/reports/interested'
+import { Route as StaffReportsNotInterestedRouteImport } from './routes/staff/reports/not-interested'
+import { Route as StaffReportsNotPickedRouteImport } from './routes/staff/reports/not-picked'
+import { Route as StaffReportsOtherLocationRouteImport } from './routes/staff/reports/other-location'
+import { Route as StaffReportsPendingFollowupsRouteImport } from './routes/staff/reports/pending-followups'
+import { Route as StaffReportsTodayFollowupsRouteImport } from './routes/staff/reports/today-followups'
+import { Route as StaffReportsTomorrowFollowupsRouteImport } from './routes/staff/reports/tomorrow-followups'
+import { Route as StaffReportsTotalLeadsRouteImport } from './routes/staff/reports/total-leads'
+import { Route as StaffReportsVisitRouteImport } from './routes/staff/reports/visit'
 import { Route as SuperadminLeadsIndexRouteImport } from './routes/superadmin/leads/index'
 import { Route as SuperadminLeadsFollowupsRouteImport } from './routes/superadmin/leads/followups'
 import { Route as SuperadminLeadsHistoryRouteImport } from './routes/superadmin/leads/history'
 import { Route as SuperadminLeadsImportRouteImport } from './routes/superadmin/leads/import'
+import { Route as SuperadminProjectMileStoneRouteImport } from './routes/superadmin/project/MileStone'
+import { Route as SuperadminProjectAllRouteImport } from './routes/superadmin/project/all'
+import { Route as SuperadminProjectDashboardRouteImport } from './routes/superadmin/project/dashboard'
+import { Route as SuperadminProjectSprintsRouteImport } from './routes/superadmin/project/sprints'
+import { Route as SuperadminProjectTasksRouteImport } from './routes/superadmin/project/tasks'
+import { Route as SuperadminProjectTeamRouteImport } from './routes/superadmin/project/team'
 import { Route as SuperadminReportsIndexRouteImport } from './routes/superadmin/reports/index'
 import { Route as SuperadminReportsEarningsRouteImport } from './routes/superadmin/reports/earnings'
 import { Route as SuperadminUsersAdminRouteImport } from './routes/superadmin/users/admin'
@@ -140,6 +179,33 @@ import { Route as SuperadminUsersItStaffRouteImport } from './routes/superadmin/
 import { Route as SuperadminUsersStaffRouteImport } from './routes/superadmin/users/staff'
 import { Route as SuperadminUsersStaffEarnRouteImport } from './routes/superadmin/users/staff-earn'
 import { Route as SuperadminUsersTeamLeaderRouteImport } from './routes/superadmin/users/team-leader'
+import { Route as TeamLeaderLeadHistoryIdRouteImport } from './routes/team-leader/lead-history/$id'
+import { Route as TeamLeaderLeadsReportInterestedRouteImport } from './routes/team-leader/leads-report/interested'
+import { Route as TeamLeaderLeadsReportPendingFollowupsRouteImport } from './routes/team-leader/leads-report/pending-followups'
+import { Route as TeamLeaderLeadsReportTodayFollowupsRouteImport } from './routes/team-leader/leads-report/today-followups'
+import { Route as TeamLeaderLeadsReportTomorrowFollowupsRouteImport } from './routes/team-leader/leads-report/tomorrow-followups'
+import { Route as TeamLeaderLeadsReportVisitRouteImport } from './routes/team-leader/leads-report/visit'
+import { Route as TeamLeaderLeadsIndexRouteImport } from './routes/team-leader/leads/index'
+import { Route as TeamLeaderLeadsStaffRouteImport } from './routes/team-leader/leads/staff'
+import { Route as TeamLeaderMarketingFacebookRouteImport } from './routes/team-leader/marketing/facebook'
+import { Route as TeamLeaderMarketingGoogleRouteImport } from './routes/team-leader/marketing/google'
+import { Route as TeamLeaderMarketingLinkedinRouteImport } from './routes/team-leader/marketing/linkedin'
+import { Route as TeamLeaderMarketingWhatsappRouteImport } from './routes/team-leader/marketing/whatsapp'
+import { Route as TeamLeaderProductivityAssociatesRouteImport } from './routes/team-leader/productivity/associates'
+import { Route as TeamLeaderProductivityStaffRouteImport } from './routes/team-leader/productivity/staff'
+import { Route as TeamLeaderProjectMileStoneRouteImport } from './routes/team-leader/project/MileStone'
+import { Route as TeamLeaderProjectAllRouteImport } from './routes/team-leader/project/all'
+import { Route as TeamLeaderProjectDashboardRouteImport } from './routes/team-leader/project/dashboard'
+import { Route as TeamLeaderProjectSprintsRouteImport } from './routes/team-leader/project/sprints'
+import { Route as TeamLeaderProjectTasksRouteImport } from './routes/team-leader/project/tasks'
+import { Route as TeamLeaderProjectTeamRouteImport } from './routes/team-leader/project/team'
+import { Route as TeamLeaderReportsInterestedRouteImport } from './routes/team-leader/reports/interested'
+import { Route as TeamLeaderReportsLostLeadsRouteImport } from './routes/team-leader/reports/lost-leads'
+import { Route as TeamLeaderReportsNotInterestedRouteImport } from './routes/team-leader/reports/not-interested'
+import { Route as TeamLeaderReportsNotPickedRouteImport } from './routes/team-leader/reports/not-picked'
+import { Route as TeamLeaderReportsOtherLocationRouteImport } from './routes/team-leader/reports/other-location'
+import { Route as TeamLeaderReportsTotalLeadsRouteImport } from './routes/team-leader/reports/total-leads'
+import { Route as TeamLeaderReportsVisitRouteImport } from './routes/team-leader/reports/visit'
 import { Route as AdminPostSalesAssociatePaymentsAdvanceAdjustmentRouteImport } from './routes/admin/post-sales/associate-payments/advance-adjustment'
 import { Route as AdminPostSalesAssociatePaymentsGenerateCommissionRouteImport } from './routes/admin/post-sales/associate-payments/generate-commission'
 import { Route as AdminPostSalesAssociatePaymentsListRouteImport } from './routes/admin/post-sales/associate-payments/list'
@@ -298,14 +364,64 @@ const AdminTimesheetRoute = AdminTimesheetRouteImport.update({
   path: '/admin/timesheet',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HrDashboardIndexRoute = HrDashboardIndexRouteImport.update({
+  id: '/hr-dashboard/',
+  path: '/hr-dashboard/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StaffDashboardRoute = StaffDashboardRouteImport.update({
   id: '/staff/dashboard',
   path: '/staff/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StaffEarnRoute = StaffEarnRouteImport.update({
+  id: '/staff/earn',
+  path: '/staff/earn',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffIncentivesRoute = StaffIncentivesRouteImport.update({
+  id: '/staff/incentives',
+  path: '/staff/incentives',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const StaffLeadsRoute = StaffLeadsRouteImport.update({
   id: '/staff/leads',
   path: '/staff/leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffNotificationsRoute = StaffNotificationsRouteImport.update({
+  id: '/staff/notifications',
+  path: '/staff/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffOverviewRoute = StaffOverviewRouteImport.update({
+  id: '/staff/overview',
+  path: '/staff/overview',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffProductivityRoute = StaffProductivityRouteImport.update({
+  id: '/staff/productivity',
+  path: '/staff/productivity',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffProfileRoute = StaffProfileRouteImport.update({
+  id: '/staff/profile',
+  path: '/staff/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffProjectsRoute = StaffProjectsRouteImport.update({
+  id: '/staff/projects',
+  path: '/staff/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffTasksRoute = StaffTasksRouteImport.update({
+  id: '/staff/tasks',
+  path: '/staff/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffTimesheetRoute = StaffTimesheetRouteImport.update({
+  id: '/staff/timesheet',
+  path: '/staff/timesheet',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SuperadminAddSellRoute = SuperadminAddSellRouteImport.update({
@@ -326,6 +442,41 @@ const SuperadminManageUsersRoute = SuperadminManageUsersRouteImport.update({
 const SuperadminTimesheetRoute = SuperadminTimesheetRouteImport.update({
   id: '/superadmin/timesheet',
   path: '/superadmin/timesheet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamLeaderIndexRoute = TeamLeaderIndexRouteImport.update({
+  id: '/team-leader/',
+  path: '/team-leader/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamLeaderAddSellRoute = TeamLeaderAddSellRouteImport.update({
+  id: '/team-leader/add-sell',
+  path: '/team-leader/add-sell',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamLeaderEarnRoute = TeamLeaderEarnRouteImport.update({
+  id: '/team-leader/earn',
+  path: '/team-leader/earn',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamLeaderIncentivesRoute = TeamLeaderIncentivesRouteImport.update({
+  id: '/team-leader/incentives',
+  path: '/team-leader/incentives',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamLeaderNotificationsRoute = TeamLeaderNotificationsRouteImport.update({
+  id: '/team-leader/notifications',
+  path: '/team-leader/notifications',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamLeaderProfileRoute = TeamLeaderProfileRouteImport.update({
+  id: '/team-leader/profile',
+  path: '/team-leader/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamLeaderTimesheetRoute = TeamLeaderTimesheetRouteImport.update({
+  id: '/team-leader/timesheet',
+  path: '/team-leader/timesheet',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AdminAboutPrivacyRoute = AdminAboutPrivacyRouteImport.update({
@@ -774,6 +925,91 @@ const AdminUsersTeamLeaderRoute = AdminUsersTeamLeaderRouteImport.update({
   path: '/admin/users/team-leader',
   getParentRoute: () => rootRouteImport,
 } as any)
+const StaffMarketingFacebookRoute = StaffMarketingFacebookRouteImport.update({
+  id: '/staff/marketing/facebook',
+  path: '/staff/marketing/facebook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffMarketingGoogleRoute = StaffMarketingGoogleRouteImport.update({
+  id: '/staff/marketing/google',
+  path: '/staff/marketing/google',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffMarketingLinkedinRoute = StaffMarketingLinkedinRouteImport.update({
+  id: '/staff/marketing/linkedin',
+  path: '/staff/marketing/linkedin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffMarketingWhatsappRoute = StaffMarketingWhatsappRouteImport.update({
+  id: '/staff/marketing/whatsapp',
+  path: '/staff/marketing/whatsapp',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffOverviewAttendanceRoute = StaffOverviewAttendanceRouteImport.update({
+  id: '/attendance',
+  path: '/attendance',
+  getParentRoute: () => StaffOverviewRoute,
+} as any)
+const StaffOverviewLeaveRoute = StaffOverviewLeaveRouteImport.update({
+  id: '/leave',
+  path: '/leave',
+  getParentRoute: () => StaffOverviewRoute,
+} as any)
+const StaffOverviewLocationRoute = StaffOverviewLocationRouteImport.update({
+  id: '/location',
+  path: '/location',
+  getParentRoute: () => StaffOverviewRoute,
+} as any)
+const StaffReportsInterestedRoute = StaffReportsInterestedRouteImport.update({
+  id: '/staff/reports/interested',
+  path: '/staff/reports/interested',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffReportsNotInterestedRoute =
+  StaffReportsNotInterestedRouteImport.update({
+    id: '/staff/reports/not-interested',
+    path: '/staff/reports/not-interested',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const StaffReportsNotPickedRoute = StaffReportsNotPickedRouteImport.update({
+  id: '/staff/reports/not-picked',
+  path: '/staff/reports/not-picked',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffReportsOtherLocationRoute =
+  StaffReportsOtherLocationRouteImport.update({
+    id: '/staff/reports/other-location',
+    path: '/staff/reports/other-location',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const StaffReportsPendingFollowupsRoute =
+  StaffReportsPendingFollowupsRouteImport.update({
+    id: '/staff/reports/pending-followups',
+    path: '/staff/reports/pending-followups',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const StaffReportsTodayFollowupsRoute =
+  StaffReportsTodayFollowupsRouteImport.update({
+    id: '/staff/reports/today-followups',
+    path: '/staff/reports/today-followups',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const StaffReportsTomorrowFollowupsRoute =
+  StaffReportsTomorrowFollowupsRouteImport.update({
+    id: '/staff/reports/tomorrow-followups',
+    path: '/staff/reports/tomorrow-followups',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const StaffReportsTotalLeadsRoute = StaffReportsTotalLeadsRouteImport.update({
+  id: '/staff/reports/total-leads',
+  path: '/staff/reports/total-leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StaffReportsVisitRoute = StaffReportsVisitRouteImport.update({
+  id: '/staff/reports/visit',
+  path: '/staff/reports/visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SuperadminLeadsIndexRoute = SuperadminLeadsIndexRouteImport.update({
   id: '/superadmin/leads/',
   path: '/superadmin/leads/',
@@ -793,6 +1029,39 @@ const SuperadminLeadsHistoryRoute = SuperadminLeadsHistoryRouteImport.update({
 const SuperadminLeadsImportRoute = SuperadminLeadsImportRouteImport.update({
   id: '/superadmin/leads/import',
   path: '/superadmin/leads/import',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminProjectMileStoneRoute =
+  SuperadminProjectMileStoneRouteImport.update({
+    id: '/superadmin/project/MileStone',
+    path: '/superadmin/project/MileStone',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SuperadminProjectAllRoute = SuperadminProjectAllRouteImport.update({
+  id: '/superadmin/project/all',
+  path: '/superadmin/project/all',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminProjectDashboardRoute =
+  SuperadminProjectDashboardRouteImport.update({
+    id: '/superadmin/project/dashboard',
+    path: '/superadmin/project/dashboard',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SuperadminProjectSprintsRoute =
+  SuperadminProjectSprintsRouteImport.update({
+    id: '/superadmin/project/sprints',
+    path: '/superadmin/project/sprints',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SuperadminProjectTasksRoute = SuperadminProjectTasksRouteImport.update({
+  id: '/superadmin/project/tasks',
+  path: '/superadmin/project/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SuperadminProjectTeamRoute = SuperadminProjectTeamRouteImport.update({
+  id: '/superadmin/project/team',
+  path: '/superadmin/project/team',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SuperadminReportsIndexRoute = SuperadminReportsIndexRouteImport.update({
@@ -850,6 +1119,161 @@ const SuperadminUsersTeamLeaderRoute =
     path: '/superadmin/users/team-leader',
     getParentRoute: () => rootRouteImport,
   } as any)
+const TeamLeaderLeadHistoryIdRoute = TeamLeaderLeadHistoryIdRouteImport.update({
+  id: '/team-leader/lead-history/$id',
+  path: '/team-leader/lead-history/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamLeaderLeadsReportInterestedRoute =
+  TeamLeaderLeadsReportInterestedRouteImport.update({
+    id: '/team-leader/leads-report/interested',
+    path: '/team-leader/leads-report/interested',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderLeadsReportPendingFollowupsRoute =
+  TeamLeaderLeadsReportPendingFollowupsRouteImport.update({
+    id: '/team-leader/leads-report/pending-followups',
+    path: '/team-leader/leads-report/pending-followups',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderLeadsReportTodayFollowupsRoute =
+  TeamLeaderLeadsReportTodayFollowupsRouteImport.update({
+    id: '/team-leader/leads-report/today-followups',
+    path: '/team-leader/leads-report/today-followups',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderLeadsReportTomorrowFollowupsRoute =
+  TeamLeaderLeadsReportTomorrowFollowupsRouteImport.update({
+    id: '/team-leader/leads-report/tomorrow-followups',
+    path: '/team-leader/leads-report/tomorrow-followups',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderLeadsReportVisitRoute =
+  TeamLeaderLeadsReportVisitRouteImport.update({
+    id: '/team-leader/leads-report/visit',
+    path: '/team-leader/leads-report/visit',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderLeadsIndexRoute = TeamLeaderLeadsIndexRouteImport.update({
+  id: '/team-leader/leads/',
+  path: '/team-leader/leads/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamLeaderLeadsStaffRoute = TeamLeaderLeadsStaffRouteImport.update({
+  id: '/team-leader/leads/staff',
+  path: '/team-leader/leads/staff',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamLeaderMarketingFacebookRoute =
+  TeamLeaderMarketingFacebookRouteImport.update({
+    id: '/team-leader/marketing/facebook',
+    path: '/team-leader/marketing/facebook',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderMarketingGoogleRoute =
+  TeamLeaderMarketingGoogleRouteImport.update({
+    id: '/team-leader/marketing/google',
+    path: '/team-leader/marketing/google',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderMarketingLinkedinRoute =
+  TeamLeaderMarketingLinkedinRouteImport.update({
+    id: '/team-leader/marketing/linkedin',
+    path: '/team-leader/marketing/linkedin',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderMarketingWhatsappRoute =
+  TeamLeaderMarketingWhatsappRouteImport.update({
+    id: '/team-leader/marketing/whatsapp',
+    path: '/team-leader/marketing/whatsapp',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderProductivityAssociatesRoute =
+  TeamLeaderProductivityAssociatesRouteImport.update({
+    id: '/team-leader/productivity/associates',
+    path: '/team-leader/productivity/associates',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderProductivityStaffRoute =
+  TeamLeaderProductivityStaffRouteImport.update({
+    id: '/team-leader/productivity/staff',
+    path: '/team-leader/productivity/staff',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderProjectMileStoneRoute =
+  TeamLeaderProjectMileStoneRouteImport.update({
+    id: '/team-leader/project/MileStone',
+    path: '/team-leader/project/MileStone',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderProjectAllRoute = TeamLeaderProjectAllRouteImport.update({
+  id: '/team-leader/project/all',
+  path: '/team-leader/project/all',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamLeaderProjectDashboardRoute =
+  TeamLeaderProjectDashboardRouteImport.update({
+    id: '/team-leader/project/dashboard',
+    path: '/team-leader/project/dashboard',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderProjectSprintsRoute =
+  TeamLeaderProjectSprintsRouteImport.update({
+    id: '/team-leader/project/sprints',
+    path: '/team-leader/project/sprints',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderProjectTasksRoute = TeamLeaderProjectTasksRouteImport.update({
+  id: '/team-leader/project/tasks',
+  path: '/team-leader/project/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamLeaderProjectTeamRoute = TeamLeaderProjectTeamRouteImport.update({
+  id: '/team-leader/project/team',
+  path: '/team-leader/project/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TeamLeaderReportsInterestedRoute =
+  TeamLeaderReportsInterestedRouteImport.update({
+    id: '/team-leader/reports/interested',
+    path: '/team-leader/reports/interested',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderReportsLostLeadsRoute =
+  TeamLeaderReportsLostLeadsRouteImport.update({
+    id: '/team-leader/reports/lost-leads',
+    path: '/team-leader/reports/lost-leads',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderReportsNotInterestedRoute =
+  TeamLeaderReportsNotInterestedRouteImport.update({
+    id: '/team-leader/reports/not-interested',
+    path: '/team-leader/reports/not-interested',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderReportsNotPickedRoute =
+  TeamLeaderReportsNotPickedRouteImport.update({
+    id: '/team-leader/reports/not-picked',
+    path: '/team-leader/reports/not-picked',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderReportsOtherLocationRoute =
+  TeamLeaderReportsOtherLocationRouteImport.update({
+    id: '/team-leader/reports/other-location',
+    path: '/team-leader/reports/other-location',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderReportsTotalLeadsRoute =
+  TeamLeaderReportsTotalLeadsRouteImport.update({
+    id: '/team-leader/reports/total-leads',
+    path: '/team-leader/reports/total-leads',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const TeamLeaderReportsVisitRoute = TeamLeaderReportsVisitRouteImport.update({
+  id: '/team-leader/reports/visit',
+  path: '/team-leader/reports/visit',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute =
   AdminPostSalesAssociatePaymentsAdvanceAdjustmentRouteImport.update({
     id: '/admin/post-sales/associate-payments/advance-adjustment',
@@ -953,11 +1377,28 @@ export interface FileRoutesByFullPath {
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/timesheet': typeof AdminTimesheetRoute
   '/staff/dashboard': typeof StaffDashboardRoute
+  '/staff/earn': typeof StaffEarnRoute
+  '/staff/incentives': typeof StaffIncentivesRoute
   '/staff/leads': typeof StaffLeadsRoute
+  '/staff/notifications': typeof StaffNotificationsRoute
+  '/staff/overview': typeof StaffOverviewRouteWithChildren
+  '/staff/productivity': typeof StaffProductivityRoute
+  '/staff/profile': typeof StaffProfileRoute
+  '/staff/projects': typeof StaffProjectsRoute
+  '/staff/tasks': typeof StaffTasksRoute
+  '/staff/timesheet': typeof StaffTimesheetRoute
   '/superadmin/add-sell': typeof SuperadminAddSellRoute
   '/superadmin/dashboard': typeof SuperadminDashboardRoute
   '/superadmin/manage-users': typeof SuperadminManageUsersRoute
   '/superadmin/timesheet': typeof SuperadminTimesheetRoute
+  '/team-leader/add-sell': typeof TeamLeaderAddSellRoute
+  '/team-leader/earn': typeof TeamLeaderEarnRoute
+  '/team-leader/incentives': typeof TeamLeaderIncentivesRoute
+  '/team-leader/notifications': typeof TeamLeaderNotificationsRoute
+  '/team-leader/profile': typeof TeamLeaderProfileRoute
+  '/team-leader/timesheet': typeof TeamLeaderTimesheetRoute
+  '/hr-dashboard/': typeof HrDashboardIndexRoute
+  '/team-leader/': typeof TeamLeaderIndexRoute
   '/admin/about/privacy': typeof AdminAboutPrivacyRoute
   '/admin/about/terms': typeof AdminAboutTermsRoute
   '/admin/associates/attendance': typeof AdminAssociatesAttendanceRoute
@@ -1040,9 +1481,31 @@ export interface FileRoutesByFullPath {
   '/admin/social/integration': typeof AdminSocialIntegrationRoute
   '/admin/users/staff': typeof AdminUsersStaffRouteWithChildren
   '/admin/users/team-leader': typeof AdminUsersTeamLeaderRoute
+  '/staff/marketing/facebook': typeof StaffMarketingFacebookRoute
+  '/staff/marketing/google': typeof StaffMarketingGoogleRoute
+  '/staff/marketing/linkedin': typeof StaffMarketingLinkedinRoute
+  '/staff/marketing/whatsapp': typeof StaffMarketingWhatsappRoute
+  '/staff/overview/attendance': typeof StaffOverviewAttendanceRoute
+  '/staff/overview/leave': typeof StaffOverviewLeaveRoute
+  '/staff/overview/location': typeof StaffOverviewLocationRoute
+  '/staff/reports/interested': typeof StaffReportsInterestedRoute
+  '/staff/reports/not-interested': typeof StaffReportsNotInterestedRoute
+  '/staff/reports/not-picked': typeof StaffReportsNotPickedRoute
+  '/staff/reports/other-location': typeof StaffReportsOtherLocationRoute
+  '/staff/reports/pending-followups': typeof StaffReportsPendingFollowupsRoute
+  '/staff/reports/today-followups': typeof StaffReportsTodayFollowupsRoute
+  '/staff/reports/tomorrow-followups': typeof StaffReportsTomorrowFollowupsRoute
+  '/staff/reports/total-leads': typeof StaffReportsTotalLeadsRoute
+  '/staff/reports/visit': typeof StaffReportsVisitRoute
   '/superadmin/leads/followups': typeof SuperadminLeadsFollowupsRoute
   '/superadmin/leads/history': typeof SuperadminLeadsHistoryRoute
   '/superadmin/leads/import': typeof SuperadminLeadsImportRoute
+  '/superadmin/project/MileStone': typeof SuperadminProjectMileStoneRoute
+  '/superadmin/project/all': typeof SuperadminProjectAllRoute
+  '/superadmin/project/dashboard': typeof SuperadminProjectDashboardRoute
+  '/superadmin/project/sprints': typeof SuperadminProjectSprintsRoute
+  '/superadmin/project/tasks': typeof SuperadminProjectTasksRoute
+  '/superadmin/project/team': typeof SuperadminProjectTeamRoute
   '/superadmin/reports/earnings': typeof SuperadminReportsEarningsRoute
   '/superadmin/users/admin': typeof SuperadminUsersAdminRoute
   '/superadmin/users/associates': typeof SuperadminUsersAssociatesRoute
@@ -1052,8 +1515,35 @@ export interface FileRoutesByFullPath {
   '/superadmin/users/staff': typeof SuperadminUsersStaffRoute
   '/superadmin/users/staff-earn': typeof SuperadminUsersStaffEarnRoute
   '/superadmin/users/team-leader': typeof SuperadminUsersTeamLeaderRoute
+  '/team-leader/lead-history/$id': typeof TeamLeaderLeadHistoryIdRoute
+  '/team-leader/leads-report/interested': typeof TeamLeaderLeadsReportInterestedRoute
+  '/team-leader/leads-report/pending-followups': typeof TeamLeaderLeadsReportPendingFollowupsRoute
+  '/team-leader/leads-report/today-followups': typeof TeamLeaderLeadsReportTodayFollowupsRoute
+  '/team-leader/leads-report/tomorrow-followups': typeof TeamLeaderLeadsReportTomorrowFollowupsRoute
+  '/team-leader/leads-report/visit': typeof TeamLeaderLeadsReportVisitRoute
+  '/team-leader/leads/staff': typeof TeamLeaderLeadsStaffRoute
+  '/team-leader/marketing/facebook': typeof TeamLeaderMarketingFacebookRoute
+  '/team-leader/marketing/google': typeof TeamLeaderMarketingGoogleRoute
+  '/team-leader/marketing/linkedin': typeof TeamLeaderMarketingLinkedinRoute
+  '/team-leader/marketing/whatsapp': typeof TeamLeaderMarketingWhatsappRoute
+  '/team-leader/productivity/associates': typeof TeamLeaderProductivityAssociatesRoute
+  '/team-leader/productivity/staff': typeof TeamLeaderProductivityStaffRoute
+  '/team-leader/project/MileStone': typeof TeamLeaderProjectMileStoneRoute
+  '/team-leader/project/all': typeof TeamLeaderProjectAllRoute
+  '/team-leader/project/dashboard': typeof TeamLeaderProjectDashboardRoute
+  '/team-leader/project/sprints': typeof TeamLeaderProjectSprintsRoute
+  '/team-leader/project/tasks': typeof TeamLeaderProjectTasksRoute
+  '/team-leader/project/team': typeof TeamLeaderProjectTeamRoute
+  '/team-leader/reports/interested': typeof TeamLeaderReportsInterestedRoute
+  '/team-leader/reports/lost-leads': typeof TeamLeaderReportsLostLeadsRoute
+  '/team-leader/reports/not-interested': typeof TeamLeaderReportsNotInterestedRoute
+  '/team-leader/reports/not-picked': typeof TeamLeaderReportsNotPickedRoute
+  '/team-leader/reports/other-location': typeof TeamLeaderReportsOtherLocationRoute
+  '/team-leader/reports/total-leads': typeof TeamLeaderReportsTotalLeadsRoute
+  '/team-leader/reports/visit': typeof TeamLeaderReportsVisitRoute
   '/superadmin/leads/': typeof SuperadminLeadsIndexRoute
   '/superadmin/reports/': typeof SuperadminReportsIndexRoute
+  '/team-leader/leads/': typeof TeamLeaderLeadsIndexRoute
   '/admin/post-sales/associate-payments/advance-adjustment': typeof AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute
   '/admin/post-sales/associate-payments/generate-commission': typeof AdminPostSalesAssociatePaymentsGenerateCommissionRoute
   '/admin/post-sales/associate-payments/list': typeof AdminPostSalesAssociatePaymentsListRoute
@@ -1098,11 +1588,28 @@ export interface FileRoutesByTo {
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/timesheet': typeof AdminTimesheetRoute
   '/staff/dashboard': typeof StaffDashboardRoute
+  '/staff/earn': typeof StaffEarnRoute
+  '/staff/incentives': typeof StaffIncentivesRoute
   '/staff/leads': typeof StaffLeadsRoute
+  '/staff/notifications': typeof StaffNotificationsRoute
+  '/staff/overview': typeof StaffOverviewRouteWithChildren
+  '/staff/productivity': typeof StaffProductivityRoute
+  '/staff/profile': typeof StaffProfileRoute
+  '/staff/projects': typeof StaffProjectsRoute
+  '/staff/tasks': typeof StaffTasksRoute
+  '/staff/timesheet': typeof StaffTimesheetRoute
   '/superadmin/add-sell': typeof SuperadminAddSellRoute
   '/superadmin/dashboard': typeof SuperadminDashboardRoute
   '/superadmin/manage-users': typeof SuperadminManageUsersRoute
   '/superadmin/timesheet': typeof SuperadminTimesheetRoute
+  '/team-leader/add-sell': typeof TeamLeaderAddSellRoute
+  '/team-leader/earn': typeof TeamLeaderEarnRoute
+  '/team-leader/incentives': typeof TeamLeaderIncentivesRoute
+  '/team-leader/notifications': typeof TeamLeaderNotificationsRoute
+  '/team-leader/profile': typeof TeamLeaderProfileRoute
+  '/team-leader/timesheet': typeof TeamLeaderTimesheetRoute
+  '/hr-dashboard': typeof HrDashboardIndexRoute
+  '/team-leader': typeof TeamLeaderIndexRoute
   '/admin/about/privacy': typeof AdminAboutPrivacyRoute
   '/admin/about/terms': typeof AdminAboutTermsRoute
   '/admin/associates/attendance': typeof AdminAssociatesAttendanceRoute
@@ -1185,9 +1692,31 @@ export interface FileRoutesByTo {
   '/admin/social/integration': typeof AdminSocialIntegrationRoute
   '/admin/users/staff': typeof AdminUsersStaffRouteWithChildren
   '/admin/users/team-leader': typeof AdminUsersTeamLeaderRoute
+  '/staff/marketing/facebook': typeof StaffMarketingFacebookRoute
+  '/staff/marketing/google': typeof StaffMarketingGoogleRoute
+  '/staff/marketing/linkedin': typeof StaffMarketingLinkedinRoute
+  '/staff/marketing/whatsapp': typeof StaffMarketingWhatsappRoute
+  '/staff/overview/attendance': typeof StaffOverviewAttendanceRoute
+  '/staff/overview/leave': typeof StaffOverviewLeaveRoute
+  '/staff/overview/location': typeof StaffOverviewLocationRoute
+  '/staff/reports/interested': typeof StaffReportsInterestedRoute
+  '/staff/reports/not-interested': typeof StaffReportsNotInterestedRoute
+  '/staff/reports/not-picked': typeof StaffReportsNotPickedRoute
+  '/staff/reports/other-location': typeof StaffReportsOtherLocationRoute
+  '/staff/reports/pending-followups': typeof StaffReportsPendingFollowupsRoute
+  '/staff/reports/today-followups': typeof StaffReportsTodayFollowupsRoute
+  '/staff/reports/tomorrow-followups': typeof StaffReportsTomorrowFollowupsRoute
+  '/staff/reports/total-leads': typeof StaffReportsTotalLeadsRoute
+  '/staff/reports/visit': typeof StaffReportsVisitRoute
   '/superadmin/leads/followups': typeof SuperadminLeadsFollowupsRoute
   '/superadmin/leads/history': typeof SuperadminLeadsHistoryRoute
   '/superadmin/leads/import': typeof SuperadminLeadsImportRoute
+  '/superadmin/project/MileStone': typeof SuperadminProjectMileStoneRoute
+  '/superadmin/project/all': typeof SuperadminProjectAllRoute
+  '/superadmin/project/dashboard': typeof SuperadminProjectDashboardRoute
+  '/superadmin/project/sprints': typeof SuperadminProjectSprintsRoute
+  '/superadmin/project/tasks': typeof SuperadminProjectTasksRoute
+  '/superadmin/project/team': typeof SuperadminProjectTeamRoute
   '/superadmin/reports/earnings': typeof SuperadminReportsEarningsRoute
   '/superadmin/users/admin': typeof SuperadminUsersAdminRoute
   '/superadmin/users/associates': typeof SuperadminUsersAssociatesRoute
@@ -1197,8 +1726,35 @@ export interface FileRoutesByTo {
   '/superadmin/users/staff': typeof SuperadminUsersStaffRoute
   '/superadmin/users/staff-earn': typeof SuperadminUsersStaffEarnRoute
   '/superadmin/users/team-leader': typeof SuperadminUsersTeamLeaderRoute
+  '/team-leader/lead-history/$id': typeof TeamLeaderLeadHistoryIdRoute
+  '/team-leader/leads-report/interested': typeof TeamLeaderLeadsReportInterestedRoute
+  '/team-leader/leads-report/pending-followups': typeof TeamLeaderLeadsReportPendingFollowupsRoute
+  '/team-leader/leads-report/today-followups': typeof TeamLeaderLeadsReportTodayFollowupsRoute
+  '/team-leader/leads-report/tomorrow-followups': typeof TeamLeaderLeadsReportTomorrowFollowupsRoute
+  '/team-leader/leads-report/visit': typeof TeamLeaderLeadsReportVisitRoute
+  '/team-leader/leads/staff': typeof TeamLeaderLeadsStaffRoute
+  '/team-leader/marketing/facebook': typeof TeamLeaderMarketingFacebookRoute
+  '/team-leader/marketing/google': typeof TeamLeaderMarketingGoogleRoute
+  '/team-leader/marketing/linkedin': typeof TeamLeaderMarketingLinkedinRoute
+  '/team-leader/marketing/whatsapp': typeof TeamLeaderMarketingWhatsappRoute
+  '/team-leader/productivity/associates': typeof TeamLeaderProductivityAssociatesRoute
+  '/team-leader/productivity/staff': typeof TeamLeaderProductivityStaffRoute
+  '/team-leader/project/MileStone': typeof TeamLeaderProjectMileStoneRoute
+  '/team-leader/project/all': typeof TeamLeaderProjectAllRoute
+  '/team-leader/project/dashboard': typeof TeamLeaderProjectDashboardRoute
+  '/team-leader/project/sprints': typeof TeamLeaderProjectSprintsRoute
+  '/team-leader/project/tasks': typeof TeamLeaderProjectTasksRoute
+  '/team-leader/project/team': typeof TeamLeaderProjectTeamRoute
+  '/team-leader/reports/interested': typeof TeamLeaderReportsInterestedRoute
+  '/team-leader/reports/lost-leads': typeof TeamLeaderReportsLostLeadsRoute
+  '/team-leader/reports/not-interested': typeof TeamLeaderReportsNotInterestedRoute
+  '/team-leader/reports/not-picked': typeof TeamLeaderReportsNotPickedRoute
+  '/team-leader/reports/other-location': typeof TeamLeaderReportsOtherLocationRoute
+  '/team-leader/reports/total-leads': typeof TeamLeaderReportsTotalLeadsRoute
+  '/team-leader/reports/visit': typeof TeamLeaderReportsVisitRoute
   '/superadmin/leads': typeof SuperadminLeadsIndexRoute
   '/superadmin/reports': typeof SuperadminReportsIndexRoute
+  '/team-leader/leads': typeof TeamLeaderLeadsIndexRoute
   '/admin/post-sales/associate-payments/advance-adjustment': typeof AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute
   '/admin/post-sales/associate-payments/generate-commission': typeof AdminPostSalesAssociatePaymentsGenerateCommissionRoute
   '/admin/post-sales/associate-payments/list': typeof AdminPostSalesAssociatePaymentsListRoute
@@ -1244,11 +1800,28 @@ export interface FileRoutesById {
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/timesheet': typeof AdminTimesheetRoute
   '/staff/dashboard': typeof StaffDashboardRoute
+  '/staff/earn': typeof StaffEarnRoute
+  '/staff/incentives': typeof StaffIncentivesRoute
   '/staff/leads': typeof StaffLeadsRoute
+  '/staff/notifications': typeof StaffNotificationsRoute
+  '/staff/overview': typeof StaffOverviewRouteWithChildren
+  '/staff/productivity': typeof StaffProductivityRoute
+  '/staff/profile': typeof StaffProfileRoute
+  '/staff/projects': typeof StaffProjectsRoute
+  '/staff/tasks': typeof StaffTasksRoute
+  '/staff/timesheet': typeof StaffTimesheetRoute
   '/superadmin/add-sell': typeof SuperadminAddSellRoute
   '/superadmin/dashboard': typeof SuperadminDashboardRoute
   '/superadmin/manage-users': typeof SuperadminManageUsersRoute
   '/superadmin/timesheet': typeof SuperadminTimesheetRoute
+  '/team-leader/add-sell': typeof TeamLeaderAddSellRoute
+  '/team-leader/earn': typeof TeamLeaderEarnRoute
+  '/team-leader/incentives': typeof TeamLeaderIncentivesRoute
+  '/team-leader/notifications': typeof TeamLeaderNotificationsRoute
+  '/team-leader/profile': typeof TeamLeaderProfileRoute
+  '/team-leader/timesheet': typeof TeamLeaderTimesheetRoute
+  '/hr-dashboard/': typeof HrDashboardIndexRoute
+  '/team-leader/': typeof TeamLeaderIndexRoute
   '/admin/about/privacy': typeof AdminAboutPrivacyRoute
   '/admin/about/terms': typeof AdminAboutTermsRoute
   '/admin/associates/attendance': typeof AdminAssociatesAttendanceRoute
@@ -1331,9 +1904,31 @@ export interface FileRoutesById {
   '/admin/social/integration': typeof AdminSocialIntegrationRoute
   '/admin/users/staff': typeof AdminUsersStaffRouteWithChildren
   '/admin/users/team-leader': typeof AdminUsersTeamLeaderRoute
+  '/staff/marketing/facebook': typeof StaffMarketingFacebookRoute
+  '/staff/marketing/google': typeof StaffMarketingGoogleRoute
+  '/staff/marketing/linkedin': typeof StaffMarketingLinkedinRoute
+  '/staff/marketing/whatsapp': typeof StaffMarketingWhatsappRoute
+  '/staff/overview/attendance': typeof StaffOverviewAttendanceRoute
+  '/staff/overview/leave': typeof StaffOverviewLeaveRoute
+  '/staff/overview/location': typeof StaffOverviewLocationRoute
+  '/staff/reports/interested': typeof StaffReportsInterestedRoute
+  '/staff/reports/not-interested': typeof StaffReportsNotInterestedRoute
+  '/staff/reports/not-picked': typeof StaffReportsNotPickedRoute
+  '/staff/reports/other-location': typeof StaffReportsOtherLocationRoute
+  '/staff/reports/pending-followups': typeof StaffReportsPendingFollowupsRoute
+  '/staff/reports/today-followups': typeof StaffReportsTodayFollowupsRoute
+  '/staff/reports/tomorrow-followups': typeof StaffReportsTomorrowFollowupsRoute
+  '/staff/reports/total-leads': typeof StaffReportsTotalLeadsRoute
+  '/staff/reports/visit': typeof StaffReportsVisitRoute
   '/superadmin/leads/followups': typeof SuperadminLeadsFollowupsRoute
   '/superadmin/leads/history': typeof SuperadminLeadsHistoryRoute
   '/superadmin/leads/import': typeof SuperadminLeadsImportRoute
+  '/superadmin/project/MileStone': typeof SuperadminProjectMileStoneRoute
+  '/superadmin/project/all': typeof SuperadminProjectAllRoute
+  '/superadmin/project/dashboard': typeof SuperadminProjectDashboardRoute
+  '/superadmin/project/sprints': typeof SuperadminProjectSprintsRoute
+  '/superadmin/project/tasks': typeof SuperadminProjectTasksRoute
+  '/superadmin/project/team': typeof SuperadminProjectTeamRoute
   '/superadmin/reports/earnings': typeof SuperadminReportsEarningsRoute
   '/superadmin/users/admin': typeof SuperadminUsersAdminRoute
   '/superadmin/users/associates': typeof SuperadminUsersAssociatesRoute
@@ -1343,8 +1938,35 @@ export interface FileRoutesById {
   '/superadmin/users/staff': typeof SuperadminUsersStaffRoute
   '/superadmin/users/staff-earn': typeof SuperadminUsersStaffEarnRoute
   '/superadmin/users/team-leader': typeof SuperadminUsersTeamLeaderRoute
+  '/team-leader/lead-history/$id': typeof TeamLeaderLeadHistoryIdRoute
+  '/team-leader/leads-report/interested': typeof TeamLeaderLeadsReportInterestedRoute
+  '/team-leader/leads-report/pending-followups': typeof TeamLeaderLeadsReportPendingFollowupsRoute
+  '/team-leader/leads-report/today-followups': typeof TeamLeaderLeadsReportTodayFollowupsRoute
+  '/team-leader/leads-report/tomorrow-followups': typeof TeamLeaderLeadsReportTomorrowFollowupsRoute
+  '/team-leader/leads-report/visit': typeof TeamLeaderLeadsReportVisitRoute
+  '/team-leader/leads/staff': typeof TeamLeaderLeadsStaffRoute
+  '/team-leader/marketing/facebook': typeof TeamLeaderMarketingFacebookRoute
+  '/team-leader/marketing/google': typeof TeamLeaderMarketingGoogleRoute
+  '/team-leader/marketing/linkedin': typeof TeamLeaderMarketingLinkedinRoute
+  '/team-leader/marketing/whatsapp': typeof TeamLeaderMarketingWhatsappRoute
+  '/team-leader/productivity/associates': typeof TeamLeaderProductivityAssociatesRoute
+  '/team-leader/productivity/staff': typeof TeamLeaderProductivityStaffRoute
+  '/team-leader/project/MileStone': typeof TeamLeaderProjectMileStoneRoute
+  '/team-leader/project/all': typeof TeamLeaderProjectAllRoute
+  '/team-leader/project/dashboard': typeof TeamLeaderProjectDashboardRoute
+  '/team-leader/project/sprints': typeof TeamLeaderProjectSprintsRoute
+  '/team-leader/project/tasks': typeof TeamLeaderProjectTasksRoute
+  '/team-leader/project/team': typeof TeamLeaderProjectTeamRoute
+  '/team-leader/reports/interested': typeof TeamLeaderReportsInterestedRoute
+  '/team-leader/reports/lost-leads': typeof TeamLeaderReportsLostLeadsRoute
+  '/team-leader/reports/not-interested': typeof TeamLeaderReportsNotInterestedRoute
+  '/team-leader/reports/not-picked': typeof TeamLeaderReportsNotPickedRoute
+  '/team-leader/reports/other-location': typeof TeamLeaderReportsOtherLocationRoute
+  '/team-leader/reports/total-leads': typeof TeamLeaderReportsTotalLeadsRoute
+  '/team-leader/reports/visit': typeof TeamLeaderReportsVisitRoute
   '/superadmin/leads/': typeof SuperadminLeadsIndexRoute
   '/superadmin/reports/': typeof SuperadminReportsIndexRoute
+  '/team-leader/leads/': typeof TeamLeaderLeadsIndexRoute
   '/admin/post-sales/associate-payments/advance-adjustment': typeof AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute
   '/admin/post-sales/associate-payments/generate-commission': typeof AdminPostSalesAssociatePaymentsGenerateCommissionRoute
   '/admin/post-sales/associate-payments/list': typeof AdminPostSalesAssociatePaymentsListRoute
@@ -1391,11 +2013,28 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/timesheet'
     | '/staff/dashboard'
+    | '/staff/earn'
+    | '/staff/incentives'
     | '/staff/leads'
+    | '/staff/notifications'
+    | '/staff/overview'
+    | '/staff/productivity'
+    | '/staff/profile'
+    | '/staff/projects'
+    | '/staff/tasks'
+    | '/staff/timesheet'
     | '/superadmin/add-sell'
     | '/superadmin/dashboard'
     | '/superadmin/manage-users'
     | '/superadmin/timesheet'
+    | '/team-leader/add-sell'
+    | '/team-leader/earn'
+    | '/team-leader/incentives'
+    | '/team-leader/notifications'
+    | '/team-leader/profile'
+    | '/team-leader/timesheet'
+    | '/hr-dashboard/'
+    | '/team-leader/'
     | '/admin/about/privacy'
     | '/admin/about/terms'
     | '/admin/associates/attendance'
@@ -1478,9 +2117,31 @@ export interface FileRouteTypes {
     | '/admin/social/integration'
     | '/admin/users/staff'
     | '/admin/users/team-leader'
+    | '/staff/marketing/facebook'
+    | '/staff/marketing/google'
+    | '/staff/marketing/linkedin'
+    | '/staff/marketing/whatsapp'
+    | '/staff/overview/attendance'
+    | '/staff/overview/leave'
+    | '/staff/overview/location'
+    | '/staff/reports/interested'
+    | '/staff/reports/not-interested'
+    | '/staff/reports/not-picked'
+    | '/staff/reports/other-location'
+    | '/staff/reports/pending-followups'
+    | '/staff/reports/today-followups'
+    | '/staff/reports/tomorrow-followups'
+    | '/staff/reports/total-leads'
+    | '/staff/reports/visit'
     | '/superadmin/leads/followups'
     | '/superadmin/leads/history'
     | '/superadmin/leads/import'
+    | '/superadmin/project/MileStone'
+    | '/superadmin/project/all'
+    | '/superadmin/project/dashboard'
+    | '/superadmin/project/sprints'
+    | '/superadmin/project/tasks'
+    | '/superadmin/project/team'
     | '/superadmin/reports/earnings'
     | '/superadmin/users/admin'
     | '/superadmin/users/associates'
@@ -1490,8 +2151,35 @@ export interface FileRouteTypes {
     | '/superadmin/users/staff'
     | '/superadmin/users/staff-earn'
     | '/superadmin/users/team-leader'
+    | '/team-leader/lead-history/$id'
+    | '/team-leader/leads-report/interested'
+    | '/team-leader/leads-report/pending-followups'
+    | '/team-leader/leads-report/today-followups'
+    | '/team-leader/leads-report/tomorrow-followups'
+    | '/team-leader/leads-report/visit'
+    | '/team-leader/leads/staff'
+    | '/team-leader/marketing/facebook'
+    | '/team-leader/marketing/google'
+    | '/team-leader/marketing/linkedin'
+    | '/team-leader/marketing/whatsapp'
+    | '/team-leader/productivity/associates'
+    | '/team-leader/productivity/staff'
+    | '/team-leader/project/MileStone'
+    | '/team-leader/project/all'
+    | '/team-leader/project/dashboard'
+    | '/team-leader/project/sprints'
+    | '/team-leader/project/tasks'
+    | '/team-leader/project/team'
+    | '/team-leader/reports/interested'
+    | '/team-leader/reports/lost-leads'
+    | '/team-leader/reports/not-interested'
+    | '/team-leader/reports/not-picked'
+    | '/team-leader/reports/other-location'
+    | '/team-leader/reports/total-leads'
+    | '/team-leader/reports/visit'
     | '/superadmin/leads/'
     | '/superadmin/reports/'
+    | '/team-leader/leads/'
     | '/admin/post-sales/associate-payments/advance-adjustment'
     | '/admin/post-sales/associate-payments/generate-commission'
     | '/admin/post-sales/associate-payments/list'
@@ -1536,11 +2224,28 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/timesheet'
     | '/staff/dashboard'
+    | '/staff/earn'
+    | '/staff/incentives'
     | '/staff/leads'
+    | '/staff/notifications'
+    | '/staff/overview'
+    | '/staff/productivity'
+    | '/staff/profile'
+    | '/staff/projects'
+    | '/staff/tasks'
+    | '/staff/timesheet'
     | '/superadmin/add-sell'
     | '/superadmin/dashboard'
     | '/superadmin/manage-users'
     | '/superadmin/timesheet'
+    | '/team-leader/add-sell'
+    | '/team-leader/earn'
+    | '/team-leader/incentives'
+    | '/team-leader/notifications'
+    | '/team-leader/profile'
+    | '/team-leader/timesheet'
+    | '/hr-dashboard'
+    | '/team-leader'
     | '/admin/about/privacy'
     | '/admin/about/terms'
     | '/admin/associates/attendance'
@@ -1623,9 +2328,31 @@ export interface FileRouteTypes {
     | '/admin/social/integration'
     | '/admin/users/staff'
     | '/admin/users/team-leader'
+    | '/staff/marketing/facebook'
+    | '/staff/marketing/google'
+    | '/staff/marketing/linkedin'
+    | '/staff/marketing/whatsapp'
+    | '/staff/overview/attendance'
+    | '/staff/overview/leave'
+    | '/staff/overview/location'
+    | '/staff/reports/interested'
+    | '/staff/reports/not-interested'
+    | '/staff/reports/not-picked'
+    | '/staff/reports/other-location'
+    | '/staff/reports/pending-followups'
+    | '/staff/reports/today-followups'
+    | '/staff/reports/tomorrow-followups'
+    | '/staff/reports/total-leads'
+    | '/staff/reports/visit'
     | '/superadmin/leads/followups'
     | '/superadmin/leads/history'
     | '/superadmin/leads/import'
+    | '/superadmin/project/MileStone'
+    | '/superadmin/project/all'
+    | '/superadmin/project/dashboard'
+    | '/superadmin/project/sprints'
+    | '/superadmin/project/tasks'
+    | '/superadmin/project/team'
     | '/superadmin/reports/earnings'
     | '/superadmin/users/admin'
     | '/superadmin/users/associates'
@@ -1635,8 +2362,35 @@ export interface FileRouteTypes {
     | '/superadmin/users/staff'
     | '/superadmin/users/staff-earn'
     | '/superadmin/users/team-leader'
+    | '/team-leader/lead-history/$id'
+    | '/team-leader/leads-report/interested'
+    | '/team-leader/leads-report/pending-followups'
+    | '/team-leader/leads-report/today-followups'
+    | '/team-leader/leads-report/tomorrow-followups'
+    | '/team-leader/leads-report/visit'
+    | '/team-leader/leads/staff'
+    | '/team-leader/marketing/facebook'
+    | '/team-leader/marketing/google'
+    | '/team-leader/marketing/linkedin'
+    | '/team-leader/marketing/whatsapp'
+    | '/team-leader/productivity/associates'
+    | '/team-leader/productivity/staff'
+    | '/team-leader/project/MileStone'
+    | '/team-leader/project/all'
+    | '/team-leader/project/dashboard'
+    | '/team-leader/project/sprints'
+    | '/team-leader/project/tasks'
+    | '/team-leader/project/team'
+    | '/team-leader/reports/interested'
+    | '/team-leader/reports/lost-leads'
+    | '/team-leader/reports/not-interested'
+    | '/team-leader/reports/not-picked'
+    | '/team-leader/reports/other-location'
+    | '/team-leader/reports/total-leads'
+    | '/team-leader/reports/visit'
     | '/superadmin/leads'
     | '/superadmin/reports'
+    | '/team-leader/leads'
     | '/admin/post-sales/associate-payments/advance-adjustment'
     | '/admin/post-sales/associate-payments/generate-commission'
     | '/admin/post-sales/associate-payments/list'
@@ -1681,11 +2435,28 @@ export interface FileRouteTypes {
     | '/admin/dashboard'
     | '/admin/timesheet'
     | '/staff/dashboard'
+    | '/staff/earn'
+    | '/staff/incentives'
     | '/staff/leads'
+    | '/staff/notifications'
+    | '/staff/overview'
+    | '/staff/productivity'
+    | '/staff/profile'
+    | '/staff/projects'
+    | '/staff/tasks'
+    | '/staff/timesheet'
     | '/superadmin/add-sell'
     | '/superadmin/dashboard'
     | '/superadmin/manage-users'
     | '/superadmin/timesheet'
+    | '/team-leader/add-sell'
+    | '/team-leader/earn'
+    | '/team-leader/incentives'
+    | '/team-leader/notifications'
+    | '/team-leader/profile'
+    | '/team-leader/timesheet'
+    | '/hr-dashboard/'
+    | '/team-leader/'
     | '/admin/about/privacy'
     | '/admin/about/terms'
     | '/admin/associates/attendance'
@@ -1768,9 +2539,31 @@ export interface FileRouteTypes {
     | '/admin/social/integration'
     | '/admin/users/staff'
     | '/admin/users/team-leader'
+    | '/staff/marketing/facebook'
+    | '/staff/marketing/google'
+    | '/staff/marketing/linkedin'
+    | '/staff/marketing/whatsapp'
+    | '/staff/overview/attendance'
+    | '/staff/overview/leave'
+    | '/staff/overview/location'
+    | '/staff/reports/interested'
+    | '/staff/reports/not-interested'
+    | '/staff/reports/not-picked'
+    | '/staff/reports/other-location'
+    | '/staff/reports/pending-followups'
+    | '/staff/reports/today-followups'
+    | '/staff/reports/tomorrow-followups'
+    | '/staff/reports/total-leads'
+    | '/staff/reports/visit'
     | '/superadmin/leads/followups'
     | '/superadmin/leads/history'
     | '/superadmin/leads/import'
+    | '/superadmin/project/MileStone'
+    | '/superadmin/project/all'
+    | '/superadmin/project/dashboard'
+    | '/superadmin/project/sprints'
+    | '/superadmin/project/tasks'
+    | '/superadmin/project/team'
     | '/superadmin/reports/earnings'
     | '/superadmin/users/admin'
     | '/superadmin/users/associates'
@@ -1780,8 +2573,35 @@ export interface FileRouteTypes {
     | '/superadmin/users/staff'
     | '/superadmin/users/staff-earn'
     | '/superadmin/users/team-leader'
+    | '/team-leader/lead-history/$id'
+    | '/team-leader/leads-report/interested'
+    | '/team-leader/leads-report/pending-followups'
+    | '/team-leader/leads-report/today-followups'
+    | '/team-leader/leads-report/tomorrow-followups'
+    | '/team-leader/leads-report/visit'
+    | '/team-leader/leads/staff'
+    | '/team-leader/marketing/facebook'
+    | '/team-leader/marketing/google'
+    | '/team-leader/marketing/linkedin'
+    | '/team-leader/marketing/whatsapp'
+    | '/team-leader/productivity/associates'
+    | '/team-leader/productivity/staff'
+    | '/team-leader/project/MileStone'
+    | '/team-leader/project/all'
+    | '/team-leader/project/dashboard'
+    | '/team-leader/project/sprints'
+    | '/team-leader/project/tasks'
+    | '/team-leader/project/team'
+    | '/team-leader/reports/interested'
+    | '/team-leader/reports/lost-leads'
+    | '/team-leader/reports/not-interested'
+    | '/team-leader/reports/not-picked'
+    | '/team-leader/reports/other-location'
+    | '/team-leader/reports/total-leads'
+    | '/team-leader/reports/visit'
     | '/superadmin/leads/'
     | '/superadmin/reports/'
+    | '/team-leader/leads/'
     | '/admin/post-sales/associate-payments/advance-adjustment'
     | '/admin/post-sales/associate-payments/generate-commission'
     | '/admin/post-sales/associate-payments/list'
@@ -1827,11 +2647,28 @@ export interface RootRouteChildren {
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminTimesheetRoute: typeof AdminTimesheetRoute
   StaffDashboardRoute: typeof StaffDashboardRoute
+  StaffEarnRoute: typeof StaffEarnRoute
+  StaffIncentivesRoute: typeof StaffIncentivesRoute
   StaffLeadsRoute: typeof StaffLeadsRoute
+  StaffNotificationsRoute: typeof StaffNotificationsRoute
+  StaffOverviewRoute: typeof StaffOverviewRouteWithChildren
+  StaffProductivityRoute: typeof StaffProductivityRoute
+  StaffProfileRoute: typeof StaffProfileRoute
+  StaffProjectsRoute: typeof StaffProjectsRoute
+  StaffTasksRoute: typeof StaffTasksRoute
+  StaffTimesheetRoute: typeof StaffTimesheetRoute
   SuperadminAddSellRoute: typeof SuperadminAddSellRoute
   SuperadminDashboardRoute: typeof SuperadminDashboardRoute
   SuperadminManageUsersRoute: typeof SuperadminManageUsersRoute
   SuperadminTimesheetRoute: typeof SuperadminTimesheetRoute
+  TeamLeaderAddSellRoute: typeof TeamLeaderAddSellRoute
+  TeamLeaderEarnRoute: typeof TeamLeaderEarnRoute
+  TeamLeaderIncentivesRoute: typeof TeamLeaderIncentivesRoute
+  TeamLeaderNotificationsRoute: typeof TeamLeaderNotificationsRoute
+  TeamLeaderProfileRoute: typeof TeamLeaderProfileRoute
+  TeamLeaderTimesheetRoute: typeof TeamLeaderTimesheetRoute
+  HrDashboardIndexRoute: typeof HrDashboardIndexRoute
+  TeamLeaderIndexRoute: typeof TeamLeaderIndexRoute
   AdminAboutPrivacyRoute: typeof AdminAboutPrivacyRoute
   AdminAboutTermsRoute: typeof AdminAboutTermsRoute
   AdminAssociatesAttendanceRoute: typeof AdminAssociatesAttendanceRoute
@@ -1914,9 +2751,28 @@ export interface RootRouteChildren {
   AdminSocialIntegrationRoute: typeof AdminSocialIntegrationRoute
   AdminUsersStaffRoute: typeof AdminUsersStaffRouteWithChildren
   AdminUsersTeamLeaderRoute: typeof AdminUsersTeamLeaderRoute
+  StaffMarketingFacebookRoute: typeof StaffMarketingFacebookRoute
+  StaffMarketingGoogleRoute: typeof StaffMarketingGoogleRoute
+  StaffMarketingLinkedinRoute: typeof StaffMarketingLinkedinRoute
+  StaffMarketingWhatsappRoute: typeof StaffMarketingWhatsappRoute
+  StaffReportsInterestedRoute: typeof StaffReportsInterestedRoute
+  StaffReportsNotInterestedRoute: typeof StaffReportsNotInterestedRoute
+  StaffReportsNotPickedRoute: typeof StaffReportsNotPickedRoute
+  StaffReportsOtherLocationRoute: typeof StaffReportsOtherLocationRoute
+  StaffReportsPendingFollowupsRoute: typeof StaffReportsPendingFollowupsRoute
+  StaffReportsTodayFollowupsRoute: typeof StaffReportsTodayFollowupsRoute
+  StaffReportsTomorrowFollowupsRoute: typeof StaffReportsTomorrowFollowupsRoute
+  StaffReportsTotalLeadsRoute: typeof StaffReportsTotalLeadsRoute
+  StaffReportsVisitRoute: typeof StaffReportsVisitRoute
   SuperadminLeadsFollowupsRoute: typeof SuperadminLeadsFollowupsRoute
   SuperadminLeadsHistoryRoute: typeof SuperadminLeadsHistoryRoute
   SuperadminLeadsImportRoute: typeof SuperadminLeadsImportRoute
+  SuperadminProjectMileStoneRoute: typeof SuperadminProjectMileStoneRoute
+  SuperadminProjectAllRoute: typeof SuperadminProjectAllRoute
+  SuperadminProjectDashboardRoute: typeof SuperadminProjectDashboardRoute
+  SuperadminProjectSprintsRoute: typeof SuperadminProjectSprintsRoute
+  SuperadminProjectTasksRoute: typeof SuperadminProjectTasksRoute
+  SuperadminProjectTeamRoute: typeof SuperadminProjectTeamRoute
   SuperadminReportsEarningsRoute: typeof SuperadminReportsEarningsRoute
   SuperadminUsersAdminRoute: typeof SuperadminUsersAdminRoute
   SuperadminUsersAssociatesRoute: typeof SuperadminUsersAssociatesRoute
@@ -1926,8 +2782,35 @@ export interface RootRouteChildren {
   SuperadminUsersStaffRoute: typeof SuperadminUsersStaffRoute
   SuperadminUsersStaffEarnRoute: typeof SuperadminUsersStaffEarnRoute
   SuperadminUsersTeamLeaderRoute: typeof SuperadminUsersTeamLeaderRoute
+  TeamLeaderLeadHistoryIdRoute: typeof TeamLeaderLeadHistoryIdRoute
+  TeamLeaderLeadsReportInterestedRoute: typeof TeamLeaderLeadsReportInterestedRoute
+  TeamLeaderLeadsReportPendingFollowupsRoute: typeof TeamLeaderLeadsReportPendingFollowupsRoute
+  TeamLeaderLeadsReportTodayFollowupsRoute: typeof TeamLeaderLeadsReportTodayFollowupsRoute
+  TeamLeaderLeadsReportTomorrowFollowupsRoute: typeof TeamLeaderLeadsReportTomorrowFollowupsRoute
+  TeamLeaderLeadsReportVisitRoute: typeof TeamLeaderLeadsReportVisitRoute
+  TeamLeaderLeadsStaffRoute: typeof TeamLeaderLeadsStaffRoute
+  TeamLeaderMarketingFacebookRoute: typeof TeamLeaderMarketingFacebookRoute
+  TeamLeaderMarketingGoogleRoute: typeof TeamLeaderMarketingGoogleRoute
+  TeamLeaderMarketingLinkedinRoute: typeof TeamLeaderMarketingLinkedinRoute
+  TeamLeaderMarketingWhatsappRoute: typeof TeamLeaderMarketingWhatsappRoute
+  TeamLeaderProductivityAssociatesRoute: typeof TeamLeaderProductivityAssociatesRoute
+  TeamLeaderProductivityStaffRoute: typeof TeamLeaderProductivityStaffRoute
+  TeamLeaderProjectMileStoneRoute: typeof TeamLeaderProjectMileStoneRoute
+  TeamLeaderProjectAllRoute: typeof TeamLeaderProjectAllRoute
+  TeamLeaderProjectDashboardRoute: typeof TeamLeaderProjectDashboardRoute
+  TeamLeaderProjectSprintsRoute: typeof TeamLeaderProjectSprintsRoute
+  TeamLeaderProjectTasksRoute: typeof TeamLeaderProjectTasksRoute
+  TeamLeaderProjectTeamRoute: typeof TeamLeaderProjectTeamRoute
+  TeamLeaderReportsInterestedRoute: typeof TeamLeaderReportsInterestedRoute
+  TeamLeaderReportsLostLeadsRoute: typeof TeamLeaderReportsLostLeadsRoute
+  TeamLeaderReportsNotInterestedRoute: typeof TeamLeaderReportsNotInterestedRoute
+  TeamLeaderReportsNotPickedRoute: typeof TeamLeaderReportsNotPickedRoute
+  TeamLeaderReportsOtherLocationRoute: typeof TeamLeaderReportsOtherLocationRoute
+  TeamLeaderReportsTotalLeadsRoute: typeof TeamLeaderReportsTotalLeadsRoute
+  TeamLeaderReportsVisitRoute: typeof TeamLeaderReportsVisitRoute
   SuperadminLeadsIndexRoute: typeof SuperadminLeadsIndexRoute
   SuperadminReportsIndexRoute: typeof SuperadminReportsIndexRoute
+  TeamLeaderLeadsIndexRoute: typeof TeamLeaderLeadsIndexRoute
   AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute: typeof AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute
   AdminPostSalesAssociatePaymentsGenerateCommissionRoute: typeof AdminPostSalesAssociatePaymentsGenerateCommissionRoute
   AdminPostSalesAssociatePaymentsListRoute: typeof AdminPostSalesAssociatePaymentsListRoute
@@ -2140,6 +3023,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminTimesheetRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hr-dashboard/': {
+      id: '/hr-dashboard/'
+      path: '/hr-dashboard'
+      fullPath: '/hr-dashboard/'
+      preLoaderRoute: typeof HrDashboardIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/staff/dashboard': {
       id: '/staff/dashboard'
       path: '/staff/dashboard'
@@ -2147,11 +3037,74 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof StaffDashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/staff/earn': {
+      id: '/staff/earn'
+      path: '/staff/earn'
+      fullPath: '/staff/earn'
+      preLoaderRoute: typeof StaffEarnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/incentives': {
+      id: '/staff/incentives'
+      path: '/staff/incentives'
+      fullPath: '/staff/incentives'
+      preLoaderRoute: typeof StaffIncentivesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/staff/leads': {
       id: '/staff/leads'
       path: '/staff/leads'
       fullPath: '/staff/leads'
       preLoaderRoute: typeof StaffLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/notifications': {
+      id: '/staff/notifications'
+      path: '/staff/notifications'
+      fullPath: '/staff/notifications'
+      preLoaderRoute: typeof StaffNotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/overview': {
+      id: '/staff/overview'
+      path: '/staff/overview'
+      fullPath: '/staff/overview'
+      preLoaderRoute: typeof StaffOverviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/productivity': {
+      id: '/staff/productivity'
+      path: '/staff/productivity'
+      fullPath: '/staff/productivity'
+      preLoaderRoute: typeof StaffProductivityRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/profile': {
+      id: '/staff/profile'
+      path: '/staff/profile'
+      fullPath: '/staff/profile'
+      preLoaderRoute: typeof StaffProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/projects': {
+      id: '/staff/projects'
+      path: '/staff/projects'
+      fullPath: '/staff/projects'
+      preLoaderRoute: typeof StaffProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/tasks': {
+      id: '/staff/tasks'
+      path: '/staff/tasks'
+      fullPath: '/staff/tasks'
+      preLoaderRoute: typeof StaffTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/timesheet': {
+      id: '/staff/timesheet'
+      path: '/staff/timesheet'
+      fullPath: '/staff/timesheet'
+      preLoaderRoute: typeof StaffTimesheetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/superadmin/add-sell': {
@@ -2180,6 +3133,55 @@ declare module '@tanstack/react-router' {
       path: '/superadmin/timesheet'
       fullPath: '/superadmin/timesheet'
       preLoaderRoute: typeof SuperadminTimesheetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/': {
+      id: '/team-leader/'
+      path: '/team-leader'
+      fullPath: '/team-leader/'
+      preLoaderRoute: typeof TeamLeaderIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/add-sell': {
+      id: '/team-leader/add-sell'
+      path: '/team-leader/add-sell'
+      fullPath: '/team-leader/add-sell'
+      preLoaderRoute: typeof TeamLeaderAddSellRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/earn': {
+      id: '/team-leader/earn'
+      path: '/team-leader/earn'
+      fullPath: '/team-leader/earn'
+      preLoaderRoute: typeof TeamLeaderEarnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/incentives': {
+      id: '/team-leader/incentives'
+      path: '/team-leader/incentives'
+      fullPath: '/team-leader/incentives'
+      preLoaderRoute: typeof TeamLeaderIncentivesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/notifications': {
+      id: '/team-leader/notifications'
+      path: '/team-leader/notifications'
+      fullPath: '/team-leader/notifications'
+      preLoaderRoute: typeof TeamLeaderNotificationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/profile': {
+      id: '/team-leader/profile'
+      path: '/team-leader/profile'
+      fullPath: '/team-leader/profile'
+      preLoaderRoute: typeof TeamLeaderProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/timesheet': {
+      id: '/team-leader/timesheet'
+      path: '/team-leader/timesheet'
+      fullPath: '/team-leader/timesheet'
+      preLoaderRoute: typeof TeamLeaderTimesheetRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/about/privacy': {
@@ -2756,6 +3758,118 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminUsersTeamLeaderRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/staff/marketing/facebook': {
+      id: '/staff/marketing/facebook'
+      path: '/staff/marketing/facebook'
+      fullPath: '/staff/marketing/facebook'
+      preLoaderRoute: typeof StaffMarketingFacebookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/marketing/google': {
+      id: '/staff/marketing/google'
+      path: '/staff/marketing/google'
+      fullPath: '/staff/marketing/google'
+      preLoaderRoute: typeof StaffMarketingGoogleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/marketing/linkedin': {
+      id: '/staff/marketing/linkedin'
+      path: '/staff/marketing/linkedin'
+      fullPath: '/staff/marketing/linkedin'
+      preLoaderRoute: typeof StaffMarketingLinkedinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/marketing/whatsapp': {
+      id: '/staff/marketing/whatsapp'
+      path: '/staff/marketing/whatsapp'
+      fullPath: '/staff/marketing/whatsapp'
+      preLoaderRoute: typeof StaffMarketingWhatsappRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/overview/attendance': {
+      id: '/staff/overview/attendance'
+      path: '/attendance'
+      fullPath: '/staff/overview/attendance'
+      preLoaderRoute: typeof StaffOverviewAttendanceRouteImport
+      parentRoute: typeof StaffOverviewRoute
+    }
+    '/staff/overview/leave': {
+      id: '/staff/overview/leave'
+      path: '/leave'
+      fullPath: '/staff/overview/leave'
+      preLoaderRoute: typeof StaffOverviewLeaveRouteImport
+      parentRoute: typeof StaffOverviewRoute
+    }
+    '/staff/overview/location': {
+      id: '/staff/overview/location'
+      path: '/location'
+      fullPath: '/staff/overview/location'
+      preLoaderRoute: typeof StaffOverviewLocationRouteImport
+      parentRoute: typeof StaffOverviewRoute
+    }
+    '/staff/reports/interested': {
+      id: '/staff/reports/interested'
+      path: '/staff/reports/interested'
+      fullPath: '/staff/reports/interested'
+      preLoaderRoute: typeof StaffReportsInterestedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/reports/not-interested': {
+      id: '/staff/reports/not-interested'
+      path: '/staff/reports/not-interested'
+      fullPath: '/staff/reports/not-interested'
+      preLoaderRoute: typeof StaffReportsNotInterestedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/reports/not-picked': {
+      id: '/staff/reports/not-picked'
+      path: '/staff/reports/not-picked'
+      fullPath: '/staff/reports/not-picked'
+      preLoaderRoute: typeof StaffReportsNotPickedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/reports/other-location': {
+      id: '/staff/reports/other-location'
+      path: '/staff/reports/other-location'
+      fullPath: '/staff/reports/other-location'
+      preLoaderRoute: typeof StaffReportsOtherLocationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/reports/pending-followups': {
+      id: '/staff/reports/pending-followups'
+      path: '/staff/reports/pending-followups'
+      fullPath: '/staff/reports/pending-followups'
+      preLoaderRoute: typeof StaffReportsPendingFollowupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/reports/today-followups': {
+      id: '/staff/reports/today-followups'
+      path: '/staff/reports/today-followups'
+      fullPath: '/staff/reports/today-followups'
+      preLoaderRoute: typeof StaffReportsTodayFollowupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/reports/tomorrow-followups': {
+      id: '/staff/reports/tomorrow-followups'
+      path: '/staff/reports/tomorrow-followups'
+      fullPath: '/staff/reports/tomorrow-followups'
+      preLoaderRoute: typeof StaffReportsTomorrowFollowupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/reports/total-leads': {
+      id: '/staff/reports/total-leads'
+      path: '/staff/reports/total-leads'
+      fullPath: '/staff/reports/total-leads'
+      preLoaderRoute: typeof StaffReportsTotalLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/staff/reports/visit': {
+      id: '/staff/reports/visit'
+      path: '/staff/reports/visit'
+      fullPath: '/staff/reports/visit'
+      preLoaderRoute: typeof StaffReportsVisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/superadmin/leads/': {
       id: '/superadmin/leads/'
       path: '/superadmin/leads'
@@ -2782,6 +3896,48 @@ declare module '@tanstack/react-router' {
       path: '/superadmin/leads/import'
       fullPath: '/superadmin/leads/import'
       preLoaderRoute: typeof SuperadminLeadsImportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/project/MileStone': {
+      id: '/superadmin/project/MileStone'
+      path: '/superadmin/project/MileStone'
+      fullPath: '/superadmin/project/MileStone'
+      preLoaderRoute: typeof SuperadminProjectMileStoneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/project/all': {
+      id: '/superadmin/project/all'
+      path: '/superadmin/project/all'
+      fullPath: '/superadmin/project/all'
+      preLoaderRoute: typeof SuperadminProjectAllRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/project/dashboard': {
+      id: '/superadmin/project/dashboard'
+      path: '/superadmin/project/dashboard'
+      fullPath: '/superadmin/project/dashboard'
+      preLoaderRoute: typeof SuperadminProjectDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/project/sprints': {
+      id: '/superadmin/project/sprints'
+      path: '/superadmin/project/sprints'
+      fullPath: '/superadmin/project/sprints'
+      preLoaderRoute: typeof SuperadminProjectSprintsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/project/tasks': {
+      id: '/superadmin/project/tasks'
+      path: '/superadmin/project/tasks'
+      fullPath: '/superadmin/project/tasks'
+      preLoaderRoute: typeof SuperadminProjectTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/superadmin/project/team': {
+      id: '/superadmin/project/team'
+      path: '/superadmin/project/team'
+      fullPath: '/superadmin/project/team'
+      preLoaderRoute: typeof SuperadminProjectTeamRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/superadmin/reports/': {
@@ -2852,6 +4008,195 @@ declare module '@tanstack/react-router' {
       path: '/superadmin/users/team-leader'
       fullPath: '/superadmin/users/team-leader'
       preLoaderRoute: typeof SuperadminUsersTeamLeaderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/lead-history/$id': {
+      id: '/team-leader/lead-history/$id'
+      path: '/team-leader/lead-history/$id'
+      fullPath: '/team-leader/lead-history/$id'
+      preLoaderRoute: typeof TeamLeaderLeadHistoryIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/leads-report/interested': {
+      id: '/team-leader/leads-report/interested'
+      path: '/team-leader/leads-report/interested'
+      fullPath: '/team-leader/leads-report/interested'
+      preLoaderRoute: typeof TeamLeaderLeadsReportInterestedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/leads-report/pending-followups': {
+      id: '/team-leader/leads-report/pending-followups'
+      path: '/team-leader/leads-report/pending-followups'
+      fullPath: '/team-leader/leads-report/pending-followups'
+      preLoaderRoute: typeof TeamLeaderLeadsReportPendingFollowupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/leads-report/today-followups': {
+      id: '/team-leader/leads-report/today-followups'
+      path: '/team-leader/leads-report/today-followups'
+      fullPath: '/team-leader/leads-report/today-followups'
+      preLoaderRoute: typeof TeamLeaderLeadsReportTodayFollowupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/leads-report/tomorrow-followups': {
+      id: '/team-leader/leads-report/tomorrow-followups'
+      path: '/team-leader/leads-report/tomorrow-followups'
+      fullPath: '/team-leader/leads-report/tomorrow-followups'
+      preLoaderRoute: typeof TeamLeaderLeadsReportTomorrowFollowupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/leads-report/visit': {
+      id: '/team-leader/leads-report/visit'
+      path: '/team-leader/leads-report/visit'
+      fullPath: '/team-leader/leads-report/visit'
+      preLoaderRoute: typeof TeamLeaderLeadsReportVisitRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/leads/': {
+      id: '/team-leader/leads/'
+      path: '/team-leader/leads'
+      fullPath: '/team-leader/leads/'
+      preLoaderRoute: typeof TeamLeaderLeadsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/leads/staff': {
+      id: '/team-leader/leads/staff'
+      path: '/team-leader/leads/staff'
+      fullPath: '/team-leader/leads/staff'
+      preLoaderRoute: typeof TeamLeaderLeadsStaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/marketing/facebook': {
+      id: '/team-leader/marketing/facebook'
+      path: '/team-leader/marketing/facebook'
+      fullPath: '/team-leader/marketing/facebook'
+      preLoaderRoute: typeof TeamLeaderMarketingFacebookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/marketing/google': {
+      id: '/team-leader/marketing/google'
+      path: '/team-leader/marketing/google'
+      fullPath: '/team-leader/marketing/google'
+      preLoaderRoute: typeof TeamLeaderMarketingGoogleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/marketing/linkedin': {
+      id: '/team-leader/marketing/linkedin'
+      path: '/team-leader/marketing/linkedin'
+      fullPath: '/team-leader/marketing/linkedin'
+      preLoaderRoute: typeof TeamLeaderMarketingLinkedinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/marketing/whatsapp': {
+      id: '/team-leader/marketing/whatsapp'
+      path: '/team-leader/marketing/whatsapp'
+      fullPath: '/team-leader/marketing/whatsapp'
+      preLoaderRoute: typeof TeamLeaderMarketingWhatsappRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/productivity/associates': {
+      id: '/team-leader/productivity/associates'
+      path: '/team-leader/productivity/associates'
+      fullPath: '/team-leader/productivity/associates'
+      preLoaderRoute: typeof TeamLeaderProductivityAssociatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/productivity/staff': {
+      id: '/team-leader/productivity/staff'
+      path: '/team-leader/productivity/staff'
+      fullPath: '/team-leader/productivity/staff'
+      preLoaderRoute: typeof TeamLeaderProductivityStaffRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/project/MileStone': {
+      id: '/team-leader/project/MileStone'
+      path: '/team-leader/project/MileStone'
+      fullPath: '/team-leader/project/MileStone'
+      preLoaderRoute: typeof TeamLeaderProjectMileStoneRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/project/all': {
+      id: '/team-leader/project/all'
+      path: '/team-leader/project/all'
+      fullPath: '/team-leader/project/all'
+      preLoaderRoute: typeof TeamLeaderProjectAllRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/project/dashboard': {
+      id: '/team-leader/project/dashboard'
+      path: '/team-leader/project/dashboard'
+      fullPath: '/team-leader/project/dashboard'
+      preLoaderRoute: typeof TeamLeaderProjectDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/project/sprints': {
+      id: '/team-leader/project/sprints'
+      path: '/team-leader/project/sprints'
+      fullPath: '/team-leader/project/sprints'
+      preLoaderRoute: typeof TeamLeaderProjectSprintsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/project/tasks': {
+      id: '/team-leader/project/tasks'
+      path: '/team-leader/project/tasks'
+      fullPath: '/team-leader/project/tasks'
+      preLoaderRoute: typeof TeamLeaderProjectTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/project/team': {
+      id: '/team-leader/project/team'
+      path: '/team-leader/project/team'
+      fullPath: '/team-leader/project/team'
+      preLoaderRoute: typeof TeamLeaderProjectTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/reports/interested': {
+      id: '/team-leader/reports/interested'
+      path: '/team-leader/reports/interested'
+      fullPath: '/team-leader/reports/interested'
+      preLoaderRoute: typeof TeamLeaderReportsInterestedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/reports/lost-leads': {
+      id: '/team-leader/reports/lost-leads'
+      path: '/team-leader/reports/lost-leads'
+      fullPath: '/team-leader/reports/lost-leads'
+      preLoaderRoute: typeof TeamLeaderReportsLostLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/reports/not-interested': {
+      id: '/team-leader/reports/not-interested'
+      path: '/team-leader/reports/not-interested'
+      fullPath: '/team-leader/reports/not-interested'
+      preLoaderRoute: typeof TeamLeaderReportsNotInterestedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/reports/not-picked': {
+      id: '/team-leader/reports/not-picked'
+      path: '/team-leader/reports/not-picked'
+      fullPath: '/team-leader/reports/not-picked'
+      preLoaderRoute: typeof TeamLeaderReportsNotPickedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/reports/other-location': {
+      id: '/team-leader/reports/other-location'
+      path: '/team-leader/reports/other-location'
+      fullPath: '/team-leader/reports/other-location'
+      preLoaderRoute: typeof TeamLeaderReportsOtherLocationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/reports/total-leads': {
+      id: '/team-leader/reports/total-leads'
+      path: '/team-leader/reports/total-leads'
+      fullPath: '/team-leader/reports/total-leads'
+      preLoaderRoute: typeof TeamLeaderReportsTotalLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/team-leader/reports/visit': {
+      id: '/team-leader/reports/visit'
+      path: '/team-leader/reports/visit'
+      fullPath: '/team-leader/reports/visit'
+      preLoaderRoute: typeof TeamLeaderReportsVisitRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/post-sales/associate-payments/advance-adjustment': {
@@ -2941,6 +4286,22 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface StaffOverviewRouteChildren {
+  StaffOverviewAttendanceRoute: typeof StaffOverviewAttendanceRoute
+  StaffOverviewLeaveRoute: typeof StaffOverviewLeaveRoute
+  StaffOverviewLocationRoute: typeof StaffOverviewLocationRoute
+}
+
+const StaffOverviewRouteChildren: StaffOverviewRouteChildren = {
+  StaffOverviewAttendanceRoute: StaffOverviewAttendanceRoute,
+  StaffOverviewLeaveRoute: StaffOverviewLeaveRoute,
+  StaffOverviewLocationRoute: StaffOverviewLocationRoute,
+}
+
+const StaffOverviewRouteWithChildren = StaffOverviewRoute._addFileChildren(
+  StaffOverviewRouteChildren,
+)
+
 interface AdminProjectsApartmentCommercialRouteChildren {
   AdminProjectsApartmentCommercialBuildingRoute: typeof AdminProjectsApartmentCommercialBuildingRoute
   AdminProjectsApartmentCommercialCommercialRoute: typeof AdminProjectsApartmentCommercialCommercialRoute
@@ -3013,11 +4374,28 @@ const rootRouteChildren: RootRouteChildren = {
   AdminDashboardRoute: AdminDashboardRoute,
   AdminTimesheetRoute: AdminTimesheetRoute,
   StaffDashboardRoute: StaffDashboardRoute,
+  StaffEarnRoute: StaffEarnRoute,
+  StaffIncentivesRoute: StaffIncentivesRoute,
   StaffLeadsRoute: StaffLeadsRoute,
+  StaffNotificationsRoute: StaffNotificationsRoute,
+  StaffOverviewRoute: StaffOverviewRouteWithChildren,
+  StaffProductivityRoute: StaffProductivityRoute,
+  StaffProfileRoute: StaffProfileRoute,
+  StaffProjectsRoute: StaffProjectsRoute,
+  StaffTasksRoute: StaffTasksRoute,
+  StaffTimesheetRoute: StaffTimesheetRoute,
   SuperadminAddSellRoute: SuperadminAddSellRoute,
   SuperadminDashboardRoute: SuperadminDashboardRoute,
   SuperadminManageUsersRoute: SuperadminManageUsersRoute,
   SuperadminTimesheetRoute: SuperadminTimesheetRoute,
+  TeamLeaderAddSellRoute: TeamLeaderAddSellRoute,
+  TeamLeaderEarnRoute: TeamLeaderEarnRoute,
+  TeamLeaderIncentivesRoute: TeamLeaderIncentivesRoute,
+  TeamLeaderNotificationsRoute: TeamLeaderNotificationsRoute,
+  TeamLeaderProfileRoute: TeamLeaderProfileRoute,
+  TeamLeaderTimesheetRoute: TeamLeaderTimesheetRoute,
+  HrDashboardIndexRoute: HrDashboardIndexRoute,
+  TeamLeaderIndexRoute: TeamLeaderIndexRoute,
   AdminAboutPrivacyRoute: AdminAboutPrivacyRoute,
   AdminAboutTermsRoute: AdminAboutTermsRoute,
   AdminAssociatesAttendanceRoute: AdminAssociatesAttendanceRoute,
@@ -3102,9 +4480,28 @@ const rootRouteChildren: RootRouteChildren = {
   AdminSocialIntegrationRoute: AdminSocialIntegrationRoute,
   AdminUsersStaffRoute: AdminUsersStaffRouteWithChildren,
   AdminUsersTeamLeaderRoute: AdminUsersTeamLeaderRoute,
+  StaffMarketingFacebookRoute: StaffMarketingFacebookRoute,
+  StaffMarketingGoogleRoute: StaffMarketingGoogleRoute,
+  StaffMarketingLinkedinRoute: StaffMarketingLinkedinRoute,
+  StaffMarketingWhatsappRoute: StaffMarketingWhatsappRoute,
+  StaffReportsInterestedRoute: StaffReportsInterestedRoute,
+  StaffReportsNotInterestedRoute: StaffReportsNotInterestedRoute,
+  StaffReportsNotPickedRoute: StaffReportsNotPickedRoute,
+  StaffReportsOtherLocationRoute: StaffReportsOtherLocationRoute,
+  StaffReportsPendingFollowupsRoute: StaffReportsPendingFollowupsRoute,
+  StaffReportsTodayFollowupsRoute: StaffReportsTodayFollowupsRoute,
+  StaffReportsTomorrowFollowupsRoute: StaffReportsTomorrowFollowupsRoute,
+  StaffReportsTotalLeadsRoute: StaffReportsTotalLeadsRoute,
+  StaffReportsVisitRoute: StaffReportsVisitRoute,
   SuperadminLeadsFollowupsRoute: SuperadminLeadsFollowupsRoute,
   SuperadminLeadsHistoryRoute: SuperadminLeadsHistoryRoute,
   SuperadminLeadsImportRoute: SuperadminLeadsImportRoute,
+  SuperadminProjectMileStoneRoute: SuperadminProjectMileStoneRoute,
+  SuperadminProjectAllRoute: SuperadminProjectAllRoute,
+  SuperadminProjectDashboardRoute: SuperadminProjectDashboardRoute,
+  SuperadminProjectSprintsRoute: SuperadminProjectSprintsRoute,
+  SuperadminProjectTasksRoute: SuperadminProjectTasksRoute,
+  SuperadminProjectTeamRoute: SuperadminProjectTeamRoute,
   SuperadminReportsEarningsRoute: SuperadminReportsEarningsRoute,
   SuperadminUsersAdminRoute: SuperadminUsersAdminRoute,
   SuperadminUsersAssociatesRoute: SuperadminUsersAssociatesRoute,
@@ -3115,8 +4512,38 @@ const rootRouteChildren: RootRouteChildren = {
   SuperadminUsersStaffRoute: SuperadminUsersStaffRoute,
   SuperadminUsersStaffEarnRoute: SuperadminUsersStaffEarnRoute,
   SuperadminUsersTeamLeaderRoute: SuperadminUsersTeamLeaderRoute,
+  TeamLeaderLeadHistoryIdRoute: TeamLeaderLeadHistoryIdRoute,
+  TeamLeaderLeadsReportInterestedRoute: TeamLeaderLeadsReportInterestedRoute,
+  TeamLeaderLeadsReportPendingFollowupsRoute:
+    TeamLeaderLeadsReportPendingFollowupsRoute,
+  TeamLeaderLeadsReportTodayFollowupsRoute:
+    TeamLeaderLeadsReportTodayFollowupsRoute,
+  TeamLeaderLeadsReportTomorrowFollowupsRoute:
+    TeamLeaderLeadsReportTomorrowFollowupsRoute,
+  TeamLeaderLeadsReportVisitRoute: TeamLeaderLeadsReportVisitRoute,
+  TeamLeaderLeadsStaffRoute: TeamLeaderLeadsStaffRoute,
+  TeamLeaderMarketingFacebookRoute: TeamLeaderMarketingFacebookRoute,
+  TeamLeaderMarketingGoogleRoute: TeamLeaderMarketingGoogleRoute,
+  TeamLeaderMarketingLinkedinRoute: TeamLeaderMarketingLinkedinRoute,
+  TeamLeaderMarketingWhatsappRoute: TeamLeaderMarketingWhatsappRoute,
+  TeamLeaderProductivityAssociatesRoute: TeamLeaderProductivityAssociatesRoute,
+  TeamLeaderProductivityStaffRoute: TeamLeaderProductivityStaffRoute,
+  TeamLeaderProjectMileStoneRoute: TeamLeaderProjectMileStoneRoute,
+  TeamLeaderProjectAllRoute: TeamLeaderProjectAllRoute,
+  TeamLeaderProjectDashboardRoute: TeamLeaderProjectDashboardRoute,
+  TeamLeaderProjectSprintsRoute: TeamLeaderProjectSprintsRoute,
+  TeamLeaderProjectTasksRoute: TeamLeaderProjectTasksRoute,
+  TeamLeaderProjectTeamRoute: TeamLeaderProjectTeamRoute,
+  TeamLeaderReportsInterestedRoute: TeamLeaderReportsInterestedRoute,
+  TeamLeaderReportsLostLeadsRoute: TeamLeaderReportsLostLeadsRoute,
+  TeamLeaderReportsNotInterestedRoute: TeamLeaderReportsNotInterestedRoute,
+  TeamLeaderReportsNotPickedRoute: TeamLeaderReportsNotPickedRoute,
+  TeamLeaderReportsOtherLocationRoute: TeamLeaderReportsOtherLocationRoute,
+  TeamLeaderReportsTotalLeadsRoute: TeamLeaderReportsTotalLeadsRoute,
+  TeamLeaderReportsVisitRoute: TeamLeaderReportsVisitRoute,
   SuperadminLeadsIndexRoute: SuperadminLeadsIndexRoute,
   SuperadminReportsIndexRoute: SuperadminReportsIndexRoute,
+  TeamLeaderLeadsIndexRoute: TeamLeaderLeadsIndexRoute,
   AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute:
     AdminPostSalesAssociatePaymentsAdvanceAdjustmentRoute,
   AdminPostSalesAssociatePaymentsGenerateCommissionRoute:

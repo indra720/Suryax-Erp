@@ -371,6 +371,24 @@ function LoginPage() {
                 variant="outline"
                 onClick={() => {
                   saveAuthSession({
+                    token: "demo-teamleader-token",
+                    role: "team-leader",
+                    email: "teamleader@vrindavan.com",
+                    id: 3,
+                    name: "Team Leader",
+                  });
+                  toast.success("Logged in as Team Leader!");
+                  navigate({ to: "/team-leader" });
+                }}
+                className="h-9 text-xs font-semibold border-emerald-200 bg-emerald-50/70 hover:bg-emerald-100 text-emerald-800 cursor-pointer"
+              >
+                Team Leader Login
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  saveAuthSession({
                     token: "demo-admin-token",
                     role: "admin",
                     email: "admin@vrindavan.com",
@@ -401,6 +419,42 @@ function LoginPage() {
                 className="h-9 text-xs font-semibold border-blue-200 bg-blue-50/70 hover:bg-blue-100 text-blue-800 cursor-pointer"
               >
                 Superadmin Login
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  saveAuthSession({
+                    token: "demo-staff-token",
+                    role: "staff",
+                    email: "staff@vrindavan.com",
+                    id: 4,
+                    name: "Staff Member",
+                  });
+                  toast.success("Logged in as Staff!");
+                  navigate({ to: "/staff/dashboard" });
+                }}
+                className="h-9 text-xs font-semibold border-amber-200 bg-amber-50/70 hover:bg-amber-100 text-amber-800 cursor-pointer"
+              >
+                Staff Login
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  saveAuthSession({
+                    token: "demo-hr-token",
+                    role: "hr",
+                    email: "hr@vrindavan.com",
+                    id: 5,
+                    name: "HR Manager",
+                  });
+                  toast.success("Logged in as HR Manager!");
+                  navigate({ to: "/hr-dashboard" });
+                }}
+                className="h-9 text-xs font-semibold border-teal-200 bg-teal-50/70 hover:bg-teal-100 text-teal-800 cursor-pointer col-span-2"
+              >
+                HR Portal Login
               </Button>
             </div>
           </div>
