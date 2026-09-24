@@ -178,7 +178,12 @@ export function Navbar({ onToggleSidebar }: { onToggleSidebar: () => void }) {
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-52">
-            <DropdownMenuItem onSelect={() => navigate({ to: "/profile" })}>
+            <DropdownMenuItem
+              onSelect={() => {
+                const isHr = user?.role === "hr" || window.location.pathname.startsWith("/hr-dashboard");
+                navigate({ to: isHr ? "/hr-dashboard/profile" : "/profile" });
+              }}
+            >
               <User className="size-4" /> My Profile
             </DropdownMenuItem>
             <DropdownMenuItem onSelect={() => navigate({ to: "/settings" })}>
