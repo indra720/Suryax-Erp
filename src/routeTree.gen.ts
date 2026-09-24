@@ -164,6 +164,14 @@ import { Route as HrDashboardFinanceLoansRouteImport } from './routes/hr-dashboa
 import { Route as HrDashboardFinancePayslipsRouteImport } from './routes/hr-dashboard/finance/payslips'
 import { Route as HrDashboardFinanceReimbursementsRouteImport } from './routes/hr-dashboard/finance/reimbursements'
 import { Route as HrDashboardFinanceSalaryRouteImport } from './routes/hr-dashboard/finance/salary'
+import { Route as HrDashboardPmsIndexRouteImport } from './routes/hr-dashboard/pms/index'
+import { Route as HrDashboardPmsAllRouteImport } from './routes/hr-dashboard/pms/all'
+import { Route as HrDashboardPmsDashboardRouteImport } from './routes/hr-dashboard/pms/dashboard'
+import { Route as HrDashboardPmsMilestonesRouteImport } from './routes/hr-dashboard/pms/milestones'
+import { Route as HrDashboardPmsProjectsRouteImport } from './routes/hr-dashboard/pms/projects'
+import { Route as HrDashboardPmsSprintsRouteImport } from './routes/hr-dashboard/pms/sprints'
+import { Route as HrDashboardPmsTasksRouteImport } from './routes/hr-dashboard/pms/tasks'
+import { Route as HrDashboardPmsTeamRouteImport } from './routes/hr-dashboard/pms/team'
 import { Route as HrDashboardSettingsIndexRouteImport } from './routes/hr-dashboard/settings/index'
 import { Route as HrDashboardSettingsHolidaysRouteImport } from './routes/hr-dashboard/settings/holidays'
 import { Route as HrDashboardSettingsRulesRouteImport } from './routes/hr-dashboard/settings/rules'
@@ -1080,6 +1088,47 @@ const HrDashboardFinanceSalaryRoute =
     path: '/hr-dashboard/finance/salary',
     getParentRoute: () => rootRouteImport,
   } as any)
+const HrDashboardPmsIndexRoute = HrDashboardPmsIndexRouteImport.update({
+  id: '/hr-dashboard/pms/',
+  path: '/hr-dashboard/pms/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardPmsAllRoute = HrDashboardPmsAllRouteImport.update({
+  id: '/hr-dashboard/pms/all',
+  path: '/hr-dashboard/pms/all',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardPmsDashboardRoute = HrDashboardPmsDashboardRouteImport.update({
+  id: '/hr-dashboard/pms/dashboard',
+  path: '/hr-dashboard/pms/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardPmsMilestonesRoute =
+  HrDashboardPmsMilestonesRouteImport.update({
+    id: '/hr-dashboard/pms/milestones',
+    path: '/hr-dashboard/pms/milestones',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardPmsProjectsRoute = HrDashboardPmsProjectsRouteImport.update({
+  id: '/hr-dashboard/pms/projects',
+  path: '/hr-dashboard/pms/projects',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardPmsSprintsRoute = HrDashboardPmsSprintsRouteImport.update({
+  id: '/hr-dashboard/pms/sprints',
+  path: '/hr-dashboard/pms/sprints',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardPmsTasksRoute = HrDashboardPmsTasksRouteImport.update({
+  id: '/hr-dashboard/pms/tasks',
+  path: '/hr-dashboard/pms/tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardPmsTeamRoute = HrDashboardPmsTeamRouteImport.update({
+  id: '/hr-dashboard/pms/team',
+  path: '/hr-dashboard/pms/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const HrDashboardSettingsIndexRoute =
   HrDashboardSettingsIndexRouteImport.update({
     id: '/hr-dashboard/settings/',
@@ -1726,6 +1775,13 @@ export interface FileRoutesByFullPath {
   '/hr-dashboard/finance/payslips': typeof HrDashboardFinancePayslipsRoute
   '/hr-dashboard/finance/reimbursements': typeof HrDashboardFinanceReimbursementsRoute
   '/hr-dashboard/finance/salary': typeof HrDashboardFinanceSalaryRoute
+  '/hr-dashboard/pms/all': typeof HrDashboardPmsAllRoute
+  '/hr-dashboard/pms/dashboard': typeof HrDashboardPmsDashboardRoute
+  '/hr-dashboard/pms/milestones': typeof HrDashboardPmsMilestonesRoute
+  '/hr-dashboard/pms/projects': typeof HrDashboardPmsProjectsRoute
+  '/hr-dashboard/pms/sprints': typeof HrDashboardPmsSprintsRoute
+  '/hr-dashboard/pms/tasks': typeof HrDashboardPmsTasksRoute
+  '/hr-dashboard/pms/team': typeof HrDashboardPmsTeamRoute
   '/hr-dashboard/settings/holidays': typeof HrDashboardSettingsHolidaysRoute
   '/hr-dashboard/settings/rules': typeof HrDashboardSettingsRulesRoute
   '/hr-dashboard/shifts/assignment': typeof HrDashboardShiftsAssignmentRoute
@@ -1797,6 +1853,7 @@ export interface FileRoutesByFullPath {
   '/hr-dashboard/attendance/': typeof HrDashboardAttendanceIndexRoute
   '/hr-dashboard/employees/': typeof HrDashboardEmployeesIndexRoute
   '/hr-dashboard/finance/': typeof HrDashboardFinanceIndexRoute
+  '/hr-dashboard/pms/': typeof HrDashboardPmsIndexRoute
   '/hr-dashboard/settings/': typeof HrDashboardSettingsIndexRoute
   '/hr-dashboard/shifts/': typeof HrDashboardShiftsIndexRoute
   '/hr-dashboard/support/': typeof HrDashboardSupportIndexRoute
@@ -1971,6 +2028,13 @@ export interface FileRoutesByTo {
   '/hr-dashboard/finance/payslips': typeof HrDashboardFinancePayslipsRoute
   '/hr-dashboard/finance/reimbursements': typeof HrDashboardFinanceReimbursementsRoute
   '/hr-dashboard/finance/salary': typeof HrDashboardFinanceSalaryRoute
+  '/hr-dashboard/pms/all': typeof HrDashboardPmsAllRoute
+  '/hr-dashboard/pms/dashboard': typeof HrDashboardPmsDashboardRoute
+  '/hr-dashboard/pms/milestones': typeof HrDashboardPmsMilestonesRoute
+  '/hr-dashboard/pms/projects': typeof HrDashboardPmsProjectsRoute
+  '/hr-dashboard/pms/sprints': typeof HrDashboardPmsSprintsRoute
+  '/hr-dashboard/pms/tasks': typeof HrDashboardPmsTasksRoute
+  '/hr-dashboard/pms/team': typeof HrDashboardPmsTeamRoute
   '/hr-dashboard/settings/holidays': typeof HrDashboardSettingsHolidaysRoute
   '/hr-dashboard/settings/rules': typeof HrDashboardSettingsRulesRoute
   '/hr-dashboard/shifts/assignment': typeof HrDashboardShiftsAssignmentRoute
@@ -2042,6 +2106,7 @@ export interface FileRoutesByTo {
   '/hr-dashboard/attendance': typeof HrDashboardAttendanceIndexRoute
   '/hr-dashboard/employees': typeof HrDashboardEmployeesIndexRoute
   '/hr-dashboard/finance': typeof HrDashboardFinanceIndexRoute
+  '/hr-dashboard/pms': typeof HrDashboardPmsIndexRoute
   '/hr-dashboard/settings': typeof HrDashboardSettingsIndexRoute
   '/hr-dashboard/shifts': typeof HrDashboardShiftsIndexRoute
   '/hr-dashboard/support': typeof HrDashboardSupportIndexRoute
@@ -2217,6 +2282,13 @@ export interface FileRoutesById {
   '/hr-dashboard/finance/payslips': typeof HrDashboardFinancePayslipsRoute
   '/hr-dashboard/finance/reimbursements': typeof HrDashboardFinanceReimbursementsRoute
   '/hr-dashboard/finance/salary': typeof HrDashboardFinanceSalaryRoute
+  '/hr-dashboard/pms/all': typeof HrDashboardPmsAllRoute
+  '/hr-dashboard/pms/dashboard': typeof HrDashboardPmsDashboardRoute
+  '/hr-dashboard/pms/milestones': typeof HrDashboardPmsMilestonesRoute
+  '/hr-dashboard/pms/projects': typeof HrDashboardPmsProjectsRoute
+  '/hr-dashboard/pms/sprints': typeof HrDashboardPmsSprintsRoute
+  '/hr-dashboard/pms/tasks': typeof HrDashboardPmsTasksRoute
+  '/hr-dashboard/pms/team': typeof HrDashboardPmsTeamRoute
   '/hr-dashboard/settings/holidays': typeof HrDashboardSettingsHolidaysRoute
   '/hr-dashboard/settings/rules': typeof HrDashboardSettingsRulesRoute
   '/hr-dashboard/shifts/assignment': typeof HrDashboardShiftsAssignmentRoute
@@ -2288,6 +2360,7 @@ export interface FileRoutesById {
   '/hr-dashboard/attendance/': typeof HrDashboardAttendanceIndexRoute
   '/hr-dashboard/employees/': typeof HrDashboardEmployeesIndexRoute
   '/hr-dashboard/finance/': typeof HrDashboardFinanceIndexRoute
+  '/hr-dashboard/pms/': typeof HrDashboardPmsIndexRoute
   '/hr-dashboard/settings/': typeof HrDashboardSettingsIndexRoute
   '/hr-dashboard/shifts/': typeof HrDashboardShiftsIndexRoute
   '/hr-dashboard/support/': typeof HrDashboardSupportIndexRoute
@@ -2464,6 +2537,13 @@ export interface FileRouteTypes {
     | '/hr-dashboard/finance/payslips'
     | '/hr-dashboard/finance/reimbursements'
     | '/hr-dashboard/finance/salary'
+    | '/hr-dashboard/pms/all'
+    | '/hr-dashboard/pms/dashboard'
+    | '/hr-dashboard/pms/milestones'
+    | '/hr-dashboard/pms/projects'
+    | '/hr-dashboard/pms/sprints'
+    | '/hr-dashboard/pms/tasks'
+    | '/hr-dashboard/pms/team'
     | '/hr-dashboard/settings/holidays'
     | '/hr-dashboard/settings/rules'
     | '/hr-dashboard/shifts/assignment'
@@ -2535,6 +2615,7 @@ export interface FileRouteTypes {
     | '/hr-dashboard/attendance/'
     | '/hr-dashboard/employees/'
     | '/hr-dashboard/finance/'
+    | '/hr-dashboard/pms/'
     | '/hr-dashboard/settings/'
     | '/hr-dashboard/shifts/'
     | '/hr-dashboard/support/'
@@ -2709,6 +2790,13 @@ export interface FileRouteTypes {
     | '/hr-dashboard/finance/payslips'
     | '/hr-dashboard/finance/reimbursements'
     | '/hr-dashboard/finance/salary'
+    | '/hr-dashboard/pms/all'
+    | '/hr-dashboard/pms/dashboard'
+    | '/hr-dashboard/pms/milestones'
+    | '/hr-dashboard/pms/projects'
+    | '/hr-dashboard/pms/sprints'
+    | '/hr-dashboard/pms/tasks'
+    | '/hr-dashboard/pms/team'
     | '/hr-dashboard/settings/holidays'
     | '/hr-dashboard/settings/rules'
     | '/hr-dashboard/shifts/assignment'
@@ -2780,6 +2868,7 @@ export interface FileRouteTypes {
     | '/hr-dashboard/attendance'
     | '/hr-dashboard/employees'
     | '/hr-dashboard/finance'
+    | '/hr-dashboard/pms'
     | '/hr-dashboard/settings'
     | '/hr-dashboard/shifts'
     | '/hr-dashboard/support'
@@ -2954,6 +3043,13 @@ export interface FileRouteTypes {
     | '/hr-dashboard/finance/payslips'
     | '/hr-dashboard/finance/reimbursements'
     | '/hr-dashboard/finance/salary'
+    | '/hr-dashboard/pms/all'
+    | '/hr-dashboard/pms/dashboard'
+    | '/hr-dashboard/pms/milestones'
+    | '/hr-dashboard/pms/projects'
+    | '/hr-dashboard/pms/sprints'
+    | '/hr-dashboard/pms/tasks'
+    | '/hr-dashboard/pms/team'
     | '/hr-dashboard/settings/holidays'
     | '/hr-dashboard/settings/rules'
     | '/hr-dashboard/shifts/assignment'
@@ -3025,6 +3121,7 @@ export interface FileRouteTypes {
     | '/hr-dashboard/attendance/'
     | '/hr-dashboard/employees/'
     | '/hr-dashboard/finance/'
+    | '/hr-dashboard/pms/'
     | '/hr-dashboard/settings/'
     | '/hr-dashboard/shifts/'
     | '/hr-dashboard/support/'
@@ -3200,6 +3297,13 @@ export interface RootRouteChildren {
   HrDashboardFinancePayslipsRoute: typeof HrDashboardFinancePayslipsRoute
   HrDashboardFinanceReimbursementsRoute: typeof HrDashboardFinanceReimbursementsRoute
   HrDashboardFinanceSalaryRoute: typeof HrDashboardFinanceSalaryRoute
+  HrDashboardPmsAllRoute: typeof HrDashboardPmsAllRoute
+  HrDashboardPmsDashboardRoute: typeof HrDashboardPmsDashboardRoute
+  HrDashboardPmsMilestonesRoute: typeof HrDashboardPmsMilestonesRoute
+  HrDashboardPmsProjectsRoute: typeof HrDashboardPmsProjectsRoute
+  HrDashboardPmsSprintsRoute: typeof HrDashboardPmsSprintsRoute
+  HrDashboardPmsTasksRoute: typeof HrDashboardPmsTasksRoute
+  HrDashboardPmsTeamRoute: typeof HrDashboardPmsTeamRoute
   HrDashboardSettingsHolidaysRoute: typeof HrDashboardSettingsHolidaysRoute
   HrDashboardSettingsRulesRoute: typeof HrDashboardSettingsRulesRoute
   HrDashboardShiftsAssignmentRoute: typeof HrDashboardShiftsAssignmentRoute
@@ -3267,6 +3371,7 @@ export interface RootRouteChildren {
   HrDashboardAttendanceIndexRoute: typeof HrDashboardAttendanceIndexRoute
   HrDashboardEmployeesIndexRoute: typeof HrDashboardEmployeesIndexRoute
   HrDashboardFinanceIndexRoute: typeof HrDashboardFinanceIndexRoute
+  HrDashboardPmsIndexRoute: typeof HrDashboardPmsIndexRoute
   HrDashboardSettingsIndexRoute: typeof HrDashboardSettingsIndexRoute
   HrDashboardShiftsIndexRoute: typeof HrDashboardShiftsIndexRoute
   HrDashboardSupportIndexRoute: typeof HrDashboardSupportIndexRoute
@@ -4369,6 +4474,62 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HrDashboardFinanceSalaryRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hr-dashboard/pms/': {
+      id: '/hr-dashboard/pms/'
+      path: '/hr-dashboard/pms'
+      fullPath: '/hr-dashboard/pms/'
+      preLoaderRoute: typeof HrDashboardPmsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/pms/all': {
+      id: '/hr-dashboard/pms/all'
+      path: '/hr-dashboard/pms/all'
+      fullPath: '/hr-dashboard/pms/all'
+      preLoaderRoute: typeof HrDashboardPmsAllRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/pms/dashboard': {
+      id: '/hr-dashboard/pms/dashboard'
+      path: '/hr-dashboard/pms/dashboard'
+      fullPath: '/hr-dashboard/pms/dashboard'
+      preLoaderRoute: typeof HrDashboardPmsDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/pms/milestones': {
+      id: '/hr-dashboard/pms/milestones'
+      path: '/hr-dashboard/pms/milestones'
+      fullPath: '/hr-dashboard/pms/milestones'
+      preLoaderRoute: typeof HrDashboardPmsMilestonesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/pms/projects': {
+      id: '/hr-dashboard/pms/projects'
+      path: '/hr-dashboard/pms/projects'
+      fullPath: '/hr-dashboard/pms/projects'
+      preLoaderRoute: typeof HrDashboardPmsProjectsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/pms/sprints': {
+      id: '/hr-dashboard/pms/sprints'
+      path: '/hr-dashboard/pms/sprints'
+      fullPath: '/hr-dashboard/pms/sprints'
+      preLoaderRoute: typeof HrDashboardPmsSprintsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/pms/tasks': {
+      id: '/hr-dashboard/pms/tasks'
+      path: '/hr-dashboard/pms/tasks'
+      fullPath: '/hr-dashboard/pms/tasks'
+      preLoaderRoute: typeof HrDashboardPmsTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/pms/team': {
+      id: '/hr-dashboard/pms/team'
+      path: '/hr-dashboard/pms/team'
+      fullPath: '/hr-dashboard/pms/team'
+      preLoaderRoute: typeof HrDashboardPmsTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hr-dashboard/settings/': {
       id: '/hr-dashboard/settings/'
       path: '/hr-dashboard/settings'
@@ -5203,6 +5364,13 @@ const rootRouteChildren: RootRouteChildren = {
   HrDashboardFinancePayslipsRoute: HrDashboardFinancePayslipsRoute,
   HrDashboardFinanceReimbursementsRoute: HrDashboardFinanceReimbursementsRoute,
   HrDashboardFinanceSalaryRoute: HrDashboardFinanceSalaryRoute,
+  HrDashboardPmsAllRoute: HrDashboardPmsAllRoute,
+  HrDashboardPmsDashboardRoute: HrDashboardPmsDashboardRoute,
+  HrDashboardPmsMilestonesRoute: HrDashboardPmsMilestonesRoute,
+  HrDashboardPmsProjectsRoute: HrDashboardPmsProjectsRoute,
+  HrDashboardPmsSprintsRoute: HrDashboardPmsSprintsRoute,
+  HrDashboardPmsTasksRoute: HrDashboardPmsTasksRoute,
+  HrDashboardPmsTeamRoute: HrDashboardPmsTeamRoute,
   HrDashboardSettingsHolidaysRoute: HrDashboardSettingsHolidaysRoute,
   HrDashboardSettingsRulesRoute: HrDashboardSettingsRulesRoute,
   HrDashboardShiftsAssignmentRoute: HrDashboardShiftsAssignmentRoute,
@@ -5274,6 +5442,7 @@ const rootRouteChildren: RootRouteChildren = {
   HrDashboardAttendanceIndexRoute: HrDashboardAttendanceIndexRoute,
   HrDashboardEmployeesIndexRoute: HrDashboardEmployeesIndexRoute,
   HrDashboardFinanceIndexRoute: HrDashboardFinanceIndexRoute,
+  HrDashboardPmsIndexRoute: HrDashboardPmsIndexRoute,
   HrDashboardSettingsIndexRoute: HrDashboardSettingsIndexRoute,
   HrDashboardShiftsIndexRoute: HrDashboardShiftsIndexRoute,
   HrDashboardSupportIndexRoute: HrDashboardSupportIndexRoute,

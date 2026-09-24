@@ -359,6 +359,18 @@ export const navSections: NavSection[] = [
         ],
       },
       {
+        title: "Project Management (PMS)",
+        icon: FolderKanban,
+        items: [
+          { title: "PMS Dashboard", url: "/hr-dashboard/pms/dashboard", icon: LayoutDashboard },
+          { title: "All Projects", url: "/hr-dashboard/pms/all", icon: Building },
+          { title: "Tasks & Kanban", url: "/hr-dashboard/pms/tasks", icon: ListChecks },
+          { title: "Sprint Planning", url: "/hr-dashboard/pms/sprints", icon: Clock },
+          { title: "Milestones", url: "/hr-dashboard/pms/milestones", icon: CheckCircle },
+          { title: "Team Allocation", url: "/hr-dashboard/pms/team", icon: Users },
+        ],
+      },
+      {
         title: "Finance & Payroll",
         icon: IndianRupee,
         items: [
