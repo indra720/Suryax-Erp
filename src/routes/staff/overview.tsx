@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { createFileRoute, Link, Outlet } from "@tanstack/react-router";
+import { createFileRoute, Link, Outlet, useRouterState } from "@tanstack/react-router";
 import {
   Card,
   CardContent,
@@ -24,7 +24,9 @@ import {
   PlusCircle,
   Loader2,
   FileText,
+  ScanFace,
 } from "lucide-react";
+import { FaceAttendanceDialog } from "@/components/attendance/FaceAttendanceDialog";
 import {
   Dialog,
   DialogContent,
@@ -52,9 +54,12 @@ export const Route = createFileRoute("/staff/overview")({
   component: StaffOverviewPage,
 });
 
-export function StaffOverviewPage() {
+function StaffOverviewPage() {
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const isRootOverview = pathname === "/staff/overview" || pathname === "/staff/overview/";
   const [isCheckedIn, setIsCheckedIn] = useState(false);
   const [checkInTime, setCheckInTime] = useState<string | null>(null);
+  const [faceModalOpen, setFaceModalOpen] = useState(false);
   const [showLeaveModal, setShowLeaveModal] = useState(false);
   const [leaveLoading, setLeaveLoading] = useState(false);
   const [leaveForm, setLeaveForm] = useState({
@@ -115,27 +120,64 @@ export function StaffOverviewPage() {
   return (
     <div className="space-y-4 w-full max-w-full overflow-x-hidden p-1 sm:p-2">
       {/* Navigation Submenu Tabs */}
-      <div className="flex items-center gap-1 border-b pb-2 text-xs font-medium">
-        <Button variant="secondary" size="sm" asChild className="font-semibold">
+      <div className="flex items-center gap-1 border-b pb-2 text-xs font-medium overflow-x-auto">
+        <Button
+          variant={isRootOverview ? "secondary" : "ghost"}
+          size="sm"
+          asChild
+          className={isRootOverview ? "font-semibold text-primary" : "text-muted-foreground hover:text-foreground"}
+        >
           <Link to="/staff/overview">Overview</Link>
         </Button>
-        <Button variant="ghost" size="sm" asChild className="text-muted-foreground hover:text-foreground">
+        <Button
+          variant={pathname.startsWith("/staff/overview/attendance") ? "secondary" : "ghost"}
+          size="sm"
+          asChild
+          className={pathname.startsWith("/staff/overview/attendance") ? "font-semibold text-primary" : "text-muted-foreground hover:text-foreground"}
+        >
           <Link to="/staff/overview/attendance">Attendance</Link>
         </Button>
-        <Button variant="ghost" size="sm" asChild className="text-muted-foreground hover:text-foreground">
+        <Button
+          variant={pathname.startsWith("/staff/overview/face-attendance") ? "secondary" : "ghost"}
+          size="sm"
+          asChild
+          className={pathname.startsWith("/staff/overview/face-attendance") ? "font-semibold text-primary" : "text-muted-foreground hover:text-foreground"}
+        >
+          <Link to="/staff/overview/face-attendance">
+            <ScanFace className="mr-1.5 h-3.5 w-3.5 text-primary" /> Face Attendance
+          </Link>
+        </Button>
+        <Button
+          variant={pathname.startsWith("/staff/overview/leave") ? "secondary" : "ghost"}
+          size="sm"
+          asChild
+          className={pathname.startsWith("/staff/overview/leave") ? "font-semibold text-primary" : "text-muted-foreground hover:text-foreground"}
+        >
           <Link to="/staff/overview/leave">Leave Requests</Link>
         </Button>
-        <Button variant="ghost" size="sm" asChild className="text-muted-foreground hover:text-foreground">
+        <Button
+          variant={pathname.startsWith("/staff/overview/location") ? "secondary" : "ghost"}
+          size="sm"
+          asChild
+          className={pathname.startsWith("/staff/overview/location") ? "font-semibold text-primary" : "text-muted-foreground hover:text-foreground"}
+        >
           <Link to="/staff/overview/location">Location & Geofence</Link>
         </Button>
-        <Button variant="ghost" size="sm" asChild className="text-muted-foreground hover:text-foreground">
+        <Button
+          variant="ghost"
+          size="sm"
+          asChild
+          className="text-muted-foreground hover:text-foreground"
+        >
           <Link to="/staff/profile">My Profile</Link>
         </Button>
       </div>
 
       <Outlet />
 
-      {/* Welcome & Punch In Banner */}
+      {isRootOverview && (
+        <>
+          {/* Welcome & Punch In Banner */}
       <Card className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border-primary/20">
         <CardContent className="p-4 sm:p-6">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
@@ -156,18 +198,28 @@ export function StaffOverviewPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2 flex-wrap">
               <Button
                 size="sm"
+                onClick={() => setFaceModalOpen(true)}
+                className="text-xs font-bold gap-1.5 bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm"
+              >
+                <ScanFace className="h-4 w-4" />
+                {isCheckedIn ? "Face Punch Out" : "Punch with Face Scanner"}
+              </Button>
+
+              <Button
+                size="sm"
+                variant="outline"
                 onClick={handlePunchToggle}
                 className={`text-xs font-semibold gap-1.5 ${
                   isCheckedIn
-                    ? "bg-rose-600 hover:bg-rose-700 text-white"
-                    : "bg-emerald-600 hover:bg-emerald-700 text-white"
+                    ? "text-rose-600 border-rose-200 hover:bg-rose-50"
+                    : "text-emerald-600 border-emerald-200 hover:bg-emerald-50"
                 }`}
               >
                 <Clock className="h-4 w-4" />
-                {isCheckedIn ? "Punch Out" : "Punch In (Check-In)"}
+                {isCheckedIn ? "Quick Out" : "Quick In"}
               </Button>
 
               <Button
@@ -373,6 +425,24 @@ export function StaffOverviewPage() {
           </form>
         </DialogContent>
       </Dialog>
+        </>
+      )}
+
+      {/* Live Camera Face Attendance Modal */}
+      <FaceAttendanceDialog
+        open={faceModalOpen}
+        onOpenChange={setFaceModalOpen}
+        actionType={isCheckedIn ? "check-out" : "check-in"}
+        employeeName={profile?.first_name || "Pooja Sharma"}
+        onSuccess={(record) => {
+          if (record.action === "check-in") {
+            setIsCheckedIn(true);
+            setCheckInTime(record.time);
+          } else {
+            setIsCheckedIn(false);
+          }
+        }}
+      />
     </div>
   );
 }

@@ -39,6 +39,8 @@ import { Route as AdminAddSellRouteImport } from './routes/admin/add-sell'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminTimesheetRouteImport } from './routes/admin/timesheet'
 import { Route as HrDashboardIndexRouteImport } from './routes/hr-dashboard/index'
+import { Route as HrDashboardManualAttendanceRouteImport } from './routes/hr-dashboard/manual-attendance'
+import { Route as HrDashboardProfileRouteImport } from './routes/hr-dashboard/profile'
 import { Route as StaffDashboardRouteImport } from './routes/staff/dashboard'
 import { Route as StaffEarnRouteImport } from './routes/staff/earn'
 import { Route as StaffIncentivesRouteImport } from './routes/staff/incentives'
@@ -143,11 +145,42 @@ import { Route as AdminSocialExternalResourceRouteImport } from './routes/admin/
 import { Route as AdminSocialIntegrationRouteImport } from './routes/admin/social/integration'
 import { Route as AdminUsersStaffRouteImport } from './routes/admin/users/staff'
 import { Route as AdminUsersTeamLeaderRouteImport } from './routes/admin/users/team-leader'
+import { Route as HrDashboardAttendanceIndexRouteImport } from './routes/hr-dashboard/attendance/index'
+import { Route as HrDashboardAttendanceAdjustLeaveRouteImport } from './routes/hr-dashboard/attendance/adjust-leave'
+import { Route as HrDashboardAttendanceCalendarRouteImport } from './routes/hr-dashboard/attendance/calendar'
+import { Route as HrDashboardAttendanceFacePunchRouteImport } from './routes/hr-dashboard/attendance/face-punch'
+import { Route as HrDashboardAttendanceLeaveRequestsRouteImport } from './routes/hr-dashboard/attendance/leave-requests'
+import { Route as HrDashboardAttendanceLeaveTypeRouteImport } from './routes/hr-dashboard/attendance/leave-type'
+import { Route as HrDashboardAttendanceListRouteImport } from './routes/hr-dashboard/attendance/list'
+import { Route as HrDashboardAttendanceLogsRouteImport } from './routes/hr-dashboard/attendance/logs'
+import { Route as HrDashboardEmployeesIndexRouteImport } from './routes/hr-dashboard/employees/index'
+import { Route as HrDashboardEmployeesIdRouteImport } from './routes/hr-dashboard/employees/$id'
+import { Route as HrDashboardEmployeesAllRouteImport } from './routes/hr-dashboard/employees/all'
+import { Route as HrDashboardEmployeesIdStudioRouteImport } from './routes/hr-dashboard/employees/id-studio'
+import { Route as HrDashboardEmployeesManageAssetsRouteImport } from './routes/hr-dashboard/employees/manage-assets'
+import { Route as HrDashboardEmployeesOnboardingRouteImport } from './routes/hr-dashboard/employees/onboarding'
+import { Route as HrDashboardFinanceIndexRouteImport } from './routes/hr-dashboard/finance/index'
+import { Route as HrDashboardFinanceLoansRouteImport } from './routes/hr-dashboard/finance/loans'
+import { Route as HrDashboardFinancePayslipsRouteImport } from './routes/hr-dashboard/finance/payslips'
+import { Route as HrDashboardFinanceReimbursementsRouteImport } from './routes/hr-dashboard/finance/reimbursements'
+import { Route as HrDashboardFinanceSalaryRouteImport } from './routes/hr-dashboard/finance/salary'
+import { Route as HrDashboardSettingsIndexRouteImport } from './routes/hr-dashboard/settings/index'
+import { Route as HrDashboardSettingsHolidaysRouteImport } from './routes/hr-dashboard/settings/holidays'
+import { Route as HrDashboardSettingsRulesRouteImport } from './routes/hr-dashboard/settings/rules'
+import { Route as HrDashboardShiftsIndexRouteImport } from './routes/hr-dashboard/shifts/index'
+import { Route as HrDashboardShiftsAssignmentRouteImport } from './routes/hr-dashboard/shifts/assignment'
+import { Route as HrDashboardShiftsCustomRouteImport } from './routes/hr-dashboard/shifts/custom'
+import { Route as HrDashboardSupportIndexRouteImport } from './routes/hr-dashboard/support/index'
+import { Route as HrDashboardSupportTicketsRouteImport } from './routes/hr-dashboard/support/tickets'
+import { Route as HrDashboardTasksIndexRouteImport } from './routes/hr-dashboard/tasks/index'
+import { Route as HrDashboardTasksBoardRouteImport } from './routes/hr-dashboard/tasks/board'
+import { Route as HrDashboardTasksFaceUpdatesRouteImport } from './routes/hr-dashboard/tasks/face-updates'
 import { Route as StaffMarketingFacebookRouteImport } from './routes/staff/marketing/facebook'
 import { Route as StaffMarketingGoogleRouteImport } from './routes/staff/marketing/google'
 import { Route as StaffMarketingLinkedinRouteImport } from './routes/staff/marketing/linkedin'
 import { Route as StaffMarketingWhatsappRouteImport } from './routes/staff/marketing/whatsapp'
 import { Route as StaffOverviewAttendanceRouteImport } from './routes/staff/overview/attendance'
+import { Route as StaffOverviewFaceAttendanceRouteImport } from './routes/staff/overview/face-attendance'
 import { Route as StaffOverviewLeaveRouteImport } from './routes/staff/overview/leave'
 import { Route as StaffOverviewLocationRouteImport } from './routes/staff/overview/location'
 import { Route as StaffReportsInterestedRouteImport } from './routes/staff/reports/interested'
@@ -218,6 +251,7 @@ import { Route as AdminProjectsApartmentCommercialFloorRouteImport } from './rou
 import { Route as AdminProjectsApartmentCommercialListRouteImport } from './routes/admin/projects/apartment-commercial/list'
 import { Route as AdminUsersStaffEarnRouteImport } from './routes/admin/users/staff/earn'
 import { Route as AdminUsersStaffIncentivesRouteImport } from './routes/admin/users/staff/incentives'
+import { Route as HrDashboardTasksViewIdRouteImport } from './routes/hr-dashboard/tasks/view/$id'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -367,6 +401,17 @@ const AdminTimesheetRoute = AdminTimesheetRouteImport.update({
 const HrDashboardIndexRoute = HrDashboardIndexRouteImport.update({
   id: '/hr-dashboard/',
   path: '/hr-dashboard/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardManualAttendanceRoute =
+  HrDashboardManualAttendanceRouteImport.update({
+    id: '/hr-dashboard/manual-attendance',
+    path: '/hr-dashboard/manual-attendance',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardProfileRoute = HrDashboardProfileRouteImport.update({
+  id: '/hr-dashboard/profile',
+  path: '/hr-dashboard/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StaffDashboardRoute = StaffDashboardRouteImport.update({
@@ -925,6 +970,177 @@ const AdminUsersTeamLeaderRoute = AdminUsersTeamLeaderRouteImport.update({
   path: '/admin/users/team-leader',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HrDashboardAttendanceIndexRoute =
+  HrDashboardAttendanceIndexRouteImport.update({
+    id: '/hr-dashboard/attendance/',
+    path: '/hr-dashboard/attendance/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardAttendanceAdjustLeaveRoute =
+  HrDashboardAttendanceAdjustLeaveRouteImport.update({
+    id: '/hr-dashboard/attendance/adjust-leave',
+    path: '/hr-dashboard/attendance/adjust-leave',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardAttendanceCalendarRoute =
+  HrDashboardAttendanceCalendarRouteImport.update({
+    id: '/hr-dashboard/attendance/calendar',
+    path: '/hr-dashboard/attendance/calendar',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardAttendanceFacePunchRoute =
+  HrDashboardAttendanceFacePunchRouteImport.update({
+    id: '/hr-dashboard/attendance/face-punch',
+    path: '/hr-dashboard/attendance/face-punch',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardAttendanceLeaveRequestsRoute =
+  HrDashboardAttendanceLeaveRequestsRouteImport.update({
+    id: '/hr-dashboard/attendance/leave-requests',
+    path: '/hr-dashboard/attendance/leave-requests',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardAttendanceLeaveTypeRoute =
+  HrDashboardAttendanceLeaveTypeRouteImport.update({
+    id: '/hr-dashboard/attendance/leave-type',
+    path: '/hr-dashboard/attendance/leave-type',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardAttendanceListRoute =
+  HrDashboardAttendanceListRouteImport.update({
+    id: '/hr-dashboard/attendance/list',
+    path: '/hr-dashboard/attendance/list',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardAttendanceLogsRoute =
+  HrDashboardAttendanceLogsRouteImport.update({
+    id: '/hr-dashboard/attendance/logs',
+    path: '/hr-dashboard/attendance/logs',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardEmployeesIndexRoute =
+  HrDashboardEmployeesIndexRouteImport.update({
+    id: '/hr-dashboard/employees/',
+    path: '/hr-dashboard/employees/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardEmployeesIdRoute = HrDashboardEmployeesIdRouteImport.update({
+  id: '/hr-dashboard/employees/$id',
+  path: '/hr-dashboard/employees/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardEmployeesAllRoute = HrDashboardEmployeesAllRouteImport.update({
+  id: '/hr-dashboard/employees/all',
+  path: '/hr-dashboard/employees/all',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardEmployeesIdStudioRoute =
+  HrDashboardEmployeesIdStudioRouteImport.update({
+    id: '/hr-dashboard/employees/id-studio',
+    path: '/hr-dashboard/employees/id-studio',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardEmployeesManageAssetsRoute =
+  HrDashboardEmployeesManageAssetsRouteImport.update({
+    id: '/hr-dashboard/employees/manage-assets',
+    path: '/hr-dashboard/employees/manage-assets',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardEmployeesOnboardingRoute =
+  HrDashboardEmployeesOnboardingRouteImport.update({
+    id: '/hr-dashboard/employees/onboarding',
+    path: '/hr-dashboard/employees/onboarding',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardFinanceIndexRoute = HrDashboardFinanceIndexRouteImport.update({
+  id: '/hr-dashboard/finance/',
+  path: '/hr-dashboard/finance/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardFinanceLoansRoute = HrDashboardFinanceLoansRouteImport.update({
+  id: '/hr-dashboard/finance/loans',
+  path: '/hr-dashboard/finance/loans',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardFinancePayslipsRoute =
+  HrDashboardFinancePayslipsRouteImport.update({
+    id: '/hr-dashboard/finance/payslips',
+    path: '/hr-dashboard/finance/payslips',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardFinanceReimbursementsRoute =
+  HrDashboardFinanceReimbursementsRouteImport.update({
+    id: '/hr-dashboard/finance/reimbursements',
+    path: '/hr-dashboard/finance/reimbursements',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardFinanceSalaryRoute =
+  HrDashboardFinanceSalaryRouteImport.update({
+    id: '/hr-dashboard/finance/salary',
+    path: '/hr-dashboard/finance/salary',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardSettingsIndexRoute =
+  HrDashboardSettingsIndexRouteImport.update({
+    id: '/hr-dashboard/settings/',
+    path: '/hr-dashboard/settings/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardSettingsHolidaysRoute =
+  HrDashboardSettingsHolidaysRouteImport.update({
+    id: '/hr-dashboard/settings/holidays',
+    path: '/hr-dashboard/settings/holidays',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardSettingsRulesRoute =
+  HrDashboardSettingsRulesRouteImport.update({
+    id: '/hr-dashboard/settings/rules',
+    path: '/hr-dashboard/settings/rules',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardShiftsIndexRoute = HrDashboardShiftsIndexRouteImport.update({
+  id: '/hr-dashboard/shifts/',
+  path: '/hr-dashboard/shifts/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardShiftsAssignmentRoute =
+  HrDashboardShiftsAssignmentRouteImport.update({
+    id: '/hr-dashboard/shifts/assignment',
+    path: '/hr-dashboard/shifts/assignment',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardShiftsCustomRoute = HrDashboardShiftsCustomRouteImport.update({
+  id: '/hr-dashboard/shifts/custom',
+  path: '/hr-dashboard/shifts/custom',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardSupportIndexRoute = HrDashboardSupportIndexRouteImport.update({
+  id: '/hr-dashboard/support/',
+  path: '/hr-dashboard/support/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardSupportTicketsRoute =
+  HrDashboardSupportTicketsRouteImport.update({
+    id: '/hr-dashboard/support/tickets',
+    path: '/hr-dashboard/support/tickets',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const HrDashboardTasksIndexRoute = HrDashboardTasksIndexRouteImport.update({
+  id: '/hr-dashboard/tasks/',
+  path: '/hr-dashboard/tasks/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardTasksBoardRoute = HrDashboardTasksBoardRouteImport.update({
+  id: '/hr-dashboard/tasks/board',
+  path: '/hr-dashboard/tasks/board',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HrDashboardTasksFaceUpdatesRoute =
+  HrDashboardTasksFaceUpdatesRouteImport.update({
+    id: '/hr-dashboard/tasks/face-updates',
+    path: '/hr-dashboard/tasks/face-updates',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const StaffMarketingFacebookRoute = StaffMarketingFacebookRouteImport.update({
   id: '/staff/marketing/facebook',
   path: '/staff/marketing/facebook',
@@ -950,6 +1166,12 @@ const StaffOverviewAttendanceRoute = StaffOverviewAttendanceRouteImport.update({
   path: '/attendance',
   getParentRoute: () => StaffOverviewRoute,
 } as any)
+const StaffOverviewFaceAttendanceRoute =
+  StaffOverviewFaceAttendanceRouteImport.update({
+    id: '/face-attendance',
+    path: '/face-attendance',
+    getParentRoute: () => StaffOverviewRoute,
+  } as any)
 const StaffOverviewLeaveRoute = StaffOverviewLeaveRouteImport.update({
   id: '/leave',
   path: '/leave',
@@ -1345,6 +1567,11 @@ const AdminUsersStaffIncentivesRoute =
     path: '/incentives',
     getParentRoute: () => AdminUsersStaffRoute,
   } as any)
+const HrDashboardTasksViewIdRoute = HrDashboardTasksViewIdRouteImport.update({
+  id: '/hr-dashboard/tasks/view/$id',
+  path: '/hr-dashboard/tasks/view/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -1376,6 +1603,8 @@ export interface FileRoutesByFullPath {
   '/admin/add-sell': typeof AdminAddSellRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/timesheet': typeof AdminTimesheetRoute
+  '/hr-dashboard/manual-attendance': typeof HrDashboardManualAttendanceRoute
+  '/hr-dashboard/profile': typeof HrDashboardProfileRoute
   '/staff/dashboard': typeof StaffDashboardRoute
   '/staff/earn': typeof StaffEarnRoute
   '/staff/incentives': typeof StaffIncentivesRoute
@@ -1481,11 +1710,35 @@ export interface FileRoutesByFullPath {
   '/admin/social/integration': typeof AdminSocialIntegrationRoute
   '/admin/users/staff': typeof AdminUsersStaffRouteWithChildren
   '/admin/users/team-leader': typeof AdminUsersTeamLeaderRoute
+  '/hr-dashboard/attendance/adjust-leave': typeof HrDashboardAttendanceAdjustLeaveRoute
+  '/hr-dashboard/attendance/calendar': typeof HrDashboardAttendanceCalendarRoute
+  '/hr-dashboard/attendance/face-punch': typeof HrDashboardAttendanceFacePunchRoute
+  '/hr-dashboard/attendance/leave-requests': typeof HrDashboardAttendanceLeaveRequestsRoute
+  '/hr-dashboard/attendance/leave-type': typeof HrDashboardAttendanceLeaveTypeRoute
+  '/hr-dashboard/attendance/list': typeof HrDashboardAttendanceListRoute
+  '/hr-dashboard/attendance/logs': typeof HrDashboardAttendanceLogsRoute
+  '/hr-dashboard/employees/$id': typeof HrDashboardEmployeesIdRoute
+  '/hr-dashboard/employees/all': typeof HrDashboardEmployeesAllRoute
+  '/hr-dashboard/employees/id-studio': typeof HrDashboardEmployeesIdStudioRoute
+  '/hr-dashboard/employees/manage-assets': typeof HrDashboardEmployeesManageAssetsRoute
+  '/hr-dashboard/employees/onboarding': typeof HrDashboardEmployeesOnboardingRoute
+  '/hr-dashboard/finance/loans': typeof HrDashboardFinanceLoansRoute
+  '/hr-dashboard/finance/payslips': typeof HrDashboardFinancePayslipsRoute
+  '/hr-dashboard/finance/reimbursements': typeof HrDashboardFinanceReimbursementsRoute
+  '/hr-dashboard/finance/salary': typeof HrDashboardFinanceSalaryRoute
+  '/hr-dashboard/settings/holidays': typeof HrDashboardSettingsHolidaysRoute
+  '/hr-dashboard/settings/rules': typeof HrDashboardSettingsRulesRoute
+  '/hr-dashboard/shifts/assignment': typeof HrDashboardShiftsAssignmentRoute
+  '/hr-dashboard/shifts/custom': typeof HrDashboardShiftsCustomRoute
+  '/hr-dashboard/support/tickets': typeof HrDashboardSupportTicketsRoute
+  '/hr-dashboard/tasks/board': typeof HrDashboardTasksBoardRoute
+  '/hr-dashboard/tasks/face-updates': typeof HrDashboardTasksFaceUpdatesRoute
   '/staff/marketing/facebook': typeof StaffMarketingFacebookRoute
   '/staff/marketing/google': typeof StaffMarketingGoogleRoute
   '/staff/marketing/linkedin': typeof StaffMarketingLinkedinRoute
   '/staff/marketing/whatsapp': typeof StaffMarketingWhatsappRoute
   '/staff/overview/attendance': typeof StaffOverviewAttendanceRoute
+  '/staff/overview/face-attendance': typeof StaffOverviewFaceAttendanceRoute
   '/staff/overview/leave': typeof StaffOverviewLeaveRoute
   '/staff/overview/location': typeof StaffOverviewLocationRoute
   '/staff/reports/interested': typeof StaffReportsInterestedRoute
@@ -1541,6 +1794,13 @@ export interface FileRoutesByFullPath {
   '/team-leader/reports/other-location': typeof TeamLeaderReportsOtherLocationRoute
   '/team-leader/reports/total-leads': typeof TeamLeaderReportsTotalLeadsRoute
   '/team-leader/reports/visit': typeof TeamLeaderReportsVisitRoute
+  '/hr-dashboard/attendance/': typeof HrDashboardAttendanceIndexRoute
+  '/hr-dashboard/employees/': typeof HrDashboardEmployeesIndexRoute
+  '/hr-dashboard/finance/': typeof HrDashboardFinanceIndexRoute
+  '/hr-dashboard/settings/': typeof HrDashboardSettingsIndexRoute
+  '/hr-dashboard/shifts/': typeof HrDashboardShiftsIndexRoute
+  '/hr-dashboard/support/': typeof HrDashboardSupportIndexRoute
+  '/hr-dashboard/tasks/': typeof HrDashboardTasksIndexRoute
   '/superadmin/leads/': typeof SuperadminLeadsIndexRoute
   '/superadmin/reports/': typeof SuperadminReportsIndexRoute
   '/team-leader/leads/': typeof TeamLeaderLeadsIndexRoute
@@ -1556,6 +1816,7 @@ export interface FileRoutesByFullPath {
   '/admin/projects/apartment-commercial/list': typeof AdminProjectsApartmentCommercialListRoute
   '/admin/users/staff/earn': typeof AdminUsersStaffEarnRoute
   '/admin/users/staff/incentives': typeof AdminUsersStaffIncentivesRoute
+  '/hr-dashboard/tasks/view/$id': typeof HrDashboardTasksViewIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -1587,6 +1848,8 @@ export interface FileRoutesByTo {
   '/admin/add-sell': typeof AdminAddSellRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/timesheet': typeof AdminTimesheetRoute
+  '/hr-dashboard/manual-attendance': typeof HrDashboardManualAttendanceRoute
+  '/hr-dashboard/profile': typeof HrDashboardProfileRoute
   '/staff/dashboard': typeof StaffDashboardRoute
   '/staff/earn': typeof StaffEarnRoute
   '/staff/incentives': typeof StaffIncentivesRoute
@@ -1692,11 +1955,35 @@ export interface FileRoutesByTo {
   '/admin/social/integration': typeof AdminSocialIntegrationRoute
   '/admin/users/staff': typeof AdminUsersStaffRouteWithChildren
   '/admin/users/team-leader': typeof AdminUsersTeamLeaderRoute
+  '/hr-dashboard/attendance/adjust-leave': typeof HrDashboardAttendanceAdjustLeaveRoute
+  '/hr-dashboard/attendance/calendar': typeof HrDashboardAttendanceCalendarRoute
+  '/hr-dashboard/attendance/face-punch': typeof HrDashboardAttendanceFacePunchRoute
+  '/hr-dashboard/attendance/leave-requests': typeof HrDashboardAttendanceLeaveRequestsRoute
+  '/hr-dashboard/attendance/leave-type': typeof HrDashboardAttendanceLeaveTypeRoute
+  '/hr-dashboard/attendance/list': typeof HrDashboardAttendanceListRoute
+  '/hr-dashboard/attendance/logs': typeof HrDashboardAttendanceLogsRoute
+  '/hr-dashboard/employees/$id': typeof HrDashboardEmployeesIdRoute
+  '/hr-dashboard/employees/all': typeof HrDashboardEmployeesAllRoute
+  '/hr-dashboard/employees/id-studio': typeof HrDashboardEmployeesIdStudioRoute
+  '/hr-dashboard/employees/manage-assets': typeof HrDashboardEmployeesManageAssetsRoute
+  '/hr-dashboard/employees/onboarding': typeof HrDashboardEmployeesOnboardingRoute
+  '/hr-dashboard/finance/loans': typeof HrDashboardFinanceLoansRoute
+  '/hr-dashboard/finance/payslips': typeof HrDashboardFinancePayslipsRoute
+  '/hr-dashboard/finance/reimbursements': typeof HrDashboardFinanceReimbursementsRoute
+  '/hr-dashboard/finance/salary': typeof HrDashboardFinanceSalaryRoute
+  '/hr-dashboard/settings/holidays': typeof HrDashboardSettingsHolidaysRoute
+  '/hr-dashboard/settings/rules': typeof HrDashboardSettingsRulesRoute
+  '/hr-dashboard/shifts/assignment': typeof HrDashboardShiftsAssignmentRoute
+  '/hr-dashboard/shifts/custom': typeof HrDashboardShiftsCustomRoute
+  '/hr-dashboard/support/tickets': typeof HrDashboardSupportTicketsRoute
+  '/hr-dashboard/tasks/board': typeof HrDashboardTasksBoardRoute
+  '/hr-dashboard/tasks/face-updates': typeof HrDashboardTasksFaceUpdatesRoute
   '/staff/marketing/facebook': typeof StaffMarketingFacebookRoute
   '/staff/marketing/google': typeof StaffMarketingGoogleRoute
   '/staff/marketing/linkedin': typeof StaffMarketingLinkedinRoute
   '/staff/marketing/whatsapp': typeof StaffMarketingWhatsappRoute
   '/staff/overview/attendance': typeof StaffOverviewAttendanceRoute
+  '/staff/overview/face-attendance': typeof StaffOverviewFaceAttendanceRoute
   '/staff/overview/leave': typeof StaffOverviewLeaveRoute
   '/staff/overview/location': typeof StaffOverviewLocationRoute
   '/staff/reports/interested': typeof StaffReportsInterestedRoute
@@ -1752,6 +2039,13 @@ export interface FileRoutesByTo {
   '/team-leader/reports/other-location': typeof TeamLeaderReportsOtherLocationRoute
   '/team-leader/reports/total-leads': typeof TeamLeaderReportsTotalLeadsRoute
   '/team-leader/reports/visit': typeof TeamLeaderReportsVisitRoute
+  '/hr-dashboard/attendance': typeof HrDashboardAttendanceIndexRoute
+  '/hr-dashboard/employees': typeof HrDashboardEmployeesIndexRoute
+  '/hr-dashboard/finance': typeof HrDashboardFinanceIndexRoute
+  '/hr-dashboard/settings': typeof HrDashboardSettingsIndexRoute
+  '/hr-dashboard/shifts': typeof HrDashboardShiftsIndexRoute
+  '/hr-dashboard/support': typeof HrDashboardSupportIndexRoute
+  '/hr-dashboard/tasks': typeof HrDashboardTasksIndexRoute
   '/superadmin/leads': typeof SuperadminLeadsIndexRoute
   '/superadmin/reports': typeof SuperadminReportsIndexRoute
   '/team-leader/leads': typeof TeamLeaderLeadsIndexRoute
@@ -1767,6 +2061,7 @@ export interface FileRoutesByTo {
   '/admin/projects/apartment-commercial/list': typeof AdminProjectsApartmentCommercialListRoute
   '/admin/users/staff/earn': typeof AdminUsersStaffEarnRoute
   '/admin/users/staff/incentives': typeof AdminUsersStaffIncentivesRoute
+  '/hr-dashboard/tasks/view/$id': typeof HrDashboardTasksViewIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -1799,6 +2094,8 @@ export interface FileRoutesById {
   '/admin/add-sell': typeof AdminAddSellRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/timesheet': typeof AdminTimesheetRoute
+  '/hr-dashboard/manual-attendance': typeof HrDashboardManualAttendanceRoute
+  '/hr-dashboard/profile': typeof HrDashboardProfileRoute
   '/staff/dashboard': typeof StaffDashboardRoute
   '/staff/earn': typeof StaffEarnRoute
   '/staff/incentives': typeof StaffIncentivesRoute
@@ -1904,11 +2201,35 @@ export interface FileRoutesById {
   '/admin/social/integration': typeof AdminSocialIntegrationRoute
   '/admin/users/staff': typeof AdminUsersStaffRouteWithChildren
   '/admin/users/team-leader': typeof AdminUsersTeamLeaderRoute
+  '/hr-dashboard/attendance/adjust-leave': typeof HrDashboardAttendanceAdjustLeaveRoute
+  '/hr-dashboard/attendance/calendar': typeof HrDashboardAttendanceCalendarRoute
+  '/hr-dashboard/attendance/face-punch': typeof HrDashboardAttendanceFacePunchRoute
+  '/hr-dashboard/attendance/leave-requests': typeof HrDashboardAttendanceLeaveRequestsRoute
+  '/hr-dashboard/attendance/leave-type': typeof HrDashboardAttendanceLeaveTypeRoute
+  '/hr-dashboard/attendance/list': typeof HrDashboardAttendanceListRoute
+  '/hr-dashboard/attendance/logs': typeof HrDashboardAttendanceLogsRoute
+  '/hr-dashboard/employees/$id': typeof HrDashboardEmployeesIdRoute
+  '/hr-dashboard/employees/all': typeof HrDashboardEmployeesAllRoute
+  '/hr-dashboard/employees/id-studio': typeof HrDashboardEmployeesIdStudioRoute
+  '/hr-dashboard/employees/manage-assets': typeof HrDashboardEmployeesManageAssetsRoute
+  '/hr-dashboard/employees/onboarding': typeof HrDashboardEmployeesOnboardingRoute
+  '/hr-dashboard/finance/loans': typeof HrDashboardFinanceLoansRoute
+  '/hr-dashboard/finance/payslips': typeof HrDashboardFinancePayslipsRoute
+  '/hr-dashboard/finance/reimbursements': typeof HrDashboardFinanceReimbursementsRoute
+  '/hr-dashboard/finance/salary': typeof HrDashboardFinanceSalaryRoute
+  '/hr-dashboard/settings/holidays': typeof HrDashboardSettingsHolidaysRoute
+  '/hr-dashboard/settings/rules': typeof HrDashboardSettingsRulesRoute
+  '/hr-dashboard/shifts/assignment': typeof HrDashboardShiftsAssignmentRoute
+  '/hr-dashboard/shifts/custom': typeof HrDashboardShiftsCustomRoute
+  '/hr-dashboard/support/tickets': typeof HrDashboardSupportTicketsRoute
+  '/hr-dashboard/tasks/board': typeof HrDashboardTasksBoardRoute
+  '/hr-dashboard/tasks/face-updates': typeof HrDashboardTasksFaceUpdatesRoute
   '/staff/marketing/facebook': typeof StaffMarketingFacebookRoute
   '/staff/marketing/google': typeof StaffMarketingGoogleRoute
   '/staff/marketing/linkedin': typeof StaffMarketingLinkedinRoute
   '/staff/marketing/whatsapp': typeof StaffMarketingWhatsappRoute
   '/staff/overview/attendance': typeof StaffOverviewAttendanceRoute
+  '/staff/overview/face-attendance': typeof StaffOverviewFaceAttendanceRoute
   '/staff/overview/leave': typeof StaffOverviewLeaveRoute
   '/staff/overview/location': typeof StaffOverviewLocationRoute
   '/staff/reports/interested': typeof StaffReportsInterestedRoute
@@ -1964,6 +2285,13 @@ export interface FileRoutesById {
   '/team-leader/reports/other-location': typeof TeamLeaderReportsOtherLocationRoute
   '/team-leader/reports/total-leads': typeof TeamLeaderReportsTotalLeadsRoute
   '/team-leader/reports/visit': typeof TeamLeaderReportsVisitRoute
+  '/hr-dashboard/attendance/': typeof HrDashboardAttendanceIndexRoute
+  '/hr-dashboard/employees/': typeof HrDashboardEmployeesIndexRoute
+  '/hr-dashboard/finance/': typeof HrDashboardFinanceIndexRoute
+  '/hr-dashboard/settings/': typeof HrDashboardSettingsIndexRoute
+  '/hr-dashboard/shifts/': typeof HrDashboardShiftsIndexRoute
+  '/hr-dashboard/support/': typeof HrDashboardSupportIndexRoute
+  '/hr-dashboard/tasks/': typeof HrDashboardTasksIndexRoute
   '/superadmin/leads/': typeof SuperadminLeadsIndexRoute
   '/superadmin/reports/': typeof SuperadminReportsIndexRoute
   '/team-leader/leads/': typeof TeamLeaderLeadsIndexRoute
@@ -1979,6 +2307,7 @@ export interface FileRoutesById {
   '/admin/projects/apartment-commercial/list': typeof AdminProjectsApartmentCommercialListRoute
   '/admin/users/staff/earn': typeof AdminUsersStaffEarnRoute
   '/admin/users/staff/incentives': typeof AdminUsersStaffIncentivesRoute
+  '/hr-dashboard/tasks/view/$id': typeof HrDashboardTasksViewIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -2012,6 +2341,8 @@ export interface FileRouteTypes {
     | '/admin/add-sell'
     | '/admin/dashboard'
     | '/admin/timesheet'
+    | '/hr-dashboard/manual-attendance'
+    | '/hr-dashboard/profile'
     | '/staff/dashboard'
     | '/staff/earn'
     | '/staff/incentives'
@@ -2117,11 +2448,35 @@ export interface FileRouteTypes {
     | '/admin/social/integration'
     | '/admin/users/staff'
     | '/admin/users/team-leader'
+    | '/hr-dashboard/attendance/adjust-leave'
+    | '/hr-dashboard/attendance/calendar'
+    | '/hr-dashboard/attendance/face-punch'
+    | '/hr-dashboard/attendance/leave-requests'
+    | '/hr-dashboard/attendance/leave-type'
+    | '/hr-dashboard/attendance/list'
+    | '/hr-dashboard/attendance/logs'
+    | '/hr-dashboard/employees/$id'
+    | '/hr-dashboard/employees/all'
+    | '/hr-dashboard/employees/id-studio'
+    | '/hr-dashboard/employees/manage-assets'
+    | '/hr-dashboard/employees/onboarding'
+    | '/hr-dashboard/finance/loans'
+    | '/hr-dashboard/finance/payslips'
+    | '/hr-dashboard/finance/reimbursements'
+    | '/hr-dashboard/finance/salary'
+    | '/hr-dashboard/settings/holidays'
+    | '/hr-dashboard/settings/rules'
+    | '/hr-dashboard/shifts/assignment'
+    | '/hr-dashboard/shifts/custom'
+    | '/hr-dashboard/support/tickets'
+    | '/hr-dashboard/tasks/board'
+    | '/hr-dashboard/tasks/face-updates'
     | '/staff/marketing/facebook'
     | '/staff/marketing/google'
     | '/staff/marketing/linkedin'
     | '/staff/marketing/whatsapp'
     | '/staff/overview/attendance'
+    | '/staff/overview/face-attendance'
     | '/staff/overview/leave'
     | '/staff/overview/location'
     | '/staff/reports/interested'
@@ -2177,6 +2532,13 @@ export interface FileRouteTypes {
     | '/team-leader/reports/other-location'
     | '/team-leader/reports/total-leads'
     | '/team-leader/reports/visit'
+    | '/hr-dashboard/attendance/'
+    | '/hr-dashboard/employees/'
+    | '/hr-dashboard/finance/'
+    | '/hr-dashboard/settings/'
+    | '/hr-dashboard/shifts/'
+    | '/hr-dashboard/support/'
+    | '/hr-dashboard/tasks/'
     | '/superadmin/leads/'
     | '/superadmin/reports/'
     | '/team-leader/leads/'
@@ -2192,6 +2554,7 @@ export interface FileRouteTypes {
     | '/admin/projects/apartment-commercial/list'
     | '/admin/users/staff/earn'
     | '/admin/users/staff/incentives'
+    | '/hr-dashboard/tasks/view/$id'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -2223,6 +2586,8 @@ export interface FileRouteTypes {
     | '/admin/add-sell'
     | '/admin/dashboard'
     | '/admin/timesheet'
+    | '/hr-dashboard/manual-attendance'
+    | '/hr-dashboard/profile'
     | '/staff/dashboard'
     | '/staff/earn'
     | '/staff/incentives'
@@ -2328,11 +2693,35 @@ export interface FileRouteTypes {
     | '/admin/social/integration'
     | '/admin/users/staff'
     | '/admin/users/team-leader'
+    | '/hr-dashboard/attendance/adjust-leave'
+    | '/hr-dashboard/attendance/calendar'
+    | '/hr-dashboard/attendance/face-punch'
+    | '/hr-dashboard/attendance/leave-requests'
+    | '/hr-dashboard/attendance/leave-type'
+    | '/hr-dashboard/attendance/list'
+    | '/hr-dashboard/attendance/logs'
+    | '/hr-dashboard/employees/$id'
+    | '/hr-dashboard/employees/all'
+    | '/hr-dashboard/employees/id-studio'
+    | '/hr-dashboard/employees/manage-assets'
+    | '/hr-dashboard/employees/onboarding'
+    | '/hr-dashboard/finance/loans'
+    | '/hr-dashboard/finance/payslips'
+    | '/hr-dashboard/finance/reimbursements'
+    | '/hr-dashboard/finance/salary'
+    | '/hr-dashboard/settings/holidays'
+    | '/hr-dashboard/settings/rules'
+    | '/hr-dashboard/shifts/assignment'
+    | '/hr-dashboard/shifts/custom'
+    | '/hr-dashboard/support/tickets'
+    | '/hr-dashboard/tasks/board'
+    | '/hr-dashboard/tasks/face-updates'
     | '/staff/marketing/facebook'
     | '/staff/marketing/google'
     | '/staff/marketing/linkedin'
     | '/staff/marketing/whatsapp'
     | '/staff/overview/attendance'
+    | '/staff/overview/face-attendance'
     | '/staff/overview/leave'
     | '/staff/overview/location'
     | '/staff/reports/interested'
@@ -2388,6 +2777,13 @@ export interface FileRouteTypes {
     | '/team-leader/reports/other-location'
     | '/team-leader/reports/total-leads'
     | '/team-leader/reports/visit'
+    | '/hr-dashboard/attendance'
+    | '/hr-dashboard/employees'
+    | '/hr-dashboard/finance'
+    | '/hr-dashboard/settings'
+    | '/hr-dashboard/shifts'
+    | '/hr-dashboard/support'
+    | '/hr-dashboard/tasks'
     | '/superadmin/leads'
     | '/superadmin/reports'
     | '/team-leader/leads'
@@ -2403,6 +2799,7 @@ export interface FileRouteTypes {
     | '/admin/projects/apartment-commercial/list'
     | '/admin/users/staff/earn'
     | '/admin/users/staff/incentives'
+    | '/hr-dashboard/tasks/view/$id'
   id:
     | '__root__'
     | '/'
@@ -2434,6 +2831,8 @@ export interface FileRouteTypes {
     | '/admin/add-sell'
     | '/admin/dashboard'
     | '/admin/timesheet'
+    | '/hr-dashboard/manual-attendance'
+    | '/hr-dashboard/profile'
     | '/staff/dashboard'
     | '/staff/earn'
     | '/staff/incentives'
@@ -2539,11 +2938,35 @@ export interface FileRouteTypes {
     | '/admin/social/integration'
     | '/admin/users/staff'
     | '/admin/users/team-leader'
+    | '/hr-dashboard/attendance/adjust-leave'
+    | '/hr-dashboard/attendance/calendar'
+    | '/hr-dashboard/attendance/face-punch'
+    | '/hr-dashboard/attendance/leave-requests'
+    | '/hr-dashboard/attendance/leave-type'
+    | '/hr-dashboard/attendance/list'
+    | '/hr-dashboard/attendance/logs'
+    | '/hr-dashboard/employees/$id'
+    | '/hr-dashboard/employees/all'
+    | '/hr-dashboard/employees/id-studio'
+    | '/hr-dashboard/employees/manage-assets'
+    | '/hr-dashboard/employees/onboarding'
+    | '/hr-dashboard/finance/loans'
+    | '/hr-dashboard/finance/payslips'
+    | '/hr-dashboard/finance/reimbursements'
+    | '/hr-dashboard/finance/salary'
+    | '/hr-dashboard/settings/holidays'
+    | '/hr-dashboard/settings/rules'
+    | '/hr-dashboard/shifts/assignment'
+    | '/hr-dashboard/shifts/custom'
+    | '/hr-dashboard/support/tickets'
+    | '/hr-dashboard/tasks/board'
+    | '/hr-dashboard/tasks/face-updates'
     | '/staff/marketing/facebook'
     | '/staff/marketing/google'
     | '/staff/marketing/linkedin'
     | '/staff/marketing/whatsapp'
     | '/staff/overview/attendance'
+    | '/staff/overview/face-attendance'
     | '/staff/overview/leave'
     | '/staff/overview/location'
     | '/staff/reports/interested'
@@ -2599,6 +3022,13 @@ export interface FileRouteTypes {
     | '/team-leader/reports/other-location'
     | '/team-leader/reports/total-leads'
     | '/team-leader/reports/visit'
+    | '/hr-dashboard/attendance/'
+    | '/hr-dashboard/employees/'
+    | '/hr-dashboard/finance/'
+    | '/hr-dashboard/settings/'
+    | '/hr-dashboard/shifts/'
+    | '/hr-dashboard/support/'
+    | '/hr-dashboard/tasks/'
     | '/superadmin/leads/'
     | '/superadmin/reports/'
     | '/team-leader/leads/'
@@ -2614,6 +3044,7 @@ export interface FileRouteTypes {
     | '/admin/projects/apartment-commercial/list'
     | '/admin/users/staff/earn'
     | '/admin/users/staff/incentives'
+    | '/hr-dashboard/tasks/view/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -2646,6 +3077,8 @@ export interface RootRouteChildren {
   AdminAddSellRoute: typeof AdminAddSellRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminTimesheetRoute: typeof AdminTimesheetRoute
+  HrDashboardManualAttendanceRoute: typeof HrDashboardManualAttendanceRoute
+  HrDashboardProfileRoute: typeof HrDashboardProfileRoute
   StaffDashboardRoute: typeof StaffDashboardRoute
   StaffEarnRoute: typeof StaffEarnRoute
   StaffIncentivesRoute: typeof StaffIncentivesRoute
@@ -2751,6 +3184,29 @@ export interface RootRouteChildren {
   AdminSocialIntegrationRoute: typeof AdminSocialIntegrationRoute
   AdminUsersStaffRoute: typeof AdminUsersStaffRouteWithChildren
   AdminUsersTeamLeaderRoute: typeof AdminUsersTeamLeaderRoute
+  HrDashboardAttendanceAdjustLeaveRoute: typeof HrDashboardAttendanceAdjustLeaveRoute
+  HrDashboardAttendanceCalendarRoute: typeof HrDashboardAttendanceCalendarRoute
+  HrDashboardAttendanceFacePunchRoute: typeof HrDashboardAttendanceFacePunchRoute
+  HrDashboardAttendanceLeaveRequestsRoute: typeof HrDashboardAttendanceLeaveRequestsRoute
+  HrDashboardAttendanceLeaveTypeRoute: typeof HrDashboardAttendanceLeaveTypeRoute
+  HrDashboardAttendanceListRoute: typeof HrDashboardAttendanceListRoute
+  HrDashboardAttendanceLogsRoute: typeof HrDashboardAttendanceLogsRoute
+  HrDashboardEmployeesIdRoute: typeof HrDashboardEmployeesIdRoute
+  HrDashboardEmployeesAllRoute: typeof HrDashboardEmployeesAllRoute
+  HrDashboardEmployeesIdStudioRoute: typeof HrDashboardEmployeesIdStudioRoute
+  HrDashboardEmployeesManageAssetsRoute: typeof HrDashboardEmployeesManageAssetsRoute
+  HrDashboardEmployeesOnboardingRoute: typeof HrDashboardEmployeesOnboardingRoute
+  HrDashboardFinanceLoansRoute: typeof HrDashboardFinanceLoansRoute
+  HrDashboardFinancePayslipsRoute: typeof HrDashboardFinancePayslipsRoute
+  HrDashboardFinanceReimbursementsRoute: typeof HrDashboardFinanceReimbursementsRoute
+  HrDashboardFinanceSalaryRoute: typeof HrDashboardFinanceSalaryRoute
+  HrDashboardSettingsHolidaysRoute: typeof HrDashboardSettingsHolidaysRoute
+  HrDashboardSettingsRulesRoute: typeof HrDashboardSettingsRulesRoute
+  HrDashboardShiftsAssignmentRoute: typeof HrDashboardShiftsAssignmentRoute
+  HrDashboardShiftsCustomRoute: typeof HrDashboardShiftsCustomRoute
+  HrDashboardSupportTicketsRoute: typeof HrDashboardSupportTicketsRoute
+  HrDashboardTasksBoardRoute: typeof HrDashboardTasksBoardRoute
+  HrDashboardTasksFaceUpdatesRoute: typeof HrDashboardTasksFaceUpdatesRoute
   StaffMarketingFacebookRoute: typeof StaffMarketingFacebookRoute
   StaffMarketingGoogleRoute: typeof StaffMarketingGoogleRoute
   StaffMarketingLinkedinRoute: typeof StaffMarketingLinkedinRoute
@@ -2808,6 +3264,13 @@ export interface RootRouteChildren {
   TeamLeaderReportsOtherLocationRoute: typeof TeamLeaderReportsOtherLocationRoute
   TeamLeaderReportsTotalLeadsRoute: typeof TeamLeaderReportsTotalLeadsRoute
   TeamLeaderReportsVisitRoute: typeof TeamLeaderReportsVisitRoute
+  HrDashboardAttendanceIndexRoute: typeof HrDashboardAttendanceIndexRoute
+  HrDashboardEmployeesIndexRoute: typeof HrDashboardEmployeesIndexRoute
+  HrDashboardFinanceIndexRoute: typeof HrDashboardFinanceIndexRoute
+  HrDashboardSettingsIndexRoute: typeof HrDashboardSettingsIndexRoute
+  HrDashboardShiftsIndexRoute: typeof HrDashboardShiftsIndexRoute
+  HrDashboardSupportIndexRoute: typeof HrDashboardSupportIndexRoute
+  HrDashboardTasksIndexRoute: typeof HrDashboardTasksIndexRoute
   SuperadminLeadsIndexRoute: typeof SuperadminLeadsIndexRoute
   SuperadminReportsIndexRoute: typeof SuperadminReportsIndexRoute
   TeamLeaderLeadsIndexRoute: typeof TeamLeaderLeadsIndexRoute
@@ -2816,6 +3279,7 @@ export interface RootRouteChildren {
   AdminPostSalesAssociatePaymentsListRoute: typeof AdminPostSalesAssociatePaymentsListRoute
   AdminPostSalesAssociatePaymentsPaymentReportRoute: typeof AdminPostSalesAssociatePaymentsPaymentReportRoute
   AdminPostSalesAssociatePaymentsPaymentToVendorRoute: typeof AdminPostSalesAssociatePaymentsPaymentToVendorRoute
+  HrDashboardTasksViewIdRoute: typeof HrDashboardTasksViewIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -3028,6 +3492,20 @@ declare module '@tanstack/react-router' {
       path: '/hr-dashboard'
       fullPath: '/hr-dashboard/'
       preLoaderRoute: typeof HrDashboardIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/manual-attendance': {
+      id: '/hr-dashboard/manual-attendance'
+      path: '/hr-dashboard/manual-attendance'
+      fullPath: '/hr-dashboard/manual-attendance'
+      preLoaderRoute: typeof HrDashboardManualAttendanceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/profile': {
+      id: '/hr-dashboard/profile'
+      path: '/hr-dashboard/profile'
+      fullPath: '/hr-dashboard/profile'
+      preLoaderRoute: typeof HrDashboardProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/staff/dashboard': {
@@ -3758,6 +4236,216 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminUsersTeamLeaderRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hr-dashboard/attendance/': {
+      id: '/hr-dashboard/attendance/'
+      path: '/hr-dashboard/attendance'
+      fullPath: '/hr-dashboard/attendance/'
+      preLoaderRoute: typeof HrDashboardAttendanceIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/attendance/adjust-leave': {
+      id: '/hr-dashboard/attendance/adjust-leave'
+      path: '/hr-dashboard/attendance/adjust-leave'
+      fullPath: '/hr-dashboard/attendance/adjust-leave'
+      preLoaderRoute: typeof HrDashboardAttendanceAdjustLeaveRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/attendance/calendar': {
+      id: '/hr-dashboard/attendance/calendar'
+      path: '/hr-dashboard/attendance/calendar'
+      fullPath: '/hr-dashboard/attendance/calendar'
+      preLoaderRoute: typeof HrDashboardAttendanceCalendarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/attendance/face-punch': {
+      id: '/hr-dashboard/attendance/face-punch'
+      path: '/hr-dashboard/attendance/face-punch'
+      fullPath: '/hr-dashboard/attendance/face-punch'
+      preLoaderRoute: typeof HrDashboardAttendanceFacePunchRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/attendance/leave-requests': {
+      id: '/hr-dashboard/attendance/leave-requests'
+      path: '/hr-dashboard/attendance/leave-requests'
+      fullPath: '/hr-dashboard/attendance/leave-requests'
+      preLoaderRoute: typeof HrDashboardAttendanceLeaveRequestsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/attendance/leave-type': {
+      id: '/hr-dashboard/attendance/leave-type'
+      path: '/hr-dashboard/attendance/leave-type'
+      fullPath: '/hr-dashboard/attendance/leave-type'
+      preLoaderRoute: typeof HrDashboardAttendanceLeaveTypeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/attendance/list': {
+      id: '/hr-dashboard/attendance/list'
+      path: '/hr-dashboard/attendance/list'
+      fullPath: '/hr-dashboard/attendance/list'
+      preLoaderRoute: typeof HrDashboardAttendanceListRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/attendance/logs': {
+      id: '/hr-dashboard/attendance/logs'
+      path: '/hr-dashboard/attendance/logs'
+      fullPath: '/hr-dashboard/attendance/logs'
+      preLoaderRoute: typeof HrDashboardAttendanceLogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/employees/': {
+      id: '/hr-dashboard/employees/'
+      path: '/hr-dashboard/employees'
+      fullPath: '/hr-dashboard/employees/'
+      preLoaderRoute: typeof HrDashboardEmployeesIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/employees/$id': {
+      id: '/hr-dashboard/employees/$id'
+      path: '/hr-dashboard/employees/$id'
+      fullPath: '/hr-dashboard/employees/$id'
+      preLoaderRoute: typeof HrDashboardEmployeesIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/employees/all': {
+      id: '/hr-dashboard/employees/all'
+      path: '/hr-dashboard/employees/all'
+      fullPath: '/hr-dashboard/employees/all'
+      preLoaderRoute: typeof HrDashboardEmployeesAllRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/employees/id-studio': {
+      id: '/hr-dashboard/employees/id-studio'
+      path: '/hr-dashboard/employees/id-studio'
+      fullPath: '/hr-dashboard/employees/id-studio'
+      preLoaderRoute: typeof HrDashboardEmployeesIdStudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/employees/manage-assets': {
+      id: '/hr-dashboard/employees/manage-assets'
+      path: '/hr-dashboard/employees/manage-assets'
+      fullPath: '/hr-dashboard/employees/manage-assets'
+      preLoaderRoute: typeof HrDashboardEmployeesManageAssetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/employees/onboarding': {
+      id: '/hr-dashboard/employees/onboarding'
+      path: '/hr-dashboard/employees/onboarding'
+      fullPath: '/hr-dashboard/employees/onboarding'
+      preLoaderRoute: typeof HrDashboardEmployeesOnboardingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/finance/': {
+      id: '/hr-dashboard/finance/'
+      path: '/hr-dashboard/finance'
+      fullPath: '/hr-dashboard/finance/'
+      preLoaderRoute: typeof HrDashboardFinanceIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/finance/loans': {
+      id: '/hr-dashboard/finance/loans'
+      path: '/hr-dashboard/finance/loans'
+      fullPath: '/hr-dashboard/finance/loans'
+      preLoaderRoute: typeof HrDashboardFinanceLoansRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/finance/payslips': {
+      id: '/hr-dashboard/finance/payslips'
+      path: '/hr-dashboard/finance/payslips'
+      fullPath: '/hr-dashboard/finance/payslips'
+      preLoaderRoute: typeof HrDashboardFinancePayslipsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/finance/reimbursements': {
+      id: '/hr-dashboard/finance/reimbursements'
+      path: '/hr-dashboard/finance/reimbursements'
+      fullPath: '/hr-dashboard/finance/reimbursements'
+      preLoaderRoute: typeof HrDashboardFinanceReimbursementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/finance/salary': {
+      id: '/hr-dashboard/finance/salary'
+      path: '/hr-dashboard/finance/salary'
+      fullPath: '/hr-dashboard/finance/salary'
+      preLoaderRoute: typeof HrDashboardFinanceSalaryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/settings/': {
+      id: '/hr-dashboard/settings/'
+      path: '/hr-dashboard/settings'
+      fullPath: '/hr-dashboard/settings/'
+      preLoaderRoute: typeof HrDashboardSettingsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/settings/holidays': {
+      id: '/hr-dashboard/settings/holidays'
+      path: '/hr-dashboard/settings/holidays'
+      fullPath: '/hr-dashboard/settings/holidays'
+      preLoaderRoute: typeof HrDashboardSettingsHolidaysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/settings/rules': {
+      id: '/hr-dashboard/settings/rules'
+      path: '/hr-dashboard/settings/rules'
+      fullPath: '/hr-dashboard/settings/rules'
+      preLoaderRoute: typeof HrDashboardSettingsRulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/shifts/': {
+      id: '/hr-dashboard/shifts/'
+      path: '/hr-dashboard/shifts'
+      fullPath: '/hr-dashboard/shifts/'
+      preLoaderRoute: typeof HrDashboardShiftsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/shifts/assignment': {
+      id: '/hr-dashboard/shifts/assignment'
+      path: '/hr-dashboard/shifts/assignment'
+      fullPath: '/hr-dashboard/shifts/assignment'
+      preLoaderRoute: typeof HrDashboardShiftsAssignmentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/shifts/custom': {
+      id: '/hr-dashboard/shifts/custom'
+      path: '/hr-dashboard/shifts/custom'
+      fullPath: '/hr-dashboard/shifts/custom'
+      preLoaderRoute: typeof HrDashboardShiftsCustomRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/support/': {
+      id: '/hr-dashboard/support/'
+      path: '/hr-dashboard/support'
+      fullPath: '/hr-dashboard/support/'
+      preLoaderRoute: typeof HrDashboardSupportIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/support/tickets': {
+      id: '/hr-dashboard/support/tickets'
+      path: '/hr-dashboard/support/tickets'
+      fullPath: '/hr-dashboard/support/tickets'
+      preLoaderRoute: typeof HrDashboardSupportTicketsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/tasks/': {
+      id: '/hr-dashboard/tasks/'
+      path: '/hr-dashboard/tasks'
+      fullPath: '/hr-dashboard/tasks/'
+      preLoaderRoute: typeof HrDashboardTasksIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/tasks/board': {
+      id: '/hr-dashboard/tasks/board'
+      path: '/hr-dashboard/tasks/board'
+      fullPath: '/hr-dashboard/tasks/board'
+      preLoaderRoute: typeof HrDashboardTasksBoardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hr-dashboard/tasks/face-updates': {
+      id: '/hr-dashboard/tasks/face-updates'
+      path: '/hr-dashboard/tasks/face-updates'
+      fullPath: '/hr-dashboard/tasks/face-updates'
+      preLoaderRoute: typeof HrDashboardTasksFaceUpdatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/staff/marketing/facebook': {
       id: '/staff/marketing/facebook'
       path: '/staff/marketing/facebook'
@@ -3791,6 +4479,13 @@ declare module '@tanstack/react-router' {
       path: '/attendance'
       fullPath: '/staff/overview/attendance'
       preLoaderRoute: typeof StaffOverviewAttendanceRouteImport
+      parentRoute: typeof StaffOverviewRoute
+    }
+    '/staff/overview/face-attendance': {
+      id: '/staff/overview/face-attendance'
+      path: '/face-attendance'
+      fullPath: '/staff/overview/face-attendance'
+      preLoaderRoute: typeof StaffOverviewFaceAttendanceRouteImport
       parentRoute: typeof StaffOverviewRoute
     }
     '/staff/overview/leave': {
@@ -4283,17 +4978,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminUsersStaffIncentivesRouteImport
       parentRoute: typeof AdminUsersStaffRoute
     }
+    '/hr-dashboard/tasks/view/$id': {
+      id: '/hr-dashboard/tasks/view/$id'
+      path: '/hr-dashboard/tasks/view/$id'
+      fullPath: '/hr-dashboard/tasks/view/$id'
+      preLoaderRoute: typeof HrDashboardTasksViewIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 interface StaffOverviewRouteChildren {
   StaffOverviewAttendanceRoute: typeof StaffOverviewAttendanceRoute
+  StaffOverviewFaceAttendanceRoute: typeof StaffOverviewFaceAttendanceRoute
   StaffOverviewLeaveRoute: typeof StaffOverviewLeaveRoute
   StaffOverviewLocationRoute: typeof StaffOverviewLocationRoute
 }
 
 const StaffOverviewRouteChildren: StaffOverviewRouteChildren = {
   StaffOverviewAttendanceRoute: StaffOverviewAttendanceRoute,
+  StaffOverviewFaceAttendanceRoute: StaffOverviewFaceAttendanceRoute,
   StaffOverviewLeaveRoute: StaffOverviewLeaveRoute,
   StaffOverviewLocationRoute: StaffOverviewLocationRoute,
 }
@@ -4373,6 +5077,8 @@ const rootRouteChildren: RootRouteChildren = {
   AdminAddSellRoute: AdminAddSellRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminTimesheetRoute: AdminTimesheetRoute,
+  HrDashboardManualAttendanceRoute: HrDashboardManualAttendanceRoute,
+  HrDashboardProfileRoute: HrDashboardProfileRoute,
   StaffDashboardRoute: StaffDashboardRoute,
   StaffEarnRoute: StaffEarnRoute,
   StaffIncentivesRoute: StaffIncentivesRoute,
@@ -4480,6 +5186,30 @@ const rootRouteChildren: RootRouteChildren = {
   AdminSocialIntegrationRoute: AdminSocialIntegrationRoute,
   AdminUsersStaffRoute: AdminUsersStaffRouteWithChildren,
   AdminUsersTeamLeaderRoute: AdminUsersTeamLeaderRoute,
+  HrDashboardAttendanceAdjustLeaveRoute: HrDashboardAttendanceAdjustLeaveRoute,
+  HrDashboardAttendanceCalendarRoute: HrDashboardAttendanceCalendarRoute,
+  HrDashboardAttendanceFacePunchRoute: HrDashboardAttendanceFacePunchRoute,
+  HrDashboardAttendanceLeaveRequestsRoute:
+    HrDashboardAttendanceLeaveRequestsRoute,
+  HrDashboardAttendanceLeaveTypeRoute: HrDashboardAttendanceLeaveTypeRoute,
+  HrDashboardAttendanceListRoute: HrDashboardAttendanceListRoute,
+  HrDashboardAttendanceLogsRoute: HrDashboardAttendanceLogsRoute,
+  HrDashboardEmployeesIdRoute: HrDashboardEmployeesIdRoute,
+  HrDashboardEmployeesAllRoute: HrDashboardEmployeesAllRoute,
+  HrDashboardEmployeesIdStudioRoute: HrDashboardEmployeesIdStudioRoute,
+  HrDashboardEmployeesManageAssetsRoute: HrDashboardEmployeesManageAssetsRoute,
+  HrDashboardEmployeesOnboardingRoute: HrDashboardEmployeesOnboardingRoute,
+  HrDashboardFinanceLoansRoute: HrDashboardFinanceLoansRoute,
+  HrDashboardFinancePayslipsRoute: HrDashboardFinancePayslipsRoute,
+  HrDashboardFinanceReimbursementsRoute: HrDashboardFinanceReimbursementsRoute,
+  HrDashboardFinanceSalaryRoute: HrDashboardFinanceSalaryRoute,
+  HrDashboardSettingsHolidaysRoute: HrDashboardSettingsHolidaysRoute,
+  HrDashboardSettingsRulesRoute: HrDashboardSettingsRulesRoute,
+  HrDashboardShiftsAssignmentRoute: HrDashboardShiftsAssignmentRoute,
+  HrDashboardShiftsCustomRoute: HrDashboardShiftsCustomRoute,
+  HrDashboardSupportTicketsRoute: HrDashboardSupportTicketsRoute,
+  HrDashboardTasksBoardRoute: HrDashboardTasksBoardRoute,
+  HrDashboardTasksFaceUpdatesRoute: HrDashboardTasksFaceUpdatesRoute,
   StaffMarketingFacebookRoute: StaffMarketingFacebookRoute,
   StaffMarketingGoogleRoute: StaffMarketingGoogleRoute,
   StaffMarketingLinkedinRoute: StaffMarketingLinkedinRoute,
@@ -4541,6 +5271,13 @@ const rootRouteChildren: RootRouteChildren = {
   TeamLeaderReportsOtherLocationRoute: TeamLeaderReportsOtherLocationRoute,
   TeamLeaderReportsTotalLeadsRoute: TeamLeaderReportsTotalLeadsRoute,
   TeamLeaderReportsVisitRoute: TeamLeaderReportsVisitRoute,
+  HrDashboardAttendanceIndexRoute: HrDashboardAttendanceIndexRoute,
+  HrDashboardEmployeesIndexRoute: HrDashboardEmployeesIndexRoute,
+  HrDashboardFinanceIndexRoute: HrDashboardFinanceIndexRoute,
+  HrDashboardSettingsIndexRoute: HrDashboardSettingsIndexRoute,
+  HrDashboardShiftsIndexRoute: HrDashboardShiftsIndexRoute,
+  HrDashboardSupportIndexRoute: HrDashboardSupportIndexRoute,
+  HrDashboardTasksIndexRoute: HrDashboardTasksIndexRoute,
   SuperadminLeadsIndexRoute: SuperadminLeadsIndexRoute,
   SuperadminReportsIndexRoute: SuperadminReportsIndexRoute,
   TeamLeaderLeadsIndexRoute: TeamLeaderLeadsIndexRoute,
@@ -4554,6 +5291,7 @@ const rootRouteChildren: RootRouteChildren = {
     AdminPostSalesAssociatePaymentsPaymentReportRoute,
   AdminPostSalesAssociatePaymentsPaymentToVendorRoute:
     AdminPostSalesAssociatePaymentsPaymentToVendorRoute,
+  HrDashboardTasksViewIdRoute: HrDashboardTasksViewIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

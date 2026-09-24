@@ -33,6 +33,8 @@ import {
   DollarSign,
   FolderKanban,
   FileCheck,
+  ScanFace,
+  Camera,
   type LucideIcon,
 } from "lucide-react";
 
@@ -334,6 +336,7 @@ export const navSections: NavSection[] = [
         title: "Attendance",
         icon: Clock,
         items: [
+          { title: "My Face Attendance", url: "/hr-dashboard/attendance/face-punch", icon: ScanFace },
           { title: "Attendance List", url: "/hr-dashboard/attendance/list", icon: ListChecks },
           { title: "Attendance Calendar", url: "/hr-dashboard/attendance/calendar", icon: CalendarDays },
           { title: "Activity Logs", url: "/hr-dashboard/attendance/logs", icon: History },

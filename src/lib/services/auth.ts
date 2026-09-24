@@ -112,3 +112,10 @@ export function useAuth() {
     setLoading,
   };
 }
+
+export const authService = {
+  getUser: getStoredAuth,
+  saveUser: saveAuthSession,
+  logout: clearAuthSession,
+  getRedirect: getRoleRedirect,
+};

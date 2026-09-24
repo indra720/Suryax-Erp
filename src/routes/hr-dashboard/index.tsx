@@ -18,7 +18,12 @@ import {
   Users,
   Building,
   RefreshCw,
+  ScanFace,
+  Camera,
+  ShieldCheck,
 } from "lucide-react";
+import { FaceAttendanceDialog } from "@/components/attendance/FaceAttendanceDialog";
+import { toast } from "sonner";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -45,10 +50,55 @@ export const Route = createFileRoute("/hr-dashboard/")({
   component: HrDashboardOverviewPage,
 });
 
-export function HrDashboardOverviewPage() {
+function HrDashboardOverviewPage() {
   const [search, setSearch] = useState("");
   const [dept, setDept] = useState("All Departments");
   const [employees, setEmployees] = useState<HrEmployee[]>(defaultEmployees);
+
+  const [showFaceModal, setShowFaceModal] = useState(false);
+  const [punchAction, setPunchAction] = useState<"check-in" | "check-out">("check-in");
+  const [selfPunch, setSelfPunch] = useState<{
+    hasCheckedIn: boolean;
+    checkInTime: string | null;
+    hasCheckedOut: boolean;
+    checkOutTime: string | null;
+  }>(() => {
+    const saved = typeof window !== "undefined" ? localStorage.getItem("hr_self_attendance") : null;
+    if (saved) {
+      try {
+        return JSON.parse(saved);
+      } catch (e) {
+        // ignore
+      }
+    }
+    return {
+      hasCheckedIn: true,
+      checkInTime: "09:28 AM",
+      hasCheckedOut: false,
+      checkOutTime: null,
+    };
+  });
+
+  const handleSelfPunchSuccess = (record: {
+    action: "check-in" | "check-out";
+    time: string;
+    status: "Present" | "Absent";
+    confidence: number;
+    photo?: string;
+  }) => {
+    const timeStr = record.time || new Date().toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit" });
+    if (record.action === "check-in") {
+      const up = { ...selfPunch, hasCheckedIn: true, checkInTime: timeStr };
+      setSelfPunch(up);
+      localStorage.setItem("hr_self_attendance", JSON.stringify(up));
+      toast.success(`Face Check-In recorded at ${timeStr} (${record.confidence}% match). Status: Present!`);
+    } else {
+      const up = { ...selfPunch, hasCheckedOut: true, checkOutTime: timeStr };
+      setSelfPunch(up);
+      localStorage.setItem("hr_self_attendance", JSON.stringify(up));
+      toast.success(`Face Check-Out recorded at ${timeStr}. Good work today!`);
+    }
+  };
 
   const departments = [
     "All Departments",
@@ -118,6 +168,76 @@ export function HrDashboardOverviewPage() {
           </Button>
         </div>
       </div>
+
+      {/* HR Self Face Attendance Quick-Punch Banner */}
+      <Card className="border border-primary/20 bg-gradient-to-r from-primary/5 via-primary/[0.02] to-background shadow-xs">
+        <CardContent className="p-3 sm:p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <div className="h-10 w-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary shrink-0 relative">
+              <ScanFace className="h-5 w-5" />
+              <span className="absolute -top-1 -right-1 flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500" />
+              </span>
+            </div>
+            <div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-xs font-bold text-foreground">HR Self Attendance (Biometric Face ID)</span>
+                {selfPunch.hasCheckedIn ? (
+                  <Badge variant="outline" className="text-[10px] bg-emerald-50 text-emerald-700 border-emerald-300 font-semibold gap-1">
+                    <CheckCircle2 className="h-3 w-3" />
+                    Punched In ({selfPunch.checkInTime})
+                  </Badge>
+                ) : (
+                  <Badge variant="outline" className="text-[10px] text-amber-600 border-amber-300 bg-amber-50">
+                    Not Punched In
+                  </Badge>
+                )}
+              </div>
+              <p className="text-[11px] text-muted-foreground mt-0.5 flex items-center gap-2 flex-wrap">
+                <span>Vrindavan Campus (Gate 1)</span>
+                <span>•</span>
+                <span>Shift: 09:30 AM - 06:30 PM</span>
+                <span>•</span>
+                <span className="text-emerald-600 font-medium flex items-center gap-1">
+                  <MapPin className="h-3 w-3" /> Geofence Verified
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className="flex items-center gap-2 shrink-0 flex-wrap">
+            <Button
+              onClick={() => {
+                setPunchAction("check-in");
+                setShowFaceModal(true);
+              }}
+              size="sm"
+              className="h-8 text-xs gap-1.5 font-bold bg-primary text-primary-foreground shadow-sm hover:bg-primary/90"
+            >
+              <Camera className="h-3.5 w-3.5" />
+              Face Check-In
+            </Button>
+            <Button
+              onClick={() => {
+                setPunchAction("check-out");
+                setShowFaceModal(true);
+              }}
+              variant="outline"
+              size="sm"
+              className="h-8 text-xs gap-1.5 font-semibold border-rose-300 text-rose-700 hover:bg-rose-50 hover:text-rose-800"
+            >
+              <Clock3 className="h-3.5 w-3.5" />
+              Face Check-Out
+            </Button>
+            <Button variant="ghost" size="sm" asChild className="h-8 text-xs text-muted-foreground">
+              <Link to="/hr-dashboard/attendance/face-punch">
+                View History
+              </Link>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
 
       {/* 8 Primary KPI Cards */}
       <div className="grid grid-cols-2 sm:grid-cols-4 xl:grid-cols-4 gap-2.5">
@@ -295,6 +415,16 @@ export function HrDashboardOverviewPage() {
           </div>
         </CardContent>
       </Card>
+
+      {/* Face Biometric Punch Modal */}
+      <FaceAttendanceDialog
+        open={showFaceModal}
+        onOpenChange={setShowFaceModal}
+        actionType={punchAction}
+        employeeName="HR Manager (You)"
+        onSuccess={handleSelfPunchSuccess}
+      />
     </div>
   );
 }
+
