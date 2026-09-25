@@ -205,8 +205,11 @@ export const navSections: NavSection[] = [
       },
       {
         title: "Leads",
-        url: "/team-leader/leads",
         icon: FolderOpen,
+        items: [
+          { title: "All Leads", url: "/team-leader/leads", icon: FolderOpen },
+          { title: "Staff Calling Leads", url: "/team-leader/leads/staff", icon: PhoneCall },
+        ],
       },
       {
         title: "Leads Report",
@@ -216,7 +219,20 @@ export const navSections: NavSection[] = [
           { title: "Pending Followups", url: "/team-leader/leads-report/pending-followups", icon: History },
           { title: "Tomorrow Followups", url: "/team-leader/leads-report/tomorrow-followups", icon: CalendarDays },
           { title: "Interested", url: "/team-leader/leads-report/interested", icon: CheckCircle },
-          { title: "Visit", url: "/team-leader/leads-report/visit", icon: Eye },
+          { title: "Visit Scheduled", url: "/team-leader/leads-report/visit", icon: Eye },
+          { title: "Total Leads", url: "/team-leader/reports/total-leads", icon: Building2 },
+          { title: "Lost Leads", url: "/team-leader/reports/lost-leads", icon: History },
+          { title: "Not Interested", url: "/team-leader/reports/not-interested", icon: XCircle },
+          { title: "Not Picked", url: "/team-leader/reports/not-picked", icon: PhoneCall },
+          { title: "Other Location", url: "/team-leader/reports/other-location", icon: MapPin },
+        ],
+      },
+      {
+        title: "Earn & Incentives",
+        icon: DollarSign,
+        items: [
+          { title: "Staff Earn Calendar", url: "/team-leader/earn", icon: CalendarDays },
+          { title: "Incentives & Slabs", url: "/team-leader/incentives", icon: IndianRupee },
         ],
       },
       {
@@ -309,8 +325,14 @@ export const navSections: NavSection[] = [
       },
       {
         title: "HR Overview",
-        url: "/staff/overview",
         icon: UsersRound,
+        items: [
+          { title: "Hub Overview", url: "/staff/overview", icon: LayoutDashboard },
+          { title: "Attendance Tracker", url: "/staff/overview/attendance", icon: CalendarDays },
+          { title: "Face Attendance", url: "/staff/overview/face-attendance", icon: ScanFace },
+          { title: "Leave Requests", url: "/staff/overview/leave", icon: Clock },
+          { title: "Location & Geofence", url: "/staff/overview/location", icon: MapPin },
+        ],
       },
     ],
   },
@@ -473,6 +495,7 @@ export const navSections: NavSection[] = [
             ]
           },
           { title: "Project List", url: "/projects", icon: Building2 },
+          { title: "Project Master (Vrindavan)", url: "/admin/projects/project-list", icon: Building2 },
           { title: "Plot List", url: "/admin/projects/plot-list", icon: MapPin },
           { title: "Rowhouse List", url: "/admin/projects/rowhouse-list", icon: Home },
           { title: "Member List", url: "/admin/projects/member-list", icon: Users },

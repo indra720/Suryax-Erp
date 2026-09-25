@@ -69,6 +69,7 @@ import { Route as AdminAssociatesAttendanceRouteImport } from './routes/admin/as
 import { Route as AdminAssociatesCommissionRouteImport } from './routes/admin/associates/commission'
 import { Route as AdminAssociatesGenerateAttendanceRouteImport } from './routes/admin/associates/generate-attendance'
 import { Route as AdminAssociatesListRouteImport } from './routes/admin/associates/list'
+import { Route as AdminAssociatesOtpRouteImport } from './routes/admin/associates/otp'
 import { Route as AdminAssociatesTransferRouteImport } from './routes/admin/associates/transfer'
 import { Route as AdminAssociatesTreeRouteImport } from './routes/admin/associates/tree'
 import { Route as AdminCallSmsLeadAssignRouteImport } from './routes/admin/call-sms/lead-assign'
@@ -138,6 +139,7 @@ import { Route as AdminSettingsBannerRouteImport } from './routes/admin/settings
 import { Route as AdminSettingsCommissionSlabRouteImport } from './routes/admin/settings/commission-slab'
 import { Route as AdminSettingsDashboardPermissionRouteImport } from './routes/admin/settings/dashboard-permission'
 import { Route as AdminSettingsExtResourceRouteImport } from './routes/admin/settings/ext-resource'
+import { Route as AdminSettingsRoleMappingRouteImport } from './routes/admin/settings/role-mapping'
 import { Route as AdminSettingsUserPermissionRouteImport } from './routes/admin/settings/user-permission'
 import { Route as AdminSettingsWhatsappRouteImport } from './routes/admin/settings/whatsapp'
 import { Route as AdminSettingsWhatsappScheduleRouteImport } from './routes/admin/settings/whatsapp-schedule'
@@ -565,6 +567,11 @@ const AdminAssociatesListRoute = AdminAssociatesListRouteImport.update({
   path: '/admin/associates/list',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminAssociatesOtpRoute = AdminAssociatesOtpRouteImport.update({
+  id: '/admin/associates/otp',
+  path: '/admin/associates/otp',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminAssociatesTransferRoute = AdminAssociatesTransferRouteImport.update({
   id: '/admin/associates/transfer',
   path: '/admin/associates/transfer',
@@ -938,6 +945,12 @@ const AdminSettingsExtResourceRoute =
   AdminSettingsExtResourceRouteImport.update({
     id: '/admin/settings/ext-resource',
     path: '/admin/settings/ext-resource',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AdminSettingsRoleMappingRoute =
+  AdminSettingsRoleMappingRouteImport.update({
+    id: '/admin/settings/role-mapping',
+    path: '/admin/settings/role-mapping',
     getParentRoute: () => rootRouteImport,
   } as any)
 const AdminSettingsUserPermissionRoute =
@@ -1683,6 +1696,7 @@ export interface FileRoutesByFullPath {
   '/admin/associates/commission': typeof AdminAssociatesCommissionRoute
   '/admin/associates/generate-attendance': typeof AdminAssociatesGenerateAttendanceRoute
   '/admin/associates/list': typeof AdminAssociatesListRoute
+  '/admin/associates/otp': typeof AdminAssociatesOtpRoute
   '/admin/associates/transfer': typeof AdminAssociatesTransferRoute
   '/admin/associates/tree': typeof AdminAssociatesTreeRoute
   '/admin/call-sms/lead-assign': typeof AdminCallSmsLeadAssignRoute
@@ -1752,6 +1766,7 @@ export interface FileRoutesByFullPath {
   '/admin/settings/commission-slab': typeof AdminSettingsCommissionSlabRoute
   '/admin/settings/dashboard-permission': typeof AdminSettingsDashboardPermissionRoute
   '/admin/settings/ext-resource': typeof AdminSettingsExtResourceRoute
+  '/admin/settings/role-mapping': typeof AdminSettingsRoleMappingRoute
   '/admin/settings/user-permission': typeof AdminSettingsUserPermissionRoute
   '/admin/settings/whatsapp': typeof AdminSettingsWhatsappRoute
   '/admin/settings/whatsapp-schedule': typeof AdminSettingsWhatsappScheduleRoute
@@ -1936,6 +1951,7 @@ export interface FileRoutesByTo {
   '/admin/associates/commission': typeof AdminAssociatesCommissionRoute
   '/admin/associates/generate-attendance': typeof AdminAssociatesGenerateAttendanceRoute
   '/admin/associates/list': typeof AdminAssociatesListRoute
+  '/admin/associates/otp': typeof AdminAssociatesOtpRoute
   '/admin/associates/transfer': typeof AdminAssociatesTransferRoute
   '/admin/associates/tree': typeof AdminAssociatesTreeRoute
   '/admin/call-sms/lead-assign': typeof AdminCallSmsLeadAssignRoute
@@ -2005,6 +2021,7 @@ export interface FileRoutesByTo {
   '/admin/settings/commission-slab': typeof AdminSettingsCommissionSlabRoute
   '/admin/settings/dashboard-permission': typeof AdminSettingsDashboardPermissionRoute
   '/admin/settings/ext-resource': typeof AdminSettingsExtResourceRoute
+  '/admin/settings/role-mapping': typeof AdminSettingsRoleMappingRoute
   '/admin/settings/user-permission': typeof AdminSettingsUserPermissionRoute
   '/admin/settings/whatsapp': typeof AdminSettingsWhatsappRoute
   '/admin/settings/whatsapp-schedule': typeof AdminSettingsWhatsappScheduleRoute
@@ -2190,6 +2207,7 @@ export interface FileRoutesById {
   '/admin/associates/commission': typeof AdminAssociatesCommissionRoute
   '/admin/associates/generate-attendance': typeof AdminAssociatesGenerateAttendanceRoute
   '/admin/associates/list': typeof AdminAssociatesListRoute
+  '/admin/associates/otp': typeof AdminAssociatesOtpRoute
   '/admin/associates/transfer': typeof AdminAssociatesTransferRoute
   '/admin/associates/tree': typeof AdminAssociatesTreeRoute
   '/admin/call-sms/lead-assign': typeof AdminCallSmsLeadAssignRoute
@@ -2259,6 +2277,7 @@ export interface FileRoutesById {
   '/admin/settings/commission-slab': typeof AdminSettingsCommissionSlabRoute
   '/admin/settings/dashboard-permission': typeof AdminSettingsDashboardPermissionRoute
   '/admin/settings/ext-resource': typeof AdminSettingsExtResourceRoute
+  '/admin/settings/role-mapping': typeof AdminSettingsRoleMappingRoute
   '/admin/settings/user-permission': typeof AdminSettingsUserPermissionRoute
   '/admin/settings/whatsapp': typeof AdminSettingsWhatsappRoute
   '/admin/settings/whatsapp-schedule': typeof AdminSettingsWhatsappScheduleRoute
@@ -2445,6 +2464,7 @@ export interface FileRouteTypes {
     | '/admin/associates/commission'
     | '/admin/associates/generate-attendance'
     | '/admin/associates/list'
+    | '/admin/associates/otp'
     | '/admin/associates/transfer'
     | '/admin/associates/tree'
     | '/admin/call-sms/lead-assign'
@@ -2514,6 +2534,7 @@ export interface FileRouteTypes {
     | '/admin/settings/commission-slab'
     | '/admin/settings/dashboard-permission'
     | '/admin/settings/ext-resource'
+    | '/admin/settings/role-mapping'
     | '/admin/settings/user-permission'
     | '/admin/settings/whatsapp'
     | '/admin/settings/whatsapp-schedule'
@@ -2698,6 +2719,7 @@ export interface FileRouteTypes {
     | '/admin/associates/commission'
     | '/admin/associates/generate-attendance'
     | '/admin/associates/list'
+    | '/admin/associates/otp'
     | '/admin/associates/transfer'
     | '/admin/associates/tree'
     | '/admin/call-sms/lead-assign'
@@ -2767,6 +2789,7 @@ export interface FileRouteTypes {
     | '/admin/settings/commission-slab'
     | '/admin/settings/dashboard-permission'
     | '/admin/settings/ext-resource'
+    | '/admin/settings/role-mapping'
     | '/admin/settings/user-permission'
     | '/admin/settings/whatsapp'
     | '/admin/settings/whatsapp-schedule'
@@ -2951,6 +2974,7 @@ export interface FileRouteTypes {
     | '/admin/associates/commission'
     | '/admin/associates/generate-attendance'
     | '/admin/associates/list'
+    | '/admin/associates/otp'
     | '/admin/associates/transfer'
     | '/admin/associates/tree'
     | '/admin/call-sms/lead-assign'
@@ -3020,6 +3044,7 @@ export interface FileRouteTypes {
     | '/admin/settings/commission-slab'
     | '/admin/settings/dashboard-permission'
     | '/admin/settings/ext-resource'
+    | '/admin/settings/role-mapping'
     | '/admin/settings/user-permission'
     | '/admin/settings/whatsapp'
     | '/admin/settings/whatsapp-schedule'
@@ -3205,6 +3230,7 @@ export interface RootRouteChildren {
   AdminAssociatesCommissionRoute: typeof AdminAssociatesCommissionRoute
   AdminAssociatesGenerateAttendanceRoute: typeof AdminAssociatesGenerateAttendanceRoute
   AdminAssociatesListRoute: typeof AdminAssociatesListRoute
+  AdminAssociatesOtpRoute: typeof AdminAssociatesOtpRoute
   AdminAssociatesTransferRoute: typeof AdminAssociatesTransferRoute
   AdminAssociatesTreeRoute: typeof AdminAssociatesTreeRoute
   AdminCallSmsLeadAssignRoute: typeof AdminCallSmsLeadAssignRoute
@@ -3274,6 +3300,7 @@ export interface RootRouteChildren {
   AdminSettingsCommissionSlabRoute: typeof AdminSettingsCommissionSlabRoute
   AdminSettingsDashboardPermissionRoute: typeof AdminSettingsDashboardPermissionRoute
   AdminSettingsExtResourceRoute: typeof AdminSettingsExtResourceRoute
+  AdminSettingsRoleMappingRoute: typeof AdminSettingsRoleMappingRoute
   AdminSettingsUserPermissionRoute: typeof AdminSettingsUserPermissionRoute
   AdminSettingsWhatsappRoute: typeof AdminSettingsWhatsappRoute
   AdminSettingsWhatsappScheduleRoute: typeof AdminSettingsWhatsappScheduleRoute
@@ -3809,6 +3836,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminAssociatesListRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/associates/otp': {
+      id: '/admin/associates/otp'
+      path: '/admin/associates/otp'
+      fullPath: '/admin/associates/otp'
+      preLoaderRoute: typeof AdminAssociatesOtpRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/associates/transfer': {
       id: '/admin/associates/transfer'
       path: '/admin/associates/transfer'
@@ -4290,6 +4324,13 @@ declare module '@tanstack/react-router' {
       path: '/admin/settings/ext-resource'
       fullPath: '/admin/settings/ext-resource'
       preLoaderRoute: typeof AdminSettingsExtResourceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/admin/settings/role-mapping': {
+      id: '/admin/settings/role-mapping'
+      path: '/admin/settings/role-mapping'
+      fullPath: '/admin/settings/role-mapping'
+      preLoaderRoute: typeof AdminSettingsRoleMappingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/admin/settings/user-permission': {
@@ -5270,6 +5311,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminAssociatesGenerateAttendanceRoute:
     AdminAssociatesGenerateAttendanceRoute,
   AdminAssociatesListRoute: AdminAssociatesListRoute,
+  AdminAssociatesOtpRoute: AdminAssociatesOtpRoute,
   AdminAssociatesTransferRoute: AdminAssociatesTransferRoute,
   AdminAssociatesTreeRoute: AdminAssociatesTreeRoute,
   AdminCallSmsLeadAssignRoute: AdminCallSmsLeadAssignRoute,
@@ -5340,6 +5382,7 @@ const rootRouteChildren: RootRouteChildren = {
   AdminSettingsCommissionSlabRoute: AdminSettingsCommissionSlabRoute,
   AdminSettingsDashboardPermissionRoute: AdminSettingsDashboardPermissionRoute,
   AdminSettingsExtResourceRoute: AdminSettingsExtResourceRoute,
+  AdminSettingsRoleMappingRoute: AdminSettingsRoleMappingRoute,
   AdminSettingsUserPermissionRoute: AdminSettingsUserPermissionRoute,
   AdminSettingsWhatsappRoute: AdminSettingsWhatsappRoute,
   AdminSettingsWhatsappScheduleRoute: AdminSettingsWhatsappScheduleRoute,
