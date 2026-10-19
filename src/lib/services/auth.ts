@@ -6,7 +6,15 @@ export type UserRole =
   | "team-leader"
   | "staff"
   | "hr"
-  | "freelancer";
+  | "freelancer"
+  | "marketing"
+  | "accountant"
+  | "sales-manager"
+  | "broker"
+  | "site-engineer"
+  | "legal"
+  | "customer"
+  | "inventory";
 
 export interface AuthUser {
   id: number | string;
@@ -73,6 +81,22 @@ export function getRoleRedirect(role: UserRole | string): string {
       return "/hr-dashboard";
     case "freelancer":
       return "/freelancer/dashboard";
+    case "marketing":
+      return "/marketing/dashboard";
+    case "accountant":
+      return "/accountant/dashboard";
+    case "sales-manager":
+      return "/sales-manager/dashboard";
+    case "broker":
+      return "/broker/dashboard";
+    case "site-engineer":
+      return "/site-engineer/dashboard";
+    case "legal":
+      return "/legal/dashboard";
+    case "customer":
+      return "/customer/dashboard";
+    case "inventory":
+      return "/inventory/dashboard";
     default:
       return "/admin/dashboard";
   }

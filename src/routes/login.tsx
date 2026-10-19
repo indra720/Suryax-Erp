@@ -452,9 +452,153 @@ function LoginPage() {
                   toast.success("Logged in as HR Manager!");
                   navigate({ to: "/hr-dashboard" });
                 }}
-                className="h-9 text-xs font-semibold border-teal-200 bg-teal-50/70 hover:bg-teal-100 text-teal-800 cursor-pointer col-span-2"
+                className="h-9 text-xs font-semibold border-teal-200 bg-teal-50/70 hover:bg-teal-100 text-teal-800 cursor-pointer"
               >
                 HR Portal Login
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  saveAuthSession({
+                    token: "demo-marketing-token",
+                    role: "marketing",
+                    email: "marketing@vrindavan.com",
+                    id: 6,
+                    name: "Marketing Lead",
+                  });
+                  toast.success("Logged in as Marketing Head!");
+                  navigate({ to: "/marketing/dashboard" });
+                }}
+                className="h-9 text-xs font-semibold border-pink-200 bg-pink-50/70 hover:bg-pink-100 text-pink-800 cursor-pointer"
+              >
+                Marketing Login
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  saveAuthSession({
+                    token: "demo-accountant-token",
+                    role: "accountant",
+                    email: "accounts@vrindavan.com",
+                    id: 7,
+                    name: "Chief Accountant",
+                  });
+                  toast.success("Logged in as Chief Accountant!");
+                  navigate({ to: "/accountant/dashboard" });
+                }}
+                className="h-9 text-xs font-semibold border-indigo-200 bg-indigo-50/70 hover:bg-indigo-100 text-indigo-800 cursor-pointer"
+              >
+                Accountant Login
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  saveAuthSession({
+                    token: "demo-sales-manager-token",
+                    role: "sales-manager",
+                    email: "salesmgr@vrindavan.com",
+                    id: 8,
+                    name: "Sales Director",
+                  });
+                  toast.success("Logged in as Sales Manager!");
+                  navigate({ to: "/sales-manager/dashboard" });
+                }}
+                className="h-9 text-xs font-semibold border-orange-200 bg-orange-50/70 hover:bg-orange-100 text-orange-800 cursor-pointer"
+              >
+                Sales Manager Login
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  saveAuthSession({
+                    token: "demo-broker-token",
+                    role: "broker",
+                    email: "broker@vrindavan.com",
+                    id: 9,
+                    name: "Apex Realtors (Broker)",
+                  });
+                  toast.success("Logged in as Channel Partner / Broker!");
+                  navigate({ to: "/broker/dashboard" });
+                }}
+                className="h-9 text-xs font-semibold border-cyan-200 bg-cyan-50/70 hover:bg-cyan-100 text-cyan-800 cursor-pointer"
+              >
+                Broker Login
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  saveAuthSession({
+                    token: "demo-engineer-token",
+                    role: "site-engineer",
+                    email: "engineer@vrindavan.com",
+                    id: 10,
+                    name: "Site Chief Engineer",
+                  });
+                  toast.success("Logged in as Site Engineer!");
+                  navigate({ to: "/site-engineer/dashboard" });
+                }}
+                className="h-9 text-xs font-semibold border-yellow-200 bg-yellow-50/70 hover:bg-yellow-100 text-yellow-800 cursor-pointer"
+              >
+                Site Engineer Login
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  saveAuthSession({
+                    token: "demo-legal-token",
+                    role: "legal",
+                    email: "legal@vrindavan.com",
+                    id: 11,
+                    name: "Legal Counsel",
+                  });
+                  toast.success("Logged in as Legal & Documentation!");
+                  navigate({ to: "/legal/dashboard" });
+                }}
+                className="h-9 text-xs font-semibold border-slate-300 bg-slate-100 hover:bg-slate-200 text-slate-800 cursor-pointer"
+              >
+                Legal Login
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  saveAuthSession({
+                    token: "demo-customer-token",
+                    role: "customer",
+                    email: "client@vrindavan.com",
+                    id: 12,
+                    name: "Valued Buyer",
+                  });
+                  toast.success("Logged in as Client / Customer!");
+                  navigate({ to: "/customer/dashboard" });
+                }}
+                className="h-9 text-xs font-semibold border-rose-200 bg-rose-50/70 hover:bg-rose-100 text-rose-800 cursor-pointer"
+              >
+                Customer Login
+              </Button>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => {
+                  saveAuthSession({
+                    token: "demo-inventory-token",
+                    role: "inventory",
+                    email: "inventory@vrindavan.com",
+                    id: 13,
+                    name: "Inventory Custodian",
+                  });
+                  toast.success("Logged in as Inventory Manager!");
+                  navigate({ to: "/inventory/dashboard" });
+                }}
+                className="h-9 text-xs font-semibold border-lime-200 bg-lime-50/70 hover:bg-lime-100 text-lime-800 cursor-pointer col-span-2"
+              >
+                Inventory Manager Login
               </Button>
             </div>
           </div>

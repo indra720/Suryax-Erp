@@ -35,12 +35,86 @@ import { Route as SiteVisitsRouteImport } from './routes/site-visits'
 import { Route as TasksRouteImport } from './routes/tasks'
 import { Route as TeamRouteImport } from './routes/team'
 import { Route as UsersRolesRouteImport } from './routes/users-roles'
+import { Route as AccountantAuditLogsRouteImport } from './routes/accountant/audit-logs'
+import { Route as AccountantBankReconciliationRouteImport } from './routes/accountant/bank-reconciliation'
+import { Route as AccountantBookingPaymentsRouteImport } from './routes/accountant/booking-payments'
+import { Route as AccountantCommissionBrokerageRouteImport } from './routes/accountant/commission-brokerage'
+import { Route as AccountantDashboardRouteImport } from './routes/accountant/dashboard'
+import { Route as AccountantExpensesRouteImport } from './routes/accountant/expenses'
+import { Route as AccountantFinancialStatementsRouteImport } from './routes/accountant/financial-statements'
+import { Route as AccountantGstReportsRouteImport } from './routes/accountant/gst-reports'
+import { Route as AccountantInvoicesRouteImport } from './routes/accountant/invoices'
+import { Route as AccountantLedgerRouteImport } from './routes/accountant/ledger'
+import { Route as AccountantPaymentSchedulesRouteImport } from './routes/accountant/payment-schedules'
+import { Route as AccountantPayrollSyncRouteImport } from './routes/accountant/payroll-sync'
+import { Route as AccountantPendingDuesRouteImport } from './routes/accountant/pending-dues'
+import { Route as AccountantProfileRouteImport } from './routes/accountant/profile'
+import { Route as AccountantRefundsRouteImport } from './routes/accountant/refunds'
 import { Route as AdminAddSellRouteImport } from './routes/admin/add-sell'
 import { Route as AdminDashboardRouteImport } from './routes/admin/dashboard'
 import { Route as AdminTimesheetRouteImport } from './routes/admin/timesheet'
+import { Route as BrokerDashboardRouteImport } from './routes/broker/dashboard'
+import { Route as BrokerLeadsRouteImport } from './routes/broker/leads'
+import { Route as BrokerPayoutsRouteImport } from './routes/broker/payouts'
+import { Route as BrokerProfileRouteImport } from './routes/broker/profile'
+import { Route as BrokerPropertiesRouteImport } from './routes/broker/properties'
+import { Route as BrokerSiteVisitsRouteImport } from './routes/broker/site-visits'
+import { Route as BrokerWalletRouteImport } from './routes/broker/wallet'
+import { Route as CustomerDashboardRouteImport } from './routes/customer/dashboard'
+import { Route as CustomerDocumentsRouteImport } from './routes/customer/documents'
+import { Route as CustomerMyBookingRouteImport } from './routes/customer/my-booking'
+import { Route as CustomerPayOnlineRouteImport } from './routes/customer/pay-online'
+import { Route as CustomerProfileRouteImport } from './routes/customer/profile'
+import { Route as CustomerScheduleRouteImport } from './routes/customer/schedule'
+import { Route as CustomerSupportRouteImport } from './routes/customer/support'
+import { Route as CustomerUpdatesRouteImport } from './routes/customer/updates'
 import { Route as HrDashboardIndexRouteImport } from './routes/hr-dashboard/index'
 import { Route as HrDashboardManualAttendanceRouteImport } from './routes/hr-dashboard/manual-attendance'
 import { Route as HrDashboardProfileRouteImport } from './routes/hr-dashboard/profile'
+import { Route as InventoryDashboardRouteImport } from './routes/inventory/dashboard'
+import { Route as InventoryGridRouteImport } from './routes/inventory/grid'
+import { Route as InventoryHoldUnitsRouteImport } from './routes/inventory/hold-units'
+import { Route as InventoryPricingRouteImport } from './routes/inventory/pricing'
+import { Route as InventoryProfileRouteImport } from './routes/inventory/profile'
+import { Route as InventoryProjectsRouteImport } from './routes/inventory/projects'
+import { Route as InventoryStatusRouteImport } from './routes/inventory/status'
+import { Route as InventoryTowersRouteImport } from './routes/inventory/towers'
+import { Route as LegalAgreementsRouteImport } from './routes/legal/agreements'
+import { Route as LegalDashboardRouteImport } from './routes/legal/dashboard'
+import { Route as LegalNocRouteImport } from './routes/legal/noc'
+import { Route as LegalProfileRouteImport } from './routes/legal/profile'
+import { Route as LegalRegistryRouteImport } from './routes/legal/registry'
+import { Route as LegalReraRouteImport } from './routes/legal/rera'
+import { Route as LegalVaultRouteImport } from './routes/legal/vault'
+import { Route as MarketingAdsManagerRouteImport } from './routes/marketing/ads-manager'
+import { Route as MarketingAnalyticsRouteImport } from './routes/marketing/analytics'
+import { Route as MarketingBroadcastsRouteImport } from './routes/marketing/broadcasts'
+import { Route as MarketingCampaignsRouteImport } from './routes/marketing/campaigns'
+import { Route as MarketingContentLibraryRouteImport } from './routes/marketing/content-library'
+import { Route as MarketingDashboardRouteImport } from './routes/marketing/dashboard'
+import { Route as MarketingEventsRouteImport } from './routes/marketing/events'
+import { Route as MarketingLandingPagesRouteImport } from './routes/marketing/landing-pages'
+import { Route as MarketingLeadSourcesRouteImport } from './routes/marketing/lead-sources'
+import { Route as MarketingMediaAssetsRouteImport } from './routes/marketing/media-assets'
+import { Route as MarketingProfileRouteImport } from './routes/marketing/profile'
+import { Route as MarketingSocialMediaRouteImport } from './routes/marketing/social-media'
+import { Route as MarketingTeamTasksRouteImport } from './routes/marketing/team-tasks'
+import { Route as SalesManagerBookingsRouteImport } from './routes/sales-manager/bookings'
+import { Route as SalesManagerDashboardRouteImport } from './routes/sales-manager/dashboard'
+import { Route as SalesManagerFollowupsRouteImport } from './routes/sales-manager/followups'
+import { Route as SalesManagerPipelineRouteImport } from './routes/sales-manager/pipeline'
+import { Route as SalesManagerProfileRouteImport } from './routes/sales-manager/profile'
+import { Route as SalesManagerSiteVisitsRouteImport } from './routes/sales-manager/site-visits'
+import { Route as SalesManagerTargetsRouteImport } from './routes/sales-manager/targets'
+import { Route as SalesManagerTeamRouteImport } from './routes/sales-manager/team'
+import { Route as SiteEngineerContractorsRouteImport } from './routes/site-engineer/contractors'
+import { Route as SiteEngineerDailyReportsRouteImport } from './routes/site-engineer/daily-reports'
+import { Route as SiteEngineerDashboardRouteImport } from './routes/site-engineer/dashboard'
+import { Route as SiteEngineerMaterialsRouteImport } from './routes/site-engineer/materials'
+import { Route as SiteEngineerPhotosRouteImport } from './routes/site-engineer/photos'
+import { Route as SiteEngineerProfileRouteImport } from './routes/site-engineer/profile'
+import { Route as SiteEngineerProgressRouteImport } from './routes/site-engineer/progress'
+import { Route as SiteEngineerTowersRouteImport } from './routes/site-engineer/towers'
 import { Route as StaffDashboardRouteImport } from './routes/staff/dashboard'
 import { Route as StaffEarnRouteImport } from './routes/staff/earn'
 import { Route as StaffIncentivesRouteImport } from './routes/staff/incentives'
@@ -391,6 +465,86 @@ const UsersRolesRoute = UsersRolesRouteImport.update({
   path: '/users-roles',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AccountantAuditLogsRoute = AccountantAuditLogsRouteImport.update({
+  id: '/accountant/audit-logs',
+  path: '/accountant/audit-logs',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountantBankReconciliationRoute =
+  AccountantBankReconciliationRouteImport.update({
+    id: '/accountant/bank-reconciliation',
+    path: '/accountant/bank-reconciliation',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AccountantBookingPaymentsRoute =
+  AccountantBookingPaymentsRouteImport.update({
+    id: '/accountant/booking-payments',
+    path: '/accountant/booking-payments',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AccountantCommissionBrokerageRoute =
+  AccountantCommissionBrokerageRouteImport.update({
+    id: '/accountant/commission-brokerage',
+    path: '/accountant/commission-brokerage',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AccountantDashboardRoute = AccountantDashboardRouteImport.update({
+  id: '/accountant/dashboard',
+  path: '/accountant/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountantExpensesRoute = AccountantExpensesRouteImport.update({
+  id: '/accountant/expenses',
+  path: '/accountant/expenses',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountantFinancialStatementsRoute =
+  AccountantFinancialStatementsRouteImport.update({
+    id: '/accountant/financial-statements',
+    path: '/accountant/financial-statements',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AccountantGstReportsRoute = AccountantGstReportsRouteImport.update({
+  id: '/accountant/gst-reports',
+  path: '/accountant/gst-reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountantInvoicesRoute = AccountantInvoicesRouteImport.update({
+  id: '/accountant/invoices',
+  path: '/accountant/invoices',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountantLedgerRoute = AccountantLedgerRouteImport.update({
+  id: '/accountant/ledger',
+  path: '/accountant/ledger',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountantPaymentSchedulesRoute =
+  AccountantPaymentSchedulesRouteImport.update({
+    id: '/accountant/payment-schedules',
+    path: '/accountant/payment-schedules',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const AccountantPayrollSyncRoute = AccountantPayrollSyncRouteImport.update({
+  id: '/accountant/payroll-sync',
+  path: '/accountant/payroll-sync',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountantPendingDuesRoute = AccountantPendingDuesRouteImport.update({
+  id: '/accountant/pending-dues',
+  path: '/accountant/pending-dues',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountantProfileRoute = AccountantProfileRouteImport.update({
+  id: '/accountant/profile',
+  path: '/accountant/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountantRefundsRoute = AccountantRefundsRouteImport.update({
+  id: '/accountant/refunds',
+  path: '/accountant/refunds',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AdminAddSellRoute = AdminAddSellRouteImport.update({
   id: '/admin/add-sell',
   path: '/admin/add-sell',
@@ -404,6 +558,81 @@ const AdminDashboardRoute = AdminDashboardRouteImport.update({
 const AdminTimesheetRoute = AdminTimesheetRouteImport.update({
   id: '/admin/timesheet',
   path: '/admin/timesheet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrokerDashboardRoute = BrokerDashboardRouteImport.update({
+  id: '/broker/dashboard',
+  path: '/broker/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrokerLeadsRoute = BrokerLeadsRouteImport.update({
+  id: '/broker/leads',
+  path: '/broker/leads',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrokerPayoutsRoute = BrokerPayoutsRouteImport.update({
+  id: '/broker/payouts',
+  path: '/broker/payouts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrokerProfileRoute = BrokerProfileRouteImport.update({
+  id: '/broker/profile',
+  path: '/broker/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrokerPropertiesRoute = BrokerPropertiesRouteImport.update({
+  id: '/broker/properties',
+  path: '/broker/properties',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrokerSiteVisitsRoute = BrokerSiteVisitsRouteImport.update({
+  id: '/broker/site-visits',
+  path: '/broker/site-visits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BrokerWalletRoute = BrokerWalletRouteImport.update({
+  id: '/broker/wallet',
+  path: '/broker/wallet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerDashboardRoute = CustomerDashboardRouteImport.update({
+  id: '/customer/dashboard',
+  path: '/customer/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerDocumentsRoute = CustomerDocumentsRouteImport.update({
+  id: '/customer/documents',
+  path: '/customer/documents',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerMyBookingRoute = CustomerMyBookingRouteImport.update({
+  id: '/customer/my-booking',
+  path: '/customer/my-booking',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerPayOnlineRoute = CustomerPayOnlineRouteImport.update({
+  id: '/customer/pay-online',
+  path: '/customer/pay-online',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerProfileRoute = CustomerProfileRouteImport.update({
+  id: '/customer/profile',
+  path: '/customer/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerScheduleRoute = CustomerScheduleRouteImport.update({
+  id: '/customer/schedule',
+  path: '/customer/schedule',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerSupportRoute = CustomerSupportRouteImport.update({
+  id: '/customer/support',
+  path: '/customer/support',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CustomerUpdatesRoute = CustomerUpdatesRouteImport.update({
+  id: '/customer/updates',
+  path: '/customer/updates',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HrDashboardIndexRoute = HrDashboardIndexRouteImport.update({
@@ -420,6 +649,227 @@ const HrDashboardManualAttendanceRoute =
 const HrDashboardProfileRoute = HrDashboardProfileRouteImport.update({
   id: '/hr-dashboard/profile',
   path: '/hr-dashboard/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const InventoryDashboardRoute = InventoryDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
+  getParentRoute: () => InventoryRoute,
+} as any)
+const InventoryGridRoute = InventoryGridRouteImport.update({
+  id: '/grid',
+  path: '/grid',
+  getParentRoute: () => InventoryRoute,
+} as any)
+const InventoryHoldUnitsRoute = InventoryHoldUnitsRouteImport.update({
+  id: '/hold-units',
+  path: '/hold-units',
+  getParentRoute: () => InventoryRoute,
+} as any)
+const InventoryPricingRoute = InventoryPricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
+  getParentRoute: () => InventoryRoute,
+} as any)
+const InventoryProfileRoute = InventoryProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => InventoryRoute,
+} as any)
+const InventoryProjectsRoute = InventoryProjectsRouteImport.update({
+  id: '/projects',
+  path: '/projects',
+  getParentRoute: () => InventoryRoute,
+} as any)
+const InventoryStatusRoute = InventoryStatusRouteImport.update({
+  id: '/status',
+  path: '/status',
+  getParentRoute: () => InventoryRoute,
+} as any)
+const InventoryTowersRoute = InventoryTowersRouteImport.update({
+  id: '/towers',
+  path: '/towers',
+  getParentRoute: () => InventoryRoute,
+} as any)
+const LegalAgreementsRoute = LegalAgreementsRouteImport.update({
+  id: '/legal/agreements',
+  path: '/legal/agreements',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalDashboardRoute = LegalDashboardRouteImport.update({
+  id: '/legal/dashboard',
+  path: '/legal/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalNocRoute = LegalNocRouteImport.update({
+  id: '/legal/noc',
+  path: '/legal/noc',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalProfileRoute = LegalProfileRouteImport.update({
+  id: '/legal/profile',
+  path: '/legal/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalRegistryRoute = LegalRegistryRouteImport.update({
+  id: '/legal/registry',
+  path: '/legal/registry',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalReraRoute = LegalReraRouteImport.update({
+  id: '/legal/rera',
+  path: '/legal/rera',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LegalVaultRoute = LegalVaultRouteImport.update({
+  id: '/legal/vault',
+  path: '/legal/vault',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingAdsManagerRoute = MarketingAdsManagerRouteImport.update({
+  id: '/marketing/ads-manager',
+  path: '/marketing/ads-manager',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingAnalyticsRoute = MarketingAnalyticsRouteImport.update({
+  id: '/marketing/analytics',
+  path: '/marketing/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingBroadcastsRoute = MarketingBroadcastsRouteImport.update({
+  id: '/marketing/broadcasts',
+  path: '/marketing/broadcasts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingCampaignsRoute = MarketingCampaignsRouteImport.update({
+  id: '/marketing/campaigns',
+  path: '/marketing/campaigns',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingContentLibraryRoute = MarketingContentLibraryRouteImport.update({
+  id: '/marketing/content-library',
+  path: '/marketing/content-library',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingDashboardRoute = MarketingDashboardRouteImport.update({
+  id: '/marketing/dashboard',
+  path: '/marketing/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingEventsRoute = MarketingEventsRouteImport.update({
+  id: '/marketing/events',
+  path: '/marketing/events',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingLandingPagesRoute = MarketingLandingPagesRouteImport.update({
+  id: '/marketing/landing-pages',
+  path: '/marketing/landing-pages',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingLeadSourcesRoute = MarketingLeadSourcesRouteImport.update({
+  id: '/marketing/lead-sources',
+  path: '/marketing/lead-sources',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingMediaAssetsRoute = MarketingMediaAssetsRouteImport.update({
+  id: '/marketing/media-assets',
+  path: '/marketing/media-assets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingProfileRoute = MarketingProfileRouteImport.update({
+  id: '/marketing/profile',
+  path: '/marketing/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingSocialMediaRoute = MarketingSocialMediaRouteImport.update({
+  id: '/marketing/social-media',
+  path: '/marketing/social-media',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MarketingTeamTasksRoute = MarketingTeamTasksRouteImport.update({
+  id: '/marketing/team-tasks',
+  path: '/marketing/team-tasks',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesManagerBookingsRoute = SalesManagerBookingsRouteImport.update({
+  id: '/sales-manager/bookings',
+  path: '/sales-manager/bookings',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesManagerDashboardRoute = SalesManagerDashboardRouteImport.update({
+  id: '/sales-manager/dashboard',
+  path: '/sales-manager/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesManagerFollowupsRoute = SalesManagerFollowupsRouteImport.update({
+  id: '/sales-manager/followups',
+  path: '/sales-manager/followups',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesManagerPipelineRoute = SalesManagerPipelineRouteImport.update({
+  id: '/sales-manager/pipeline',
+  path: '/sales-manager/pipeline',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesManagerProfileRoute = SalesManagerProfileRouteImport.update({
+  id: '/sales-manager/profile',
+  path: '/sales-manager/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesManagerSiteVisitsRoute = SalesManagerSiteVisitsRouteImport.update({
+  id: '/sales-manager/site-visits',
+  path: '/sales-manager/site-visits',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesManagerTargetsRoute = SalesManagerTargetsRouteImport.update({
+  id: '/sales-manager/targets',
+  path: '/sales-manager/targets',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SalesManagerTeamRoute = SalesManagerTeamRouteImport.update({
+  id: '/sales-manager/team',
+  path: '/sales-manager/team',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteEngineerContractorsRoute = SiteEngineerContractorsRouteImport.update({
+  id: '/site-engineer/contractors',
+  path: '/site-engineer/contractors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteEngineerDailyReportsRoute =
+  SiteEngineerDailyReportsRouteImport.update({
+    id: '/site-engineer/daily-reports',
+    path: '/site-engineer/daily-reports',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const SiteEngineerDashboardRoute = SiteEngineerDashboardRouteImport.update({
+  id: '/site-engineer/dashboard',
+  path: '/site-engineer/dashboard',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteEngineerMaterialsRoute = SiteEngineerMaterialsRouteImport.update({
+  id: '/site-engineer/materials',
+  path: '/site-engineer/materials',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteEngineerPhotosRoute = SiteEngineerPhotosRouteImport.update({
+  id: '/site-engineer/photos',
+  path: '/site-engineer/photos',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteEngineerProfileRoute = SiteEngineerProfileRouteImport.update({
+  id: '/site-engineer/profile',
+  path: '/site-engineer/profile',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteEngineerProgressRoute = SiteEngineerProgressRouteImport.update({
+  id: '/site-engineer/progress',
+  path: '/site-engineer/progress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SiteEngineerTowersRoute = SiteEngineerTowersRouteImport.update({
+  id: '/site-engineer/towers',
+  path: '/site-engineer/towers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const StaffDashboardRoute = StaffDashboardRouteImport.update({
@@ -1632,7 +2082,7 @@ export interface FileRoutesByFullPath {
   '/enquiries': typeof EnquiriesRoute
   '/expenses': typeof ExpensesRoute
   '/followups': typeof FollowupsRoute
-  '/inventory': typeof InventoryRoute
+  '/inventory': typeof InventoryRouteWithChildren
   '/invoices': typeof InvoicesRoute
   '/leads': typeof LeadsRoute
   '/login': typeof LoginRoute
@@ -1649,11 +2099,85 @@ export interface FileRoutesByFullPath {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/accountant/audit-logs': typeof AccountantAuditLogsRoute
+  '/accountant/bank-reconciliation': typeof AccountantBankReconciliationRoute
+  '/accountant/booking-payments': typeof AccountantBookingPaymentsRoute
+  '/accountant/commission-brokerage': typeof AccountantCommissionBrokerageRoute
+  '/accountant/dashboard': typeof AccountantDashboardRoute
+  '/accountant/expenses': typeof AccountantExpensesRoute
+  '/accountant/financial-statements': typeof AccountantFinancialStatementsRoute
+  '/accountant/gst-reports': typeof AccountantGstReportsRoute
+  '/accountant/invoices': typeof AccountantInvoicesRoute
+  '/accountant/ledger': typeof AccountantLedgerRoute
+  '/accountant/payment-schedules': typeof AccountantPaymentSchedulesRoute
+  '/accountant/payroll-sync': typeof AccountantPayrollSyncRoute
+  '/accountant/pending-dues': typeof AccountantPendingDuesRoute
+  '/accountant/profile': typeof AccountantProfileRoute
+  '/accountant/refunds': typeof AccountantRefundsRoute
   '/admin/add-sell': typeof AdminAddSellRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/timesheet': typeof AdminTimesheetRoute
+  '/broker/dashboard': typeof BrokerDashboardRoute
+  '/broker/leads': typeof BrokerLeadsRoute
+  '/broker/payouts': typeof BrokerPayoutsRoute
+  '/broker/profile': typeof BrokerProfileRoute
+  '/broker/properties': typeof BrokerPropertiesRoute
+  '/broker/site-visits': typeof BrokerSiteVisitsRoute
+  '/broker/wallet': typeof BrokerWalletRoute
+  '/customer/dashboard': typeof CustomerDashboardRoute
+  '/customer/documents': typeof CustomerDocumentsRoute
+  '/customer/my-booking': typeof CustomerMyBookingRoute
+  '/customer/pay-online': typeof CustomerPayOnlineRoute
+  '/customer/profile': typeof CustomerProfileRoute
+  '/customer/schedule': typeof CustomerScheduleRoute
+  '/customer/support': typeof CustomerSupportRoute
+  '/customer/updates': typeof CustomerUpdatesRoute
   '/hr-dashboard/manual-attendance': typeof HrDashboardManualAttendanceRoute
   '/hr-dashboard/profile': typeof HrDashboardProfileRoute
+  '/inventory/dashboard': typeof InventoryDashboardRoute
+  '/inventory/grid': typeof InventoryGridRoute
+  '/inventory/hold-units': typeof InventoryHoldUnitsRoute
+  '/inventory/pricing': typeof InventoryPricingRoute
+  '/inventory/profile': typeof InventoryProfileRoute
+  '/inventory/projects': typeof InventoryProjectsRoute
+  '/inventory/status': typeof InventoryStatusRoute
+  '/inventory/towers': typeof InventoryTowersRoute
+  '/legal/agreements': typeof LegalAgreementsRoute
+  '/legal/dashboard': typeof LegalDashboardRoute
+  '/legal/noc': typeof LegalNocRoute
+  '/legal/profile': typeof LegalProfileRoute
+  '/legal/registry': typeof LegalRegistryRoute
+  '/legal/rera': typeof LegalReraRoute
+  '/legal/vault': typeof LegalVaultRoute
+  '/marketing/ads-manager': typeof MarketingAdsManagerRoute
+  '/marketing/analytics': typeof MarketingAnalyticsRoute
+  '/marketing/broadcasts': typeof MarketingBroadcastsRoute
+  '/marketing/campaigns': typeof MarketingCampaignsRoute
+  '/marketing/content-library': typeof MarketingContentLibraryRoute
+  '/marketing/dashboard': typeof MarketingDashboardRoute
+  '/marketing/events': typeof MarketingEventsRoute
+  '/marketing/landing-pages': typeof MarketingLandingPagesRoute
+  '/marketing/lead-sources': typeof MarketingLeadSourcesRoute
+  '/marketing/media-assets': typeof MarketingMediaAssetsRoute
+  '/marketing/profile': typeof MarketingProfileRoute
+  '/marketing/social-media': typeof MarketingSocialMediaRoute
+  '/marketing/team-tasks': typeof MarketingTeamTasksRoute
+  '/sales-manager/bookings': typeof SalesManagerBookingsRoute
+  '/sales-manager/dashboard': typeof SalesManagerDashboardRoute
+  '/sales-manager/followups': typeof SalesManagerFollowupsRoute
+  '/sales-manager/pipeline': typeof SalesManagerPipelineRoute
+  '/sales-manager/profile': typeof SalesManagerProfileRoute
+  '/sales-manager/site-visits': typeof SalesManagerSiteVisitsRoute
+  '/sales-manager/targets': typeof SalesManagerTargetsRoute
+  '/sales-manager/team': typeof SalesManagerTeamRoute
+  '/site-engineer/contractors': typeof SiteEngineerContractorsRoute
+  '/site-engineer/daily-reports': typeof SiteEngineerDailyReportsRoute
+  '/site-engineer/dashboard': typeof SiteEngineerDashboardRoute
+  '/site-engineer/materials': typeof SiteEngineerMaterialsRoute
+  '/site-engineer/photos': typeof SiteEngineerPhotosRoute
+  '/site-engineer/profile': typeof SiteEngineerProfileRoute
+  '/site-engineer/progress': typeof SiteEngineerProgressRoute
+  '/site-engineer/towers': typeof SiteEngineerTowersRoute
   '/staff/dashboard': typeof StaffDashboardRoute
   '/staff/earn': typeof StaffEarnRoute
   '/staff/incentives': typeof StaffIncentivesRoute
@@ -1885,7 +2409,7 @@ export interface FileRoutesByTo {
   '/enquiries': typeof EnquiriesRoute
   '/expenses': typeof ExpensesRoute
   '/followups': typeof FollowupsRoute
-  '/inventory': typeof InventoryRoute
+  '/inventory': typeof InventoryRouteWithChildren
   '/invoices': typeof InvoicesRoute
   '/leads': typeof LeadsRoute
   '/login': typeof LoginRoute
@@ -1902,11 +2426,85 @@ export interface FileRoutesByTo {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/accountant/audit-logs': typeof AccountantAuditLogsRoute
+  '/accountant/bank-reconciliation': typeof AccountantBankReconciliationRoute
+  '/accountant/booking-payments': typeof AccountantBookingPaymentsRoute
+  '/accountant/commission-brokerage': typeof AccountantCommissionBrokerageRoute
+  '/accountant/dashboard': typeof AccountantDashboardRoute
+  '/accountant/expenses': typeof AccountantExpensesRoute
+  '/accountant/financial-statements': typeof AccountantFinancialStatementsRoute
+  '/accountant/gst-reports': typeof AccountantGstReportsRoute
+  '/accountant/invoices': typeof AccountantInvoicesRoute
+  '/accountant/ledger': typeof AccountantLedgerRoute
+  '/accountant/payment-schedules': typeof AccountantPaymentSchedulesRoute
+  '/accountant/payroll-sync': typeof AccountantPayrollSyncRoute
+  '/accountant/pending-dues': typeof AccountantPendingDuesRoute
+  '/accountant/profile': typeof AccountantProfileRoute
+  '/accountant/refunds': typeof AccountantRefundsRoute
   '/admin/add-sell': typeof AdminAddSellRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/timesheet': typeof AdminTimesheetRoute
+  '/broker/dashboard': typeof BrokerDashboardRoute
+  '/broker/leads': typeof BrokerLeadsRoute
+  '/broker/payouts': typeof BrokerPayoutsRoute
+  '/broker/profile': typeof BrokerProfileRoute
+  '/broker/properties': typeof BrokerPropertiesRoute
+  '/broker/site-visits': typeof BrokerSiteVisitsRoute
+  '/broker/wallet': typeof BrokerWalletRoute
+  '/customer/dashboard': typeof CustomerDashboardRoute
+  '/customer/documents': typeof CustomerDocumentsRoute
+  '/customer/my-booking': typeof CustomerMyBookingRoute
+  '/customer/pay-online': typeof CustomerPayOnlineRoute
+  '/customer/profile': typeof CustomerProfileRoute
+  '/customer/schedule': typeof CustomerScheduleRoute
+  '/customer/support': typeof CustomerSupportRoute
+  '/customer/updates': typeof CustomerUpdatesRoute
   '/hr-dashboard/manual-attendance': typeof HrDashboardManualAttendanceRoute
   '/hr-dashboard/profile': typeof HrDashboardProfileRoute
+  '/inventory/dashboard': typeof InventoryDashboardRoute
+  '/inventory/grid': typeof InventoryGridRoute
+  '/inventory/hold-units': typeof InventoryHoldUnitsRoute
+  '/inventory/pricing': typeof InventoryPricingRoute
+  '/inventory/profile': typeof InventoryProfileRoute
+  '/inventory/projects': typeof InventoryProjectsRoute
+  '/inventory/status': typeof InventoryStatusRoute
+  '/inventory/towers': typeof InventoryTowersRoute
+  '/legal/agreements': typeof LegalAgreementsRoute
+  '/legal/dashboard': typeof LegalDashboardRoute
+  '/legal/noc': typeof LegalNocRoute
+  '/legal/profile': typeof LegalProfileRoute
+  '/legal/registry': typeof LegalRegistryRoute
+  '/legal/rera': typeof LegalReraRoute
+  '/legal/vault': typeof LegalVaultRoute
+  '/marketing/ads-manager': typeof MarketingAdsManagerRoute
+  '/marketing/analytics': typeof MarketingAnalyticsRoute
+  '/marketing/broadcasts': typeof MarketingBroadcastsRoute
+  '/marketing/campaigns': typeof MarketingCampaignsRoute
+  '/marketing/content-library': typeof MarketingContentLibraryRoute
+  '/marketing/dashboard': typeof MarketingDashboardRoute
+  '/marketing/events': typeof MarketingEventsRoute
+  '/marketing/landing-pages': typeof MarketingLandingPagesRoute
+  '/marketing/lead-sources': typeof MarketingLeadSourcesRoute
+  '/marketing/media-assets': typeof MarketingMediaAssetsRoute
+  '/marketing/profile': typeof MarketingProfileRoute
+  '/marketing/social-media': typeof MarketingSocialMediaRoute
+  '/marketing/team-tasks': typeof MarketingTeamTasksRoute
+  '/sales-manager/bookings': typeof SalesManagerBookingsRoute
+  '/sales-manager/dashboard': typeof SalesManagerDashboardRoute
+  '/sales-manager/followups': typeof SalesManagerFollowupsRoute
+  '/sales-manager/pipeline': typeof SalesManagerPipelineRoute
+  '/sales-manager/profile': typeof SalesManagerProfileRoute
+  '/sales-manager/site-visits': typeof SalesManagerSiteVisitsRoute
+  '/sales-manager/targets': typeof SalesManagerTargetsRoute
+  '/sales-manager/team': typeof SalesManagerTeamRoute
+  '/site-engineer/contractors': typeof SiteEngineerContractorsRoute
+  '/site-engineer/daily-reports': typeof SiteEngineerDailyReportsRoute
+  '/site-engineer/dashboard': typeof SiteEngineerDashboardRoute
+  '/site-engineer/materials': typeof SiteEngineerMaterialsRoute
+  '/site-engineer/photos': typeof SiteEngineerPhotosRoute
+  '/site-engineer/profile': typeof SiteEngineerProfileRoute
+  '/site-engineer/progress': typeof SiteEngineerProgressRoute
+  '/site-engineer/towers': typeof SiteEngineerTowersRoute
   '/staff/dashboard': typeof StaffDashboardRoute
   '/staff/earn': typeof StaffEarnRoute
   '/staff/incentives': typeof StaffIncentivesRoute
@@ -2139,7 +2737,7 @@ export interface FileRoutesById {
   '/enquiries': typeof EnquiriesRoute
   '/expenses': typeof ExpensesRoute
   '/followups': typeof FollowupsRoute
-  '/inventory': typeof InventoryRoute
+  '/inventory': typeof InventoryRouteWithChildren
   '/invoices': typeof InvoicesRoute
   '/leads': typeof LeadsRoute
   '/login': typeof LoginRoute
@@ -2156,11 +2754,85 @@ export interface FileRoutesById {
   '/tasks': typeof TasksRoute
   '/team': typeof TeamRoute
   '/users-roles': typeof UsersRolesRoute
+  '/accountant/audit-logs': typeof AccountantAuditLogsRoute
+  '/accountant/bank-reconciliation': typeof AccountantBankReconciliationRoute
+  '/accountant/booking-payments': typeof AccountantBookingPaymentsRoute
+  '/accountant/commission-brokerage': typeof AccountantCommissionBrokerageRoute
+  '/accountant/dashboard': typeof AccountantDashboardRoute
+  '/accountant/expenses': typeof AccountantExpensesRoute
+  '/accountant/financial-statements': typeof AccountantFinancialStatementsRoute
+  '/accountant/gst-reports': typeof AccountantGstReportsRoute
+  '/accountant/invoices': typeof AccountantInvoicesRoute
+  '/accountant/ledger': typeof AccountantLedgerRoute
+  '/accountant/payment-schedules': typeof AccountantPaymentSchedulesRoute
+  '/accountant/payroll-sync': typeof AccountantPayrollSyncRoute
+  '/accountant/pending-dues': typeof AccountantPendingDuesRoute
+  '/accountant/profile': typeof AccountantProfileRoute
+  '/accountant/refunds': typeof AccountantRefundsRoute
   '/admin/add-sell': typeof AdminAddSellRoute
   '/admin/dashboard': typeof AdminDashboardRoute
   '/admin/timesheet': typeof AdminTimesheetRoute
+  '/broker/dashboard': typeof BrokerDashboardRoute
+  '/broker/leads': typeof BrokerLeadsRoute
+  '/broker/payouts': typeof BrokerPayoutsRoute
+  '/broker/profile': typeof BrokerProfileRoute
+  '/broker/properties': typeof BrokerPropertiesRoute
+  '/broker/site-visits': typeof BrokerSiteVisitsRoute
+  '/broker/wallet': typeof BrokerWalletRoute
+  '/customer/dashboard': typeof CustomerDashboardRoute
+  '/customer/documents': typeof CustomerDocumentsRoute
+  '/customer/my-booking': typeof CustomerMyBookingRoute
+  '/customer/pay-online': typeof CustomerPayOnlineRoute
+  '/customer/profile': typeof CustomerProfileRoute
+  '/customer/schedule': typeof CustomerScheduleRoute
+  '/customer/support': typeof CustomerSupportRoute
+  '/customer/updates': typeof CustomerUpdatesRoute
   '/hr-dashboard/manual-attendance': typeof HrDashboardManualAttendanceRoute
   '/hr-dashboard/profile': typeof HrDashboardProfileRoute
+  '/inventory/dashboard': typeof InventoryDashboardRoute
+  '/inventory/grid': typeof InventoryGridRoute
+  '/inventory/hold-units': typeof InventoryHoldUnitsRoute
+  '/inventory/pricing': typeof InventoryPricingRoute
+  '/inventory/profile': typeof InventoryProfileRoute
+  '/inventory/projects': typeof InventoryProjectsRoute
+  '/inventory/status': typeof InventoryStatusRoute
+  '/inventory/towers': typeof InventoryTowersRoute
+  '/legal/agreements': typeof LegalAgreementsRoute
+  '/legal/dashboard': typeof LegalDashboardRoute
+  '/legal/noc': typeof LegalNocRoute
+  '/legal/profile': typeof LegalProfileRoute
+  '/legal/registry': typeof LegalRegistryRoute
+  '/legal/rera': typeof LegalReraRoute
+  '/legal/vault': typeof LegalVaultRoute
+  '/marketing/ads-manager': typeof MarketingAdsManagerRoute
+  '/marketing/analytics': typeof MarketingAnalyticsRoute
+  '/marketing/broadcasts': typeof MarketingBroadcastsRoute
+  '/marketing/campaigns': typeof MarketingCampaignsRoute
+  '/marketing/content-library': typeof MarketingContentLibraryRoute
+  '/marketing/dashboard': typeof MarketingDashboardRoute
+  '/marketing/events': typeof MarketingEventsRoute
+  '/marketing/landing-pages': typeof MarketingLandingPagesRoute
+  '/marketing/lead-sources': typeof MarketingLeadSourcesRoute
+  '/marketing/media-assets': typeof MarketingMediaAssetsRoute
+  '/marketing/profile': typeof MarketingProfileRoute
+  '/marketing/social-media': typeof MarketingSocialMediaRoute
+  '/marketing/team-tasks': typeof MarketingTeamTasksRoute
+  '/sales-manager/bookings': typeof SalesManagerBookingsRoute
+  '/sales-manager/dashboard': typeof SalesManagerDashboardRoute
+  '/sales-manager/followups': typeof SalesManagerFollowupsRoute
+  '/sales-manager/pipeline': typeof SalesManagerPipelineRoute
+  '/sales-manager/profile': typeof SalesManagerProfileRoute
+  '/sales-manager/site-visits': typeof SalesManagerSiteVisitsRoute
+  '/sales-manager/targets': typeof SalesManagerTargetsRoute
+  '/sales-manager/team': typeof SalesManagerTeamRoute
+  '/site-engineer/contractors': typeof SiteEngineerContractorsRoute
+  '/site-engineer/daily-reports': typeof SiteEngineerDailyReportsRoute
+  '/site-engineer/dashboard': typeof SiteEngineerDashboardRoute
+  '/site-engineer/materials': typeof SiteEngineerMaterialsRoute
+  '/site-engineer/photos': typeof SiteEngineerPhotosRoute
+  '/site-engineer/profile': typeof SiteEngineerProfileRoute
+  '/site-engineer/progress': typeof SiteEngineerProgressRoute
+  '/site-engineer/towers': typeof SiteEngineerTowersRoute
   '/staff/dashboard': typeof StaffDashboardRoute
   '/staff/earn': typeof StaffEarnRoute
   '/staff/incentives': typeof StaffIncentivesRoute
@@ -2411,11 +3083,85 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/accountant/audit-logs'
+    | '/accountant/bank-reconciliation'
+    | '/accountant/booking-payments'
+    | '/accountant/commission-brokerage'
+    | '/accountant/dashboard'
+    | '/accountant/expenses'
+    | '/accountant/financial-statements'
+    | '/accountant/gst-reports'
+    | '/accountant/invoices'
+    | '/accountant/ledger'
+    | '/accountant/payment-schedules'
+    | '/accountant/payroll-sync'
+    | '/accountant/pending-dues'
+    | '/accountant/profile'
+    | '/accountant/refunds'
     | '/admin/add-sell'
     | '/admin/dashboard'
     | '/admin/timesheet'
+    | '/broker/dashboard'
+    | '/broker/leads'
+    | '/broker/payouts'
+    | '/broker/profile'
+    | '/broker/properties'
+    | '/broker/site-visits'
+    | '/broker/wallet'
+    | '/customer/dashboard'
+    | '/customer/documents'
+    | '/customer/my-booking'
+    | '/customer/pay-online'
+    | '/customer/profile'
+    | '/customer/schedule'
+    | '/customer/support'
+    | '/customer/updates'
     | '/hr-dashboard/manual-attendance'
     | '/hr-dashboard/profile'
+    | '/inventory/dashboard'
+    | '/inventory/grid'
+    | '/inventory/hold-units'
+    | '/inventory/pricing'
+    | '/inventory/profile'
+    | '/inventory/projects'
+    | '/inventory/status'
+    | '/inventory/towers'
+    | '/legal/agreements'
+    | '/legal/dashboard'
+    | '/legal/noc'
+    | '/legal/profile'
+    | '/legal/registry'
+    | '/legal/rera'
+    | '/legal/vault'
+    | '/marketing/ads-manager'
+    | '/marketing/analytics'
+    | '/marketing/broadcasts'
+    | '/marketing/campaigns'
+    | '/marketing/content-library'
+    | '/marketing/dashboard'
+    | '/marketing/events'
+    | '/marketing/landing-pages'
+    | '/marketing/lead-sources'
+    | '/marketing/media-assets'
+    | '/marketing/profile'
+    | '/marketing/social-media'
+    | '/marketing/team-tasks'
+    | '/sales-manager/bookings'
+    | '/sales-manager/dashboard'
+    | '/sales-manager/followups'
+    | '/sales-manager/pipeline'
+    | '/sales-manager/profile'
+    | '/sales-manager/site-visits'
+    | '/sales-manager/targets'
+    | '/sales-manager/team'
+    | '/site-engineer/contractors'
+    | '/site-engineer/daily-reports'
+    | '/site-engineer/dashboard'
+    | '/site-engineer/materials'
+    | '/site-engineer/photos'
+    | '/site-engineer/profile'
+    | '/site-engineer/progress'
+    | '/site-engineer/towers'
     | '/staff/dashboard'
     | '/staff/earn'
     | '/staff/incentives'
@@ -2664,11 +3410,85 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/accountant/audit-logs'
+    | '/accountant/bank-reconciliation'
+    | '/accountant/booking-payments'
+    | '/accountant/commission-brokerage'
+    | '/accountant/dashboard'
+    | '/accountant/expenses'
+    | '/accountant/financial-statements'
+    | '/accountant/gst-reports'
+    | '/accountant/invoices'
+    | '/accountant/ledger'
+    | '/accountant/payment-schedules'
+    | '/accountant/payroll-sync'
+    | '/accountant/pending-dues'
+    | '/accountant/profile'
+    | '/accountant/refunds'
     | '/admin/add-sell'
     | '/admin/dashboard'
     | '/admin/timesheet'
+    | '/broker/dashboard'
+    | '/broker/leads'
+    | '/broker/payouts'
+    | '/broker/profile'
+    | '/broker/properties'
+    | '/broker/site-visits'
+    | '/broker/wallet'
+    | '/customer/dashboard'
+    | '/customer/documents'
+    | '/customer/my-booking'
+    | '/customer/pay-online'
+    | '/customer/profile'
+    | '/customer/schedule'
+    | '/customer/support'
+    | '/customer/updates'
     | '/hr-dashboard/manual-attendance'
     | '/hr-dashboard/profile'
+    | '/inventory/dashboard'
+    | '/inventory/grid'
+    | '/inventory/hold-units'
+    | '/inventory/pricing'
+    | '/inventory/profile'
+    | '/inventory/projects'
+    | '/inventory/status'
+    | '/inventory/towers'
+    | '/legal/agreements'
+    | '/legal/dashboard'
+    | '/legal/noc'
+    | '/legal/profile'
+    | '/legal/registry'
+    | '/legal/rera'
+    | '/legal/vault'
+    | '/marketing/ads-manager'
+    | '/marketing/analytics'
+    | '/marketing/broadcasts'
+    | '/marketing/campaigns'
+    | '/marketing/content-library'
+    | '/marketing/dashboard'
+    | '/marketing/events'
+    | '/marketing/landing-pages'
+    | '/marketing/lead-sources'
+    | '/marketing/media-assets'
+    | '/marketing/profile'
+    | '/marketing/social-media'
+    | '/marketing/team-tasks'
+    | '/sales-manager/bookings'
+    | '/sales-manager/dashboard'
+    | '/sales-manager/followups'
+    | '/sales-manager/pipeline'
+    | '/sales-manager/profile'
+    | '/sales-manager/site-visits'
+    | '/sales-manager/targets'
+    | '/sales-manager/team'
+    | '/site-engineer/contractors'
+    | '/site-engineer/daily-reports'
+    | '/site-engineer/dashboard'
+    | '/site-engineer/materials'
+    | '/site-engineer/photos'
+    | '/site-engineer/profile'
+    | '/site-engineer/progress'
+    | '/site-engineer/towers'
     | '/staff/dashboard'
     | '/staff/earn'
     | '/staff/incentives'
@@ -2917,11 +3737,85 @@ export interface FileRouteTypes {
     | '/tasks'
     | '/team'
     | '/users-roles'
+    | '/accountant/audit-logs'
+    | '/accountant/bank-reconciliation'
+    | '/accountant/booking-payments'
+    | '/accountant/commission-brokerage'
+    | '/accountant/dashboard'
+    | '/accountant/expenses'
+    | '/accountant/financial-statements'
+    | '/accountant/gst-reports'
+    | '/accountant/invoices'
+    | '/accountant/ledger'
+    | '/accountant/payment-schedules'
+    | '/accountant/payroll-sync'
+    | '/accountant/pending-dues'
+    | '/accountant/profile'
+    | '/accountant/refunds'
     | '/admin/add-sell'
     | '/admin/dashboard'
     | '/admin/timesheet'
+    | '/broker/dashboard'
+    | '/broker/leads'
+    | '/broker/payouts'
+    | '/broker/profile'
+    | '/broker/properties'
+    | '/broker/site-visits'
+    | '/broker/wallet'
+    | '/customer/dashboard'
+    | '/customer/documents'
+    | '/customer/my-booking'
+    | '/customer/pay-online'
+    | '/customer/profile'
+    | '/customer/schedule'
+    | '/customer/support'
+    | '/customer/updates'
     | '/hr-dashboard/manual-attendance'
     | '/hr-dashboard/profile'
+    | '/inventory/dashboard'
+    | '/inventory/grid'
+    | '/inventory/hold-units'
+    | '/inventory/pricing'
+    | '/inventory/profile'
+    | '/inventory/projects'
+    | '/inventory/status'
+    | '/inventory/towers'
+    | '/legal/agreements'
+    | '/legal/dashboard'
+    | '/legal/noc'
+    | '/legal/profile'
+    | '/legal/registry'
+    | '/legal/rera'
+    | '/legal/vault'
+    | '/marketing/ads-manager'
+    | '/marketing/analytics'
+    | '/marketing/broadcasts'
+    | '/marketing/campaigns'
+    | '/marketing/content-library'
+    | '/marketing/dashboard'
+    | '/marketing/events'
+    | '/marketing/landing-pages'
+    | '/marketing/lead-sources'
+    | '/marketing/media-assets'
+    | '/marketing/profile'
+    | '/marketing/social-media'
+    | '/marketing/team-tasks'
+    | '/sales-manager/bookings'
+    | '/sales-manager/dashboard'
+    | '/sales-manager/followups'
+    | '/sales-manager/pipeline'
+    | '/sales-manager/profile'
+    | '/sales-manager/site-visits'
+    | '/sales-manager/targets'
+    | '/sales-manager/team'
+    | '/site-engineer/contractors'
+    | '/site-engineer/daily-reports'
+    | '/site-engineer/dashboard'
+    | '/site-engineer/materials'
+    | '/site-engineer/photos'
+    | '/site-engineer/profile'
+    | '/site-engineer/progress'
+    | '/site-engineer/towers'
     | '/staff/dashboard'
     | '/staff/earn'
     | '/staff/incentives'
@@ -3154,7 +4048,7 @@ export interface RootRouteChildren {
   EnquiriesRoute: typeof EnquiriesRoute
   ExpensesRoute: typeof ExpensesRoute
   FollowupsRoute: typeof FollowupsRoute
-  InventoryRoute: typeof InventoryRoute
+  InventoryRoute: typeof InventoryRouteWithChildren
   InvoicesRoute: typeof InvoicesRoute
   LeadsRoute: typeof LeadsRoute
   LoginRoute: typeof LoginRoute
@@ -3171,11 +4065,77 @@ export interface RootRouteChildren {
   TasksRoute: typeof TasksRoute
   TeamRoute: typeof TeamRoute
   UsersRolesRoute: typeof UsersRolesRoute
+  AccountantAuditLogsRoute: typeof AccountantAuditLogsRoute
+  AccountantBankReconciliationRoute: typeof AccountantBankReconciliationRoute
+  AccountantBookingPaymentsRoute: typeof AccountantBookingPaymentsRoute
+  AccountantCommissionBrokerageRoute: typeof AccountantCommissionBrokerageRoute
+  AccountantDashboardRoute: typeof AccountantDashboardRoute
+  AccountantExpensesRoute: typeof AccountantExpensesRoute
+  AccountantFinancialStatementsRoute: typeof AccountantFinancialStatementsRoute
+  AccountantGstReportsRoute: typeof AccountantGstReportsRoute
+  AccountantInvoicesRoute: typeof AccountantInvoicesRoute
+  AccountantLedgerRoute: typeof AccountantLedgerRoute
+  AccountantPaymentSchedulesRoute: typeof AccountantPaymentSchedulesRoute
+  AccountantPayrollSyncRoute: typeof AccountantPayrollSyncRoute
+  AccountantPendingDuesRoute: typeof AccountantPendingDuesRoute
+  AccountantProfileRoute: typeof AccountantProfileRoute
+  AccountantRefundsRoute: typeof AccountantRefundsRoute
   AdminAddSellRoute: typeof AdminAddSellRoute
   AdminDashboardRoute: typeof AdminDashboardRoute
   AdminTimesheetRoute: typeof AdminTimesheetRoute
+  BrokerDashboardRoute: typeof BrokerDashboardRoute
+  BrokerLeadsRoute: typeof BrokerLeadsRoute
+  BrokerPayoutsRoute: typeof BrokerPayoutsRoute
+  BrokerProfileRoute: typeof BrokerProfileRoute
+  BrokerPropertiesRoute: typeof BrokerPropertiesRoute
+  BrokerSiteVisitsRoute: typeof BrokerSiteVisitsRoute
+  BrokerWalletRoute: typeof BrokerWalletRoute
+  CustomerDashboardRoute: typeof CustomerDashboardRoute
+  CustomerDocumentsRoute: typeof CustomerDocumentsRoute
+  CustomerMyBookingRoute: typeof CustomerMyBookingRoute
+  CustomerPayOnlineRoute: typeof CustomerPayOnlineRoute
+  CustomerProfileRoute: typeof CustomerProfileRoute
+  CustomerScheduleRoute: typeof CustomerScheduleRoute
+  CustomerSupportRoute: typeof CustomerSupportRoute
+  CustomerUpdatesRoute: typeof CustomerUpdatesRoute
   HrDashboardManualAttendanceRoute: typeof HrDashboardManualAttendanceRoute
   HrDashboardProfileRoute: typeof HrDashboardProfileRoute
+  LegalAgreementsRoute: typeof LegalAgreementsRoute
+  LegalDashboardRoute: typeof LegalDashboardRoute
+  LegalNocRoute: typeof LegalNocRoute
+  LegalProfileRoute: typeof LegalProfileRoute
+  LegalRegistryRoute: typeof LegalRegistryRoute
+  LegalReraRoute: typeof LegalReraRoute
+  LegalVaultRoute: typeof LegalVaultRoute
+  MarketingAdsManagerRoute: typeof MarketingAdsManagerRoute
+  MarketingAnalyticsRoute: typeof MarketingAnalyticsRoute
+  MarketingBroadcastsRoute: typeof MarketingBroadcastsRoute
+  MarketingCampaignsRoute: typeof MarketingCampaignsRoute
+  MarketingContentLibraryRoute: typeof MarketingContentLibraryRoute
+  MarketingDashboardRoute: typeof MarketingDashboardRoute
+  MarketingEventsRoute: typeof MarketingEventsRoute
+  MarketingLandingPagesRoute: typeof MarketingLandingPagesRoute
+  MarketingLeadSourcesRoute: typeof MarketingLeadSourcesRoute
+  MarketingMediaAssetsRoute: typeof MarketingMediaAssetsRoute
+  MarketingProfileRoute: typeof MarketingProfileRoute
+  MarketingSocialMediaRoute: typeof MarketingSocialMediaRoute
+  MarketingTeamTasksRoute: typeof MarketingTeamTasksRoute
+  SalesManagerBookingsRoute: typeof SalesManagerBookingsRoute
+  SalesManagerDashboardRoute: typeof SalesManagerDashboardRoute
+  SalesManagerFollowupsRoute: typeof SalesManagerFollowupsRoute
+  SalesManagerPipelineRoute: typeof SalesManagerPipelineRoute
+  SalesManagerProfileRoute: typeof SalesManagerProfileRoute
+  SalesManagerSiteVisitsRoute: typeof SalesManagerSiteVisitsRoute
+  SalesManagerTargetsRoute: typeof SalesManagerTargetsRoute
+  SalesManagerTeamRoute: typeof SalesManagerTeamRoute
+  SiteEngineerContractorsRoute: typeof SiteEngineerContractorsRoute
+  SiteEngineerDailyReportsRoute: typeof SiteEngineerDailyReportsRoute
+  SiteEngineerDashboardRoute: typeof SiteEngineerDashboardRoute
+  SiteEngineerMaterialsRoute: typeof SiteEngineerMaterialsRoute
+  SiteEngineerPhotosRoute: typeof SiteEngineerPhotosRoute
+  SiteEngineerProfileRoute: typeof SiteEngineerProfileRoute
+  SiteEngineerProgressRoute: typeof SiteEngineerProgressRoute
+  SiteEngineerTowersRoute: typeof SiteEngineerTowersRoute
   StaffDashboardRoute: typeof StaffDashboardRoute
   StaffEarnRoute: typeof StaffEarnRoute
   StaffIncentivesRoute: typeof StaffIncentivesRoute
@@ -3571,6 +4531,111 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof UsersRolesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/accountant/audit-logs': {
+      id: '/accountant/audit-logs'
+      path: '/accountant/audit-logs'
+      fullPath: '/accountant/audit-logs'
+      preLoaderRoute: typeof AccountantAuditLogsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/bank-reconciliation': {
+      id: '/accountant/bank-reconciliation'
+      path: '/accountant/bank-reconciliation'
+      fullPath: '/accountant/bank-reconciliation'
+      preLoaderRoute: typeof AccountantBankReconciliationRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/booking-payments': {
+      id: '/accountant/booking-payments'
+      path: '/accountant/booking-payments'
+      fullPath: '/accountant/booking-payments'
+      preLoaderRoute: typeof AccountantBookingPaymentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/commission-brokerage': {
+      id: '/accountant/commission-brokerage'
+      path: '/accountant/commission-brokerage'
+      fullPath: '/accountant/commission-brokerage'
+      preLoaderRoute: typeof AccountantCommissionBrokerageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/dashboard': {
+      id: '/accountant/dashboard'
+      path: '/accountant/dashboard'
+      fullPath: '/accountant/dashboard'
+      preLoaderRoute: typeof AccountantDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/expenses': {
+      id: '/accountant/expenses'
+      path: '/accountant/expenses'
+      fullPath: '/accountant/expenses'
+      preLoaderRoute: typeof AccountantExpensesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/financial-statements': {
+      id: '/accountant/financial-statements'
+      path: '/accountant/financial-statements'
+      fullPath: '/accountant/financial-statements'
+      preLoaderRoute: typeof AccountantFinancialStatementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/gst-reports': {
+      id: '/accountant/gst-reports'
+      path: '/accountant/gst-reports'
+      fullPath: '/accountant/gst-reports'
+      preLoaderRoute: typeof AccountantGstReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/invoices': {
+      id: '/accountant/invoices'
+      path: '/accountant/invoices'
+      fullPath: '/accountant/invoices'
+      preLoaderRoute: typeof AccountantInvoicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/ledger': {
+      id: '/accountant/ledger'
+      path: '/accountant/ledger'
+      fullPath: '/accountant/ledger'
+      preLoaderRoute: typeof AccountantLedgerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/payment-schedules': {
+      id: '/accountant/payment-schedules'
+      path: '/accountant/payment-schedules'
+      fullPath: '/accountant/payment-schedules'
+      preLoaderRoute: typeof AccountantPaymentSchedulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/payroll-sync': {
+      id: '/accountant/payroll-sync'
+      path: '/accountant/payroll-sync'
+      fullPath: '/accountant/payroll-sync'
+      preLoaderRoute: typeof AccountantPayrollSyncRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/pending-dues': {
+      id: '/accountant/pending-dues'
+      path: '/accountant/pending-dues'
+      fullPath: '/accountant/pending-dues'
+      preLoaderRoute: typeof AccountantPendingDuesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/profile': {
+      id: '/accountant/profile'
+      path: '/accountant/profile'
+      fullPath: '/accountant/profile'
+      preLoaderRoute: typeof AccountantProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/accountant/refunds': {
+      id: '/accountant/refunds'
+      path: '/accountant/refunds'
+      fullPath: '/accountant/refunds'
+      preLoaderRoute: typeof AccountantRefundsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/admin/add-sell': {
       id: '/admin/add-sell'
       path: '/admin/add-sell'
@@ -3592,6 +4657,111 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminTimesheetRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/broker/dashboard': {
+      id: '/broker/dashboard'
+      path: '/broker/dashboard'
+      fullPath: '/broker/dashboard'
+      preLoaderRoute: typeof BrokerDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/broker/leads': {
+      id: '/broker/leads'
+      path: '/broker/leads'
+      fullPath: '/broker/leads'
+      preLoaderRoute: typeof BrokerLeadsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/broker/payouts': {
+      id: '/broker/payouts'
+      path: '/broker/payouts'
+      fullPath: '/broker/payouts'
+      preLoaderRoute: typeof BrokerPayoutsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/broker/profile': {
+      id: '/broker/profile'
+      path: '/broker/profile'
+      fullPath: '/broker/profile'
+      preLoaderRoute: typeof BrokerProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/broker/properties': {
+      id: '/broker/properties'
+      path: '/broker/properties'
+      fullPath: '/broker/properties'
+      preLoaderRoute: typeof BrokerPropertiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/broker/site-visits': {
+      id: '/broker/site-visits'
+      path: '/broker/site-visits'
+      fullPath: '/broker/site-visits'
+      preLoaderRoute: typeof BrokerSiteVisitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/broker/wallet': {
+      id: '/broker/wallet'
+      path: '/broker/wallet'
+      fullPath: '/broker/wallet'
+      preLoaderRoute: typeof BrokerWalletRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/dashboard': {
+      id: '/customer/dashboard'
+      path: '/customer/dashboard'
+      fullPath: '/customer/dashboard'
+      preLoaderRoute: typeof CustomerDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/documents': {
+      id: '/customer/documents'
+      path: '/customer/documents'
+      fullPath: '/customer/documents'
+      preLoaderRoute: typeof CustomerDocumentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/my-booking': {
+      id: '/customer/my-booking'
+      path: '/customer/my-booking'
+      fullPath: '/customer/my-booking'
+      preLoaderRoute: typeof CustomerMyBookingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/pay-online': {
+      id: '/customer/pay-online'
+      path: '/customer/pay-online'
+      fullPath: '/customer/pay-online'
+      preLoaderRoute: typeof CustomerPayOnlineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/profile': {
+      id: '/customer/profile'
+      path: '/customer/profile'
+      fullPath: '/customer/profile'
+      preLoaderRoute: typeof CustomerProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/schedule': {
+      id: '/customer/schedule'
+      path: '/customer/schedule'
+      fullPath: '/customer/schedule'
+      preLoaderRoute: typeof CustomerScheduleRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/support': {
+      id: '/customer/support'
+      path: '/customer/support'
+      fullPath: '/customer/support'
+      preLoaderRoute: typeof CustomerSupportRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/customer/updates': {
+      id: '/customer/updates'
+      path: '/customer/updates'
+      fullPath: '/customer/updates'
+      preLoaderRoute: typeof CustomerUpdatesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/hr-dashboard/': {
       id: '/hr-dashboard/'
       path: '/hr-dashboard'
@@ -3611,6 +4781,314 @@ declare module '@tanstack/react-router' {
       path: '/hr-dashboard/profile'
       fullPath: '/hr-dashboard/profile'
       preLoaderRoute: typeof HrDashboardProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/inventory/dashboard': {
+      id: '/inventory/dashboard'
+      path: '/dashboard'
+      fullPath: '/inventory/dashboard'
+      preLoaderRoute: typeof InventoryDashboardRouteImport
+      parentRoute: typeof InventoryRoute
+    }
+    '/inventory/grid': {
+      id: '/inventory/grid'
+      path: '/grid'
+      fullPath: '/inventory/grid'
+      preLoaderRoute: typeof InventoryGridRouteImport
+      parentRoute: typeof InventoryRoute
+    }
+    '/inventory/hold-units': {
+      id: '/inventory/hold-units'
+      path: '/hold-units'
+      fullPath: '/inventory/hold-units'
+      preLoaderRoute: typeof InventoryHoldUnitsRouteImport
+      parentRoute: typeof InventoryRoute
+    }
+    '/inventory/pricing': {
+      id: '/inventory/pricing'
+      path: '/pricing'
+      fullPath: '/inventory/pricing'
+      preLoaderRoute: typeof InventoryPricingRouteImport
+      parentRoute: typeof InventoryRoute
+    }
+    '/inventory/profile': {
+      id: '/inventory/profile'
+      path: '/profile'
+      fullPath: '/inventory/profile'
+      preLoaderRoute: typeof InventoryProfileRouteImport
+      parentRoute: typeof InventoryRoute
+    }
+    '/inventory/projects': {
+      id: '/inventory/projects'
+      path: '/projects'
+      fullPath: '/inventory/projects'
+      preLoaderRoute: typeof InventoryProjectsRouteImport
+      parentRoute: typeof InventoryRoute
+    }
+    '/inventory/status': {
+      id: '/inventory/status'
+      path: '/status'
+      fullPath: '/inventory/status'
+      preLoaderRoute: typeof InventoryStatusRouteImport
+      parentRoute: typeof InventoryRoute
+    }
+    '/inventory/towers': {
+      id: '/inventory/towers'
+      path: '/towers'
+      fullPath: '/inventory/towers'
+      preLoaderRoute: typeof InventoryTowersRouteImport
+      parentRoute: typeof InventoryRoute
+    }
+    '/legal/agreements': {
+      id: '/legal/agreements'
+      path: '/legal/agreements'
+      fullPath: '/legal/agreements'
+      preLoaderRoute: typeof LegalAgreementsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/dashboard': {
+      id: '/legal/dashboard'
+      path: '/legal/dashboard'
+      fullPath: '/legal/dashboard'
+      preLoaderRoute: typeof LegalDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/noc': {
+      id: '/legal/noc'
+      path: '/legal/noc'
+      fullPath: '/legal/noc'
+      preLoaderRoute: typeof LegalNocRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/profile': {
+      id: '/legal/profile'
+      path: '/legal/profile'
+      fullPath: '/legal/profile'
+      preLoaderRoute: typeof LegalProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/registry': {
+      id: '/legal/registry'
+      path: '/legal/registry'
+      fullPath: '/legal/registry'
+      preLoaderRoute: typeof LegalRegistryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/rera': {
+      id: '/legal/rera'
+      path: '/legal/rera'
+      fullPath: '/legal/rera'
+      preLoaderRoute: typeof LegalReraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/legal/vault': {
+      id: '/legal/vault'
+      path: '/legal/vault'
+      fullPath: '/legal/vault'
+      preLoaderRoute: typeof LegalVaultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/ads-manager': {
+      id: '/marketing/ads-manager'
+      path: '/marketing/ads-manager'
+      fullPath: '/marketing/ads-manager'
+      preLoaderRoute: typeof MarketingAdsManagerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/analytics': {
+      id: '/marketing/analytics'
+      path: '/marketing/analytics'
+      fullPath: '/marketing/analytics'
+      preLoaderRoute: typeof MarketingAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/broadcasts': {
+      id: '/marketing/broadcasts'
+      path: '/marketing/broadcasts'
+      fullPath: '/marketing/broadcasts'
+      preLoaderRoute: typeof MarketingBroadcastsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/campaigns': {
+      id: '/marketing/campaigns'
+      path: '/marketing/campaigns'
+      fullPath: '/marketing/campaigns'
+      preLoaderRoute: typeof MarketingCampaignsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/content-library': {
+      id: '/marketing/content-library'
+      path: '/marketing/content-library'
+      fullPath: '/marketing/content-library'
+      preLoaderRoute: typeof MarketingContentLibraryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/dashboard': {
+      id: '/marketing/dashboard'
+      path: '/marketing/dashboard'
+      fullPath: '/marketing/dashboard'
+      preLoaderRoute: typeof MarketingDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/events': {
+      id: '/marketing/events'
+      path: '/marketing/events'
+      fullPath: '/marketing/events'
+      preLoaderRoute: typeof MarketingEventsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/landing-pages': {
+      id: '/marketing/landing-pages'
+      path: '/marketing/landing-pages'
+      fullPath: '/marketing/landing-pages'
+      preLoaderRoute: typeof MarketingLandingPagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/lead-sources': {
+      id: '/marketing/lead-sources'
+      path: '/marketing/lead-sources'
+      fullPath: '/marketing/lead-sources'
+      preLoaderRoute: typeof MarketingLeadSourcesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/media-assets': {
+      id: '/marketing/media-assets'
+      path: '/marketing/media-assets'
+      fullPath: '/marketing/media-assets'
+      preLoaderRoute: typeof MarketingMediaAssetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/profile': {
+      id: '/marketing/profile'
+      path: '/marketing/profile'
+      fullPath: '/marketing/profile'
+      preLoaderRoute: typeof MarketingProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/social-media': {
+      id: '/marketing/social-media'
+      path: '/marketing/social-media'
+      fullPath: '/marketing/social-media'
+      preLoaderRoute: typeof MarketingSocialMediaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/marketing/team-tasks': {
+      id: '/marketing/team-tasks'
+      path: '/marketing/team-tasks'
+      fullPath: '/marketing/team-tasks'
+      preLoaderRoute: typeof MarketingTeamTasksRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-manager/bookings': {
+      id: '/sales-manager/bookings'
+      path: '/sales-manager/bookings'
+      fullPath: '/sales-manager/bookings'
+      preLoaderRoute: typeof SalesManagerBookingsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-manager/dashboard': {
+      id: '/sales-manager/dashboard'
+      path: '/sales-manager/dashboard'
+      fullPath: '/sales-manager/dashboard'
+      preLoaderRoute: typeof SalesManagerDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-manager/followups': {
+      id: '/sales-manager/followups'
+      path: '/sales-manager/followups'
+      fullPath: '/sales-manager/followups'
+      preLoaderRoute: typeof SalesManagerFollowupsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-manager/pipeline': {
+      id: '/sales-manager/pipeline'
+      path: '/sales-manager/pipeline'
+      fullPath: '/sales-manager/pipeline'
+      preLoaderRoute: typeof SalesManagerPipelineRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-manager/profile': {
+      id: '/sales-manager/profile'
+      path: '/sales-manager/profile'
+      fullPath: '/sales-manager/profile'
+      preLoaderRoute: typeof SalesManagerProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-manager/site-visits': {
+      id: '/sales-manager/site-visits'
+      path: '/sales-manager/site-visits'
+      fullPath: '/sales-manager/site-visits'
+      preLoaderRoute: typeof SalesManagerSiteVisitsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-manager/targets': {
+      id: '/sales-manager/targets'
+      path: '/sales-manager/targets'
+      fullPath: '/sales-manager/targets'
+      preLoaderRoute: typeof SalesManagerTargetsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sales-manager/team': {
+      id: '/sales-manager/team'
+      path: '/sales-manager/team'
+      fullPath: '/sales-manager/team'
+      preLoaderRoute: typeof SalesManagerTeamRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-engineer/contractors': {
+      id: '/site-engineer/contractors'
+      path: '/site-engineer/contractors'
+      fullPath: '/site-engineer/contractors'
+      preLoaderRoute: typeof SiteEngineerContractorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-engineer/daily-reports': {
+      id: '/site-engineer/daily-reports'
+      path: '/site-engineer/daily-reports'
+      fullPath: '/site-engineer/daily-reports'
+      preLoaderRoute: typeof SiteEngineerDailyReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-engineer/dashboard': {
+      id: '/site-engineer/dashboard'
+      path: '/site-engineer/dashboard'
+      fullPath: '/site-engineer/dashboard'
+      preLoaderRoute: typeof SiteEngineerDashboardRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-engineer/materials': {
+      id: '/site-engineer/materials'
+      path: '/site-engineer/materials'
+      fullPath: '/site-engineer/materials'
+      preLoaderRoute: typeof SiteEngineerMaterialsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-engineer/photos': {
+      id: '/site-engineer/photos'
+      path: '/site-engineer/photos'
+      fullPath: '/site-engineer/photos'
+      preLoaderRoute: typeof SiteEngineerPhotosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-engineer/profile': {
+      id: '/site-engineer/profile'
+      path: '/site-engineer/profile'
+      fullPath: '/site-engineer/profile'
+      preLoaderRoute: typeof SiteEngineerProfileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-engineer/progress': {
+      id: '/site-engineer/progress'
+      path: '/site-engineer/progress'
+      fullPath: '/site-engineer/progress'
+      preLoaderRoute: typeof SiteEngineerProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/site-engineer/towers': {
+      id: '/site-engineer/towers'
+      path: '/site-engineer/towers'
+      fullPath: '/site-engineer/towers'
+      preLoaderRoute: typeof SiteEngineerTowersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/staff/dashboard': {
@@ -5149,6 +6627,32 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface InventoryRouteChildren {
+  InventoryDashboardRoute: typeof InventoryDashboardRoute
+  InventoryGridRoute: typeof InventoryGridRoute
+  InventoryHoldUnitsRoute: typeof InventoryHoldUnitsRoute
+  InventoryPricingRoute: typeof InventoryPricingRoute
+  InventoryProfileRoute: typeof InventoryProfileRoute
+  InventoryProjectsRoute: typeof InventoryProjectsRoute
+  InventoryStatusRoute: typeof InventoryStatusRoute
+  InventoryTowersRoute: typeof InventoryTowersRoute
+}
+
+const InventoryRouteChildren: InventoryRouteChildren = {
+  InventoryDashboardRoute: InventoryDashboardRoute,
+  InventoryGridRoute: InventoryGridRoute,
+  InventoryHoldUnitsRoute: InventoryHoldUnitsRoute,
+  InventoryPricingRoute: InventoryPricingRoute,
+  InventoryProfileRoute: InventoryProfileRoute,
+  InventoryProjectsRoute: InventoryProjectsRoute,
+  InventoryStatusRoute: InventoryStatusRoute,
+  InventoryTowersRoute: InventoryTowersRoute,
+}
+
+const InventoryRouteWithChildren = InventoryRoute._addFileChildren(
+  InventoryRouteChildren,
+)
+
 interface StaffOverviewRouteChildren {
   StaffOverviewAttendanceRoute: typeof StaffOverviewAttendanceRoute
   StaffOverviewFaceAttendanceRoute: typeof StaffOverviewFaceAttendanceRoute
@@ -5218,7 +6722,7 @@ const rootRouteChildren: RootRouteChildren = {
   EnquiriesRoute: EnquiriesRoute,
   ExpensesRoute: ExpensesRoute,
   FollowupsRoute: FollowupsRoute,
-  InventoryRoute: InventoryRoute,
+  InventoryRoute: InventoryRouteWithChildren,
   InvoicesRoute: InvoicesRoute,
   LeadsRoute: LeadsRoute,
   LoginRoute: LoginRoute,
@@ -5235,11 +6739,77 @@ const rootRouteChildren: RootRouteChildren = {
   TasksRoute: TasksRoute,
   TeamRoute: TeamRoute,
   UsersRolesRoute: UsersRolesRoute,
+  AccountantAuditLogsRoute: AccountantAuditLogsRoute,
+  AccountantBankReconciliationRoute: AccountantBankReconciliationRoute,
+  AccountantBookingPaymentsRoute: AccountantBookingPaymentsRoute,
+  AccountantCommissionBrokerageRoute: AccountantCommissionBrokerageRoute,
+  AccountantDashboardRoute: AccountantDashboardRoute,
+  AccountantExpensesRoute: AccountantExpensesRoute,
+  AccountantFinancialStatementsRoute: AccountantFinancialStatementsRoute,
+  AccountantGstReportsRoute: AccountantGstReportsRoute,
+  AccountantInvoicesRoute: AccountantInvoicesRoute,
+  AccountantLedgerRoute: AccountantLedgerRoute,
+  AccountantPaymentSchedulesRoute: AccountantPaymentSchedulesRoute,
+  AccountantPayrollSyncRoute: AccountantPayrollSyncRoute,
+  AccountantPendingDuesRoute: AccountantPendingDuesRoute,
+  AccountantProfileRoute: AccountantProfileRoute,
+  AccountantRefundsRoute: AccountantRefundsRoute,
   AdminAddSellRoute: AdminAddSellRoute,
   AdminDashboardRoute: AdminDashboardRoute,
   AdminTimesheetRoute: AdminTimesheetRoute,
+  BrokerDashboardRoute: BrokerDashboardRoute,
+  BrokerLeadsRoute: BrokerLeadsRoute,
+  BrokerPayoutsRoute: BrokerPayoutsRoute,
+  BrokerProfileRoute: BrokerProfileRoute,
+  BrokerPropertiesRoute: BrokerPropertiesRoute,
+  BrokerSiteVisitsRoute: BrokerSiteVisitsRoute,
+  BrokerWalletRoute: BrokerWalletRoute,
+  CustomerDashboardRoute: CustomerDashboardRoute,
+  CustomerDocumentsRoute: CustomerDocumentsRoute,
+  CustomerMyBookingRoute: CustomerMyBookingRoute,
+  CustomerPayOnlineRoute: CustomerPayOnlineRoute,
+  CustomerProfileRoute: CustomerProfileRoute,
+  CustomerScheduleRoute: CustomerScheduleRoute,
+  CustomerSupportRoute: CustomerSupportRoute,
+  CustomerUpdatesRoute: CustomerUpdatesRoute,
   HrDashboardManualAttendanceRoute: HrDashboardManualAttendanceRoute,
   HrDashboardProfileRoute: HrDashboardProfileRoute,
+  LegalAgreementsRoute: LegalAgreementsRoute,
+  LegalDashboardRoute: LegalDashboardRoute,
+  LegalNocRoute: LegalNocRoute,
+  LegalProfileRoute: LegalProfileRoute,
+  LegalRegistryRoute: LegalRegistryRoute,
+  LegalReraRoute: LegalReraRoute,
+  LegalVaultRoute: LegalVaultRoute,
+  MarketingAdsManagerRoute: MarketingAdsManagerRoute,
+  MarketingAnalyticsRoute: MarketingAnalyticsRoute,
+  MarketingBroadcastsRoute: MarketingBroadcastsRoute,
+  MarketingCampaignsRoute: MarketingCampaignsRoute,
+  MarketingContentLibraryRoute: MarketingContentLibraryRoute,
+  MarketingDashboardRoute: MarketingDashboardRoute,
+  MarketingEventsRoute: MarketingEventsRoute,
+  MarketingLandingPagesRoute: MarketingLandingPagesRoute,
+  MarketingLeadSourcesRoute: MarketingLeadSourcesRoute,
+  MarketingMediaAssetsRoute: MarketingMediaAssetsRoute,
+  MarketingProfileRoute: MarketingProfileRoute,
+  MarketingSocialMediaRoute: MarketingSocialMediaRoute,
+  MarketingTeamTasksRoute: MarketingTeamTasksRoute,
+  SalesManagerBookingsRoute: SalesManagerBookingsRoute,
+  SalesManagerDashboardRoute: SalesManagerDashboardRoute,
+  SalesManagerFollowupsRoute: SalesManagerFollowupsRoute,
+  SalesManagerPipelineRoute: SalesManagerPipelineRoute,
+  SalesManagerProfileRoute: SalesManagerProfileRoute,
+  SalesManagerSiteVisitsRoute: SalesManagerSiteVisitsRoute,
+  SalesManagerTargetsRoute: SalesManagerTargetsRoute,
+  SalesManagerTeamRoute: SalesManagerTeamRoute,
+  SiteEngineerContractorsRoute: SiteEngineerContractorsRoute,
+  SiteEngineerDailyReportsRoute: SiteEngineerDailyReportsRoute,
+  SiteEngineerDashboardRoute: SiteEngineerDashboardRoute,
+  SiteEngineerMaterialsRoute: SiteEngineerMaterialsRoute,
+  SiteEngineerPhotosRoute: SiteEngineerPhotosRoute,
+  SiteEngineerProfileRoute: SiteEngineerProfileRoute,
+  SiteEngineerProgressRoute: SiteEngineerProgressRoute,
+  SiteEngineerTowersRoute: SiteEngineerTowersRoute,
   StaffDashboardRoute: StaffDashboardRoute,
   StaffEarnRoute: StaffEarnRoute,
   StaffIncentivesRoute: StaffIncentivesRoute,

@@ -160,37 +160,113 @@ export function Sidebar({
   const width = collapsed ? "w-[72px]" : "w-[240px]";
   const { user } = useAuth();
   // Strict role-based isolation:
-  const isHr = pathname.startsWith("/hr-dashboard") || (user?.role === "hr" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin") && !pathname.startsWith("/team-leader") && !pathname.startsWith("/staff"));
-  const isSuperAdmin = !isHr && (pathname.startsWith("/superadmin") || (user?.role === "superadmin" && !pathname.startsWith("/admin") && !pathname.startsWith("/team-leader")));
-  const isTeamLeader = !isHr && (pathname.startsWith("/team-leader") || (user?.role === "team-leader" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin")));
-  const isAdmin = !isHr && !isSuperAdmin && !isTeamLeader && (pathname.startsWith("/admin") || user?.role === "admin");
-  const isStaff = !isHr && !isSuperAdmin && !isAdmin && !isTeamLeader && (pathname.startsWith("/staff") || user?.role === "staff");
+  const isMarketing = pathname.startsWith("/marketing") || (user?.role === "marketing" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin") && !pathname.startsWith("/hr-dashboard") && !pathname.startsWith("/accountant"));
+  const isAccountant = pathname.startsWith("/accountant") || (user?.role === "accountant" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin") && !pathname.startsWith("/hr-dashboard") && !pathname.startsWith("/marketing"));
+  const isSalesManager = pathname.startsWith("/sales-manager") || (user?.role === "sales-manager" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin"));
+  const isBroker = pathname.startsWith("/broker") || (user?.role === "broker" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin"));
+  const isSiteEngineer = pathname.startsWith("/site-engineer") || (user?.role === "site-engineer" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin"));
+  const isLegal = pathname.startsWith("/legal") || (user?.role === "legal" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin"));
+  const isCustomer = pathname.startsWith("/customer") || (user?.role === "customer" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin"));
+  const isInventory = pathname.startsWith("/inventory") || (user?.role === "inventory" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin"));
+  const isHr = !isMarketing && !isAccountant && !isSalesManager && !isBroker && !isSiteEngineer && !isLegal && !isCustomer && !isInventory && (pathname.startsWith("/hr-dashboard") || (user?.role === "hr" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin") && !pathname.startsWith("/team-leader") && !pathname.startsWith("/staff")));
+  const isSuperAdmin = !isMarketing && !isAccountant && !isSalesManager && !isBroker && !isSiteEngineer && !isLegal && !isCustomer && !isInventory && !isHr && (pathname.startsWith("/superadmin") || (user?.role === "superadmin" && !pathname.startsWith("/admin") && !pathname.startsWith("/team-leader")));
+  const isTeamLeader = !isMarketing && !isAccountant && !isSalesManager && !isBroker && !isSiteEngineer && !isLegal && !isCustomer && !isInventory && !isHr && (pathname.startsWith("/team-leader") || (user?.role === "team-leader" && !pathname.startsWith("/admin") && !pathname.startsWith("/superadmin")));
+  const isAdmin = !isMarketing && !isAccountant && !isSalesManager && !isBroker && !isSiteEngineer && !isLegal && !isCustomer && !isInventory && !isHr && !isSuperAdmin && !isTeamLeader && (pathname.startsWith("/admin") || user?.role === "admin");
+  const isStaff = !isMarketing && !isAccountant && !isSalesManager && !isBroker && !isSiteEngineer && !isLegal && !isCustomer && !isInventory && !isHr && !isSuperAdmin && !isAdmin && !isTeamLeader && (pathname.startsWith("/staff") || user?.role === "staff");
 
   const computedSections = navSections
     .filter((section) => {
-      // 1. HR isolation: when HR, see ONLY top dashboard and HR Portal
+      // 1. Marketing isolation
+      if (isMarketing) {
+        if (!section.label) return true;
+        return section.label === "Marketing Portal";
+      }
+      if (section.label === "Marketing Portal" && !pathname.startsWith("/marketing")) {
+        return false;
+      }
+
+      // 2. Accountant isolation
+      if (isAccountant) {
+        if (!section.label) return true;
+        return section.label === "Accountant Portal";
+      }
+      if (section.label === "Accountant Portal" && !pathname.startsWith("/accountant")) {
+        return false;
+      }
+
+      // 3. Sales Manager isolation
+      if (isSalesManager) {
+        if (!section.label) return true;
+        return section.label === "Sales Manager Portal";
+      }
+      if (section.label === "Sales Manager Portal" && !pathname.startsWith("/sales-manager")) {
+        return false;
+      }
+
+      // 4. Broker isolation
+      if (isBroker) {
+        if (!section.label) return true;
+        return section.label === "Broker Partner Portal";
+      }
+      if (section.label === "Broker Partner Portal" && !pathname.startsWith("/broker")) {
+        return false;
+      }
+
+      // 5. Site Engineer isolation
+      if (isSiteEngineer) {
+        if (!section.label) return true;
+        return section.label === "Site Engineer Portal";
+      }
+      if (section.label === "Site Engineer Portal" && !pathname.startsWith("/site-engineer")) {
+        return false;
+      }
+
+      // 6. Legal & Documentation isolation
+      if (isLegal) {
+        if (!section.label) return true;
+        return section.label === "Legal & Documentation Portal";
+      }
+      if (section.label === "Legal & Documentation Portal" && !pathname.startsWith("/legal")) {
+        return false;
+      }
+
+      // 7. Customer Portal isolation
+      if (isCustomer) {
+        if (!section.label) return true;
+        return section.label === "Customer Portal";
+      }
+      if (section.label === "Customer Portal" && !pathname.startsWith("/customer")) {
+        return false;
+      }
+
+      // 8. Inventory Portal isolation
+      if (isInventory) {
+        if (!section.label) return true;
+        return section.label === "Inventory Portal";
+      }
+      if (section.label === "Inventory Portal" && !pathname.startsWith("/inventory")) {
+        return false;
+      }
+
+      // 9. HR isolation
       if (isHr) {
         if (!section.label) return true;
         return section.label === "HR Portal";
       }
-
-      // 2. Hide HR Portal from other roles
       if (section.label === "HR Portal") {
         return false;
       }
 
-      // 3. Staff isolation: when Staff, see ONLY top dashboard and Staff Portal
+      // 10. Staff isolation
       if (isStaff) {
         if (!section.label) return true;
         return section.label === "Staff Portal";
       }
-
-      // 4. Hide Staff Portal from all non-staff roles
       if (section.label === "Staff Portal") {
         return false;
       }
 
-      // 5. Team Leader: see ONLY Team Leader Portal and non-admin controls
+      // 11. Team Leader isolation
       if (isTeamLeader) {
         if (
           section.label === "Admin CRM Controls" ||
@@ -204,17 +280,14 @@ export function Sidebar({
         }
         return true;
       }
-
-      // 6. Hide Team Leader Portal from Admin, Superadmin
       if (section.label === "Team Leader Portal") {
         return false;
       }
 
-      // 7. Hide Superadmin Controls from Admin and other non-superadmin roles
+      // 12. Superadmin Controls
       if (!isSuperAdmin && section.label === "Superadmin Controls") {
         return false;
       }
-      // 8. Hide Admin CRM Controls from Superadmin
       if (isSuperAdmin && section.label === "Admin CRM Controls") {
         return false;
       }
@@ -238,6 +311,30 @@ export function Sidebar({
         } else if (isHr) {
           dashboardTitle = "HR Dashboard";
           dashboardUrl = "/hr-dashboard";
+        } else if (isMarketing) {
+          dashboardTitle = "Marketing Dashboard";
+          dashboardUrl = "/marketing/dashboard";
+        } else if (isAccountant) {
+          dashboardTitle = "Accounts Dashboard";
+          dashboardUrl = "/accountant/dashboard";
+        } else if (isSalesManager) {
+          dashboardTitle = "Sales Dashboard";
+          dashboardUrl = "/sales-manager/dashboard";
+        } else if (isBroker) {
+          dashboardTitle = "Broker Dashboard";
+          dashboardUrl = "/broker/dashboard";
+        } else if (isSiteEngineer) {
+          dashboardTitle = "Construction Dashboard";
+          dashboardUrl = "/site-engineer/dashboard";
+        } else if (isLegal) {
+          dashboardTitle = "Legal Dashboard";
+          dashboardUrl = "/legal/dashboard";
+        } else if (isCustomer) {
+          dashboardTitle = "Buyer Dashboard";
+          dashboardUrl = "/customer/dashboard";
+        } else if (isInventory) {
+          dashboardTitle = "Inventory Dashboard";
+          dashboardUrl = "/inventory/dashboard";
         }
 
         return {
