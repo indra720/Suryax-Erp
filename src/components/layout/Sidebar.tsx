@@ -1,5 +1,5 @@
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Building2, ChevronRight, X, ChevronDown } from "lucide-react";
+import { Building2, ChevronRight, X, ChevronDown, Sparkles } from "lucide-react";
 import { navSections, type NavItem } from "@/lib/erp/nav";
 import { cn } from "@/lib/utils";
 import promo from "@/assets/promo-villa.jpg";
@@ -176,18 +176,16 @@ export function Sidebar({
 
   const computedSections = navSections
     .filter((section) => {
-      // 1. Marketing isolation
+      // 1. Marketing isolation (Marketing Portal already has its own dashboard)
       if (isMarketing) {
-        if (!section.label) return true;
         return section.label === "Marketing Portal";
       }
       if (section.label === "Marketing Portal" && !pathname.startsWith("/marketing")) {
         return false;
       }
 
-      // 2. Accountant isolation
+      // 2. Accountant isolation (Accountant Portal already has its own dashboard)
       if (isAccountant) {
-        if (!section.label) return true;
         return section.label === "Accountant Portal";
       }
       if (section.label === "Accountant Portal" && !pathname.startsWith("/accountant")) {
@@ -196,7 +194,6 @@ export function Sidebar({
 
       // 3. Sales Manager isolation
       if (isSalesManager) {
-        if (!section.label) return true;
         return section.label === "Sales Manager Portal";
       }
       if (section.label === "Sales Manager Portal" && !pathname.startsWith("/sales-manager")) {
@@ -205,7 +202,6 @@ export function Sidebar({
 
       // 4. Broker isolation
       if (isBroker) {
-        if (!section.label) return true;
         return section.label === "Broker Partner Portal";
       }
       if (section.label === "Broker Partner Portal" && !pathname.startsWith("/broker")) {
@@ -214,7 +210,6 @@ export function Sidebar({
 
       // 5. Site Engineer isolation
       if (isSiteEngineer) {
-        if (!section.label) return true;
         return section.label === "Site Engineer Portal";
       }
       if (section.label === "Site Engineer Portal" && !pathname.startsWith("/site-engineer")) {
@@ -223,7 +218,6 @@ export function Sidebar({
 
       // 6. Legal & Documentation isolation
       if (isLegal) {
-        if (!section.label) return true;
         return section.label === "Legal & Documentation Portal";
       }
       if (section.label === "Legal & Documentation Portal" && !pathname.startsWith("/legal")) {
@@ -232,7 +226,6 @@ export function Sidebar({
 
       // 7. Customer Portal isolation
       if (isCustomer) {
-        if (!section.label) return true;
         return section.label === "Customer Portal";
       }
       if (section.label === "Customer Portal" && !pathname.startsWith("/customer")) {
@@ -241,7 +234,6 @@ export function Sidebar({
 
       // 8. Inventory Portal isolation
       if (isInventory) {
-        if (!section.label) return true;
         return section.label === "Inventory Portal";
       }
       if (section.label === "Inventory Portal" && !pathname.startsWith("/inventory")) {
@@ -250,7 +242,6 @@ export function Sidebar({
 
       // 9. HR isolation
       if (isHr) {
-        if (!section.label) return true;
         return section.label === "HR Portal";
       }
       if (section.label === "HR Portal") {
@@ -259,7 +250,6 @@ export function Sidebar({
 
       // 10. Staff isolation
       if (isStaff) {
-        if (!section.label) return true;
         return section.label === "Staff Portal";
       }
       if (section.label === "Staff Portal") {
@@ -347,6 +337,20 @@ export function Sidebar({
       return section;
     });
 
+  // Global Deduplication: Ensure identical links never repeat in the sidebar
+  const seenUrls = new Set<string>();
+  const filteredSections = computedSections
+    .map((section) => ({
+      ...section,
+      items: section.items.filter((it) => {
+        if (!it.url) return true;
+        if (seenUrls.has(it.url)) return false;
+        seenUrls.add(it.url);
+        return true;
+      }),
+    }))
+    .filter((section) => section.items.length > 0);
+
   return (
     <>
       {mobileOpen && (
@@ -385,10 +389,10 @@ export function Sidebar({
           </button>
         </div>
         <nav className="no-scrollbar flex-1 overflow-y-auto px-3 pb-4 py-3">
-          {computedSections.map((section, si) => (
+          {filteredSections.map((section, si) => (
             <div key={si} className="mb-1">
               {section.label && !collapsed && (
-                <p className="mt-3 mb-1 px-2 text-[11px] font-semibold tracking-[0.06em] text-sidebar-label uppercase">
+                <p className="mt-3 mb-1 px-2 text-xs font-semibold tracking-wider text-sidebar-label">
                   {section.label}
                 </p>
               )}
@@ -400,20 +404,23 @@ export function Sidebar({
             </div>
           ))}
           {!collapsed && (
-            <div className="relative mt-4 overflow-hidden rounded-[14px] bg-gradient-to-br from-[#3A1FA8] to-[#1B2270] p-3">
+            <div className="relative mt-4 overflow-hidden rounded-[14px] bg-gradient-to-br from-[#3A1FA8] to-[#1B2270] p-3.5 border border-white/10 shadow-lg">
               <img
                 src={promo}
                 alt="Suryax property"
                 loading="lazy"
-                className="absolute right-0 bottom-0 h-16 w-20 rounded-tl-[14px] object-cover opacity-45"
+                className="absolute right-0 bottom-0 h-16 w-20 rounded-tl-[14px] object-cover opacity-35"
               />
-              <p className="relative text-[13px] font-semibold text-white">Suryax ERP</p>
-              <p className="relative mt-0.5 text-[10.5px] text-white/70">
+              <div className="relative flex items-center gap-1.5 text-white">
+                <Sparkles className="size-3.5 text-amber-400" />
+                <p className="text-xs font-bold tracking-wide">Suryax Pro Plan</p>
+              </div>
+              <p className="relative mt-1 text-xs text-white/80 leading-snug">
                 Smart Real Estate Solutions
               </p>
               <Link
                 to="/organization"
-                className="relative mt-2.5 inline-flex h-7 items-center rounded-lg bg-[#F4A51C] px-2.5 text-[11px] font-semibold text-[#3A2000] transition-transform hover:scale-[1.02]"
+                className="relative mt-3 flex h-8 w-full items-center justify-center rounded-lg bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-slate-950 text-xs font-bold tracking-wide shadow-md transition-transform hover:scale-[1.01] active:scale-[0.99]"
               >
                 Upgrade Plan
               </Link>

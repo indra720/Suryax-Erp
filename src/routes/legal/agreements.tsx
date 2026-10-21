@@ -50,15 +50,23 @@ export function LegalAgreementsPage() {
 
   const handleCreate = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newAgr.customerName) {
+    if (!newAgr.customerName.trim()) {
       toast.error("Please enter customer name");
+      return;
+    }
+    if (newAgr.customerPhone && !/^[6-9]\d{9}$/.test(newAgr.customerPhone)) {
+      toast.error("Please enter a valid 10-digit mobile number");
+      return;
+    }
+    if (newAgr.agreementValue <= 0) {
+      toast.error("Agreement value must be greater than zero");
       return;
     }
     const created: LegalAgreement = {
       id: `AGR-2026-${Date.now().toString().slice(-3)}`,
       agreementNo: `BBA/VRN/${Date.now().toString().slice(-4)}`,
       customerName: newAgr.customerName,
-      customerPhone: newAgr.customerPhone || "+91 98390 XXXXX",
+      customerPhone: newAgr.customerPhone || "+91 98390 12345",
       projectName: newAgr.projectName,
       unitNo: newAgr.unitNo,
       agreementValue: Number(newAgr.agreementValue),
@@ -66,7 +74,7 @@ export function LegalAgreementsPage() {
       eStampNumber: "IN-UP" + Math.floor(100000000000 + Math.random() * 900000000000) + "U",
       draftStatus: "Draft Prepared",
       assignedAdvocate: "Adv. Sudhir Dixit",
-      executionDate: new Date().toISOString().split("T")[0],
+      executionDate: new Date().toISOString().slice(0, 10),
     };
     setAgreements([created, ...agreements]);
     toast.success(`BBA Agreement draft generated for ${created.customerName}!`);
@@ -122,40 +130,40 @@ export function LegalAgreementsPage() {
       </Card>
 
       <Card className="bg-card border border-border overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left border-collapse">
+        <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+          <table className="w-full text-xs sm:text-sm text-left border-collapse min-w-[900px] whitespace-nowrap">
             <thead className="bg-muted/50 border-b border-border text-text-secondary font-semibold">
               <tr>
-                <th className="py-3 px-4">Agreement Ref</th>
-                <th className="py-3 px-4">Customer & Contact</th>
-                <th className="py-3 px-4">Project & Unit</th>
-                <th className="py-3 px-4">Value (INR)</th>
-                <th className="py-3 px-4">Stamp Paper Ref</th>
-                <th className="py-3 px-4">Lawyer In Charge</th>
-                <th className="py-3 px-4">Status</th>
-                <th className="py-3 px-4 text-right">PDF</th>
+                <th className="py-3 px-4 whitespace-nowrap">Agreement Ref</th>
+                <th className="py-3 px-4 whitespace-nowrap">Customer & Contact</th>
+                <th className="py-3 px-4 whitespace-nowrap">Project & Unit</th>
+                <th className="py-3 px-4 whitespace-nowrap">Value (INR)</th>
+                <th className="py-3 px-4 whitespace-nowrap">Stamp Paper Ref</th>
+                <th className="py-3 px-4 whitespace-nowrap">Lawyer In Charge</th>
+                <th className="py-3 px-4 whitespace-nowrap">Status</th>
+                <th className="py-3 px-4 text-right whitespace-nowrap">PDF</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {filtered.map((a) => (
                 <tr key={a.id} className="hover:bg-muted/30 transition-colors">
-                  <td className="py-3.5 px-4 font-mono font-bold text-brand">{a.agreementNo}</td>
-                  <td className="py-3.5 px-4">
+                  <td className="py-3.5 px-4 font-mono font-bold text-brand whitespace-nowrap">{a.agreementNo}</td>
+                  <td className="py-3.5 px-4 whitespace-nowrap">
                     <p className="font-bold text-foreground">{a.customerName}</p>
                     <p className="text-[11px] text-text-secondary">{a.customerPhone}</p>
                   </td>
-                  <td className="py-3.5 px-4">
+                  <td className="py-3.5 px-4 whitespace-nowrap">
                     <p className="font-semibold text-foreground">{a.projectName}</p>
                     <p className="text-[11px] text-text-muted">{a.unitNo}</p>
                   </td>
-                  <td className="py-3.5 px-4 font-bold text-foreground">
+                  <td className="py-3.5 px-4 font-bold text-foreground whitespace-nowrap">
                     ₹{(a.agreementValue / 100000).toFixed(1)} Lakh
                   </td>
-                  <td className="py-3.5 px-4 font-mono text-[10px] text-text-secondary">
+                  <td className="py-3.5 px-4 font-mono text-[10px] text-text-secondary whitespace-nowrap">
                     {a.eStampNumber}
                   </td>
-                  <td className="py-3.5 px-4 font-medium text-foreground">{a.assignedAdvocate}</td>
-                  <td className="py-3.5 px-4">
+                  <td className="py-3.5 px-4 font-medium text-foreground whitespace-nowrap">{a.assignedAdvocate}</td>
+                  <td className="py-3.5 px-4 whitespace-nowrap">
                     <span
                       className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
                         a.draftStatus === "Signed & Executed"
@@ -166,7 +174,7 @@ export function LegalAgreementsPage() {
                       {a.draftStatus}
                     </span>
                   </td>
-                  <td className="py-3.5 px-4 text-right">
+                  <td className="py-3.5 px-4 text-right whitespace-nowrap">
                     <Button
                       size="sm"
                       variant="outline"
@@ -185,64 +193,95 @@ export function LegalAgreementsPage() {
 
       {/* Draft Modal */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="max-w-md bg-card text-foreground border-border">
-          <DialogHeader>
-            <DialogTitle>Generate Builder Buyer Agreement</DialogTitle>
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
+              Generate Builder Buyer Agreement (BBA)
+            </DialogTitle>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Draft official RERA compliant agreement for unit allotment with stamp duty calculation.
+            </p>
           </DialogHeader>
-          <form onSubmit={handleCreate} className="space-y-3.5 py-2">
-            <div>
-              <Label className="text-xs">Customer Legal Name</Label>
-              <Input
-                placeholder="Full Name as per PAN card"
-                value={newAgr.customerName}
-                onChange={(e) => setNewAgr({ ...newAgr, customerName: e.target.value })}
-                className="h-9 text-xs mt-1"
-                required
-              />
+
+          <form onSubmit={handleCreate} className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Customer Legal Name</Label>
+                  <Input
+                    placeholder="Full Name as per PAN"
+                    value={newAgr.customerName}
+                    onChange={(e) => setNewAgr({ ...newAgr, customerName: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Customer Mobile (10 digits)</Label>
+                  <Input
+                    type="tel"
+                    maxLength={10}
+                    placeholder="10-digit mobile"
+                    value={newAgr.customerPhone}
+                    onChange={(e) =>
+                      setNewAgr({
+                        ...newAgr,
+                        customerPhone: e.target.value.replace(/\D/g, "").slice(0, 10),
+                      })
+                    }
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Project</Label>
+                  <Input
+                    placeholder="e.g. Vrindavan Heights"
+                    value={newAgr.projectName}
+                    onChange={(e) => setNewAgr({ ...newAgr, projectName: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Unit Number</Label>
+                  <Input
+                    placeholder="e.g. B-1204"
+                    value={newAgr.unitNo}
+                    onChange={(e) => setNewAgr({ ...newAgr, unitNo: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Agreement Total (₹ INR)</Label>
+                  <Input
+                    type="number"
+                    value={newAgr.agreementValue}
+                    onChange={(e) => setNewAgr({ ...newAgr, agreementValue: Number(e.target.value) })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Stamp Duty (7% approx ₹)</Label>
+                  <Input
+                    type="number"
+                    value={newAgr.stampDutyAmount}
+                    onChange={(e) => setNewAgr({ ...newAgr, stampDutyAmount: Number(e.target.value) })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+              </div>
             </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <Label className="text-xs">Project</Label>
-                <Input
-                  value={newAgr.projectName}
-                  onChange={(e) => setNewAgr({ ...newAgr, projectName: e.target.value })}
-                  className="h-9 text-xs mt-1"
-                />
-              </div>
-              <div>
-                <Label className="text-xs">Unit Number</Label>
-                <Input
-                  value={newAgr.unitNo}
-                  onChange={(e) => setNewAgr({ ...newAgr, unitNo: e.target.value })}
-                  className="h-9 text-xs mt-1"
-                />
-              </div>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <Label className="text-xs">Agreement Total (INR)</Label>
-                <Input
-                  type="number"
-                  value={newAgr.agreementValue}
-                  onChange={(e) => setNewAgr({ ...newAgr, agreementValue: Number(e.target.value) })}
-                  className="h-9 text-xs mt-1"
-                />
-              </div>
-              <div>
-                <Label className="text-xs">Stamp Duty (7% approx)</Label>
-                <Input
-                  type="number"
-                  value={newAgr.stampDutyAmount}
-                  onChange={(e) => setNewAgr({ ...newAgr, stampDutyAmount: Number(e.target.value) })}
-                  className="h-9 text-xs mt-1"
-                />
-              </div>
-            </div>
-            <DialogFooter className="mt-4">
-              <Button type="button" variant="outline" size="sm" onClick={() => setModalOpen(false)}>
+
+            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+              <Button type="button" variant="outline" onClick={() => setModalOpen(false)} className="rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" className="bg-brand text-white">
+              <Button type="submit" className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
                 Generate Draft
               </Button>
             </DialogFooter>

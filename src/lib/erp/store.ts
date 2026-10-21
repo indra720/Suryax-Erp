@@ -64,8 +64,8 @@ export function useCollection<T extends Row>(key: string, seed: T[]) {
   return { rows, hydrated, create, update, remove, reset, setAll: persist };
 }
 
-export function exportCsv(filename: string, rows: Row[], columns: { key: string; label: string }[]) {
-  const head = columns.map((c) => `"${c.label}"`).join(",");
+export function exportCsv(filename: string, rows: Row[], columns: { key: string; label?: string; title?: string }[]) {
+  const head = columns.map((c) => `"${c.label || c.title || c.key}"`).join(",");
   const body = rows
     .map((r) => columns.map((c) => `"${String(r[c.key] ?? "").replace(/"/g, '""')}"`).join(","))
     .join("\n");

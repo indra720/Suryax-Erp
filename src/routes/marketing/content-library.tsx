@@ -79,7 +79,7 @@ export function ContentLibraryPage() {
       size: newAsset.size,
       dimensions: newAsset.dimensions,
       downloads: 0,
-      date: new Date().toISOString().split("T")[0],
+      date: new Date().toISOString().slice(0, 10),
     };
     setItems([created, ...items]);
     toast.success(`Creative asset "${created.title}" uploaded to library!`);
@@ -101,17 +101,17 @@ export function ContentLibraryPage() {
 
   return (
     <div className="space-y-6 pb-12">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md">
-              <ImageIcon className="size-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="inline-flex size-8 sm:size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md shrink-0">
+              <ImageIcon className="size-4 sm:size-5" />
             </span>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-foreground">
               Content & Creative Library
             </h1>
           </div>
-          <p className="mt-1 text-xs text-text-secondary">
+          <p className="mt-1 text-xs sm:text-sm text-text-secondary line-clamp-2 sm:line-clamp-none">
             Central repository of high-converting ad visuals, 3D floor plans, drone walk-throughs and copywriting swipe files.
           </p>
         </div>
@@ -119,20 +119,20 @@ export function ContentLibraryPage() {
         <Button
           size="sm"
           onClick={() => setModalOpen(true)}
-          className="h-9 gap-1.5 text-xs bg-brand text-white shadow-sm"
+          className="h-8.5 sm:h-9 gap-1.5 text-xs bg-brand text-white shadow-sm shrink-0 w-auto self-start sm:self-auto rounded-xl px-3.5"
         >
           <Plus className="size-3.5" /> Upload Creative Asset
         </Button>
       </div>
 
       {/* Filter Chips & Search */}
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-3">
-        <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto pb-1 sm:pb-0">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+        <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar w-full sm:w-auto pb-1 sm:pb-0 -mx-4 px-4 sm:mx-0 sm:px-0">
           {["All", "Ad Creatives", "Drone Videos", "Copywriting"].map((cat) => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
-              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all shrink-0 whitespace-nowrap ${
                 filter === cat
                   ? "bg-brand text-white shadow-sm"
                   : "bg-card border border-border text-text-secondary hover:text-foreground"
@@ -149,7 +149,7 @@ export function ContentLibraryPage() {
             placeholder="Search creative asset..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-9 h-8 text-xs"
+            className="pl-9 h-8 sm:h-9 text-xs rounded-xl"
           />
         </div>
       </div>

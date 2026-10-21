@@ -198,46 +198,48 @@ function StaffOverviewPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-2 flex-wrap">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
               <Button
                 size="sm"
                 onClick={() => setFaceModalOpen(true)}
-                className="text-xs font-bold gap-1.5 bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm"
+                className="w-full sm:w-auto text-xs font-bold gap-1.5 bg-primary hover:bg-primary/90 text-primary-foreground shadow-sm justify-center"
               >
                 <ScanFace className="h-4 w-4" />
                 {isCheckedIn ? "Face Punch Out" : "Punch with Face Scanner"}
               </Button>
 
-              <Button
-                size="sm"
-                variant="outline"
-                onClick={handlePunchToggle}
-                className={`text-xs font-semibold gap-1.5 ${
-                  isCheckedIn
-                    ? "text-rose-600 border-rose-200 hover:bg-rose-50"
-                    : "text-emerald-600 border-emerald-200 hover:bg-emerald-50"
-                }`}
-              >
-                <Clock className="h-4 w-4" />
-                {isCheckedIn ? "Quick Out" : "Quick In"}
-              </Button>
+              <div className="flex items-center gap-2 w-full sm:w-auto">
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={handlePunchToggle}
+                  className={`flex-1 sm:flex-none text-xs font-semibold gap-1.5 justify-center ${
+                    isCheckedIn
+                      ? "text-rose-600 border-rose-200 hover:bg-rose-50"
+                      : "text-emerald-600 border-emerald-200 hover:bg-emerald-50"
+                  }`}
+                >
+                  <Clock className="h-4 w-4" />
+                  {isCheckedIn ? "Quick Out" : "Quick In"}
+                </Button>
 
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setShowLeaveModal(true)}
-                className="text-xs font-semibold gap-1"
-              >
-                <PlusCircle className="h-3.5 w-3.5" />
-                Apply Leave
-              </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => setShowLeaveModal(true)}
+                  className="flex-1 sm:flex-none text-xs font-semibold gap-1 justify-center"
+                >
+                  <PlusCircle className="h-3.5 w-3.5" />
+                  Apply Leave
+                </Button>
+              </div>
             </div>
           </div>
         </CardContent>
       </Card>
 
       {/* 4 Attendance & Activity Metrics */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
         <Card className="border-l-4 border-l-blue-500 bg-card shadow-xs">
           <CardContent className="p-3 sm:p-4">
             <p className="text-xs text-muted-foreground font-medium">Present Days</p>

@@ -13,7 +13,8 @@ import type { Row } from "@/lib/erp/store";
 
 export type Column = {
   key: string;
-  label: string;
+  label?: string;
+  title?: string;
   badge?: boolean;
   render?: (row: Row) => ReactNode;
   className?: string;
@@ -56,7 +57,7 @@ export function DataTable({
     <Card className="overflow-hidden">
       {toolbar}
       <div className="overflow-x-auto">
-        <table className="w-full min-w-[760px] border-collapse">
+        <table className="w-full min-w-[850px] md:min-w-[950px] border-collapse">
           <thead>
             <tr className="bg-muted/70">
               {columns.map((c) => (
@@ -70,7 +71,7 @@ export function DataTable({
                   className="cursor-pointer px-4 py-3 text-left text-[12px] font-semibold whitespace-nowrap text-text-secondary select-none"
                 >
                   <span className="inline-flex items-center gap-1">
-                    {c.label}
+                    {c.label || c.title || c.key}
                     <ArrowUpDown
                       className={cn(
                         "size-3",
@@ -81,7 +82,7 @@ export function DataTable({
                 </th>
               ))}
               {(onView || onEdit || onDelete) && (
-                <th className="px-4 py-3 text-right text-[12px] font-semibold text-text-secondary">
+                <th className="px-4 py-3 text-right text-[12px] font-semibold whitespace-nowrap text-text-secondary">
                   Actions
                 </th>
               )}

@@ -14,6 +14,9 @@ import {
   CheckCircle2,
   XCircle,
   FileSpreadsheet,
+  Users,
+  Eye,
+  MapPin,
 } from "lucide-react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
@@ -76,10 +79,11 @@ export function AdminLeadReportView({
   const loadData = async () => {
     try {
       setLoading(true);
-      const res = await fetchAdminLeadsByTag(tag);
+      const res: any = await fetchAdminLeadsByTag(tag);
       if (Array.isArray(res)) setLeads(res);
       else if (res?.leads) setLeads(res.leads);
       else if (res?.results) setLeads(res.results);
+      else if (res?.staff_leads) setLeads([...(res.staff_leads || []), ...(res.team_leads || [])]);
       else {
         // Fallback demo leads if backend returns empty or is not connected
         setLeads([
@@ -189,8 +193,8 @@ export function AdminLeadReportView({
       await updateLeadStatusAndFollowUp({
         lead_id: selectedLead.id,
         status: actionStatus,
-        follow_up_date: actionDate,
-        follow_up_time: actionTime,
+        next_followup_date: actionDate,
+        next_followup_time: actionTime,
         remarks: actionRemarks,
       });
       toast.success("Lead status updated successfully!");

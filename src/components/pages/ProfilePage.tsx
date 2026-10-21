@@ -41,6 +41,15 @@ export function ProfilePage() {
 
   const handleSave = (e: React.FormEvent) => {
     e.preventDefault();
+    if (!profile.name.trim()) {
+      toast.error("Full name is required");
+      return;
+    }
+    const digits = profile.phone.replace(/\D/g, "");
+    if (digits.length !== 10) {
+      toast.error("Phone number must be a valid 10-digit mobile number");
+      return;
+    }
     toast.success("Super Administrator Profile updated successfully!");
   };
 
@@ -284,10 +293,18 @@ export function ProfilePage() {
                 </div>
 
                 <div>
-                  <Label className="text-xs font-medium">Secure Direct Phone</Label>
+                  <Label className="text-xs font-medium">Secure Direct Phone (10 digits)</Label>
                   <Input
+                    type="tel"
+                    maxLength={10}
+                    placeholder="10-digit mobile"
                     value={profile.phone}
-                    onChange={(e) => setProfile({ ...profile, phone: e.target.value })}
+                    onChange={(e) =>
+                      setProfile({
+                        ...profile,
+                        phone: e.target.value.replace(/\D/g, "").slice(0, 10),
+                      })
+                    }
                     className="mt-1 h-9 text-xs"
                     required
                   />

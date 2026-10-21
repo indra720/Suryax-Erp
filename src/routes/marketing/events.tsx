@@ -74,31 +74,33 @@ export function EventsPage() {
     <div className="space-y-6 pb-12">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md">
-              <CalendarDays className="size-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="inline-flex size-8 sm:size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md shrink-0">
+              <CalendarDays className="size-4 sm:size-5" />
             </span>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
-              Events & Site Visit Campaigns
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-foreground">
+              Events & Site Visits
             </h1>
           </div>
-          <p className="mt-1 text-xs text-text-secondary">
+          <p className="mt-1 text-xs sm:text-sm text-text-secondary line-clamp-2 sm:line-clamp-none">
             Coordinate high-attendance mega site visit weekends, broker summits, NRI virtual showcases and property expos.
           </p>
         </div>
 
-        <Button
-          size="sm"
-          onClick={() => setModal(true)}
-          className="h-9 gap-1.5 text-xs bg-brand text-white shadow-sm"
-        >
-          <Plus className="size-3.5" /> Schedule New Event
-        </Button>
+        <div className="w-full sm:w-auto">
+          <Button
+            size="sm"
+            onClick={() => setModal(true)}
+            className="w-full sm:w-auto h-9 gap-1.5 text-xs bg-brand text-white shadow-sm justify-center"
+          >
+            <Plus className="size-3.5" /> Schedule New Event
+          </Button>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
         {events.map((evt) => (
-          <Card key={evt.id} className="p-4 bg-card border border-border shadow-sm hover:border-brand/40 transition-all flex flex-col justify-between">
+          <Card key={evt.id} className="p-3.5 sm:p-4 bg-card border border-border shadow-sm hover:border-brand/40 transition-all flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between text-xs mb-2">
                 <span className="px-2 py-0.5 rounded font-bold bg-brand/10 text-brand">

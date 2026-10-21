@@ -157,7 +157,7 @@ export function FaceAttendanceDialog({
           time: now,
           status: "Present",
           confidence: score,
-          photo: capturedPhoto || undefined,
+          ...(capturedPhoto ? { photo: capturedPhoto } : {}),
         });
       }
     }, 2700);

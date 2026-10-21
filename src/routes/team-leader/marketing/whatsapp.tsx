@@ -31,16 +31,18 @@ export function TeamLeaderWhatsappMarketingPage() {
             Launch verified WhatsApp broadcasts, plot brochures, and customer follow-up blasts.
           </p>
         </div>
-        <Button
-          onClick={() => toast.success("Broadcast composer opened")}
-          className="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-semibold flex items-center gap-1.5"
-        >
-          <PlusCircle className="size-4" />
-          Create Broadcast
-        </Button>
+        <div className="w-full sm:w-auto">
+          <Button
+            onClick={() => toast.success("Broadcast composer opened")}
+            className="w-full sm:w-auto text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-semibold flex items-center justify-center gap-1.5"
+          >
+            <PlusCircle className="size-4" />
+            Create Broadcast
+          </Button>
+        </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
         <Card className="border rounded-xl p-3 bg-white shadow-xs">
           <span className="text-xs font-semibold text-gray-500">Total Sent</span>
           <div className="text-xl sm:text-2xl font-extrabold text-gray-900 mt-1">7,450</div>

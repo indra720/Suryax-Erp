@@ -33,31 +33,33 @@ export function BankReconciliationPage() {
     <div className="space-y-6 pb-12">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md">
-              <Landmark className="size-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="inline-flex size-8 sm:size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md shrink-0">
+              <Landmark className="size-4 sm:size-5" />
             </span>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
-              Bank Reconciliation (BRS Statements)
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-foreground">
+              Bank Reconciliation (BRS)
             </h1>
           </div>
-          <p className="mt-1 text-xs text-text-secondary">
+          <p className="mt-1 text-xs sm:text-sm text-text-secondary line-clamp-2 sm:line-clamp-none">
             Daily matching of physical cheque deposits, RTGS credits and unpresented developer vendor payouts.
           </p>
         </div>
 
-        <Button
-          size="sm"
-          onClick={handleReconcile}
-          className="h-9 gap-1.5 text-xs bg-brand text-white shadow-sm"
-        >
-          <RefreshCw className="size-3.5" /> Reconcile Live Bank Feeds
-        </Button>
+        <div className="w-full sm:w-auto">
+          <Button
+            size="sm"
+            onClick={handleReconcile}
+            className="w-full sm:w-auto h-9 gap-1.5 text-xs bg-brand text-white shadow-sm justify-center"
+          >
+            <RefreshCw className="size-3.5" /> Reconcile Live Bank Feeds
+          </Button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {banks.map((b) => (
-          <Card key={b.id} className="p-5 bg-card border border-border shadow-sm">
+          <Card key={b.id} className="p-3.5 sm:p-5 bg-card border border-border shadow-sm">
             <div className="flex items-center justify-between pb-3 border-b border-border/60">
               <div>
                 <h3 className="text-sm font-bold text-foreground">{b.bankName}</h3>

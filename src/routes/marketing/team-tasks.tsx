@@ -84,47 +84,52 @@ export function TeamTasksPage() {
     <div className="space-y-6 pb-12">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md">
-              <ListChecks className="size-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="inline-flex size-8 sm:size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md shrink-0">
+              <ListChecks className="size-4 sm:size-5" />
             </span>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
-              Marketing Team & Deliverables
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-foreground">
+              Marketing Team & Tasks
             </h1>
           </div>
-          <p className="mt-1 text-xs text-text-secondary">
+          <p className="mt-1 text-xs sm:text-sm text-text-secondary line-clamp-2 sm:line-clamp-none">
             Cross-functional task assignments for ad designers, copywriters, PPC analysts, and event coordinators.
           </p>
         </div>
 
-        <Button
-          size="sm"
-          onClick={() => setModal(true)}
-          className="h-9 gap-1.5 text-xs bg-brand text-white shadow-sm"
-        >
-          <Plus className="size-3.5" /> Assign New Task
-        </Button>
+        <div className="w-full sm:w-auto">
+          <Button
+            size="sm"
+            onClick={() => setModal(true)}
+            className="w-full sm:w-auto h-9 gap-1.5 text-xs bg-brand text-white shadow-sm justify-center"
+          >
+            <Plus className="size-3.5" /> Assign New Task
+          </Button>
+        </div>
       </div>
 
-      <Card className="p-5 bg-card border border-border shadow-sm">
-        <h2 className="text-sm font-semibold text-foreground mb-4">Sprint Deliverables</h2>
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left">
+      <Card className="p-3.5 sm:p-5 bg-card border border-border shadow-sm">
+        <div className="flex items-center justify-between pb-3 border-b border-border/60 mb-3">
+          <h2 className="text-xs sm:text-sm font-semibold text-foreground">Sprint Deliverables</h2>
+          <span className="text-[10px] sm:hidden text-text-muted flex items-center gap-1 font-normal">Swipe horizontally →</span>
+        </div>
+        <div className="overflow-x-auto -mx-3.5 px-3.5 sm:mx-0 sm:px-0">
+          <table className="w-full text-xs sm:text-sm text-left min-w-[850px] whitespace-nowrap">
             <thead className="bg-muted/60 text-text-secondary uppercase tracking-wider text-[11px] border-b border-border">
               <tr>
-                <th className="py-2.5 px-3 font-semibold">Done</th>
-                <th className="py-2.5 px-3 font-semibold">Task Description</th>
-                <th className="py-2.5 px-3 font-semibold">Assignee</th>
-                <th className="py-2.5 px-3 font-semibold">Platform</th>
-                <th className="py-2.5 px-3 font-semibold">Priority</th>
-                <th className="py-2.5 px-3 font-semibold">Status</th>
-                <th className="py-2.5 px-3 font-semibold">Deadline</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Done</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Task Description</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Assignee</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Platform</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Priority</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Status</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Deadline</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border/60 text-foreground font-medium">
               {tasks.map((t) => (
                 <tr key={t.id} className="hover:bg-muted/40 transition-colors">
-                  <td className="py-2.5 px-3">
+                  <td className="py-3 px-3.5 whitespace-nowrap">
                     <input
                       type="checkbox"
                       checked={t.status === "Done"}
@@ -132,19 +137,19 @@ export function TeamTasksPage() {
                       className="rounded border-border text-brand focus:ring-brand size-4 cursor-pointer"
                     />
                   </td>
-                  <td className="py-2.5 px-3">
+                  <td className="py-3 px-3.5 whitespace-nowrap">
                     <span className={`font-semibold block ${t.status === "Done" ? "line-through text-text-muted" : "text-foreground"}`}>
                       {t.task}
                     </span>
                     <span className="text-[10px] text-text-muted">{t.id}</span>
                   </td>
-                  <td className="py-2.5 px-3 text-text-secondary">{t.assignee}</td>
-                  <td className="py-2.5 px-3">
+                  <td className="py-3 px-3.5 text-text-secondary whitespace-nowrap">{t.assignee}</td>
+                  <td className="py-3 px-3.5 whitespace-nowrap">
                     <span className="inline-flex px-2 py-0.5 rounded text-[11px] font-semibold bg-brand/10 text-brand">
                       {t.platform}
                     </span>
                   </td>
-                  <td className="py-2.5 px-3">
+                  <td className="py-3 px-3.5 whitespace-nowrap">
                     <span
                       className={`inline-flex px-2 py-0.5 rounded text-[10.5px] font-bold ${
                         t.priority === "Urgent"
@@ -157,7 +162,7 @@ export function TeamTasksPage() {
                       {t.priority}
                     </span>
                   </td>
-                  <td className="py-2.5 px-3">
+                  <td className="py-3 px-3.5 whitespace-nowrap">
                     <span
                       className={`inline-flex px-2 py-0.5 rounded-full text-[10.5px] font-semibold ${
                         t.status === "Done"
@@ -168,7 +173,7 @@ export function TeamTasksPage() {
                       {t.status}
                     </span>
                   </td>
-                  <td className="py-2.5 px-3 text-text-muted whitespace-nowrap">{t.deadline}</td>
+                  <td className="py-3 px-3.5 text-text-muted whitespace-nowrap">{t.deadline}</td>
                 </tr>
               ))}
             </tbody>
@@ -177,75 +182,85 @@ export function TeamTasksPage() {
       </Card>
 
       <Dialog open={modal} onOpenChange={setModal}>
-        <DialogContent className="max-w-md bg-card text-foreground">
-          <DialogHeader>
-            <DialogTitle className="text-base font-bold flex items-center gap-2">
-              <ListChecks className="size-4 text-brand" /> Assign Task
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
+              <ListChecks className="size-5 text-brand" /> Assign Marketing Task
             </DialogTitle>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Delegate campaign execution, creative design, or attribution tracking tasks to team members.
+            </p>
           </DialogHeader>
 
-          <form onSubmit={handleCreate} className="space-y-3 py-2 text-xs">
-            <div>
-              <Label className="text-xs">Task Objective</Label>
-              <Input
-                required
-                value={newTask.task}
-                onChange={(e) => setNewTask({ ...newTask, task: e.target.value })}
-                className="h-8 text-xs mt-1"
-                placeholder="e.g. Create new WhatsApp carousel"
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-2">
+          <form onSubmit={handleCreate} className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
               <div>
-                <Label className="text-xs">Assignee</Label>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Task Objective / Scope</Label>
                 <Input
-                  value={newTask.assignee}
-                  onChange={(e) => setNewTask({ ...newTask, assignee: e.target.value })}
-                  className="h-8 text-xs mt-1"
+                  required
+                  value={newTask.task}
+                  onChange={(e) => setNewTask({ ...newTask, task: e.target.value })}
+                  className="h-10 sm:h-11 text-sm rounded-xl"
+                  placeholder="e.g. Design 3D video reel and WhatsApp carousel for Akshaya Tritiya"
                 />
               </div>
-              <div>
-                <Label className="text-xs">Platform / Channel</Label>
-                <Input
-                  value={newTask.platform}
-                  onChange={(e) => setNewTask({ ...newTask, platform: e.target.value })}
-                  className="h-8 text-xs mt-1"
-                />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Assignee</Label>
+                  <Input
+                    placeholder="e.g. Vikram Joshi"
+                    value={newTask.assignee}
+                    onChange={(e) => setNewTask({ ...newTask, assignee: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Platform / Channel</Label>
+                  <Input
+                    placeholder="e.g. Meta Ads / WhatsApp"
+                    value={newTask.platform}
+                    onChange={(e) => setNewTask({ ...newTask, platform: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Priority Level</Label>
+                  <Select
+                    value={newTask.priority}
+                    onValueChange={(val: any) => setNewTask({ ...newTask, priority: val })}
+                  >
+                    <SelectTrigger className="h-10 sm:h-11 text-sm rounded-xl">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Urgent">Urgent</SelectItem>
+                      <SelectItem value="High">High</SelectItem>
+                      <SelectItem value="Medium">Medium</SelectItem>
+                      <SelectItem value="Low">Low</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Deadline</Label>
+                  <Input
+                    type="date"
+                    value={newTask.deadline}
+                    onChange={(e) => setNewTask({ ...newTask, deadline: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-2">
-              <div>
-                <Label className="text-xs">Priority</Label>
-                <Select
-                  value={newTask.priority}
-                  onValueChange={(val: any) => setNewTask({ ...newTask, priority: val })}
-                >
-                  <SelectTrigger className="h-8 text-xs mt-1">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Urgent">Urgent</SelectItem>
-                    <SelectItem value="High">High</SelectItem>
-                    <SelectItem value="Medium">Medium</SelectItem>
-                    <SelectItem value="Low">Low</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-              <div>
-                <Label className="text-xs">Deadline</Label>
-                <Input
-                  type="date"
-                  value={newTask.deadline}
-                  onChange={(e) => setNewTask({ ...newTask, deadline: e.target.value })}
-                  className="h-8 text-xs mt-1"
-                />
-              </div>
-            </div>
-            <DialogFooter className="pt-2">
-              <Button type="button" variant="outline" size="sm" onClick={() => setModal(false)}>
+
+            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+              <Button type="button" variant="outline" onClick={() => setModal(false)} className="rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" className="bg-brand text-white">
+              <Button type="submit" className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
                 Assign Task
               </Button>
             </DialogFooter>

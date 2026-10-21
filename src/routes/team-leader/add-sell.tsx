@@ -52,8 +52,9 @@ export function TeamLeaderAddSellPage() {
     try {
       const data = await fetchTeamLeaderStaffDashboard();
       setStaffs(data.staff_list || []);
-      if (data.staff_list && data.staff_list.length > 0 && data.staff_list[0]) {
-        setForm((prev) => ({ ...prev, staff: String(data.staff_list![0].id) }));
+      const first = data.staff_list?.[0];
+      if (first) {
+        setForm((prev) => ({ ...prev, staff: String(first.id) }));
       }
     } catch {
       // Fallback staff list
@@ -118,21 +119,21 @@ export function TeamLeaderAddSellPage() {
         </div>
       </div>
 
-      <Card className="border rounded-xl bg-white shadow-xs max-w-3xl">
-        <CardHeader className="p-4 sm:p-5 border-b">
-          <CardTitle className="text-base font-bold text-gray-900 flex items-center gap-2">
-            <Building2 className="size-4 text-[#6732F2]" />
+      <Card className="border border-border rounded-2xl bg-card shadow-sm max-w-4xl xl:max-w-5xl">
+        <CardHeader className="p-5 sm:p-6 border-b border-border">
+          <CardTitle className="text-lg font-bold text-foreground flex items-center gap-2">
+            <Building2 className="size-5 text-brand" />
             Sell Plot Details
           </CardTitle>
-          <CardDescription className="text-xs text-gray-500">
+          <CardDescription className="text-xs sm:text-sm text-muted-foreground mt-1">
             Fill in the buyer booking details and assign credit to the respective staff member.
           </CardDescription>
         </CardHeader>
 
-        <CardContent className="p-4 sm:p-6">
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-1.5">
-              <Label htmlFor="staff" className="text-xs font-semibold text-gray-700">
+        <CardContent className="p-5 sm:p-7">
+          <form onSubmit={handleSubmit} className="space-y-5">
+            <div>
+              <Label htmlFor="staff" className="text-xs sm:text-sm font-semibold mb-1.5 block text-foreground">
                 Staff Member *
               </Label>
               <Select
@@ -140,12 +141,12 @@ export function TeamLeaderAddSellPage() {
                 value={form.staff}
                 onValueChange={(val) => handleSelectChange("staff", val)}
               >
-                <SelectTrigger id="staff" className="h-9 text-xs">
+                <SelectTrigger id="staff" className="h-10 sm:h-11 text-sm rounded-xl">
                   <SelectValue placeholder="Select Staff Telecaller" />
                 </SelectTrigger>
                 <SelectContent>
                   {staffs.map((st) => (
-                    <SelectItem key={st.id} value={String(st.id)} className="text-xs">
+                    <SelectItem key={st.id} value={String(st.id)} className="text-sm">
                       {st.username || st.name} ({st.email || st.mobile})
                     </SelectItem>
                   ))}
@@ -153,9 +154,9 @@ export function TeamLeaderAddSellPage() {
               </Select>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-1.5">
-                <Label htmlFor="project_name" className="text-xs font-semibold text-gray-700">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <Label htmlFor="project_name" className="text-xs sm:text-sm font-semibold mb-1.5 block text-foreground">
                   Project Name *
                 </Label>
                 <Input
@@ -164,13 +165,13 @@ export function TeamLeaderAddSellPage() {
                   value={form.project_name}
                   onChange={handleChange}
                   placeholder="e.g. Vrindavan Residency Phase-2"
-                  className="h-9 text-xs"
+                  className="h-10 sm:h-11 text-sm rounded-xl"
                   required
                 />
               </div>
 
-              <div className="space-y-1.5">
-                <Label htmlFor="date" className="text-xs font-semibold text-gray-700">
+              <div>
+                <Label htmlFor="date" className="text-xs sm:text-sm font-semibold mb-1.5 block text-foreground">
                   Booking / Sale Date *
                 </Label>
                 <Input
@@ -179,15 +180,15 @@ export function TeamLeaderAddSellPage() {
                   name="date"
                   value={form.date}
                   onChange={handleChange}
-                  className="h-9 text-xs"
+                  className="h-10 sm:h-11 text-sm rounded-xl"
                   required
                 />
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              <div className="space-y-1.5">
-                <Label htmlFor="plot_no" className="text-xs font-semibold text-gray-700">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <Label htmlFor="plot_no" className="text-xs sm:text-sm font-semibold mb-1.5 block text-foreground">
                   Plot Number *
                 </Label>
                 <Input
@@ -196,13 +197,13 @@ export function TeamLeaderAddSellPage() {
                   value={form.plot_no}
                   onChange={handleChange}
                   placeholder="e.g. P-142"
-                  className="h-9 text-xs"
+                  className="h-10 sm:h-11 text-sm rounded-xl"
                   required
                 />
               </div>
 
-              <div className="space-y-1.5">
-                <Label htmlFor="size_in_gaj" className="text-xs font-semibold text-gray-700">
+              <div>
+                <Label htmlFor="size_in_gaj" className="text-xs sm:text-sm font-semibold mb-1.5 block text-foreground">
                   Plot Size (Gaj) *
                 </Label>
                 <Input
@@ -211,17 +212,17 @@ export function TeamLeaderAddSellPage() {
                   value={form.size_in_gaj}
                   onChange={handleChange}
                   placeholder="e.g. 200"
-                  className="h-9 text-xs"
+                  className="h-10 sm:h-11 text-sm rounded-xl"
                   required
                 />
               </div>
             </div>
 
-            <div className="flex justify-end pt-3 border-t">
+            <div className="flex justify-end pt-4 border-t border-border">
               <Button
                 type="submit"
                 disabled={loading}
-                className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs px-5 h-9"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-sm px-6 h-11 rounded-xl shadow-md"
               >
                 {loading ? "Submitting Booking..." : "Submit Sell Booking"}
               </Button>

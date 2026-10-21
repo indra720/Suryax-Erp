@@ -41,15 +41,19 @@ export function BrokerSiteVisitsPage() {
     clientName: "",
     phone: "",
     projectName: "Vrindavan Heights",
-    scheduledDate: new Date().toISOString().split("T")[0],
+    scheduledDate: new Date().toISOString().slice(0, 10),
     timeSlot: "11:00 AM",
     cabRequested: true,
   });
 
   const handleCreate = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newVisit.clientName || !newVisit.phone) {
-      toast.error("Please fill in client details");
+    if (!newVisit.clientName.trim()) {
+      toast.error("Please fill in client name");
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(newVisit.phone)) {
+      toast.error("Please enter a valid 10-digit mobile number");
       return;
     }
     const created: BrokerSiteVisit = {
@@ -95,31 +99,31 @@ export function BrokerSiteVisitsPage() {
       </div>
 
       <Card className="bg-card border border-border overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left border-collapse">
-            <thead className="bg-muted/50 border-b border-border text-text-secondary font-semibold">
+        <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+          <table className="w-full text-xs sm:text-sm text-left border-collapse min-w-[850px] whitespace-nowrap">
+            <thead className="bg-muted/70 border-b border-border text-text-secondary font-semibold uppercase tracking-wider text-[11px]">
               <tr>
-                <th className="py-3 px-4">Client Name & Contact</th>
-                <th className="py-3 px-4">Project Destination</th>
-                <th className="py-3 px-4">Schedule Date & Time</th>
-                <th className="py-3 px-4">Cab Facility</th>
-                <th className="py-3 px-4">Assigned Escort</th>
-                <th className="py-3 px-4">Booking Status</th>
+                <th className="py-3 px-4 font-semibold whitespace-nowrap">Client Name & Contact</th>
+                <th className="py-3 px-4 font-semibold whitespace-nowrap">Project Destination</th>
+                <th className="py-3 px-4 font-semibold whitespace-nowrap">Schedule Date & Time</th>
+                <th className="py-3 px-4 font-semibold whitespace-nowrap">Cab Facility</th>
+                <th className="py-3 px-4 font-semibold whitespace-nowrap">Assigned Escort</th>
+                <th className="py-3 px-4 font-semibold whitespace-nowrap text-center">Booking Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {visits.map((v) => (
                 <tr key={v.id} className="hover:bg-muted/30 transition-colors">
-                  <td className="py-3.5 px-4">
+                  <td className="py-3.5 px-4 whitespace-nowrap">
                     <p className="font-bold text-foreground">{v.clientName}</p>
                     <p className="text-[11px] text-text-secondary">{v.phone}</p>
                   </td>
-                  <td className="py-3.5 px-4 font-semibold text-foreground">{v.projectName}</td>
-                  <td className="py-3.5 px-4">
+                  <td className="py-3.5 px-4 font-semibold text-foreground whitespace-nowrap">{v.projectName}</td>
+                  <td className="py-3.5 px-4 whitespace-nowrap">
                     <span className="font-medium text-foreground">{v.scheduledDate}</span>
                     <span className="text-[11px] text-text-muted block">{v.timeSlot}</span>
                   </td>
-                  <td className="py-3.5 px-4">
+                  <td className="py-3.5 px-4 whitespace-nowrap">
                     {v.cabRequested ? (
                       <span className="inline-flex items-center gap-1 text-[11px] font-medium text-blue-600 bg-blue-500/10 px-2 py-0.5 rounded-full">
                         <Car className="size-3" /> VIP Cab Dispatched
@@ -128,10 +132,10 @@ export function BrokerSiteVisitsPage() {
                       <span className="text-[11px] text-text-muted">Own Transport</span>
                     )}
                   </td>
-                  <td className="py-3.5 px-4 font-medium text-foreground">{v.escortExecutive}</td>
-                  <td className="py-3.5 px-4">
+                  <td className="py-3.5 px-4 font-medium text-foreground whitespace-nowrap">{v.escortExecutive}</td>
+                  <td className="py-3.5 px-4 text-center whitespace-nowrap">
                     <span
-                      className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
+                      className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
                         v.status === "Confirmed"
                           ? "bg-emerald-500/10 text-emerald-600"
                           : "bg-amber-500/10 text-amber-600"
@@ -149,65 +153,85 @@ export function BrokerSiteVisitsPage() {
 
       {/* Booking Modal */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="max-w-md bg-card text-foreground border-border">
-          <DialogHeader>
-            <DialogTitle>Book Client Site Visit & Escort</DialogTitle>
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
+              Book Client Site Visit & Escort
+            </DialogTitle>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Schedule site inspection, allocate complimentary developer cab pickup, and assign relationship manager.
+            </p>
           </DialogHeader>
-          <form onSubmit={handleCreate} className="space-y-3.5 py-2">
-            <div>
-              <Label className="text-xs">Client Full Name</Label>
-              <Input
-                placeholder="Client Name"
-                value={newVisit.clientName}
-                onChange={(e) => setNewVisit({ ...newVisit, clientName: e.target.value })}
-                className="h-9 text-xs mt-1"
-                required
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <Label className="text-xs">Phone Number</Label>
-                <Input
-                  placeholder="+91 XXXXX XXXXX"
-                  value={newVisit.phone}
-                  onChange={(e) => setNewVisit({ ...newVisit, phone: e.target.value })}
-                  className="h-9 text-xs mt-1"
-                  required
-                />
+
+          <form onSubmit={handleCreate} className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Client Full Name</Label>
+                  <Input
+                    placeholder="Full legal name"
+                    value={newVisit.clientName}
+                    onChange={(e) => setNewVisit({ ...newVisit, clientName: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Phone Number (10 digits)</Label>
+                  <Input
+                    type="tel"
+                    maxLength={10}
+                    placeholder="10-digit mobile"
+                    value={newVisit.phone}
+                    onChange={(e) =>
+                      setNewVisit({
+                        ...newVisit,
+                        phone: e.target.value.replace(/\D/g, "").slice(0, 10),
+                      })
+                    }
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    required
+                  />
+                </div>
               </div>
-              <div>
-                <Label className="text-xs">Destination Project</Label>
-                <Input
-                  value={newVisit.projectName}
-                  onChange={(e) => setNewVisit({ ...newVisit, projectName: e.target.value })}
-                  className="h-9 text-xs mt-1"
-                />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Destination Project</Label>
+                  <Input
+                    placeholder="e.g. Vrindavan Heights"
+                    value={newVisit.projectName}
+                    onChange={(e) => setNewVisit({ ...newVisit, projectName: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Visit Date</Label>
+                  <Input
+                    type="date"
+                    value={newVisit.scheduledDate}
+                    onChange={(e) => setNewVisit({ ...newVisit, scheduledDate: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
               </div>
-            </div>
-            <div className="grid grid-cols-2 gap-3">
+
               <div>
-                <Label className="text-xs">Visit Date</Label>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Preferred Time Slot</Label>
                 <Input
-                  type="date"
-                  value={newVisit.scheduledDate}
-                  onChange={(e) => setNewVisit({ ...newVisit, scheduledDate: e.target.value })}
-                  className="h-9 text-xs mt-1"
-                />
-              </div>
-              <div>
-                <Label className="text-xs">Time Slot</Label>
-                <Input
+                  placeholder="e.g. 11:30 AM - 01:00 PM"
                   value={newVisit.timeSlot}
                   onChange={(e) => setNewVisit({ ...newVisit, timeSlot: e.target.value })}
-                  className="h-9 text-xs mt-1"
+                  className="h-10 sm:h-11 text-sm rounded-xl"
                 />
               </div>
             </div>
-            <DialogFooter className="mt-4">
-              <Button type="button" variant="outline" size="sm" onClick={() => setModalOpen(false)}>
+
+            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+              <Button type="button" variant="outline" onClick={() => setModalOpen(false)} className="rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" className="bg-brand text-white">
+              <Button type="submit" className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
                 Request Cab & Visit
               </Button>
             </DialogFooter>

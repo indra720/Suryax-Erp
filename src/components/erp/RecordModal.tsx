@@ -1,11 +1,24 @@
 import { useState } from "react";
 import { X } from "lucide-react";
+import { toast } from "sonner";
 import type { Row } from "@/lib/erp/store";
 
 export type Field = {
   key: string;
-  label: string;
-  type?: "text" | "email" | "tel" | "number" | "date" | "select" | "textarea" | "file";
+  label?: string;
+  title?: string;
+  type?:
+    | "text"
+    | "email"
+    | "tel"
+    | "number"
+    | "date"
+    | "datetime-local"
+    | "checkbox"
+    | "password"
+    | "select"
+    | "textarea"
+    | "file";
   options?: string[];
   full?: boolean;
 };
@@ -31,87 +44,126 @@ export function RecordModal({
   const readOnly = mode === "view";
 
   const inputCls =
-    "h-11 w-full rounded-[10px] border border-input bg-card px-3 text-[13.5px] outline-none placeholder:text-text-muted focus:border-brand focus:shadow-[0_0_0_3px_rgba(79,32,216,0.08)] disabled:bg-muted";
+    "h-11 w-full rounded-xl border border-input bg-background/50 px-3.5 text-sm outline-none placeholder:text-text-muted focus:border-brand focus:bg-background focus:ring-2 focus:ring-brand/20 transition-all disabled:bg-muted";
 
   return (
-    <div className="fixed inset-0 z-[60] flex items-start justify-center overflow-y-auto bg-[rgba(10,15,50,0.45)] p-4 py-10 animate-in fade-in duration-150">
-      <div className="w-full max-w-[640px] rounded-[16px] border border-border bg-card shadow-[var(--shadow-pop)] animate-in zoom-in-95 duration-150">
-        <div className="flex items-center justify-between border-b border-border px-5 py-4">
-          <h2 className="text-[16px] font-semibold">
-            {mode === "add" ? "Add" : mode === "edit" ? "Edit" : "View"} — {title}
+    <div className="fixed inset-0 z-[60] flex items-center justify-center overflow-y-auto bg-black/60 backdrop-blur-xs p-4 py-8 animate-in fade-in duration-150">
+      <div className="w-full max-w-[640px] md:max-w-3xl lg:max-w-4xl xl:max-w-5xl rounded-[20px] border border-border bg-card shadow-2xl animate-in zoom-in-95 duration-150 max-h-[90vh] flex flex-col overflow-hidden">
+        <div className="flex items-center justify-between border-b border-border px-6 py-4 shrink-0 bg-card">
+          <h2 className="text-lg font-bold text-foreground">
+            {mode === "add" ? "Add New" : mode === "edit" ? "Edit" : "View Details"} — {title}
           </h2>
-          <button onClick={onClose} aria-label="Close" className="text-text-muted hover:text-foreground">
+          <button onClick={onClose} aria-label="Close" className="p-1 rounded-lg text-text-muted hover:text-foreground hover:bg-muted/60 transition-colors">
             <X className="size-5" />
           </button>
         </div>
 
         <form
+          className="flex flex-col flex-1 overflow-hidden"
           onSubmit={(e) => {
             e.preventDefault();
+            for (const f of fields) {
+              if (f.type === "tel" && values[f.key]) {
+                const clean = String(values[f.key]).replace(/\D/g, "");
+                if (clean.length !== 10) {
+                  toast.error(`${f.label || f.title || "Mobile number"} must be exactly 10 digits.`);
+                  return;
+                }
+              }
+            }
             onSubmit(values);
           }}
         >
-          <div className="grid gap-4 p-5 sm:grid-cols-2">
-            {fields.map((f) => (
-              <div key={f.key} className={f.full || f.type === "textarea" ? "sm:col-span-2" : ""}>
-                <label className="mb-1.5 block text-[12.5px] font-medium text-text-secondary">
-                  {f.label}
-                </label>
-                {f.type === "select" ? (
-                  <select
-                    disabled={readOnly}
-                    value={values[f.key] ?? ""}
-                    onChange={(e) => setValues((v) => ({ ...v, [f.key]: e.target.value }))}
-                    className={inputCls}
-                  >
-                    <option value="">Select {f.label}</option>
-                    {(f.options ?? []).map((o) => (
-                      <option key={o} value={o}>
-                        {o}
-                      </option>
-                    ))}
-                  </select>
-                ) : f.type === "textarea" ? (
-                  <textarea
-                    disabled={readOnly}
-                    rows={3}
-                    value={values[f.key] ?? ""}
-                    onChange={(e) => setValues((v) => ({ ...v, [f.key]: e.target.value }))}
-                    className={inputCls.replace("h-11", "min-h-[88px] py-2.5")}
-                  />
-                ) : (
-                  <input
-                    disabled={readOnly}
-                    type={f.type ?? "text"}
-                    value={f.type === "file" ? undefined : (values[f.key] ?? "")}
-                    onChange={(e) =>
-                      setValues((v) => ({
-                        ...v,
-                        [f.key]: f.type === "file" ? e.target.value.split("\\").pop() : e.target.value,
-                      }))
-                    }
-                    placeholder={`Enter ${f.label.toLowerCase()}`}
-                    className={inputCls}
-                  />
-                )}
-              </div>
-            ))}
+          <div className="grid gap-4 sm:gap-5 p-6 sm:p-7 sm:grid-cols-2 lg:grid-cols-3 overflow-y-auto max-h-[calc(90vh-140px)] pr-2">
+            {fields.map((f) => {
+              const fieldLabel = f.label || f.title || f.key;
+              return (
+                <div key={f.key} className={f.full || f.type === "textarea" ? "sm:col-span-2 lg:col-span-3" : ""}>
+                  <label className="mb-1.5 block text-xs sm:text-[13px] font-semibold text-text-secondary">
+                    {fieldLabel}
+                  </label>
+                  {f.type === "select" ? (
+                    <select
+                      disabled={readOnly}
+                      value={values[f.key] ?? ""}
+                      onChange={(e) => setValues((v) => ({ ...v, [f.key]: e.target.value }))}
+                      className={inputCls}
+                    >
+                      <option value="">Select {fieldLabel}</option>
+                      {(f.options ?? []).map((o) => (
+                        <option key={o} value={o}>
+                          {o}
+                        </option>
+                      ))}
+                    </select>
+                  ) : f.type === "textarea" ? (
+                    <textarea
+                      disabled={readOnly}
+                      rows={3}
+                      value={values[f.key] ?? ""}
+                      onChange={(e) => setValues((v) => ({ ...v, [f.key]: e.target.value }))}
+                      className={inputCls.replace("h-11", "min-h-[96px] py-2.5")}
+                    />
+                  ) : f.type === "checkbox" ? (
+                    <div className="flex items-center gap-2 pt-2">
+                      <input
+                        disabled={readOnly}
+                        type="checkbox"
+                        checked={Boolean(values[f.key])}
+                        onChange={(e) => setValues((v) => ({ ...v, [f.key]: e.target.checked }))}
+                        className="size-4 rounded border-border text-brand"
+                      />
+                      <span className="text-sm text-text-muted">{fieldLabel}</span>
+                    </div>
+                  ) : f.type === "tel" ? (
+                    <input
+                      disabled={readOnly}
+                      type="tel"
+                      maxLength={10}
+                      value={values[f.key] ?? ""}
+                      onChange={(e) =>
+                        setValues((v) => ({
+                          ...v,
+                          [f.key]: e.target.value.replace(/\D/g, "").slice(0, 10),
+                        }))
+                      }
+                      placeholder="10-digit mobile number"
+                      className={inputCls}
+                    />
+                  ) : (
+                    <input
+                      disabled={readOnly}
+                      type={f.type ?? "text"}
+                      value={f.type === "file" ? undefined : (values[f.key] ?? "")}
+                      onChange={(e) =>
+                        setValues((v) => ({
+                          ...v,
+                          [f.key]: f.type === "file" ? e.target.value.split("\\").pop() : e.target.value,
+                        }))
+                      }
+                      placeholder={`Enter ${fieldLabel.toLowerCase()}`}
+                      className={inputCls}
+                    />
+                  )}
+                </div>
+              );
+            })}
           </div>
 
-          <div className="flex justify-end gap-2 border-t border-border px-5 py-4">
+          <div className="flex items-center justify-end gap-3 border-t border-border px-6 py-4 shrink-0 bg-muted/20">
             <button
               type="button"
               onClick={onClose}
-              className="h-10 rounded-[10px] border border-border bg-card px-4 text-[13px] font-semibold text-text-secondary hover:bg-accent"
+              className="h-11 rounded-xl border border-border bg-card px-5 text-sm font-semibold text-text-secondary hover:bg-accent transition-colors"
             >
               {readOnly ? "Close" : "Cancel"}
             </button>
             {!readOnly && (
               <button
                 type="submit"
-                className="h-10 rounded-[10px] bg-brand px-4 text-[13px] font-semibold text-white hover:bg-brand-bright"
+                className="h-11 rounded-xl bg-brand hover:bg-brand/90 px-6 text-sm font-semibold text-white shadow-md transition-colors"
               >
-                Save
+                Save Changes
               </button>
             )}
           </div>

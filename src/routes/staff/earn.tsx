@@ -165,12 +165,12 @@ export function StaffEarnCalendarPage() {
             </CardDescription>
           </div>
 
-          <div className="flex items-center gap-2">
-            <Button variant="outline" size="icon" className="h-8 w-8" onClick={handlePrevMonth}>
+          <div className="flex items-center gap-1.5 w-full sm:w-auto">
+            <Button variant="outline" size="icon" className="h-8 w-8 shrink-0" onClick={handlePrevMonth}>
               <ChevronLeft className="h-4 w-4" />
             </Button>
             <Select value={String(month)} onValueChange={(val) => setMonth(Number(val))}>
-              <SelectTrigger className="w-[125px] h-8 text-xs">
+              <SelectTrigger className="flex-1 sm:w-[125px] h-8 text-xs">
                 <SelectValue placeholder="Month" />
               </SelectTrigger>
               <SelectContent>
@@ -183,7 +183,7 @@ export function StaffEarnCalendarPage() {
             </Select>
 
             <Select value={String(year)} onValueChange={(val) => setYear(Number(val))}>
-              <SelectTrigger className="w-[90px] h-8 text-xs">
+              <SelectTrigger className="flex-1 sm:w-[90px] h-8 text-xs">
                 <SelectValue placeholder="Year" />
               </SelectTrigger>
               <SelectContent>
@@ -194,7 +194,7 @@ export function StaffEarnCalendarPage() {
                 ))}
               </SelectContent>
             </Select>
-            <Button variant="outline" size="icon" className="h-8 w-8" onClick={handleNextMonth}>
+            <Button variant="outline" size="icon" className="h-8 w-8 shrink-0" onClick={handleNextMonth}>
               <ChevronRight className="h-4 w-4" />
             </Button>
           </div>

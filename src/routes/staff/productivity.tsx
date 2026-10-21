@@ -71,9 +71,9 @@ export function StaffProductivityPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full sm:w-auto">
               <Select value={String(month)} onValueChange={(val) => setMonth(Number(val))}>
-                <SelectTrigger className="w-[125px] h-8 text-xs">
+                <SelectTrigger className="flex-1 sm:w-[125px] h-8.5 sm:h-8 text-xs">
                   <SelectValue placeholder="Month" />
                 </SelectTrigger>
                 <SelectContent>
@@ -86,7 +86,7 @@ export function StaffProductivityPage() {
               </Select>
 
               <Select value={String(year)} onValueChange={(val) => setYear(Number(val))}>
-                <SelectTrigger className="w-[90px] h-8 text-xs">
+                <SelectTrigger className="flex-1 sm:w-[90px] h-8.5 sm:h-8 text-xs">
                   <SelectValue placeholder="Year" />
                 </SelectTrigger>
                 <SelectContent>
@@ -103,7 +103,7 @@ export function StaffProductivityPage() {
       </Card>
 
       {/* 4 Metric Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
         <Card className="border-l-4 border-l-blue-500 bg-card/60 shadow-xs">
           <CardContent className="p-3 sm:p-4">
             <p className="text-xs text-muted-foreground font-medium">Total Outbound Calls</p>

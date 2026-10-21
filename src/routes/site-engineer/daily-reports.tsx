@@ -38,7 +38,7 @@ export function SiteDailyReportsPage() {
   const [modalOpen, setModalOpen] = useState(false);
 
   const [newDpr, setNewDpr] = useState({
-    date: new Date().toISOString().split("T")[0],
+    date: new Date().toISOString().slice(0, 10),
     shift: "Morning (08:00 - 17:00)" as DailyReport["shift"],
     weather: "Clear & Sunny (36°C)" as DailyReport["weatherCondition"],
     workDone: "",
@@ -135,52 +135,67 @@ export function SiteDailyReportsPage() {
 
       {/* DPR Modal */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="max-w-md bg-card text-foreground border-border">
-          <DialogHeader>
-            <DialogTitle>File Daily Progress Report (DPR)</DialogTitle>
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
+              File Daily Progress Report (DPR)
+            </DialogTitle>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Submit end-of-day site engineering log, machinery health status, and project milestone updates.
+            </p>
           </DialogHeader>
-          <form onSubmit={handleCreate} className="space-y-3.5 py-2">
-            <div>
-              <Label className="text-xs">Report Date</Label>
-              <Input
-                type="date"
-                value={newDpr.date}
-                onChange={(e) => setNewDpr({ ...newDpr, date: e.target.value })}
-                className="h-9 text-xs mt-1"
-              />
+
+          <form onSubmit={handleCreate} className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Report Date</Label>
+                <Input
+                  type="date"
+                  value={newDpr.date}
+                  onChange={(e) => setNewDpr({ ...newDpr, date: e.target.value })}
+                  className="h-10 sm:h-11 text-sm rounded-xl"
+                />
+              </div>
+
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Work Accomplished Today</Label>
+                <Input
+                  placeholder="e.g. 16th floor column casting, plumbing shaft inspection, rebar binding completed"
+                  value={newDpr.workDone}
+                  onChange={(e) => setNewDpr({ ...newDpr, workDone: e.target.value })}
+                  className="h-10 sm:h-11 text-sm rounded-xl"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Heavy Machinery & Crane Status</Label>
+                  <Input
+                    placeholder="e.g. Tower crane operational, 2 transit mixers active"
+                    value={newDpr.machinery}
+                    onChange={(e) => setNewDpr({ ...newDpr, machinery: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Hindrances / Delays (if any)</Label>
+                  <Input
+                    placeholder="e.g. Rain for 2 hours, cement delivery delayed 45m"
+                    value={newDpr.hindrances}
+                    onChange={(e) => setNewDpr({ ...newDpr, hindrances: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+              </div>
             </div>
-            <div>
-              <Label className="text-xs">Work Accomplished Today</Label>
-              <Input
-                placeholder="e.g. 16th floor column casting, plumbing shaft inspection"
-                value={newDpr.workDone}
-                onChange={(e) => setNewDpr({ ...newDpr, workDone: e.target.value })}
-                className="h-9 text-xs mt-1"
-                required
-              />
-            </div>
-            <div>
-              <Label className="text-xs">Heavy Machinery & Crane Status</Label>
-              <Input
-                value={newDpr.machinery}
-                onChange={(e) => setNewDpr({ ...newDpr, machinery: e.target.value })}
-                className="h-9 text-xs mt-1"
-              />
-            </div>
-            <div>
-              <Label className="text-xs">Hindrances / Delays (if any)</Label>
-              <Input
-                value={newDpr.hindrances}
-                onChange={(e) => setNewDpr({ ...newDpr, hindrances: e.target.value })}
-                className="h-9 text-xs mt-1"
-              />
-            </div>
-            <DialogFooter className="mt-4">
-              <Button type="button" variant="outline" size="sm" onClick={() => setModalOpen(false)}>
+
+            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+              <Button type="button" variant="outline" onClick={() => setModalOpen(false)} className="rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" className="bg-brand text-white">
-                Sign & Submit
+              <Button type="submit" className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
+                Sign & Submit DPR
               </Button>
             </DialogFooter>
           </form>

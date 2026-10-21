@@ -68,11 +68,11 @@ export function StaffAttendancePage() {
       </div> */}
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
         <Card className="border-l-4 border-l-emerald-500 bg-card shadow-xs">
           <CardContent className="p-3 sm:p-4">
             <span className="text-xs text-muted-foreground font-medium">Present Days</span>
-            <h3 className="text-xl font-bold mt-1 text-emerald-700">22 Days</h3>
+            <h3 className="text-lg sm:text-xl font-bold mt-1 text-emerald-700">22 Days</h3>
             <span className="text-[11px] text-muted-foreground">91.6% Rate</span>
           </CardContent>
         </Card>
@@ -80,7 +80,7 @@ export function StaffAttendancePage() {
         <Card className="border-l-4 border-l-amber-500 bg-card shadow-xs">
           <CardContent className="p-3 sm:p-4">
             <span className="text-xs text-muted-foreground font-medium">Late Markings</span>
-            <h3 className="text-xl font-bold mt-1 text-amber-700">2 Days</h3>
+            <h3 className="text-lg sm:text-xl font-bold mt-1 text-amber-700">2 Days</h3>
             <span className="text-[11px] text-muted-foreground">Within grace limit</span>
           </CardContent>
         </Card>
@@ -88,7 +88,7 @@ export function StaffAttendancePage() {
         <Card className="border-l-4 border-l-blue-500 bg-card shadow-xs">
           <CardContent className="p-3 sm:p-4">
             <span className="text-xs text-muted-foreground font-medium">Avg Daily Shift</span>
-            <h3 className="text-xl font-bold mt-1 text-foreground">8h 58m</h3>
+            <h3 className="text-lg sm:text-xl font-bold mt-1 text-foreground">8h 58m</h3>
             <span className="text-[11px] text-emerald-600 font-medium">+58 mins over target</span>
           </CardContent>
         </Card>
@@ -96,7 +96,7 @@ export function StaffAttendancePage() {
         <Card className="border-l-4 border-l-purple-500 bg-card shadow-xs">
           <CardContent className="p-3 sm:p-4">
             <span className="text-xs text-muted-foreground font-medium">Approved Leaves</span>
-            <h3 className="text-xl font-bold mt-1 text-purple-700">1 Day</h3>
+            <h3 className="text-lg sm:text-xl font-bold mt-1 text-purple-700">1 Day</h3>
             <span className="text-[11px] text-muted-foreground">Casual Leave</span>
           </CardContent>
         </Card>
@@ -106,18 +106,21 @@ export function StaffAttendancePage() {
       <Card>
         <CardHeader className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3">
           <div>
-            <CardTitle className="text-base font-bold flex items-center gap-2">
-              <Clock className="h-5 w-5 text-primary" />
-              Detailed Attendance Log History
-            </CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-sm sm:text-base font-bold flex items-center gap-2">
+                <Clock className="h-4 sm:h-5 w-4 sm:w-5 text-primary" />
+                <span>Detailed Attendance Log History</span>
+              </CardTitle>
+              <span className="text-[10px] sm:hidden text-text-muted font-normal">Swipe horizontally →</span>
+            </div>
             <CardDescription className="text-xs">
               Daily punch-in, punch-out, and verified office location logs.
             </CardDescription>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
             <Select value={String(month)} onValueChange={(val) => setMonth(Number(val))}>
-              <SelectTrigger className="w-[125px] h-8 text-xs">
+              <SelectTrigger className="flex-1 sm:w-[125px] h-8 text-xs">
                 <SelectValue placeholder="Month" />
               </SelectTrigger>
               <SelectContent>
@@ -130,7 +133,7 @@ export function StaffAttendancePage() {
             </Select>
 
             <Select value={String(year)} onValueChange={(val) => setYear(Number(val))}>
-              <SelectTrigger className="w-[90px] h-8 text-xs">
+              <SelectTrigger className="flex-1 sm:w-[90px] h-8 text-xs">
                 <SelectValue placeholder="Year" />
               </SelectTrigger>
               <SelectContent>
@@ -145,8 +148,8 @@ export function StaffAttendancePage() {
         </CardHeader>
 
         <CardContent>
-          <div className="overflow-x-auto rounded-lg border">
-            <Table>
+          <div className="overflow-x-auto no-scrollbar rounded-lg border">
+            <Table className="min-w-[650px] whitespace-nowrap">
               <TableHeader className="bg-muted/50">
                 <TableRow>
                   <TableHead className="text-xs font-bold">Date & Day</TableHead>

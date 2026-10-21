@@ -1,19 +1,23 @@
-import { CrudPage } from "./CrudPage";
+import { PageHeader, Card } from "./ui";
+import { DataTable, type Column } from "./DataTable";
 
 interface BaseCrmPageProps {
   title: string;
   description?: string;
-  columns: any[];
+  columns: Column[];
   data: any[];
 }
 
 export function BaseCrmPage({ title, description, columns, data }: BaseCrmPageProps) {
   return (
-    <CrudPage
-      title={title}
-      description={description || `Manage your ${title.toLowerCase()} records.`}
-      columns={columns}
-      data={data}
-    />
+    <div className="space-y-6">
+      <PageHeader
+        title={title}
+        description={description || `Manage your ${title.toLowerCase()} records.`}
+      />
+      <Card>
+        <DataTable columns={columns} rows={data} />
+      </Card>
+    </div>
   );
 }

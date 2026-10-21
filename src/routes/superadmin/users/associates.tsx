@@ -252,8 +252,13 @@ export function AssociatesPage() {
 
   const handleAddSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.mobile || !formData.password) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.mobile.trim() || !formData.password.trim()) {
       toast.error("Please fill in all required fields.");
+      setActiveTab("personal");
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(formData.mobile)) {
+      toast.error("Please enter a valid 10-digit mobile number.");
       setActiveTab("personal");
       return;
     }
@@ -733,9 +738,16 @@ export function AssociatesPage() {
                       <Label className="text-xs font-medium">Mobile Number *</Label>
                       <Input
                         name="mobile"
+                        type="tel"
+                        maxLength={10}
                         value={formData.mobile}
-                        onChange={(e) => setFormData({ ...formData, mobile: e.target.value })}
-                        placeholder="9829123456"
+                        onChange={(e) =>
+                          setFormData({
+                            ...formData,
+                            mobile: e.target.value.replace(/\D/g, "").slice(0, 10),
+                          })
+                        }
+                        placeholder="10-digit mobile"
                         className="h-9 rounded-xl text-xs"
                         required
                       />

@@ -687,35 +687,35 @@ function LoginPage() {
 
       {/* Forgot Password Modal */}
       <Dialog open={forgotOpen} onOpenChange={setForgotOpen}>
-        <DialogContent className="sm:max-w-md bg-card text-foreground border-border rounded-[16px] shadow-lg">
-          <DialogHeader>
-            <DialogTitle className="text-[18px] font-bold">Forgot Password</DialogTitle>
-            <DialogDescription className="text-text-secondary text-[13px]">
-              Enter your registered email address to receive a password reset link.
+        <DialogContent className="w-[94vw] sm:max-w-lg md:max-w-xl p-6 sm:p-8 rounded-2xl shadow-2xl bg-card text-foreground border-border">
+          <DialogHeader className="pb-2 border-b border-border">
+            <DialogTitle className="text-xl font-bold">Forgot Password</DialogTitle>
+            <DialogDescription className="text-text-secondary text-sm mt-1">
+              Enter your registered corporate or customer email address to receive an instant secure reset link.
             </DialogDescription>
           </DialogHeader>
-          <form onSubmit={handleForgotPassword} className="space-y-4 py-2">
-            <div className="space-y-1.5">
-              <Label htmlFor="forgot-email" className="text-[12.5px] font-medium">
+          <form onSubmit={handleForgotPassword} className="space-y-4 pt-4">
+            <div>
+              <Label htmlFor="forgot-email" className="text-xs sm:text-sm font-semibold mb-1.5 block">
                 Email Address
               </Label>
               <Input
                 id="forgot-email"
                 type="email"
-                placeholder="you@vrindavan.com"
+                placeholder="you@vrindavanerp.com"
                 value={forgotEmail}
                 onChange={(e) => setForgotEmail(e.target.value)}
                 required
-                className="h-10 rounded-[8px] bg-background border-border text-foreground"
+                className="h-11 rounded-xl bg-background border-border text-foreground text-sm"
               />
             </div>
-            <DialogFooter className="gap-2 pt-2">
+            <DialogFooter className="pt-3 border-t border-border gap-2">
               <DialogClose asChild>
-                <Button type="button" variant="outline" className="rounded-[8px] border-border text-[13px]">
+                <Button type="button" variant="outline" className="rounded-xl h-10 px-5 text-sm">
                   Cancel
                 </Button>
               </DialogClose>
-              <Button type="submit" className="rounded-[8px] bg-brand hover:bg-brand-bright text-white text-[13px]">
+              <Button type="submit" className="rounded-xl h-10 px-6 bg-brand hover:bg-brand/90 text-white text-sm font-semibold shadow-md">
                 Send Reset Link
               </Button>
             </DialogFooter>

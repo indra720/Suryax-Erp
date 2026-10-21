@@ -34,7 +34,7 @@ const initialSlips: SlipItem[] = [
 function PayslipsPage() {
   const { toast } = useToast();
   const [slips, setSlips] = useState<SlipItem[]>(initialSlips);
-  const [employee, setEmployee] = useState(EMPLOYEES[1]);
+  const [employee, setEmployee] = useState<string>(EMPLOYEES[1] ?? "Indrajeet");
   const [month, setMonth] = useState("2026-08");
   const [basic, setBasic] = useState("60000");
   const [deductions, setDeductions] = useState("4500");
@@ -44,12 +44,12 @@ function PayslipsPage() {
     e.preventDefault();
     const newSlip: SlipItem = {
       id: `PAY-${month}-${Date.now().toString().slice(-4)}`,
-      employee,
+      employee: employee || "Employee",
       month,
       basic: Number(basic) || 0,
       deductions: Number(deductions) || 0,
       net: Number(net) || 0,
-      generatedDate: new Date().toISOString().split("T")[0],
+      generatedDate: new Date().toISOString().slice(0, 10),
     };
 
     setSlips([newSlip, ...slips]);
@@ -84,7 +84,7 @@ function PayslipsPage() {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
                 <div>
                   <label className="text-xs font-semibold uppercase text-muted-foreground mb-1 block">Employee *</label>
-                  <Select value={employee} onValueChange={setEmployee}>
+                  <Select value={employee} onValueChange={(val) => setEmployee(val)}>
                     <SelectTrigger className="h-9"><SelectValue placeholder="Select Employee" /></SelectTrigger>
                     <SelectContent>
                       {EMPLOYEES.map(emp => <SelectItem key={emp} value={emp}>{emp}</SelectItem>)}

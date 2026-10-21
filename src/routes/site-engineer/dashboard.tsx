@@ -55,27 +55,27 @@ export function SiteEngineerDashboardPage() {
     <div className="space-y-6 pb-12">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md">
-              <Building className="size-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="inline-flex size-8 sm:size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md shrink-0">
+              <Building className="size-4 sm:size-5" />
             </span>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-foreground">
               Site Construction Dashboard
             </h1>
           </div>
-          <p className="mt-1 text-xs text-text-secondary">
+          <p className="mt-1 text-xs sm:text-sm text-text-secondary line-clamp-2 sm:line-clamp-none">
             On-site civil execution, slab casting velocity, safety metrics, and daily contractor deployments.
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          <Link to="/site-engineer/daily-reports">
-            <Button size="sm" className="h-9 gap-1.5 text-xs bg-brand text-white shadow-sm">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
+          <Link to="/site-engineer/daily-reports" className="flex-1 sm:flex-none">
+            <Button size="sm" className="w-full sm:w-auto h-9 gap-1.5 text-xs bg-brand text-white shadow-sm">
               <Plus className="size-3.5" /> File Daily DPR
             </Button>
           </Link>
-          <Link to="/site-engineer/photos">
-            <Button size="sm" variant="outline" className="h-9 gap-1.5 text-xs">
+          <Link to="/site-engineer/photos" className="flex-1 sm:flex-none">
+            <Button size="sm" variant="outline" className="w-full sm:w-auto h-9 gap-1.5 text-xs border-border">
               <Camera className="size-3.5" /> Upload Site Photos
             </Button>
           </Link>
@@ -83,55 +83,55 @@ export function SiteEngineerDashboardPage() {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="p-4 bg-card border border-border">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
+        <Card className="p-3.5 sm:p-4 bg-card border border-border">
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium text-text-secondary">Overall Completion</span>
-            <span className="size-8 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
+            <span className="size-8 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0">
               <CheckCircle className="size-4" />
             </span>
           </div>
           <div className="mt-2">
-            <span className="text-2xl font-extrabold text-foreground">{kpis.overallCompletionPct}%</span>
+            <span className="text-xl sm:text-2xl font-extrabold text-foreground">{kpis.overallCompletionPct}%</span>
             <p className="text-[11px] text-emerald-600 font-semibold mt-1">4 Active Towers</p>
           </div>
         </Card>
 
-        <Card className="p-4 bg-card border border-border">
+        <Card className="p-3.5 sm:p-4 bg-card border border-border">
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium text-text-secondary">Active Labor On Site</span>
-            <span className="size-8 rounded-lg bg-purple-500/10 text-purple-600 flex items-center justify-center">
+            <span className="size-8 rounded-lg bg-purple-500/10 text-purple-600 flex items-center justify-center shrink-0">
               <Users className="size-4" />
             </span>
           </div>
           <div className="mt-2">
-            <span className="text-2xl font-extrabold text-foreground">{kpis.activeLaborOnSite} Workers</span>
+            <span className="text-xl sm:text-2xl font-extrabold text-foreground">{kpis.activeLaborOnSite} Workers</span>
             <p className="text-[11px] text-purple-600 font-semibold mt-1">Across 4 Subcontractors</p>
           </div>
         </Card>
 
-        <Card className="p-4 bg-card border border-border">
+        <Card className="p-3.5 sm:p-4 bg-card border border-border">
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium text-text-secondary">Concrete Poured MTD</span>
-            <span className="size-8 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center">
+            <span className="size-8 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center shrink-0">
               <Building className="size-4" />
             </span>
           </div>
           <div className="mt-2">
-            <span className="text-2xl font-extrabold text-foreground">{kpis.concretePouredMTD} m³</span>
+            <span className="text-xl sm:text-2xl font-extrabold text-foreground">{kpis.concretePouredMTD} m³</span>
             <p className="text-[11px] text-blue-600 font-semibold mt-1">M35 Grade High Strength</p>
           </div>
         </Card>
 
-        <Card className="p-4 bg-card border border-border">
+        <Card className="p-3.5 sm:p-4 bg-card border border-border">
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium text-text-secondary">Safety Record</span>
-            <span className="size-8 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center">
+            <span className="size-8 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0">
               <ShieldCheck className="size-4" />
             </span>
           </div>
           <div className="mt-2">
-            <span className="text-2xl font-extrabold text-foreground">{kpis.accidentFreeDays} Days</span>
+            <span className="text-xl sm:text-2xl font-extrabold text-foreground">{kpis.accidentFreeDays} Days</span>
             <p className="text-[11px] text-emerald-600 font-semibold mt-1">Zero Lost Time Incidents</p>
           </div>
         </Card>

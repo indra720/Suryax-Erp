@@ -373,32 +373,34 @@ export function SuperadminProductivityPage() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2.5">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => loadProductivityData(true)}
-            disabled={refreshing || loading}
-            className="rounded-xl border-border/80 hover:bg-muted text-xs h-9"
-          >
-            <RefreshCw className={`size-3.5 mr-1.5 ${refreshing ? "animate-spin text-brand" : ""}`} />
-            Refresh
-          </Button>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => loadProductivityData(true)}
+              disabled={refreshing || loading}
+              className="flex-1 sm:flex-none rounded-xl border-border/80 hover:bg-muted text-xs h-8.5 sm:h-9"
+            >
+              <RefreshCw className={`size-3.5 mr-1.5 ${refreshing ? "animate-spin text-brand" : ""}`} />
+              Refresh
+            </Button>
 
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={handleExportCSV}
-            className="rounded-xl border-border/80 hover:bg-muted text-xs h-9"
-          >
-            <Download className="size-3.5 mr-1.5 text-success" />
-            Export CSV
-          </Button>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleExportCSV}
+              className="flex-1 sm:flex-none rounded-xl border-border/80 hover:bg-muted text-xs h-8.5 sm:h-9"
+            >
+              <Download className="size-3.5 mr-1.5 text-success" />
+              Export CSV
+            </Button>
+          </div>
 
-          <Link to="/superadmin/reports/earnings">
+          <Link to="/superadmin/reports/earnings" className="w-full sm:w-auto">
             <Button
               size="sm"
-              className="bg-brand hover:bg-brand-bright text-white rounded-xl shadow-sm text-xs h-9 font-semibold"
+              className="w-full sm:w-auto bg-brand hover:bg-brand-bright text-white rounded-xl shadow-sm text-xs h-8.5 sm:h-9 font-semibold"
             >
               <DollarSign className="size-3.5 mr-1.5" />
               Earnings &amp; Incentives
@@ -412,26 +414,26 @@ export function SuperadminProductivityPage() {
         <Tabs
           value={activeTab}
           onValueChange={(val: any) => setActiveTab(val)}
-          className="w-full sm:w-auto"
+          className="w-full sm:w-auto overflow-x-auto no-scrollbar"
         >
-          <TabsList className="bg-muted/80 p-1 rounded-xl h-11 border border-border/60">
+          <TabsList className="bg-muted/80 p-1 rounded-xl h-10 sm:h-11 border border-border/60 shrink-0">
             <TabsTrigger
               value="staff"
-              className="rounded-lg text-xs font-semibold px-4 data-[state=active]:bg-brand data-[state=active]:text-white transition-all"
+              className="rounded-lg text-xs font-semibold px-3 sm:px-4 data-[state=active]:bg-brand data-[state=active]:text-white transition-all whitespace-nowrap"
             >
               <PhoneCall className="size-3.5 mr-1.5" />
               Staff Callers
             </TabsTrigger>
             <TabsTrigger
               value="team-leader"
-              className="rounded-lg text-xs font-semibold px-4 data-[state=active]:bg-brand data-[state=active]:text-white transition-all"
+              className="rounded-lg text-xs font-semibold px-3 sm:px-4 data-[state=active]:bg-brand data-[state=active]:text-white transition-all whitespace-nowrap"
             >
               <Briefcase className="size-3.5 mr-1.5" />
               Team Leaders
             </TabsTrigger>
             <TabsTrigger
               value="associates"
-              className="rounded-lg text-xs font-semibold px-4 data-[state=active]:bg-brand data-[state=active]:text-white transition-all"
+              className="rounded-lg text-xs font-semibold px-3 sm:px-4 data-[state=active]:bg-brand data-[state=active]:text-white transition-all whitespace-nowrap"
             >
               <UsersRound className="size-3.5 mr-1.5" />
               Channel Associates
@@ -440,30 +442,30 @@ export function SuperadminProductivityPage() {
         </Tabs>
 
         {/* Quick Date Presets */}
-        <div className="flex items-center gap-1.5 text-xs">
+        <div className="flex items-center gap-1.5 text-xs overflow-x-auto no-scrollbar pb-1 shrink-0">
           <span className="text-text-muted font-medium mr-1 hidden sm:inline">Range:</span>
           <button
             onClick={() => setPreset("today")}
-            className="px-2.5 py-1 rounded-lg bg-card border border-border/70 hover:bg-muted text-text-secondary text-[11px] font-medium"
+            className="px-2.5 py-1 rounded-lg bg-card border border-border/70 hover:bg-muted text-text-secondary text-[11px] font-medium whitespace-nowrap shrink-0"
           >
             Today
           </button>
           <button
             onClick={() => setPreset("week")}
-            className="px-2.5 py-1 rounded-lg bg-card border border-border/70 hover:bg-muted text-text-secondary text-[11px] font-medium"
+            className="px-2.5 py-1 rounded-lg bg-card border border-border/70 hover:bg-muted text-text-secondary text-[11px] font-medium whitespace-nowrap shrink-0"
           >
             7 Days
           </button>
           <button
             onClick={() => setPreset("month")}
-            className="px-2.5 py-1 rounded-lg bg-card border border-border/70 hover:bg-muted text-text-secondary text-[11px] font-medium"
+            className="px-2.5 py-1 rounded-lg bg-card border border-border/70 hover:bg-muted text-text-secondary text-[11px] font-medium whitespace-nowrap shrink-0"
           >
             This Month
           </button>
           {(startDate || endDate) && (
             <button
               onClick={() => setPreset("clear")}
-              className="px-2.5 py-1 rounded-lg bg-danger-soft text-danger text-[11px] font-medium"
+              className="px-2.5 py-1 rounded-lg bg-danger-soft text-danger text-[11px] font-medium whitespace-nowrap shrink-0"
             >
               Clear
             </button>
@@ -472,7 +474,7 @@ export function SuperadminProductivityPage() {
       </div>
 
       {/* Top 5 Performance KPI Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-3.5">
         <div className="bg-card border border-border/70 rounded-2xl p-4 shadow-card hover:shadow-md transition-all">
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-semibold text-text-muted uppercase tracking-wider">
@@ -552,66 +554,69 @@ export function SuperadminProductivityPage() {
       {/* Main Productivity Card */}
       <Card className="border border-border/70 rounded-2xl shadow-card bg-card overflow-hidden">
         {/* Filters and Search Bar */}
-        <div className="p-4 sm:p-5 border-b border-border/70 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 bg-muted/20">
-          <div className="flex flex-1 flex-wrap items-center gap-3">
+        <div className="p-3.5 sm:p-5 border-b border-border/70 flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3 bg-muted/20">
+          <div className="flex flex-col sm:flex-row flex-1 items-stretch sm:items-center gap-2 w-full">
             {/* Search Input */}
-            <div className="relative flex-1 min-w-[200px] max-w-xs">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-text-muted" />
+            <div className="relative flex-1 w-full">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-3.5 text-text-muted" />
               <Input
                 placeholder="Search staff or agent..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="pl-9 h-10 rounded-xl bg-background border-border/70 text-xs focus-visible:ring-brand"
+                className="pl-8 h-8.5 sm:h-9 rounded-xl bg-background border-border/70 text-xs focus-visible:ring-brand w-full"
               />
             </div>
 
-            {/* Admin Filter */}
-            {activeTab !== "associates" && (
-              <div className="w-44">
-                <Select value={selectedAdmin} onValueChange={setSelectedAdmin}>
-                  <SelectTrigger className="h-10 rounded-xl bg-background border-border/70 text-xs">
-                    <SelectValue placeholder="All Admins" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="all-admins">All Admins</SelectItem>
-                    {admins.map((adm) => (
-                      <SelectItem key={adm.id} value={String(adm.id)}>
-                        {adm.name || adm.user?.first_name || `Admin #${adm.id}`}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-            )}
+            <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 w-full sm:w-auto">
+              {/* Admin Filter */}
+              {activeTab !== "associates" && (
+                <div className="flex-1 sm:w-44">
+                  <Select value={selectedAdmin} onValueChange={setSelectedAdmin}>
+                    <SelectTrigger className="h-8.5 sm:h-9 rounded-xl bg-background border-border/70 text-xs w-full">
+                      <SelectValue placeholder="All Admins" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all-admins">All Admins</SelectItem>
+                      {admins.map((adm) => (
+                        <SelectItem key={adm.id} value={String(adm.id)}>
+                          {adm.name || adm.user?.first_name || `Admin #${adm.id}`}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              )}
 
-            {/* Date Pickers */}
-            <div className="flex items-center gap-2">
-              <Input
-                type="date"
-                value={startDate}
-                onChange={(e) => setStartDate(e.target.value)}
-                className="h-10 rounded-xl bg-background border-border/70 text-xs w-36"
-                title="Start Date"
-              />
-              <span className="text-xs text-text-muted">to</span>
-              <Input
-                type="date"
-                value={endDate}
-                onChange={(e) => setEndDate(e.target.value)}
-                className="h-10 rounded-xl bg-background border-border/70 text-xs w-36"
-                title="End Date"
-              />
+              {/* Date Pickers */}
+              <div className="flex items-center gap-1.5 flex-1 sm:flex-none w-full sm:w-auto">
+                <Input
+                  type="date"
+                  value={startDate}
+                  onChange={(e) => setStartDate(e.target.value)}
+                  className="h-8.5 sm:h-9 rounded-xl bg-background border-border/70 text-xs flex-1 sm:w-32"
+                  title="Start Date"
+                />
+                <span className="text-xs text-text-muted">to</span>
+                <Input
+                  type="date"
+                  value={endDate}
+                  onChange={(e) => setEndDate(e.target.value)}
+                  className="h-8.5 sm:h-9 rounded-xl bg-background border-border/70 text-xs flex-1 sm:w-32"
+                  title="End Date"
+                />
+              </div>
             </div>
           </div>
 
-          <div className="text-xs text-text-muted self-end md:self-center font-medium">
-            Showing <span className="font-bold text-foreground">{filteredData.length}</span> Members
+          <div className="flex items-center justify-between md:justify-end gap-3 text-xs text-text-muted font-medium">
+            <span className="text-[10px] sm:hidden text-text-muted font-normal">Swipe horizontally →</span>
+            <span>Showing <span className="font-bold text-foreground">{filteredData.length}</span> Members</span>
           </div>
         </div>
 
         {/* Productivity Table */}
-        <div className="overflow-x-auto">
-          <table className="w-full text-left border-collapse min-w-[800px] sm:min-w-full">
+        <div className="overflow-x-auto no-scrollbar">
+          <table className="w-full text-left border-collapse min-w-[850px] whitespace-nowrap">
             <thead>
               <tr className="border-b border-border/60 bg-muted/30 text-[11px] font-bold uppercase tracking-wider text-text-secondary">
                 <th className="py-3 px-4 w-12 text-center">S.N.</th>

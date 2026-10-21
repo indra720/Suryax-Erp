@@ -241,142 +241,150 @@ export function TeamLeaderProfilePage() {
 
       {/* Edit Profile Dialog */}
       <Dialog open={isEditDialogOpen} onOpenChange={setIsEditDialogOpen}>
-        <DialogContent className="sm:max-w-2xl max-h-[90vh] p-0 overflow-hidden flex flex-col rounded-2xl">
-          <DialogHeader className="p-4 sm:p-5 border-b bg-gray-50/50">
-            <DialogTitle className="text-base sm:text-lg font-bold">Edit Team Leader Profile</DialogTitle>
-            <DialogDescription className="text-xs text-gray-500">
-              Update personal information, address, and password credentials.
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-4xl max-h-[90vh] p-0 overflow-hidden flex flex-col rounded-2xl shadow-2xl bg-card border-border">
+          <DialogHeader className="p-4 sm:p-6 border-b border-border bg-muted/20 shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold">Edit Team Leader Profile</DialogTitle>
+            <DialogDescription className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Update personal information, UPI settlement details, address, and password credentials.
             </DialogDescription>
           </DialogHeader>
 
-          <form onSubmit={handleUpdate} className="flex-1 overflow-y-auto flex flex-col">
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col">
-              <div className="px-4 sm:px-5 pt-3 border-b">
+          <form onSubmit={handleUpdate} className="flex-1 overflow-hidden flex flex-col">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col overflow-hidden">
+              <div className="px-4 sm:px-6 pt-3 border-b border-border shrink-0">
                 <TabsList className="grid w-full grid-cols-2">
-                  <TabsTrigger value="personal" className="text-xs">Profile Details</TabsTrigger>
-                  <TabsTrigger value="security" className="text-xs">Password &amp; Security</TabsTrigger>
+                  <TabsTrigger value="personal" className="text-xs sm:text-sm">Profile Details</TabsTrigger>
+                  <TabsTrigger value="security" className="text-xs sm:text-sm">Password &amp; Security</TabsTrigger>
                 </TabsList>
               </div>
 
-              <div className="p-4 sm:p-5 space-y-4 flex-1">
+              <div className="p-4 sm:p-6 space-y-4 flex-1 overflow-y-auto">
                 {activeTab === "personal" && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
-                    <div className="space-y-1">
-                      <Label className="text-xs font-medium">Full Name</Label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                      <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Full Name</Label>
                       <Input
                         name="name"
                         value={editForm.name || ""}
                         onChange={handleEditChange}
-                        className="h-9 text-xs"
+                        className="h-10 sm:h-11 text-sm rounded-xl"
                       />
                     </div>
-                    <div className="space-y-1">
-                      <Label className="text-xs font-medium">Email Address</Label>
+                    <div>
+                      <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Email Address</Label>
                       <Input
                         name="email"
                         value={editForm.email || ""}
                         onChange={handleEditChange}
-                        className="h-9 text-xs"
+                        className="h-10 sm:h-11 text-sm rounded-xl"
                       />
                     </div>
-                    <div className="space-y-1">
-                      <Label className="text-xs font-medium">Mobile Number</Label>
+                    <div>
+                      <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Mobile Number (10 digits)</Label>
                       <Input
+                        type="tel"
+                        maxLength={10}
                         name="mobile"
                         value={editForm.mobile || ""}
-                        onChange={handleEditChange}
-                        className="h-9 text-xs"
+                        onChange={(e) =>
+                          setEditForm({
+                            ...editForm,
+                            mobile: e.target.value.replace(/\D/g, "").slice(0, 10),
+                          })
+                        }
+                        placeholder="10-digit mobile"
+                        className="h-10 sm:h-11 text-sm rounded-xl"
                       />
                     </div>
-                    <div className="space-y-1">
-                      <Label className="text-xs font-medium">UPI ID</Label>
+                    <div>
+                      <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">UPI ID</Label>
                       <Input
                         name="upi_id"
                         value={editForm.upi_id || ""}
                         onChange={handleEditChange}
-                        className="h-9 text-xs"
+                        placeholder="username@upi"
+                        className="h-10 sm:h-11 text-sm rounded-xl"
                       />
                     </div>
-                    <div className="space-y-1">
-                      <Label className="text-xs font-medium">City</Label>
+                    <div>
+                      <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">City</Label>
                       <Input
                         name="city"
                         value={editForm.city || ""}
                         onChange={handleEditChange}
-                        className="h-9 text-xs"
+                        className="h-10 sm:h-11 text-sm rounded-xl"
                       />
                     </div>
-                    <div className="space-y-1">
-                      <Label className="text-xs font-medium">Pincode</Label>
+                    <div>
+                      <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Pincode</Label>
                       <Input
                         name="pincode"
+                        maxLength={6}
                         value={editForm.pincode || ""}
                         onChange={handleEditChange}
-                        className="h-9 text-xs"
+                        className="h-10 sm:h-11 text-sm rounded-xl"
                       />
                     </div>
-                    <div className="col-span-1 sm:col-span-2 space-y-1">
-                      <Label className="text-xs font-medium">Address</Label>
+                    <div className="col-span-1 sm:col-span-2">
+                      <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Permanent / Operational Address</Label>
                       <Textarea
                         name="address"
                         value={editForm.address || ""}
                         onChange={handleEditChange}
-                        className="min-h-[60px] text-xs"
+                        className="min-h-[80px] text-sm rounded-xl p-3"
                       />
                     </div>
                   </div>
                 )}
 
                 {activeTab === "security" && (
-                  <div className="space-y-3.5 max-w-md">
-                    <div className="space-y-1 relative">
-                      <Label className="text-xs font-medium">New Password</Label>
+                  <div className="space-y-4 max-w-lg">
+                    <div>
+                      <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">New Password</Label>
                       <div className="relative">
                         <Input
                           type={showPassword ? "text" : "password"}
                           value={newPassword}
                           onChange={(e) => setNewPassword(e.target.value)}
                           placeholder="Leave blank to keep unchanged"
-                          className="h-9 text-xs pr-8"
+                          className="h-10 sm:h-11 text-sm rounded-xl pr-10"
                         />
                         <button
                           type="button"
                           onClick={() => setShowPassword(!showPassword)}
-                          className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
+                          className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground"
                         >
-                          {showPassword ? <EyeOff className="size-3.5" /> : <Eye className="size-3.5" />}
+                          {showPassword ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
                         </button>
                       </div>
                     </div>
-                    <div className="space-y-1">
-                      <Label className="text-xs font-medium">Confirm New Password</Label>
+                    <div>
+                      <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Confirm New Password</Label>
                       <Input
                         type="password"
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        placeholder="Re-enter password"
-                        className="h-9 text-xs"
+                        placeholder="Re-enter new password"
+                        className="h-10 sm:h-11 text-sm rounded-xl"
                       />
                     </div>
                   </div>
                 )}
               </div>
 
-              <DialogFooter className="p-3 sm:p-4 border-t bg-gray-50/50 flex justify-end gap-2">
+              <DialogFooter className="p-4 sm:p-5 border-t border-border bg-muted/20 shrink-0 flex justify-end gap-2">
                 <Button
                   type="button"
                   variant="outline"
-                  size="sm"
                   onClick={() => setIsEditDialogOpen(false)}
-                  className="text-xs"
+                  className="rounded-xl h-10 px-5 text-sm"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
-                  size="sm"
                   disabled={saving}
-                  className="text-xs bg-[#6732F2] hover:bg-[#5524cf] text-white font-semibold"
+                  className="rounded-xl h-10 px-6 text-sm bg-brand hover:bg-brand/90 text-white font-semibold shadow-md"
                 >
                   {saving ? "Saving Changes..." : "Save Profile"}
                 </Button>

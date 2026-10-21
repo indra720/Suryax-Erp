@@ -51,8 +51,12 @@ export function BrokerLeadsPage() {
 
   const handleCreate = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newLead.clientName || !newLead.phone) {
-      toast.error("Please fill in client name and contact phone");
+    if (!newLead.clientName.trim()) {
+      toast.error("Please fill in client name");
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(newLead.phone)) {
+      toast.error("Please enter a valid 10-digit mobile number");
       return;
     }
     const created: BrokerLead = {
@@ -65,7 +69,7 @@ export function BrokerLeadsPage() {
       budgetRange: newLead.budgetRange,
       stage: "Lead Submitted",
       assignedSalesManager: "Rajesh Malhotra",
-      submittedAt: new Date().toISOString().split("T")[0],
+      submittedAt: new Date().toISOString().slice(0, 10),
       notes: newLead.notes || "Registered via Channel Partner Portal.",
     };
     setLeads([created, ...leads]);
@@ -122,35 +126,35 @@ export function BrokerLeadsPage() {
       </Card>
 
       <Card className="bg-card border border-border overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left border-collapse">
-            <thead className="bg-muted/50 border-b border-border text-text-secondary font-semibold">
+        <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+          <table className="w-full text-xs sm:text-sm text-left border-collapse min-w-[850px] whitespace-nowrap">
+            <thead className="bg-muted/70 border-b border-border text-text-secondary font-semibold uppercase tracking-wider text-[11px]">
               <tr>
-                <th className="py-3 px-4">Client Name & Phone</th>
-                <th className="py-3 px-4">Project & Unit</th>
-                <th className="py-3 px-4">Budget Range</th>
-                <th className="py-3 px-4">Sales Manager Assigned</th>
-                <th className="py-3 px-4">Registered Date</th>
-                <th className="py-3 px-4">Status / CRM Stage</th>
+                <th className="py-3 px-4 font-semibold whitespace-nowrap">Client Name & Phone</th>
+                <th className="py-3 px-4 font-semibold whitespace-nowrap">Project & Unit</th>
+                <th className="py-3 px-4 font-semibold whitespace-nowrap">Budget Range</th>
+                <th className="py-3 px-4 font-semibold whitespace-nowrap">Sales Manager Assigned</th>
+                <th className="py-3 px-4 font-semibold whitespace-nowrap">Registered Date</th>
+                <th className="py-3 px-4 font-semibold whitespace-nowrap text-center">Status / CRM Stage</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {filtered.map((l) => (
                 <tr key={l.id} className="hover:bg-muted/30 transition-colors">
-                  <td className="py-3.5 px-4">
+                  <td className="py-3.5 px-4 whitespace-nowrap">
                     <p className="font-bold text-foreground">{l.clientName}</p>
                     <p className="text-[11px] text-text-secondary">{l.phone}</p>
                   </td>
-                  <td className="py-3.5 px-4">
+                  <td className="py-3.5 px-4 whitespace-nowrap">
                     <p className="font-semibold text-foreground">{l.interestedProject}</p>
                     <p className="text-[11px] text-text-muted">{l.unitType}</p>
                   </td>
-                  <td className="py-3.5 px-4 font-bold text-brand">{l.budgetRange}</td>
-                  <td className="py-3.5 px-4 text-foreground font-medium">{l.assignedSalesManager}</td>
-                  <td className="py-3.5 px-4 text-text-secondary">{l.submittedAt}</td>
-                  <td className="py-3.5 px-4">
+                  <td className="py-3.5 px-4 font-bold text-brand whitespace-nowrap">{l.budgetRange}</td>
+                  <td className="py-3.5 px-4 text-foreground font-medium whitespace-nowrap">{l.assignedSalesManager}</td>
+                  <td className="py-3.5 px-4 text-text-secondary whitespace-nowrap">{l.submittedAt}</td>
+                  <td className="py-3.5 px-4 text-center whitespace-nowrap">
                     <span
-                      className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
+                      className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold ${
                         l.stage === "Deal Closed Won"
                           ? "bg-emerald-500/10 text-emerald-600"
                           : l.stage === "Booking Token Received"
@@ -170,63 +174,85 @@ export function BrokerLeadsPage() {
 
       {/* Modal to Register Lead */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="max-w-md bg-card text-foreground border-border">
-          <DialogHeader>
-            <DialogTitle>Register New Prospective Buyer</DialogTitle>
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
+              Register New Prospective Buyer
+            </DialogTitle>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Lock in your prospective client registration for direct developer attribution and priority visits.
+            </p>
           </DialogHeader>
-          <form onSubmit={handleCreate} className="space-y-3.5 py-2">
-            <div>
-              <Label className="text-xs">Client Full Name</Label>
-              <Input
-                placeholder="Client Name"
-                value={newLead.clientName}
-                onChange={(e) => setNewLead({ ...newLead, clientName: e.target.value })}
-                className="h-9 text-xs mt-1"
-                required
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-3">
+
+          <form onSubmit={handleCreate} className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Client Full Name</Label>
+                  <Input
+                    placeholder="Full legal name"
+                    value={newLead.clientName}
+                    onChange={(e) => setNewLead({ ...newLead, clientName: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Phone Number (10 digits)</Label>
+                  <Input
+                    type="tel"
+                    maxLength={10}
+                    placeholder="10-digit mobile"
+                    value={newLead.phone}
+                    onChange={(e) =>
+                      setNewLead({
+                        ...newLead,
+                        phone: e.target.value.replace(/\D/g, "").slice(0, 10),
+                      })
+                    }
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Target Project</Label>
+                  <Input
+                    placeholder="e.g. Vrindavan Heights"
+                    value={newLead.interestedProject}
+                    onChange={(e) => setNewLead({ ...newLead, interestedProject: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Budget Range</Label>
+                  <Input
+                    placeholder="e.g. ₹60L - ₹85L"
+                    value={newLead.budgetRange}
+                    onChange={(e) => setNewLead({ ...newLead, budgetRange: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+              </div>
+
               <div>
-                <Label className="text-xs">Phone Number</Label>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Remarks / Specific Requirements</Label>
                 <Input
-                  placeholder="+91 XXXXX XXXXX"
-                  value={newLead.phone}
-                  onChange={(e) => setNewLead({ ...newLead, phone: e.target.value })}
-                  className="h-9 text-xs mt-1"
-                  required
+                  placeholder="e.g. Needs higher floor, park facing, ready for site visit this weekend"
+                  value={newLead.notes}
+                  onChange={(e) => setNewLead({ ...newLead, notes: e.target.value })}
+                  className="h-10 sm:h-11 text-sm rounded-xl"
                 />
               </div>
-              <div>
-                <Label className="text-xs">Budget Range</Label>
-                <Input
-                  value={newLead.budgetRange}
-                  onChange={(e) => setNewLead({ ...newLead, budgetRange: e.target.value })}
-                  className="h-9 text-xs mt-1"
-                />
-              </div>
             </div>
-            <div>
-              <Label className="text-xs">Target Project</Label>
-              <Input
-                value={newLead.interestedProject}
-                onChange={(e) => setNewLead({ ...newLead, interestedProject: e.target.value })}
-                className="h-9 text-xs mt-1"
-              />
-            </div>
-            <div>
-              <Label className="text-xs">Remarks / Requirements</Label>
-              <Input
-                placeholder="e.g. Needs higher floor park facing"
-                value={newLead.notes}
-                onChange={(e) => setNewLead({ ...newLead, notes: e.target.value })}
-                className="h-9 text-xs mt-1"
-              />
-            </div>
-            <DialogFooter className="mt-4">
-              <Button type="button" variant="outline" size="sm" onClick={() => setModalOpen(false)}>
+
+            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+              <Button type="button" variant="outline" onClick={() => setModalOpen(false)} className="rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" className="bg-brand text-white">
+              <Button type="submit" className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
                 Submit Lead
               </Button>
             </DialogFooter>

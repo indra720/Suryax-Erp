@@ -177,7 +177,7 @@ export function TeamLeaderStaffLeadsPage() {
       </Card>
 
       {/* Tag Navigation Tabs */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-1">
+      <div className="flex items-center gap-1.5 overflow-x-auto no-scrollbar pb-1 -mx-4 px-4 sm:mx-0 sm:px-0">
         {tags.map((t) => (
           <Button
             key={t}
@@ -185,7 +185,7 @@ export function TeamLeaderStaffLeadsPage() {
             variant={selectedTag === t ? "default" : "outline"}
             onClick={() => setSelectedTag(t)}
             className={cn(
-              "h-8 text-xs font-semibold shrink-0",
+              "h-8 text-xs font-semibold shrink-0 whitespace-nowrap",
               selectedTag === t && "bg-[#6732F2] hover:bg-[#5524cf] text-white"
             )}
           >
@@ -197,16 +197,19 @@ export function TeamLeaderStaffLeadsPage() {
       {/* Staff Leads Table */}
       <Card className="border rounded-xl bg-white shadow-xs overflow-hidden">
         <CardHeader className="p-3 sm:p-4 border-b">
-          <CardTitle className="text-sm sm:text-base font-bold text-gray-900">
-            {selectedTag} Leads ({leads.length})
-          </CardTitle>
+          <div className="flex items-center justify-between">
+            <CardTitle className="text-sm sm:text-base font-bold text-gray-900">
+              {selectedTag} Leads ({leads.length})
+            </CardTitle>
+            <span className="text-[10px] sm:hidden text-text-muted font-normal">Swipe horizontally →</span>
+          </div>
           <CardDescription className="text-xs text-gray-500">
             Customer inquiries logged by staff #{staffId} tagged as {selectedTag}.
           </CardDescription>
         </CardHeader>
         <CardContent className="p-0">
-          <div className="overflow-x-auto">
-            <Table>
+          <div className="overflow-x-auto no-scrollbar">
+            <Table className="min-w-[650px] whitespace-nowrap">
               <TableHeader>
                 <TableRow className="bg-gray-50 text-[11px] font-semibold text-gray-600 uppercase">
                   <TableHead className="w-12 text-center">S.N.</TableHead>

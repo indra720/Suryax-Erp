@@ -172,13 +172,21 @@ export function AdminTeamLeaderPage() {
 
   const handleAddFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+    if (name === "mobile") {
+      setFormData((prev) => ({ ...prev, [name]: value.replace(/\D/g, "").slice(0, 10) }));
+      return;
+    }
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleAddSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.mobile || !formData.password) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.mobile.trim() || !formData.password.trim()) {
       toast.error("Please fill required fields (Name, Email, Mobile, Password).");
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(formData.mobile)) {
+      toast.error("Mobile number must be a valid 10-digit number.");
       return;
     }
     setSubmitting(true);
@@ -236,12 +244,12 @@ export function AdminTeamLeaderPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
           <Button
             variant="outline"
             size="sm"
             onClick={loadData}
-            className="flex items-center gap-1.5 text-xs font-semibold"
+            className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 text-xs font-semibold h-8.5 sm:h-9 whitespace-nowrap"
           >
             <RefreshCw className={`size-3.5 ${loading ? "animate-spin" : ""}`} />
             Refresh
@@ -249,16 +257,16 @@ export function AdminTeamLeaderPage() {
           <Button
             size="sm"
             onClick={handleOpenAddForm}
-            className="flex items-center gap-1.5 text-xs font-semibold bg-brand hover:bg-brand-dark text-white"
+            className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 text-xs font-semibold bg-brand hover:bg-brand-dark text-white h-8.5 sm:h-9 whitespace-nowrap"
           >
             <PlusCircle className="size-4" />
-            Add Team Leader
+            <span>Add Team Leader</span>
           </Button>
         </div>
       </div>
 
       {/* KPI Cards with Icons */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-3.5">
         {kpiCards.map((kpi) => {
           const Icon = kpi.icon;
           const val = kpis[kpi.key] ?? 0;
@@ -271,7 +279,7 @@ export function AdminTeamLeaderPage() {
                     <Icon className={`size-4 ${kpi.color}`} />
                   </div>
                 </div>
-                <div className={`mt-2 text-xl font-black ${kpi.color}`}>{val}</div>
+                <div className={`mt-2 text-lg sm:text-xl font-black ${kpi.color}`}>{val}</div>
               </CardContent>
             </Card>
           );
@@ -288,31 +296,31 @@ export function AdminTeamLeaderPage() {
               placeholder="Search by name, email, phone..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 h-9 text-xs"
+              className="pl-9 h-8.5 sm:h-9 text-xs"
             />
           </div>
 
-          <div className="flex items-center gap-2 w-full md:w-auto">
-            <div className="flex items-center gap-1.5 text-xs text-gray-600">
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 w-full md:w-auto">
+            <div className="flex items-center gap-1.5 text-xs text-gray-600 shrink-0">
               <Calendar className="size-4 text-brand" />
-              <span className="font-semibold">Start Date:</span>
+              <span className="font-semibold hidden sm:inline">Start Date:</span>
               <Input
                 type="date"
                 value={startDate}
                 onChange={(e) => setStartDate(e.target.value)}
                 onClick={(e) => e.currentTarget.showPicker?.()}
-                className="h-8 text-xs w-36 cursor-pointer bg-gray-50 border-gray-300 font-medium"
+                className="h-8 text-xs w-32 sm:w-36 cursor-pointer bg-gray-50 border-gray-300 font-medium"
               />
             </div>
-            <div className="flex items-center gap-1.5 text-xs text-gray-600">
+            <div className="flex items-center gap-1.5 text-xs text-gray-600 shrink-0">
               <Calendar className="size-4 text-brand" />
-              <span className="font-semibold">End Date:</span>
+              <span className="font-semibold hidden sm:inline">End Date:</span>
               <Input
                 type="date"
                 value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
                 onClick={(e) => e.currentTarget.showPicker?.()}
-                className="h-8 text-xs w-36 cursor-pointer bg-gray-50 border-gray-300 font-medium"
+                className="h-8 text-xs w-32 sm:w-36 cursor-pointer bg-gray-50 border-gray-300 font-medium"
               />
             </div>
             {(startDate || endDate) && (
@@ -320,7 +328,7 @@ export function AdminTeamLeaderPage() {
                 variant="ghost"
                 size="sm"
                 onClick={() => { setStartDate(""); setEndDate(""); }}
-                className="h-8 text-xs text-red-600"
+                className="h-8 text-xs text-red-600 shrink-0 whitespace-nowrap"
               >
                 <X className="size-3.5 mr-1" /> Clear
               </Button>
@@ -331,8 +339,12 @@ export function AdminTeamLeaderPage() {
 
       {/* Team Leaders Table with Exact CrmAttendance2 Columns */}
       <Card className="border rounded-xl bg-white shadow-xs overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
+        <div className="p-3 sm:p-4 border-b flex items-center justify-between sm:hidden">
+          <span className="text-xs font-semibold text-gray-700">Team Leaders</span>
+          <span className="text-[10px] text-text-muted">Swipe horizontally →</span>
+        </div>
+        <div className="overflow-x-auto no-scrollbar">
+          <table className="w-full text-left text-xs min-w-[750px] whitespace-nowrap">
             <thead className="bg-gray-50 border-b text-gray-600 font-semibold uppercase tracking-wider text-[10px]">
               <tr>
                 <th className="px-4 py-3">S.N.</th>
@@ -514,8 +526,10 @@ export function AdminTeamLeaderPage() {
                       <Phone className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
                       <Input
                         required
+                        type="tel"
+                        maxLength={10}
                         name="mobile"
-                        placeholder="9876543210"
+                        placeholder="10-digit mobile"
                         value={formData.mobile}
                         onChange={handleAddFormChange}
                         className="pl-9 h-10 text-xs"

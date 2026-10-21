@@ -82,32 +82,34 @@ export function SocialMediaPage() {
     <div className="space-y-6 pb-12">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md">
-              <Share2 className="size-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="inline-flex size-8 sm:size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md shrink-0">
+              <Share2 className="size-4 sm:size-5" />
             </span>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-foreground">
               Social Media Manager
             </h1>
           </div>
-          <p className="mt-1 text-xs text-text-secondary">
+          <p className="mt-1 text-xs sm:text-sm text-text-secondary line-clamp-2 sm:line-clamp-none">
             Manage multi-channel social media posts, content scheduling and engagement analytics.
           </p>
         </div>
 
-        <Button
-          size="sm"
-          onClick={() => setOpenModal(true)}
-          className="h-9 gap-1.5 text-xs bg-brand text-white shadow-sm"
-        >
-          <Plus className="size-3.5" /> Schedule New Post
-        </Button>
+        <div className="w-full sm:w-auto">
+          <Button
+            size="sm"
+            onClick={() => setOpenModal(true)}
+            className="w-full sm:w-auto h-9 gap-1.5 text-xs bg-brand text-white shadow-sm justify-center"
+          >
+            <Plus className="size-3.5" /> Schedule New Post
+          </Button>
+        </div>
       </div>
 
       {/* Grid of Posts */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3.5 sm:gap-4">
         {posts.map((post) => (
-          <Card key={post.id} className="p-4 bg-card border border-border shadow-sm hover:border-brand/40 transition-all flex flex-col justify-between">
+          <Card key={post.id} className="p-3.5 sm:p-4 bg-card border border-border shadow-sm hover:border-brand/40 transition-all flex flex-col justify-between">
             <div>
               <div className="flex items-center justify-between text-xs mb-2">
                 <span className="px-2 py-0.5 rounded font-bold bg-brand/10 text-brand">
@@ -157,59 +159,67 @@ export function SocialMediaPage() {
 
       {/* Modal */}
       <Dialog open={openModal} onOpenChange={setOpenModal}>
-        <DialogContent className="max-w-md bg-card text-foreground">
-          <DialogHeader>
-            <DialogTitle className="text-base font-bold flex items-center gap-2">
-              <Share2 className="size-4 text-brand" /> Schedule Social Post
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
+              <Share2 className="size-5 text-brand" /> Schedule Social Post
             </DialogTitle>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Draft and queue multi-channel marketing content across Instagram, Facebook, LinkedIn and YouTube.
+            </p>
           </DialogHeader>
 
-          <form onSubmit={handleCreate} className="space-y-3 py-2 text-xs">
-            <div>
-              <Label className="text-xs">Select Channel</Label>
-              <Select
-                value={newPost.platform}
-                onValueChange={(val: any) => setNewPost({ ...newPost, platform: val })}
-              >
-                <SelectTrigger className="h-8 text-xs mt-1">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Instagram">Instagram</SelectItem>
-                  <SelectItem value="Facebook">Facebook</SelectItem>
-                  <SelectItem value="LinkedIn">LinkedIn</SelectItem>
-                  <SelectItem value="YouTube">YouTube</SelectItem>
-                </SelectContent>
-              </Select>
+          <form onSubmit={handleCreate} className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Select Channel</Label>
+                  <Select
+                    value={newPost.platform}
+                    onValueChange={(val: any) => setNewPost({ ...newPost, platform: val })}
+                  >
+                    <SelectTrigger className="h-10 sm:h-11 text-sm rounded-xl">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Instagram">Instagram</SelectItem>
+                      <SelectItem value="Facebook">Facebook</SelectItem>
+                      <SelectItem value="LinkedIn">LinkedIn</SelectItem>
+                      <SelectItem value="YouTube">YouTube</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Publish Time / Slot</Label>
+                  <Input
+                    placeholder="e.g. Tomorrow, 6:00 PM"
+                    value={newPost.scheduledDate}
+                    onChange={(e) => setNewPost({ ...newPost, scheduledDate: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Post Caption / Content Copy</Label>
+                <Textarea
+                  required
+                  rows={5}
+                  value={newPost.title}
+                  onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
+                  placeholder="Write your engaging real estate copy with project highlights, pricing, and hashtags..."
+                  className="text-sm rounded-xl min-h-[120px] p-3"
+                />
+              </div>
             </div>
 
-            <div>
-              <Label className="text-xs">Post Caption / Content</Label>
-              <Textarea
-                required
-                rows={4}
-                value={newPost.title}
-                onChange={(e) => setNewPost({ ...newPost, title: e.target.value })}
-                placeholder="Write your engaging real estate copy..."
-                className="text-xs mt-1"
-              />
-            </div>
-
-            <div>
-              <Label className="text-xs">Publish Time</Label>
-              <Input
-                value={newPost.scheduledDate}
-                onChange={(e) => setNewPost({ ...newPost, scheduledDate: e.target.value })}
-                className="h-8 text-xs mt-1"
-              />
-            </div>
-
-            <DialogFooter className="pt-2">
-              <Button type="button" variant="outline" size="sm" onClick={() => setOpenModal(false)}>
+            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+              <Button type="button" variant="outline" onClick={() => setOpenModal(false)} className="rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" className="bg-brand text-white">
-                Schedule
+              <Button type="submit" className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
+                Schedule Post
               </Button>
             </DialogFooter>
           </form>

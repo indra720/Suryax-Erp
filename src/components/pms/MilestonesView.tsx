@@ -182,16 +182,16 @@ export function MilestonesView({ basePath = "/admin/project" }: MilestonesViewPr
       code: formData.code || `ML-${Date.now().toString().slice(-4)}`,
       project: formData.project,
       project_name: proj ? proj.name : "Project",
-      sprint: formData.sprint || undefined,
-      sprint_name: spr ? spr.name : undefined,
       description: formData.description,
       priority: formData.priority,
       due_date: formData.due_date,
       status: computedStatus,
       progress,
       owner: formData.owner,
-      owner_name: ownerMember ? ownerMember.name : "Unassigned",
       criteria,
+      ...(formData.sprint ? { sprint: formData.sprint } : {}),
+      ...(spr ? { sprint_name: spr.name } : {}),
+      ...(ownerMember ? { owner_name: ownerMember.name } : { owner_name: "Unassigned" }),
     });
 
     setIsDialogOpen(false);

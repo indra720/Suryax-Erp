@@ -215,13 +215,21 @@ export function AdminStaffPage() {
 
   const handleFormChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+    if (name === "mobile") {
+      setFormData((prev) => ({ ...prev, [name]: value.replace(/\D/g, "").slice(0, 10) }));
+      return;
+    }
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.mobile) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.mobile.trim()) {
       toast.error("Please fill required fields (Name, Email, Mobile).");
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(formData.mobile)) {
+      toast.error("Mobile number must be a valid 10-digit number.");
       return;
     }
     if (!isEditing && !formData.password) {
@@ -271,43 +279,50 @@ export function AdminStaffPage() {
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          <Link
-            to="/admin/users/staff/incentives"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold border rounded-lg hover:bg-gray-50 text-gray-700 bg-white"
-          >
-            <Award className="size-3.5 text-amber-500" />
-            Incentives
-          </Link>
-          <Link
-            to="/admin/users/staff/earn"
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold border rounded-lg hover:bg-gray-50 text-gray-700 bg-white"
-          >
-            <DollarSign className="size-3.5 text-emerald-600" />
-            Earnings
-          </Link>
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={loadData}
-            className="text-xs flex items-center gap-1.5"
-          >
-            <RefreshCw className={`size-3.5 ${loading ? "animate-spin" : ""}`} />
-            Refresh
-          </Button>
-          <Button
-            size="sm"
-            onClick={handleOpenAdd}
-            className="text-xs font-semibold bg-brand hover:bg-brand-dark text-white flex items-center gap-1.5 shadow-sm"
-          >
-            <PlusCircle className="size-4" />
-            Add Staff
-          </Button>
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
+          {/* Action CTAs row */}
+          <div className="flex items-center gap-2 w-full sm:w-auto order-first sm:order-last">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={loadData}
+              className="flex-1 sm:flex-none text-xs flex items-center justify-center gap-1.5 h-8.5 sm:h-9"
+            >
+              <RefreshCw className={`size-3.5 ${loading ? "animate-spin" : ""}`} />
+              <span>Refresh</span>
+            </Button>
+            <Button
+              size="sm"
+              onClick={handleOpenAdd}
+              className="flex-1 sm:flex-none text-xs font-semibold bg-brand hover:bg-brand-dark text-white flex items-center justify-center gap-1.5 shadow-sm h-8.5 sm:h-9"
+            >
+              <PlusCircle className="size-4" />
+              <span>Add Staff</span>
+            </Button>
+          </div>
+
+          {/* Quick links row */}
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <Link
+              to="/admin/users/staff/incentives"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold border rounded-lg hover:bg-gray-50 text-gray-700 bg-white h-8.5 sm:h-9"
+            >
+              <Award className="size-3.5 text-amber-500" />
+              <span>Incentives</span>
+            </Link>
+            <Link
+              to="/admin/users/staff/earn"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3 py-1.5 text-xs font-semibold border rounded-lg hover:bg-gray-50 text-gray-700 bg-white h-8.5 sm:h-9"
+            >
+              <DollarSign className="size-3.5 text-emerald-600" />
+              <span>Earnings</span>
+            </Link>
+          </div>
         </div>
       </div>
 
       {/* KPI Cards With Icons */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-3.5">
         {kpiCards.map((card) => (
           <Link
             key={card.title}
@@ -337,7 +352,7 @@ export function AdminStaffPage() {
               placeholder="Search staff by name, mobile, team leader..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="pl-9 h-9 text-xs"
+              className="pl-9 h-8.5 sm:h-9 text-xs"
             />
           </div>
         </CardContent>
@@ -345,8 +360,12 @@ export function AdminStaffPage() {
 
       {/* Staff Table matching CrmAttendance2 */}
       <Card className="border rounded-2xl bg-white shadow-xs overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-xs">
+        <div className="p-3 sm:p-4 border-b flex items-center justify-between sm:hidden">
+          <span className="text-xs font-semibold text-gray-700">Staff Members</span>
+          <span className="text-[10px] text-text-muted">Swipe horizontally →</span>
+        </div>
+        <div className="overflow-x-auto no-scrollbar">
+          <table className="w-full text-left text-xs min-w-[850px] whitespace-nowrap">
             <thead className="bg-gray-50 border-b text-gray-600 font-semibold uppercase tracking-wider text-[10px]">
               <tr>
                 <th className="px-4 py-3.5 w-14">S.N.</th>
@@ -610,8 +629,10 @@ export function AdminStaffPage() {
                       <Phone className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-gray-400" />
                       <Input
                         required
+                        type="tel"
+                        maxLength={10}
                         name="mobile"
-                        placeholder="9876543210"
+                        placeholder="10-digit mobile"
                         value={formData.mobile}
                         onChange={handleFormChange}
                         className="pl-9 h-10 text-xs"

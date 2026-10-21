@@ -353,10 +353,10 @@ export function TeamLeaderUsersPage() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold tracking-tight text-foreground">Team Leader Users</h1>
-          <p className="text-xs text-text-secondary mt-0.5">
+          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-foreground">Team Leader Users</h1>
+          <p className="text-xs sm:text-sm text-text-secondary mt-0.5">
             Superadmin supervision of team leaders, call conversions, and staff oversight.
           </p>
         </div>
@@ -364,7 +364,7 @@ export function TeamLeaderUsersPage() {
           variant="outline"
           size="sm"
           onClick={loadData}
-          className="gap-1.5 h-9 text-xs"
+          className="gap-1.5 h-8.5 sm:h-9 text-xs self-start sm:self-auto shrink-0"
         >
           <RefreshCw className={`size-3.5 ${loading ? "animate-spin" : ""}`} />
           Refresh
@@ -372,14 +372,14 @@ export function TeamLeaderUsersPage() {
       </div>
 
       {/* Top 11 KPI Cards Matching CrmAttendance2 */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-11 gap-2.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 xl:grid-cols-11 gap-2 sm:gap-2.5">
         {tlKpiList.map((card) => {
           const Icon = card.icon;
           const val = leadCounts[card.key] ?? 0;
           return (
             <Card
               key={card.key}
-              className="p-2.5 text-center flex flex-col items-center justify-center rounded-[14px] shadow-sm border-border bg-card"
+              className="p-3 text-center flex flex-col items-center justify-center rounded-[14px] shadow-sm border-border bg-card"
             >
               <div className={`p-1.5 rounded-full mb-1 ${card.bg}`}>
                 <Icon className={`size-4 ${card.color}`} />
@@ -387,7 +387,7 @@ export function TeamLeaderUsersPage() {
               <span className="text-[11px] font-medium text-text-secondary leading-tight truncate w-full">
                 {card.title}
               </span>
-              <span className="text-[18px] font-extrabold text-foreground mt-0.5">{val}</span>
+              <span className="text-base sm:text-[18px] font-extrabold text-foreground mt-0.5">{val}</span>
             </Card>
           );
         })}
@@ -395,38 +395,41 @@ export function TeamLeaderUsersPage() {
 
       {/* Table Card */}
       <Card className="rounded-[16px] shadow-sm border-border bg-card overflow-hidden">
-        <CardHeader className="p-5 pb-4 border-b border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <CardHeader className="p-4 sm:p-5 pb-3 sm:pb-4 border-b border-border flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <CardTitle className="text-lg font-bold text-foreground">Team Leader List</CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-base sm:text-lg font-bold text-foreground">Team Leader List</CardTitle>
+              <span className="text-[10px] sm:hidden text-text-muted font-normal">Swipe horizontally →</span>
+            </div>
             <CardDescription className="text-xs text-text-muted mt-0.5">
               View and manage team leaders.
             </CardDescription>
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
             <div className="relative w-full sm:w-64">
               <Input
                 placeholder="Search team leaders..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="h-9 pl-8 text-xs bg-background"
+                className="h-8.5 sm:h-9 pl-8 text-xs bg-background w-full"
               />
               <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-text-muted" />
             </div>
 
             <Button
               onClick={handleOpenAdd}
-              className="h-9 px-4 rounded-[10px] bg-brand hover:bg-brand-bright text-white font-semibold text-xs shadow-sm gap-1.5 shrink-0 cursor-pointer"
+              className="w-full sm:w-auto h-8.5 sm:h-9 px-3 sm:px-4 rounded-[10px] bg-brand hover:bg-brand-bright text-white font-semibold text-xs shadow-sm gap-1.5 cursor-pointer whitespace-nowrap justify-center"
             >
               <PlusCircle className="size-4" />
-              Add Team Leader
+              <span>Add Team Leader</span>
             </Button>
           </div>
         </CardHeader>
 
         <CardContent className="p-0">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-[13px]">
+          <div className="overflow-x-auto no-scrollbar">
+            <table className="w-full text-left text-[13px] min-w-[750px] whitespace-nowrap">
               <thead className="bg-muted/40 border-b border-border text-[11.5px] font-semibold text-text-secondary uppercase tracking-wider">
                 <tr>
                   <th className="px-4 py-3 w-12 text-center">S.N.</th>

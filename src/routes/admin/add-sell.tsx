@@ -61,7 +61,7 @@ export function AdminAddSellPage() {
     try {
       setLoadingDropdowns(true);
       const data = await fetchAddSellDropdowns();
-      setTeamLeaders(data.team_leaders || []);
+      setTeamLeaders(data.teamLeaders || (data as any).team_leaders || []);
       setStaffs(data.staffs || []);
     } catch (err) {
       console.error("Dropdown error:", err);

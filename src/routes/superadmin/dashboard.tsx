@@ -189,77 +189,79 @@ export function SuperadminDashboardPage() {
       <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 bg-gradient-to-r from-brand/10 via-purple-50 to-white p-5 rounded-2xl border border-brand/20 shadow-xs">
         <div>
           <div className="flex items-center gap-2 mb-1">
-            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-brand text-white shadow-xs">
+            <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] sm:text-xs font-semibold bg-brand text-white shadow-xs shrink-0">
               <Sparkles className="w-3.5 h-3.5" /> Executive Cockpit
             </span>
-            <span className="text-xs text-muted-foreground">Live Telecalling & Sales Pulse</span>
+            <span className="text-[11px] sm:text-xs text-muted-foreground truncate">Live Telecalling & Sales Pulse</span>
           </div>
-          <h1 className="text-2xl sm:text-3xl font-bold tracking-tight text-gray-900">
+          <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-gray-900">
             Superadmin Analytics Dashboard
           </h1>
-          <p className="text-sm text-muted-foreground mt-0.5">
+          <p className="text-xs sm:text-sm text-muted-foreground mt-0.5">
             Cross-branch team productivity, staff attendance presence, and lead outcome distribution.
           </p>
         </div>
 
         {/* Date Filters & Controls */}
-        <div className="flex flex-wrap items-center gap-2">
-          <div className="flex items-center gap-1.5 bg-white px-3 py-1.5 rounded-xl border border-gray-200 shadow-2xs">
-            <Calendar className="w-4 h-4 text-brand" />
-            <input
-              type="date"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-              className="text-xs text-gray-700 bg-transparent border-none outline-none focus:ring-0"
-              placeholder="Start"
-            />
-            <span className="text-xs text-muted-foreground">to</span>
-            <input
-              type="date"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-              className="text-xs text-gray-700 bg-transparent border-none outline-none focus:ring-0"
-              placeholder="End"
-            />
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full sm:w-auto">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
+            <div className="flex-1 sm:flex-none flex items-center gap-1.5 bg-white px-2.5 py-1.5 rounded-xl border border-gray-200 shadow-2xs">
+              <Calendar className="w-3.5 h-3.5 text-brand shrink-0" />
+              <input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="text-xs text-gray-700 bg-transparent border-none outline-none focus:ring-0 w-24 sm:w-auto"
+                placeholder="Start"
+              />
+              <span className="text-xs text-muted-foreground">to</span>
+              <input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="text-xs text-gray-700 bg-transparent border-none outline-none focus:ring-0 w-24 sm:w-auto"
+                placeholder="End"
+              />
+            </div>
+
+            <button
+              onClick={loadDashboard}
+              disabled={loading}
+              className="flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold text-white bg-brand rounded-xl hover:bg-brand/90 transition-all shadow-xs disabled:opacity-50 sm:flex-none shrink-0"
+            >
+              <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} />
+              <span>Sync</span>
+            </button>
           </div>
 
-          <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-gray-200 shadow-2xs">
+          <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-gray-200 shadow-2xs overflow-x-auto no-scrollbar">
             <button
               onClick={() => applyPreset("today")}
-              className="px-2.5 py-1 text-xs font-medium rounded-lg text-gray-700 hover:bg-brand/10 hover:text-brand transition-colors"
+              className="px-2.5 py-1 text-xs font-medium rounded-lg text-gray-700 hover:bg-brand/10 hover:text-brand transition-colors whitespace-nowrap shrink-0"
             >
               Today
             </button>
             <button
               onClick={() => applyPreset("7days")}
-              className="px-2.5 py-1 text-xs font-medium rounded-lg text-gray-700 hover:bg-brand/10 hover:text-brand transition-colors"
+              className="px-2.5 py-1 text-xs font-medium rounded-lg text-gray-700 hover:bg-brand/10 hover:text-brand transition-colors whitespace-nowrap shrink-0"
             >
               7 Days
             </button>
             <button
               onClick={() => applyPreset("month")}
-              className="px-2.5 py-1 text-xs font-medium rounded-lg text-gray-700 hover:bg-brand/10 hover:text-brand transition-colors"
+              className="px-2.5 py-1 text-xs font-medium rounded-lg text-gray-700 hover:bg-brand/10 hover:text-brand transition-colors whitespace-nowrap shrink-0"
             >
               30 Days
             </button>
             {(startDate || endDate) && (
               <button
                 onClick={() => applyPreset("clear")}
-                className="px-2 py-1 text-xs font-medium rounded-lg text-red-600 hover:bg-red-50 transition-colors"
+                className="px-2 py-1 text-xs font-medium rounded-lg text-red-600 hover:bg-red-50 transition-colors whitespace-nowrap shrink-0"
               >
                 Clear
               </button>
             )}
           </div>
-
-          <button
-            onClick={loadDashboard}
-            disabled={loading}
-            className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-white bg-brand rounded-xl hover:bg-brand/90 transition-all shadow-xs disabled:opacity-50"
-          >
-            <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} />
-            <span>Sync</span>
-          </button>
         </div>
       </div>
 

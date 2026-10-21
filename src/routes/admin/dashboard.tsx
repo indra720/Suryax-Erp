@@ -220,7 +220,7 @@ export function AdminDashboardPage() {
       try {
         const staffRes = await fetchAdminStaffs();
         const staffReportRes = await fetchAdminStaffReport("all");
-        const list = Array.isArray(staffRes) ? staffRes : staffRes?.staff_list || staffReportRes?.staff_data || [];
+        const list = Array.isArray(staffRes) ? staffRes : (staffRes as any)?.staff_list || (staffReportRes as any)?.staff_data || [];
         if (list.length > 0) {
           setStaffList(list);
         } else {
@@ -416,14 +416,34 @@ export function AdminDashboardPage() {
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-2">
-          {/* Quick Date Presets */}
-          <div className="flex items-center border rounded-lg bg-gray-50 p-0.5 text-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2 w-full sm:w-auto">
+          {/* Action Buttons row on mobile, end-aligned on desktop */}
+          <div className="flex items-center gap-2 w-full sm:w-auto order-first sm:order-last">
+            <button
+              onClick={handleRefresh}
+              disabled={refreshing}
+              className="flex-1 sm:flex-none flex items-center justify-center gap-1 border border-gray-200 hover:bg-gray-50 text-gray-700 text-xs font-semibold px-2.5 py-2 sm:py-1.5 rounded-lg transition-colors"
+            >
+              <RefreshCw className={`size-3.5 ${refreshing ? "animate-spin" : ""}`} />
+              <span>Refresh</span>
+            </button>
+
+            <button
+              onClick={() => setAddLeadOpen(true)}
+              className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 bg-[#6732F2] hover:bg-[#5a2ad6] text-white text-xs font-semibold px-3 py-2 sm:py-1.5 rounded-lg shadow-xs transition-colors"
+            >
+              <Plus className="size-3.5" />
+              <span>Add New Lead</span>
+            </button>
+          </div>
+
+          {/* Quick Date Presets (Filter Pills) */}
+          <div className="flex items-center border rounded-lg bg-gray-50 p-0.5 text-xs overflow-x-auto no-scrollbar w-full sm:w-auto">
             {["today", "7days", "30days", "all"].map((d) => (
               <button
                 key={d}
                 onClick={() => setDateFilter(d)}
-                className={`px-2.5 py-1 rounded-md font-semibold capitalize transition-colors ${
+                className={`flex-1 sm:flex-none px-2.5 py-1 rounded-md font-semibold capitalize transition-colors whitespace-nowrap text-center ${
                   dateFilter === d
                     ? "bg-white text-brand shadow-xs"
                     : "text-gray-500 hover:text-gray-800"
@@ -433,30 +453,13 @@ export function AdminDashboardPage() {
               </button>
             ))}
           </div>
-
-          <button
-            onClick={handleRefresh}
-            disabled={refreshing}
-            className="flex items-center gap-1 border border-gray-200 hover:bg-gray-50 text-gray-700 text-xs font-semibold px-2.5 py-1.5 rounded-lg transition-colors"
-          >
-            <RefreshCw className={`size-3.5 ${refreshing ? "animate-spin" : ""}`} />
-            <span className="hidden sm:inline">Refresh</span>
-          </button>
-
-          <button
-            onClick={() => setAddLeadOpen(true)}
-            className="flex items-center gap-1.5 bg-[#6732F2] hover:bg-[#5a2ad6] text-white text-xs font-semibold px-3 py-1.5 rounded-lg shadow-xs transition-colors"
-          >
-            <Plus className="size-3.5" />
-            <span>Add New Lead</span>
-          </button>
         </div>
       </div>
 
       {/* ------------------------------------------------------------- */}
       {/* 11 TOP KPI CARDS STRIP (Matching CrmAttendance2 Standard)      */}
       {/* ------------------------------------------------------------- */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2 sm:gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2.5 sm:gap-3">
         {/* 1. Today Followups */}
         <div
           onClick={() => setActiveQueueTag("today_follow")}

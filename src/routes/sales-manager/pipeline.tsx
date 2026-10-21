@@ -12,6 +12,7 @@ import {
   User,
   Sparkles,
   ChevronRight,
+  TrendingUp,
 } from "lucide-react";
 import { Card } from "@/components/erp/ui";
 import { Button } from "@/components/ui/button";
@@ -64,8 +65,16 @@ export function SalesPipelinePage() {
 
   const handleCreateDeal = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newDeal.leadName || !newDeal.phone) {
-      toast.error("Please fill in customer name and contact phone");
+    if (!newDeal.leadName.trim()) {
+      toast.error("Please fill in customer name");
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(newDeal.phone)) {
+      toast.error("Please enter a valid 10-digit mobile number");
+      return;
+    }
+    if (newDeal.budget <= 0) {
+      toast.error("Budget must be greater than zero");
       return;
     }
     const created: Deal = {
@@ -80,7 +89,7 @@ export function SalesPipelinePage() {
       assignedRep: newDeal.assignedRep,
       probability: 30,
       expectedClosingDate: "2026-05-30",
-      lastFollowUp: new Date().toISOString().split("T")[0],
+      lastFollowUp: new Date().toISOString().slice(0, 10),
       notes: "Lead registered into active pipeline.",
     };
     setDeals([created, ...deals]);
@@ -93,10 +102,12 @@ export function SalesPipelinePage() {
       deals.map((d) => {
         if (d.id !== dealId) return d;
         const currentIndex = stages.indexOf(d.stage);
-        if (currentIndex < stages.length - 1) {
+        if (currentIndex >= 0 && currentIndex < stages.length - 1) {
           const nextStage = stages[currentIndex + 1];
-          toast.success(`${d.leadName} moved to stage: ${nextStage}`);
-          return { ...d, stage: nextStage };
+          if (nextStage) {
+            toast.success(`${d.leadName} moved to stage: ${nextStage}`);
+            return { ...d, stage: nextStage };
+          }
         }
         return d;
       })
@@ -117,40 +128,42 @@ export function SalesPipelinePage() {
       {/* Top Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md">
-              <FolderKanban className="size-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="inline-flex size-8 sm:size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md shrink-0">
+              <FolderKanban className="size-4 sm:size-5" />
             </span>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-foreground">
               Deals Pipeline & Kanban
             </h1>
           </div>
-          <p className="mt-1 text-xs text-text-secondary">
+          <p className="mt-1 text-xs sm:text-sm text-text-secondary line-clamp-2 sm:line-clamp-none">
             End-to-end buyer progression from initial enquiry to token payment and registration.
           </p>
         </div>
 
-        <Button
-          onClick={() => setModalOpen(true)}
-          size="sm"
-          className="h-9 gap-1.5 text-xs bg-brand text-white shadow-sm"
-        >
-          <Plus className="size-3.5" /> Add Deal to Pipeline
-        </Button>
+        <div className="w-full sm:w-auto">
+          <Button
+            onClick={() => setModalOpen(true)}
+            size="sm"
+            className="w-full sm:w-auto h-9 gap-1.5 text-xs bg-brand text-white shadow-sm"
+          >
+            <Plus className="size-3.5" /> Add Deal to Pipeline
+          </Button>
+        </div>
       </div>
 
       {/* Filter Bar */}
-      <Card className="p-3 bg-card border border-border flex flex-col sm:flex-row gap-3 items-center justify-between">
+      <Card className="p-3 sm:p-3.5 bg-card border border-border flex flex-col sm:flex-row gap-2.5 items-center justify-between">
         <div className="relative w-full sm:w-80">
           <Search className="absolute left-3 top-2.5 size-4 text-text-muted" />
           <Input
             placeholder="Search deals, clients, phones..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="pl-9 h-9 text-xs"
+            className="pl-9 h-8.5 sm:h-9 text-xs"
           />
         </div>
-        <div className="flex items-center gap-2 w-full sm:w-auto overflow-x-auto">
+        <div className="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto no-scrollbar pb-1 sm:pb-0 -mx-1 px-1">
           {["All", "Vrindavan Heights", "Vrindavan Green Valley", "Vrindavan Royale", "Vrindavan Commercial Plaza"].map(
             (proj) => (
               <Button
@@ -158,7 +171,7 @@ export function SalesPipelinePage() {
                 variant={projectFilter === proj ? "default" : "outline"}
                 size="sm"
                 onClick={() => setProjectFilter(proj)}
-                className="h-8 text-xs shrink-0"
+                className="h-8 text-xs shrink-0 whitespace-nowrap"
               >
                 {proj}
               </Button>
@@ -167,14 +180,18 @@ export function SalesPipelinePage() {
         </div>
       </Card>
 
+      <div className="flex items-center justify-between lg:hidden pt-1">
+        <span className="text-[11px] text-text-muted font-medium flex items-center gap-1">Swipe columns horizontally →</span>
+      </div>
+
       {/* Kanban Board Columns */}
-      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-3.5 overflow-x-auto pb-4">
+      <div className="flex lg:grid lg:grid-cols-6 gap-3.5 overflow-x-auto no-scrollbar pb-4 -mx-4 px-4 sm:mx-0 sm:px-0">
         {stages.map((stage) => {
           const stageDeals = filteredDeals.filter((d) => d.stage === stage);
           const stageValue = stageDeals.reduce((sum, d) => sum + d.budget, 0);
 
           return (
-            <div key={stage} className="bg-muted/40 rounded-xl p-3 border border-border flex flex-col min-w-[220px]">
+            <div key={stage} className="bg-muted/40 rounded-xl p-3 border border-border flex flex-col w-[260px] sm:w-[280px] lg:w-auto shrink-0">
               <div className="flex items-center justify-between pb-2 mb-2 border-b border-border">
                 <span className="text-xs font-bold text-foreground truncate">{stage}</span>
                 <span className="size-5 rounded-full bg-muted flex items-center justify-center text-[10px] font-bold text-foreground">
@@ -228,63 +245,101 @@ export function SalesPipelinePage() {
 
       {/* Create Deal Modal */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="max-w-md bg-card text-foreground border-border">
-          <DialogHeader>
-            <DialogTitle>Register New Sales Deal</DialogTitle>
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
+              <span className="p-2 rounded-xl bg-brand/10 text-brand">
+                <TrendingUp className="size-5" />
+              </span>
+              Register New Sales Deal
+            </DialogTitle>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Add a new qualified prospect into the active sales negotiation pipeline.
+            </p>
           </DialogHeader>
-          <form onSubmit={handleCreateDeal} className="space-y-3.5 py-2">
-            <div>
-              <Label className="text-xs">Customer Full Name</Label>
-              <Input
-                placeholder="e.g. Ramesh Chandra Agnihotri"
-                value={newDeal.leadName}
-                onChange={(e) => setNewDeal({ ...newDeal, leadName: e.target.value })}
-                className="h-9 text-xs mt-1"
-                required
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <Label className="text-xs">Phone Number</Label>
-                <Input
-                  placeholder="+91 98390 XXXXX"
-                  value={newDeal.phone}
-                  onChange={(e) => setNewDeal({ ...newDeal, phone: e.target.value })}
-                  className="h-9 text-xs mt-1"
-                  required
-                />
+
+          <form onSubmit={handleCreateDeal} className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Customer Full Name *</Label>
+                  <Input
+                    placeholder="e.g. Ramesh Chandra Agnihotri"
+                    value={newDeal.leadName}
+                    onChange={(e) => setNewDeal({ ...newDeal, leadName: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Phone Number (10 digits) *</Label>
+                  <Input
+                    type="tel"
+                    maxLength={10}
+                    placeholder="10-digit mobile"
+                    value={newDeal.phone}
+                    onChange={(e) =>
+                      setNewDeal({
+                        ...newDeal,
+                        phone: e.target.value.replace(/\D/g, "").slice(0, 10),
+                      })
+                    }
+                    className="h-10 sm:h-11 text-sm rounded-xl font-mono"
+                    required
+                  />
+                </div>
               </div>
-              <div>
-                <Label className="text-xs">Budget (INR)</Label>
-                <Input
-                  type="number"
-                  value={newDeal.budget}
-                  onChange={(e) => setNewDeal({ ...newDeal, budget: Number(e.target.value) })}
-                  className="h-9 text-xs mt-1"
-                />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Interested Project *</Label>
+                  <Input
+                    value={newDeal.project}
+                    onChange={(e) => setNewDeal({ ...newDeal, project: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Budget Allocation (₹) *</Label>
+                  <Input
+                    type="number"
+                    min={100000}
+                    value={newDeal.budget}
+                    onChange={(e) => setNewDeal({ ...newDeal, budget: Number(e.target.value) })}
+                    className="h-10 sm:h-11 text-sm rounded-xl font-semibold"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Unit Preference</Label>
+                  <Input
+                    value={newDeal.unitPreference}
+                    onChange={(e) => setNewDeal({ ...newDeal, unitPreference: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    placeholder="e.g. 3 BHK Luxury Flat"
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Assigned Sales Executive *</Label>
+                  <Input
+                    value={newDeal.assignedRep}
+                    onChange={(e) => setNewDeal({ ...newDeal, assignedRep: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    required
+                  />
+                </div>
               </div>
             </div>
-            <div>
-              <Label className="text-xs">Interested Project</Label>
-              <Input
-                value={newDeal.project}
-                onChange={(e) => setNewDeal({ ...newDeal, project: e.target.value })}
-                className="h-9 text-xs mt-1"
-              />
-            </div>
-            <div>
-              <Label className="text-xs">Assigned Sales Executive</Label>
-              <Input
-                value={newDeal.assignedRep}
-                onChange={(e) => setNewDeal({ ...newDeal, assignedRep: e.target.value })}
-                className="h-9 text-xs mt-1"
-              />
-            </div>
-            <DialogFooter className="mt-4">
-              <Button type="button" variant="outline" size="sm" onClick={() => setModalOpen(false)}>
+
+            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+              <Button type="button" variant="outline" onClick={() => setModalOpen(false)} className="rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" className="bg-brand text-white">
+              <Button type="submit" className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
                 Launch Deal
               </Button>
             </DialogFooter>

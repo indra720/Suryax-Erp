@@ -37,7 +37,7 @@ export function HrIdStudioPage() {
     { id: "3", name: "Amit Kumar", code: "EMP-103", role: "Senior Sales Exec", dept: "Sales", email: "amit@vrindavan.com", phone: "+91 98290 77889" },
   ];
 
-  const currentEmp = employees.find((e) => e.id === selectedEmp) || employees[0];
+  const currentEmp = employees.find((e) => e.id === selectedEmp) || employees[0]!;
 
   return (
     <div className="space-y-4 w-full max-w-full overflow-x-hidden p-1 sm:p-2">

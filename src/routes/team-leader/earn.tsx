@@ -224,25 +224,28 @@ export function TeamLeaderEarnPage() {
 
         {/* Performance Legend */}
         <div className="mb-4 p-3 bg-gray-50 rounded-lg border text-xs">
-          <p className="font-semibold text-gray-700 mb-2">Performance & Calling Legend:</p>
-          <div className="grid grid-cols-2 sm:grid-cols-5 gap-2">
-            <div className="flex items-center gap-2">
+          <div className="flex items-center justify-between mb-2">
+            <p className="font-semibold text-gray-700">Performance & Calling Legend:</p>
+            <span className="text-[10px] sm:hidden text-text-muted">Swipe horizontally →</span>
+          </div>
+          <div className="flex items-center gap-3 overflow-x-auto no-scrollbar pb-1">
+            <div className="flex items-center gap-1.5 shrink-0">
               <div className="size-3.5 bg-gray-100 border border-gray-300 rounded" />
               <span className="text-gray-600">0 Leads</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 shrink-0">
               <div className="size-3.5 bg-gradient-to-tr from-purple-100 to-indigo-100 rounded" />
               <span className="text-gray-600">1 - 4 Leads</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 shrink-0">
               <div className="size-3.5 bg-gradient-to-tr from-purple-200 to-indigo-200 rounded" />
               <span className="text-gray-600">5 - 9 Leads</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 shrink-0">
               <div className="size-3.5 bg-gradient-to-tr from-purple-500 to-indigo-400 rounded" />
               <span className="text-gray-600">10 - 14 Leads</span>
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 shrink-0">
               <div className="size-3.5 bg-gradient-to-tr from-purple-600 to-indigo-600 rounded" />
               <span className="text-gray-600 font-semibold">15+ Leads 🔥</span>
             </div>

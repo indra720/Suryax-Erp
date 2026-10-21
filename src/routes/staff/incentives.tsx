@@ -130,9 +130,9 @@ export function StaffIncentivesPage() {
               </p>
             </div>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2 w-full sm:w-auto">
               <Select value={String(month)} onValueChange={(val) => setMonth(Number(val))}>
-                <SelectTrigger className="w-[125px] h-8 text-xs">
+                <SelectTrigger className="flex-1 sm:w-[125px] h-8.5 sm:h-8 text-xs">
                   <SelectValue placeholder="Month" />
                 </SelectTrigger>
                 <SelectContent>
@@ -145,7 +145,7 @@ export function StaffIncentivesPage() {
               </Select>
 
               <Select value={String(year)} onValueChange={(val) => setYear(Number(val))}>
-                <SelectTrigger className="w-[90px] h-8 text-xs">
+                <SelectTrigger className="flex-1 sm:w-[90px] h-8.5 sm:h-8 text-xs">
                   <SelectValue placeholder="Year" />
                 </SelectTrigger>
                 <SelectContent>
@@ -160,7 +160,7 @@ export function StaffIncentivesPage() {
               <Button
                 variant="outline"
                 size="sm"
-                className="h-8 text-xs gap-1"
+                className="h-8.5 sm:h-8 text-xs gap-1 shrink-0"
                 onClick={() => loadIncentives()}
                 disabled={loading}
               >
@@ -173,11 +173,11 @@ export function StaffIncentivesPage() {
       </Card>
 
       {/* KPI Overview Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
         <Card className="border-l-4 border-l-blue-500 bg-card/60 shadow-xs">
           <CardContent className="p-3 sm:p-4">
             <p className="text-xs text-muted-foreground font-medium">Plots/Units Sold</p>
-            <h3 className="text-lg sm:text-xl font-bold mt-1">
+            <h3 className="text-xl sm:text-2xl font-bold mt-1 text-foreground">
               {incentives?.total_plots ?? 3}
             </h3>
           </CardContent>

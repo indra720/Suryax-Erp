@@ -30,16 +30,18 @@ export function TeamLeaderGoogleMarketingPage() {
             Real estate buyer intent ads across Google Search, Maps, and YouTube.
           </p>
         </div>
-        <Button
-          onClick={() => toast.success("Google Ad composer launched")}
-          className="text-xs bg-blue-600 hover:bg-blue-700 text-white font-semibold flex items-center gap-1.5"
-        >
-          <PlusCircle className="size-4" />
-          Create Ad Campaign
-        </Button>
+        <div className="w-full sm:w-auto">
+          <Button
+            onClick={() => toast.success("Google Ad composer launched")}
+            className="w-full sm:w-auto text-xs bg-blue-600 hover:bg-blue-700 text-white font-semibold flex items-center justify-center gap-1.5"
+          >
+            <PlusCircle className="size-4" />
+            Create Ad Campaign
+          </Button>
+        </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
         <Card className="border rounded-xl p-3 bg-white shadow-xs">
           <span className="text-xs font-semibold text-gray-500">Total Impressions</span>
           <div className="text-xl sm:text-2xl font-extrabold text-gray-900 mt-1">87.1K</div>

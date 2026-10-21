@@ -131,12 +131,12 @@ export function SiteEngineerProfilePage() {
           </div>
 
           {/* Key Engineering Impact Metrics Ribbon */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-white/10">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-6 pt-6 border-t border-white/10">
             <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 text-center sm:text-left">
               <span className="text-[11px] text-amber-200 font-medium flex items-center justify-center sm:justify-start gap-1">
                 <ShieldCheck className="size-3.5 text-emerald-400" /> Safety Record
               </span>
-              <p className="text-xl font-extrabold text-emerald-400 mt-1">485 Zero-Accident Days</p>
+              <p className="text-lg sm:text-xl font-extrabold text-emerald-400 mt-1">485 Zero-Accident Days</p>
             </div>
             <div className="p-3 rounded-xl bg-white/[0.04] border border-white/10 text-center sm:text-left">
               <span className="text-[11px] text-amber-200 font-medium flex items-center justify-center sm:justify-start gap-1">

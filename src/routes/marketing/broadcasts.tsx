@@ -82,17 +82,17 @@ export function BroadcastsPage() {
 
   return (
     <div className="space-y-6 pb-12">
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md">
-              <Send className="size-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="inline-flex size-8 sm:size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md shrink-0">
+              <Send className="size-4 sm:size-5" />
             </span>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-foreground">
               Direct Broadcasts (WhatsApp, Email & SMS)
             </h1>
           </div>
-          <p className="mt-1 text-xs text-text-secondary">
+          <p className="mt-1 text-xs sm:text-sm text-text-secondary line-clamp-2 sm:line-clamp-none">
             High-deliverability direct messaging, lead nurturing workflows, and real-time read rate telemetry.
           </p>
         </div>
@@ -100,47 +100,50 @@ export function BroadcastsPage() {
         <Button
           size="sm"
           onClick={() => setModal(true)}
-          className="h-9 gap-1.5 text-xs bg-brand text-white shadow-sm"
+          className="h-8.5 sm:h-9 gap-1.5 text-xs bg-brand text-white shadow-sm shrink-0 w-auto self-start sm:self-auto rounded-xl px-3.5"
         >
           <Plus className="size-3.5" /> New Broadcast Campaign
         </Button>
       </div>
 
       {/* Broadcast Performance Table */}
-      <Card className="p-5 bg-card border border-border shadow-sm">
-        <h2 className="text-sm font-semibold text-foreground mb-4">Broadcast Campaign History</h2>
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left">
+      <Card className="p-3.5 sm:p-5 bg-card border border-border shadow-sm">
+        <div className="flex items-center justify-between pb-3 border-b border-border/60">
+          <h2 className="text-xs sm:text-sm font-semibold text-foreground">Broadcast Campaign History</h2>
+          <span className="text-[10px] sm:hidden text-text-muted flex items-center gap-1 font-normal">Swipe horizontally →</span>
+        </div>
+        <div className="overflow-x-auto mt-3 -mx-3.5 px-3.5 sm:mx-0 sm:px-0">
+          <table className="w-full text-xs sm:text-sm text-left min-w-[850px] whitespace-nowrap">
             <thead className="bg-muted/60 text-text-secondary uppercase tracking-wider text-[11px] border-b border-border">
               <tr>
-                <th className="py-2.5 px-3 font-semibold">Campaign Name</th>
-                <th className="py-2.5 px-3 font-semibold">Channel</th>
-                <th className="py-2.5 px-3 font-semibold">Audience</th>
-                <th className="py-2.5 px-3 font-semibold">Delivered</th>
-                <th className="py-2.5 px-3 font-semibold">Read Rate</th>
-                <th className="py-2.5 px-3 font-semibold">Response Rate</th>
-                <th className="py-2.5 px-3 font-semibold">Date Sent</th>
-                <th className="py-2.5 px-3 font-semibold">Status</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap min-w-[200px] sm:min-w-[240px]">Campaign Name</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Channel</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Audience</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Delivered</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Read Rate</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Response Rate</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Date Sent</th>
+                <th className="py-2.5 px-3.5 font-semibold whitespace-nowrap">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border/60 text-foreground font-medium">
               {broadcasts.map((b) => (
                 <tr key={b.id} className="hover:bg-muted/40 transition-colors">
-                  <td className="py-2.5 px-3">
+                  <td className="py-3 px-3.5 whitespace-nowrap min-w-[200px] sm:min-w-[240px]">
                     <span className="font-bold text-foreground block">{b.name}</span>
                     <span className="text-[10.5px] text-text-muted">{b.id}</span>
                   </td>
-                  <td className="py-2.5 px-3">
+                  <td className="py-3 px-3.5 whitespace-nowrap">
                     <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[11px] font-semibold bg-brand/10 text-brand">
                       {b.channel}
                     </span>
                   </td>
-                  <td className="py-2.5 px-3">{b.recipients.toLocaleString()} Leads</td>
-                  <td className="py-2.5 px-3 text-emerald-600 font-semibold">{b.delivered.toLocaleString()}</td>
-                  <td className="py-2.5 px-3 font-bold text-foreground">{b.read.toLocaleString()}</td>
-                  <td className="py-2.5 px-3 font-bold text-brand">{b.responseRate}</td>
-                  <td className="py-2.5 px-3 text-text-muted">{b.date}</td>
-                  <td className="py-2.5 px-3">
+                  <td className="py-3 px-3.5 whitespace-nowrap">{b.recipients.toLocaleString()} Leads</td>
+                  <td className="py-3 px-3.5 text-emerald-600 font-semibold whitespace-nowrap">{b.delivered.toLocaleString()}</td>
+                  <td className="py-3 px-3.5 font-bold text-foreground whitespace-nowrap">{b.read.toLocaleString()}</td>
+                  <td className="py-3 px-3.5 font-bold text-brand whitespace-nowrap">{b.responseRate}</td>
+                  <td className="py-3 px-3.5 text-text-muted whitespace-nowrap">{b.date}</td>
+                  <td className="py-3 px-3.5 whitespace-nowrap">
                     <span className="inline-flex px-2 py-0.5 rounded-full text-[10.5px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">
                       {b.status}
                     </span>
@@ -154,75 +157,77 @@ export function BroadcastsPage() {
 
       {/* Modal */}
       <Dialog open={modal} onOpenChange={setModal}>
-        <DialogContent className="max-w-md bg-card text-foreground">
-          <DialogHeader>
-            <DialogTitle className="text-base font-bold flex items-center gap-2">
-              <Send className="size-4 text-brand" /> Launch Broadcast
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
+              <Send className="size-5 text-brand" /> Launch Broadcast
             </DialogTitle>
           </DialogHeader>
 
-          <form onSubmit={handleSend} className="space-y-3 py-2 text-xs">
-            <div>
-              <Label className="text-xs">Broadcast Title</Label>
-              <Input
-                required
-                value={formData.name}
-                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                className="h-8 text-xs mt-1"
-                placeholder="e.g. Special Villa Invitation"
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-2">
+          <form onSubmit={handleSend} className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
               <div>
-                <Label className="text-xs">Channel</Label>
-                <Select
-                  value={formData.channel}
-                  onValueChange={(val) => setFormData({ ...formData, channel: val })}
-                >
-                  <SelectTrigger className="h-8 text-xs mt-1">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="WhatsApp">WhatsApp Official</SelectItem>
-                    <SelectItem value="SMS">Promotional SMS</SelectItem>
-                    <SelectItem value="Email">Email Newsletter</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Broadcast Title</Label>
+                <Input
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="h-10 text-xs sm:text-sm"
+                  placeholder="e.g. Special Villa Invitation"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Channel</Label>
+                  <Select
+                    value={formData.channel}
+                    onValueChange={(val) => setFormData({ ...formData, channel: val })}
+                  >
+                    <SelectTrigger className="h-10 text-xs sm:text-sm">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="WhatsApp">WhatsApp Official</SelectItem>
+                      <SelectItem value="SMS">Promotional SMS</SelectItem>
+                      <SelectItem value="Email">Email Newsletter</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Target Segment</Label>
+                  <Select
+                    value={formData.targetGroup}
+                    onValueChange={(val) => setFormData({ ...formData, targetGroup: val })}
+                  >
+                    <SelectTrigger className="h-10 text-xs sm:text-sm">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Hot Leads (Interested)">Hot Leads (Interested)</SelectItem>
+                      <SelectItem value="Past Site Visitors">Past Site Visitors</SelectItem>
+                      <SelectItem value="All Unconverted Leads">All Unconverted Leads</SelectItem>
+                      <SelectItem value="Channel Partner Network">Channel Partner Network</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
               </div>
 
               <div>
-                <Label className="text-xs">Target Segment</Label>
-                <Select
-                  value={formData.targetGroup}
-                  onValueChange={(val) => setFormData({ ...formData, targetGroup: val })}
-                >
-                  <SelectTrigger className="h-8 text-xs mt-1">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Hot Leads (Interested)">Hot Leads (Interested)</SelectItem>
-                    <SelectItem value="Past Site Visitors">Past Site Visitors</SelectItem>
-                    <SelectItem value="All Unconverted Leads">All Unconverted Leads</SelectItem>
-                    <SelectItem value="Channel Partner Network">Channel Partner Network</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Message Template Copy</Label>
+                <Textarea
+                  required
+                  rows={4}
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  placeholder="Namaste {{name}}, Special invitation from Vrindavan Developers..."
+                  className="text-xs sm:text-sm"
+                />
               </div>
             </div>
 
-            <div>
-              <Label className="text-xs">Message Template Copy</Label>
-              <Textarea
-                required
-                rows={4}
-                value={formData.message}
-                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                placeholder="Namaste {{name}}, Special invitation from Vrindavan Developers..."
-                className="text-xs mt-1"
-              />
-            </div>
-
-            <DialogFooter className="pt-2">
+            <DialogFooter className="pt-3 border-t border-border flex justify-end gap-2 shrink-0">
               <Button type="button" variant="outline" size="sm" onClick={() => setModal(false)}>
                 Cancel
               </Button>

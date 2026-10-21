@@ -401,13 +401,13 @@ export function StaffUsersPage() {
             Real-time telecalling productivity, leads conversion pipeline, and performance cards.
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
           <Button
             variant="outline"
             size="sm"
             onClick={loadData}
             disabled={loading}
-            className="rounded-xl border-border/70 h-9 text-xs"
+            className="flex-1 sm:flex-none rounded-xl border-border/70 h-8.5 sm:h-9 text-xs whitespace-nowrap"
           >
             <RefreshCw className={`size-3.5 mr-1.5 ${loading ? "animate-spin" : ""}`} />
             Refresh
@@ -415,7 +415,7 @@ export function StaffUsersPage() {
           <Button
             size="sm"
             onClick={handleOpenAdd}
-            className="rounded-xl bg-brand hover:bg-brand-bright text-white shadow-sm font-semibold h-9 px-4 text-xs"
+            className="flex-1 sm:flex-none rounded-xl bg-brand hover:bg-brand-bright text-white shadow-sm font-semibold h-8.5 sm:h-9 px-3 sm:px-4 text-xs whitespace-nowrap"
           >
             <PlusCircle className="size-4 mr-1.5" />
             Add new staff
@@ -424,7 +424,7 @@ export function StaffUsersPage() {
       </div>
 
       {/* Top 7 Leads KPI Cards Matching Brand Theme */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 sm:gap-3.5">
         {staffKpiList.map((card) => {
           const Icon = card.icon;
           const val = leadCounts[card.key] ?? 0;
@@ -438,7 +438,7 @@ export function StaffUsersPage() {
                 <Icon className="size-5" />
               </div>
               <span className="text-[11.5px] font-semibold text-text-secondary line-clamp-1">{card.title}</span>
-              <span className="text-xl font-bold text-foreground mt-0.5">{displayVal}</span>
+              <span className="text-lg sm:text-xl font-bold text-foreground mt-0.5">{displayVal}</span>
             </Card>
           );
         })}
@@ -446,38 +446,41 @@ export function StaffUsersPage() {
 
       {/* Staff List Table Card */}
       <Card className="rounded-2xl shadow-card border border-border/70 bg-card overflow-hidden">
-        <CardHeader className="p-5 pb-4 border-b border-border/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+        <CardHeader className="p-4 sm:p-5 pb-3 sm:pb-4 border-b border-border/60 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <CardTitle className="text-lg font-bold text-foreground">Staff List</CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle className="text-base sm:text-lg font-bold text-foreground">Staff List</CardTitle>
+              <span className="text-[10px] sm:hidden text-text-muted font-normal">Swipe horizontally →</span>
+            </div>
             <CardDescription className="text-xs text-text-muted mt-0.5">
               View and manage staff users.
             </CardDescription>
           </div>
 
-          <div className="flex items-center gap-2.5">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 w-full sm:w-auto">
             <div className="relative w-full sm:w-64">
               <Input
                 placeholder="Search staff..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="h-9 pl-8 text-xs rounded-xl border-border/70 bg-background"
+                className="h-8.5 sm:h-9 pl-8 text-xs rounded-xl border-border/70 bg-background w-full"
               />
               <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-text-muted" />
             </div>
 
             <Button
               onClick={handleOpenAdd}
-              className="h-9 px-4 rounded-xl bg-brand hover:bg-brand-bright text-white font-semibold text-xs shadow-sm gap-1.5 shrink-0 cursor-pointer"
+              className="w-full sm:w-auto h-8.5 sm:h-9 px-3 sm:px-4 rounded-xl bg-brand hover:bg-brand-bright text-white font-semibold text-xs shadow-sm gap-1.5 cursor-pointer whitespace-nowrap justify-center"
             >
               <PlusCircle className="size-4" />
-              Add new staff
+              <span>Add new staff</span>
             </Button>
           </div>
         </CardHeader>
 
         <CardContent className="p-0">
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-[13px]">
+          <div className="overflow-x-auto no-scrollbar">
+            <table className="w-full text-left text-[13px] min-w-[850px] whitespace-nowrap">
               <thead className="bg-muted/40 border-b border-border/70 text-[11.5px] font-semibold text-text-secondary uppercase tracking-wider">
                 <tr>
                   <th className="px-4 py-3 w-12 text-center">S.N.</th>

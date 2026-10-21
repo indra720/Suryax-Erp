@@ -64,45 +64,47 @@ export function BookingPaymentsPage() {
     <div className="space-y-6 pb-12">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md">
-              <Receipt className="size-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="inline-flex size-8 sm:size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md shrink-0">
+              <Receipt className="size-4 sm:size-5" />
             </span>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-foreground">
               Booking Payments & Official Receipts
             </h1>
           </div>
-          <p className="mt-1 text-xs text-text-secondary">
+          <p className="mt-1 text-xs sm:text-sm text-text-secondary line-clamp-2 sm:line-clamp-none">
             Master register of all buyer installments, token advances and official stamped RERA receipts.
           </p>
         </div>
 
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => toast.success("Exporting Receipts Register (Excel)...")}
-          className="h-9 gap-1.5 text-xs"
-        >
-          <Download className="size-3.5" /> Export Receipts (CSV)
-        </Button>
+        <div className="w-full sm:w-auto">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => toast.success("Exporting Receipts Register (Excel)...")}
+            className="w-full sm:w-auto h-9 gap-1.5 text-xs border-border justify-center"
+          >
+            <Download className="size-3.5" /> Export Receipts (CSV)
+          </Button>
+        </div>
       </div>
 
       {/* Filters */}
-      <Card className="p-4 bg-card border border-border">
-        <div className="flex flex-col sm:flex-row items-center gap-3">
+      <Card className="p-3.5 sm:p-4 bg-card border border-border">
+        <div className="flex flex-col sm:flex-row items-center gap-2.5">
           <div className="relative flex-1 w-full">
             <Search className="absolute left-3 top-2.5 size-4 text-text-muted" />
             <Input
               placeholder="Search by receipt no, buyer name or flat unit..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="pl-9 h-9 text-xs"
+              className="pl-9 h-8.5 sm:h-9 text-xs"
             />
           </div>
 
           <div className="flex items-center gap-2 w-full sm:w-auto">
             <Select value={modeFilter} onValueChange={setModeFilter}>
-              <SelectTrigger className="w-[140px] h-9 text-xs">
+              <SelectTrigger className="flex-1 sm:w-[140px] h-8.5 sm:h-9 text-xs">
                 <SelectValue placeholder="Payment Mode" />
               </SelectTrigger>
               <SelectContent>
@@ -115,7 +117,7 @@ export function BookingPaymentsPage() {
             </Select>
 
             <Select value={statusFilter} onValueChange={setStatusFilter}>
-              <SelectTrigger className="w-[140px] h-9 text-xs">
+              <SelectTrigger className="flex-1 sm:w-[140px] h-8.5 sm:h-9 text-xs">
                 <SelectValue placeholder="Status" />
               </SelectTrigger>
               <SelectContent>
@@ -130,9 +132,13 @@ export function BookingPaymentsPage() {
       </Card>
 
       {/* Table */}
-      <Card className="p-5 bg-card border border-border shadow-sm">
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left">
+      <Card className="p-3.5 sm:p-5 bg-card border border-border shadow-sm">
+        <div className="flex items-center justify-between pb-3 border-b border-border/60">
+          <h2 className="text-xs sm:text-sm font-semibold text-foreground">Payment Transactions</h2>
+          <span className="text-[10px] sm:hidden text-text-muted flex items-center gap-1 font-normal">Swipe horizontally →</span>
+        </div>
+        <div className="overflow-x-auto mt-3 -mx-3.5 px-3.5 sm:mx-0 sm:px-0">
+          <table className="w-full text-xs text-left min-w-[850px] whitespace-nowrap">
             <thead className="bg-muted/60 text-text-secondary uppercase tracking-wider text-[11px] border-b border-border">
               <tr>
                 <th className="py-3 px-3 font-semibold">Receipt Number</th>

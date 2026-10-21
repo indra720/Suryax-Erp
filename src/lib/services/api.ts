@@ -1123,7 +1123,7 @@ export async function fetchAddSellDropdowns(): Promise<{
   let staffs: Array<{ id: number; name: string }> = [];
 
   try {
-    const adminRes = await apiRequest("/accounts/dashboard/super-admin/");
+    const adminRes = await apiRequest<any>("/accounts/dashboard/super-admin/");
     if (adminRes && Array.isArray(adminRes.users)) {
       admins = adminRes.users.map((u: any) => ({
         id: u.id,
@@ -1132,7 +1132,7 @@ export async function fetchAddSellDropdowns(): Promise<{
     }
   } catch {
     try {
-      const usersRes = await apiRequest("/accounts/users/?role=admin");
+      const usersRes = await apiRequest<any>("/accounts/users/?role=admin");
       if (Array.isArray(usersRes)) {
         admins = usersRes.map((u: any) => ({
           id: u.id,
@@ -1145,7 +1145,7 @@ export async function fetchAddSellDropdowns(): Promise<{
   }
 
   try {
-    const tlRes = await apiRequest("/accounts/api/superuser/get-team-leaders/");
+    const tlRes = await apiRequest<any>("/accounts/api/superuser/get-team-leaders/");
     if (tlRes && Array.isArray(tlRes.results)) {
       teamLeaders = tlRes.results.map((tl: any) => ({
         id: tl.id,
@@ -1157,7 +1157,7 @@ export async function fetchAddSellDropdowns(): Promise<{
   }
 
   try {
-    const staffRes = await apiRequest("/accounts/api/superuser/staff-report/");
+    const staffRes = await apiRequest<any>("/accounts/api/superuser/staff-report/");
     if (staffRes && Array.isArray(staffRes.staff_list)) {
       staffs = staffRes.staff_list.map((s: any) => ({
         id: s.id,

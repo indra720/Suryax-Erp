@@ -162,19 +162,18 @@ export function StaffEarnCalendarPage() {
             Day-by-day attendance and telecalling leads linked directly to daily salary calculations.
           </p>
         </div>
-
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
           <button
             onClick={loadCalendar}
             disabled={loading}
-            className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-gray-700 bg-white rounded-xl border border-gray-200 hover:bg-gray-50 transition-colors shadow-2xs"
+            className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold text-gray-700 bg-white rounded-xl border border-gray-200 hover:bg-gray-50 transition-colors shadow-2xs whitespace-nowrap"
           >
             <RefreshCw className={`w-3.5 h-3.5 ${loading ? "animate-spin" : ""}`} />
             <span>Sync</span>
           </button>
           <Link
             to="/superadmin/reports/earnings"
-            className="flex items-center gap-1.5 px-3 py-2 text-xs font-semibold text-white bg-brand rounded-xl hover:bg-brand/90 transition-colors shadow-xs"
+            className="flex-1 sm:flex-none flex items-center justify-center gap-1.5 px-3 py-2 text-xs font-semibold text-white bg-brand rounded-xl hover:bg-brand/90 transition-colors shadow-xs whitespace-nowrap"
           >
             <IndianRupee className="w-3.5 h-3.5" />
             <span>Company Payroll</span>
@@ -184,7 +183,7 @@ export function StaffEarnCalendarPage() {
 
       {/* Selector & Filter Controls Card */}
       <Card className="p-4 bg-white border border-gray-200/80 rounded-2xl shadow-xs">
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 items-center">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 items-center">
           {/* Staff Member Select */}
           <div className="space-y-1">
             <label className="text-xs font-semibold text-gray-700 flex items-center gap-1.5">
@@ -240,24 +239,24 @@ export function StaffEarnCalendarPage() {
       </Card>
 
       {/* Staff Summary Stat Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-xs">
           <span className="text-xs font-semibold text-muted-foreground uppercase">Staff Member</span>
           <div className="text-base font-bold text-gray-900 mt-1 truncate">
             {calendarData?.staff?.name || "Indrajeet Patel"}
           </div>
-          <div className="text-xs text-muted-foreground">{calendarData?.staff?.email || "indrajeet@nexus.com"}</div>
+          <div className="text-xs text-muted-foreground truncate">{calendarData?.staff?.email || "indrajeet@nexus.com"}</div>
         </div>
 
         <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-xs">
           <span className="text-xs font-semibold text-muted-foreground uppercase">Total Inquiries</span>
-          <div className="text-2xl font-extrabold text-brand mt-1">{totalLeadsDialed}</div>
+          <div className="text-xl sm:text-2xl font-extrabold text-brand mt-1">{totalLeadsDialed}</div>
           <div className="text-xs text-muted-foreground">Dialed & updated leads</div>
         </div>
 
         <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-xs">
           <span className="text-xs font-semibold text-muted-foreground uppercase">Active Days</span>
-          <div className="text-2xl font-extrabold text-emerald-600 mt-1">
+          <div className="text-xl sm:text-2xl font-extrabold text-emerald-600 mt-1">
             {activeWorkingDays} Days
           </div>
           <div className="text-xs text-muted-foreground">Days with &gt;= 1 lead action</div>
@@ -265,7 +264,7 @@ export function StaffEarnCalendarPage() {
 
         <div className="p-4 bg-white rounded-2xl border border-gray-100 shadow-xs">
           <span className="text-xs font-semibold text-muted-foreground uppercase">Net Calculated Payout</span>
-          <div className="text-2xl font-extrabold text-emerald-600 mt-1 flex items-center">
+          <div className="text-xl sm:text-2xl font-extrabold text-emerald-600 mt-1 flex items-center">
             <IndianRupee className="w-5 h-5" />
             {Number(totalEarned).toLocaleString()}
           </div>
@@ -274,20 +273,20 @@ export function StaffEarnCalendarPage() {
       </div>
 
       {/* 31-Day Interactive Calendar Grid */}
-      <Card className="p-5 bg-white border border-gray-200/80 rounded-2xl shadow-xs">
-        <div className="flex items-center justify-between mb-4 border-b border-gray-100 pb-3">
-          <h2 className="text-base font-bold text-gray-900 flex items-center gap-2">
+      <Card className="p-4 sm:p-5 bg-white border border-gray-200/80 rounded-2xl shadow-xs">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between mb-4 border-b border-gray-100 pb-3 gap-2">
+          <h2 className="text-sm sm:text-base font-bold text-gray-900 flex items-center gap-2">
             <Calendar className="w-4 h-4 text-brand" />
             <span>
               {months.find((m) => m.num === month)?.name} {year} Productivity Matrix
             </span>
           </h2>
-          <div className="flex items-center gap-3 text-xs">
-            <div className="flex items-center gap-1">
+          <div className="flex items-center gap-3 text-xs overflow-x-auto no-scrollbar pb-1">
+            <div className="flex items-center gap-1 shrink-0">
               <span className="w-3 h-3 rounded-md bg-emerald-500" />
               <span className="text-muted-foreground">Active (&gt;=1 Leads)</span>
             </div>
-            <div className="flex items-center gap-1">
+            <div className="flex items-center gap-1 shrink-0">
               <span className="w-3 h-3 rounded-md bg-red-500" />
               <span className="text-muted-foreground">Absent / Inactive (0 Leads)</span>
             </div>
@@ -300,7 +299,7 @@ export function StaffEarnCalendarPage() {
             Loading monthly calendar...
           </div>
         ) : (
-          <div className="grid grid-cols-2 sm:grid-cols-4 md:grid-cols-7 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-2.5 sm:gap-3">
             {daysList.map((d) => {
               const isActive = d.leads > 0;
               const badge =

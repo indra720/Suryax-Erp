@@ -609,6 +609,8 @@ export function ManageUsersPage() {
         ...prev,
         [name]: target.files ? target.files[0] : null,
       }));
+    } else if (name === "mobile") {
+      setFormData((prev) => ({ ...prev, [name]: value.replace(/\D/g, "").slice(0, 10) }));
     } else {
       setFormData((prev) => ({ ...prev, [name]: value }));
     }
@@ -635,6 +637,11 @@ export function ManageUsersPage() {
     }
     if (formMode === "add" && !formData.password.trim()) {
       toast.error("Please provide an initial login password.");
+      setActiveFormTab("personal");
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(formData.mobile)) {
+      toast.error("Please enter a valid 10-digit mobile number.");
       setActiveFormTab("personal");
       return;
     }
@@ -724,29 +731,29 @@ export function ManageUsersPage() {
         description="Provision, manage, and assign roles across Admins, Team Leaders, Telecallers, HR, and Associates."
         breadcrumb={["Superadmin", "Users Hub"]}
         actions={
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
             <Button
               variant="outline"
               size="sm"
               onClick={loadAllUsers}
-              className="h-10 rounded-[10px] border-border text-foreground text-[13px] font-semibold gap-1.5 cursor-pointer"
+              className="flex-1 sm:flex-none h-8.5 sm:h-10 rounded-[10px] border-border text-foreground text-xs sm:text-[13px] font-semibold gap-1.5 cursor-pointer whitespace-nowrap"
             >
               <RefreshCw className={`size-3.5 ${loading ? "animate-spin" : ""}`} />
               Refresh
             </Button>
             <Button
               onClick={handleOpenAddForm}
-              className="h-10 rounded-[10px] bg-brand hover:bg-brand-bright text-white text-[13px] font-semibold shadow-sm gap-1.5 cursor-pointer"
+              className="flex-1 sm:flex-none h-8.5 sm:h-10 rounded-[10px] bg-brand hover:bg-brand-bright text-white text-xs sm:text-[13px] font-semibold shadow-sm gap-1.5 cursor-pointer whitespace-nowrap"
             >
               <Plus className="size-4" />
-              Add New User
+              <span>Add New User</span>
             </Button>
           </div>
         }
       />
 
       {/* KPI Cards Strip matching CrmAttendance2 Dashboard */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-3.5">
         <div className="erp-card p-3.5 flex flex-col justify-between border-l-4 border-l-brand">
           <div className="flex items-center justify-between">
             <span className="text-[11px] font-semibold text-text-secondary uppercase tracking-wider">
@@ -754,7 +761,7 @@ export function ManageUsersPage() {
             </span>
             <Users className="size-4 text-brand" />
           </div>
-          <p className="mt-2 text-[22px] font-bold text-foreground leading-none">
+          <p className="mt-2 text-xl sm:text-[22px] font-bold text-foreground leading-none">
             {users.length}
           </p>
         </div>
@@ -766,7 +773,7 @@ export function ManageUsersPage() {
             </span>
             <ShieldCheck className="size-4 text-blue-500" />
           </div>
-          <p className="mt-2 text-[22px] font-bold text-blue-500 leading-none">
+          <p className="mt-2 text-xl sm:text-[22px] font-bold text-blue-500 leading-none">
             {users.filter((u) => u.role === "admin").length}
           </p>
         </div>
@@ -778,7 +785,7 @@ export function ManageUsersPage() {
             </span>
             <Briefcase className="size-4 text-amber-500" />
           </div>
-          <p className="mt-2 text-[22px] font-bold text-amber-500 leading-none">
+          <p className="mt-2 text-xl sm:text-[22px] font-bold text-amber-500 leading-none">
             {users.filter((u) => u.role === "team-leader").length}
           </p>
         </div>
@@ -790,7 +797,7 @@ export function ManageUsersPage() {
             </span>
             <Phone className="size-4 text-emerald-500" />
           </div>
-          <p className="mt-2 text-[22px] font-bold text-emerald-500 leading-none">
+          <p className="mt-2 text-xl sm:text-[22px] font-bold text-emerald-500 leading-none">
             {users.filter((u) => u.role === "staff").length}
           </p>
         </div>
@@ -802,7 +809,7 @@ export function ManageUsersPage() {
             </span>
             <BadgeCheck className="size-4 text-pink-500" />
           </div>
-          <p className="mt-2 text-[22px] font-bold text-pink-500 leading-none">
+          <p className="mt-2 text-xl sm:text-[22px] font-bold text-pink-500 leading-none">
             {users.filter((u) => u.role === "hr" || u.role === "it_staff").length}
           </p>
         </div>
@@ -814,7 +821,7 @@ export function ManageUsersPage() {
             </span>
             <UserCheck className="size-4 text-success" />
           </div>
-          <p className="mt-2 text-[22px] font-bold text-success leading-none">
+          <p className="mt-2 text-xl sm:text-[22px] font-bold text-success leading-none">
             {users.filter((u) => u.is_active).length}
           </p>
         </div>
@@ -823,9 +830,9 @@ export function ManageUsersPage() {
       {/* Main Table Card */}
       <Card className="p-0 overflow-hidden shadow-sm border-border">
         {/* Controls Bar */}
-        <div className="p-4 border-b border-border flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between bg-card">
+        <div className="p-3.5 sm:p-4 border-b border-border flex flex-col md:flex-row gap-3 items-stretch md:items-center justify-between bg-card">
           {/* Role Filter Tabs */}
-          <div className="flex flex-wrap items-center gap-1 p-1 rounded-xl bg-muted/60 border border-border">
+          <div className="flex items-center gap-1 p-1 rounded-xl bg-muted/60 border border-border overflow-x-auto no-scrollbar shrink-0">
             {[
               { id: "all", label: "All Users" },
               { id: "staff", label: "Staff Callers" },
@@ -838,7 +845,7 @@ export function ManageUsersPage() {
               <button
                 key={tab.id}
                 onClick={() => setSelectedRoleTab(tab.id)}
-                className={`px-3 py-1.5 rounded-lg text-[12px] font-semibold transition-all cursor-pointer ${
+                className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all cursor-pointer whitespace-nowrap shrink-0 ${
                   selectedRoleTab === tab.id
                     ? "bg-card text-brand shadow-sm font-bold"
                     : "text-text-secondary hover:text-foreground"
@@ -856,15 +863,15 @@ export function ManageUsersPage() {
               placeholder="Search by name, email, phone, ID..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-9 pl-9 rounded-[8px] bg-background border-border text-[13px]"
+              className="h-8.5 sm:h-9 pl-9 rounded-[8px] bg-background border-border text-xs sm:text-[13px]"
             />
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 size-3.5 text-text-muted pointer-events-none" />
           </div>
         </div>
 
         {/* User Table */}
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-[13.5px]">
+        <div className="overflow-x-auto no-scrollbar">
+          <table className="w-full text-left text-[13.5px] min-w-[850px] whitespace-nowrap">
             <thead className="bg-muted/40 border-b border-border text-[12px] font-semibold text-text-secondary uppercase tracking-wider">
               <tr>
                 <th className="px-5 py-3.5 w-12 text-center">#</th>
@@ -1278,8 +1285,9 @@ export function ManageUsersPage() {
                         <Input
                           type="tel"
                           required
+                          maxLength={10}
                           name="mobile"
-                          placeholder="9876543210"
+                          placeholder="10-digit mobile"
                           value={formData.mobile}
                           onChange={handleFormChange}
                           className="h-10 pl-9 rounded-[8px] bg-background border-border text-[13px]"

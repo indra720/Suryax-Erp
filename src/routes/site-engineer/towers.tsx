@@ -53,31 +53,31 @@ export function SiteTowersPage() {
       </div>
 
       <Card className="bg-card border border-border overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left border-collapse">
+        <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+          <table className="w-full text-xs sm:text-sm text-left border-collapse min-w-[850px] whitespace-nowrap">
             <thead className="bg-muted/50 border-b border-border text-text-secondary font-semibold">
               <tr>
-                <th className="py-3 px-4">Tower & Floor</th>
-                <th className="py-3 px-4">RCC Slab Casting</th>
-                <th className="py-3 px-4">AAC Blockwork</th>
-                <th className="py-3 px-4">Internal Plumbing</th>
-                <th className="py-3 px-4">Electrical Conduits</th>
-                <th className="py-3 px-4">Tiling / Flooring</th>
-                <th className="py-3 px-4">Last Inspected</th>
+                <th className="py-3 px-4 whitespace-nowrap">Tower & Floor</th>
+                <th className="py-3 px-4 whitespace-nowrap">RCC Slab Casting</th>
+                <th className="py-3 px-4 whitespace-nowrap">AAC Blockwork</th>
+                <th className="py-3 px-4 whitespace-nowrap">Internal Plumbing</th>
+                <th className="py-3 px-4 whitespace-nowrap">Electrical Conduits</th>
+                <th className="py-3 px-4 whitespace-nowrap">Tiling / Flooring</th>
+                <th className="py-3 px-4 whitespace-nowrap">Last Inspected</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {matrix.map((m) => (
                 <tr key={m.id} className="hover:bg-muted/30 transition-colors">
-                  <td className="py-3.5 px-4 font-bold text-foreground">
+                  <td className="py-3.5 px-4 font-bold text-foreground whitespace-nowrap">
                     {m.tower} • {m.floor}
                   </td>
-                  <td className="py-3.5 px-4">{getStatusBadge(m.rccSlab)}</td>
-                  <td className="py-3.5 px-4">{getStatusBadge(m.brickwork)}</td>
-                  <td className="py-3.5 px-4">{getStatusBadge(m.plumbing)}</td>
-                  <td className="py-3.5 px-4">{getStatusBadge(m.electrical)}</td>
-                  <td className="py-3.5 px-4">{getStatusBadge(m.flooringTiling)}</td>
-                  <td className="py-3.5 px-4 text-text-secondary">{m.lastInspected}</td>
+                  <td className="py-3.5 px-4 whitespace-nowrap">{getStatusBadge(m.rccSlab)}</td>
+                  <td className="py-3.5 px-4 whitespace-nowrap">{getStatusBadge(m.brickwork)}</td>
+                  <td className="py-3.5 px-4 whitespace-nowrap">{getStatusBadge(m.plumbing)}</td>
+                  <td className="py-3.5 px-4 whitespace-nowrap">{getStatusBadge(m.electrical)}</td>
+                  <td className="py-3.5 px-4 whitespace-nowrap">{getStatusBadge(m.flooringTiling)}</td>
+                  <td className="py-3.5 px-4 text-text-secondary whitespace-nowrap">{m.lastInspected}</td>
                 </tr>
               ))}
             </tbody>

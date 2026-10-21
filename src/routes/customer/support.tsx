@@ -55,7 +55,7 @@ export function CustomerSupportPage() {
       category: newTicket.category,
       priority: newTicket.priority,
       status: "Open",
-      createdOn: new Date().toISOString().split("T")[0],
+      createdOn: new Date().toISOString().slice(0, 10),
       lastReply: "Ticket assigned to your Relationship Manager Rajesh Malhotra.",
     };
     setTickets([created, ...tickets]);
@@ -121,34 +121,45 @@ export function CustomerSupportPage() {
 
       {/* Ticket Modal */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="max-w-md bg-card text-foreground border-border">
-          <DialogHeader>
-            <DialogTitle>Raise New Service Ticket</DialogTitle>
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
+              Raise New Customer Service Ticket
+            </DialogTitle>
+            <p className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Submit your query, construction customization request, or payment clarification to your relationship manager.
+            </p>
           </DialogHeader>
-          <form onSubmit={handleCreate} className="space-y-3.5 py-2">
-            <div>
-              <Label className="text-xs">Request Subject / Query</Label>
-              <Input
-                placeholder="e.g. Request for electrical socket repositioning in living room"
-                value={newTicket.subject}
-                onChange={(e) => setNewTicket({ ...newTicket, subject: e.target.value })}
-                className="h-9 text-xs mt-1"
-                required
-              />
+
+          <form onSubmit={handleCreate} className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Request Subject / Query</Label>
+                <Input
+                  placeholder="e.g. Request for electrical socket repositioning in master bedroom"
+                  value={newTicket.subject}
+                  onChange={(e) => setNewTicket({ ...newTicket, subject: e.target.value })}
+                  className="h-10 sm:h-11 text-sm rounded-xl"
+                  required
+                />
+              </div>
+
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Category</Label>
+                <Input
+                  placeholder="e.g. Construction / Payment / Legal / Handover"
+                  value={newTicket.category}
+                  onChange={(e) => setNewTicket({ ...newTicket, category: e.target.value as any })}
+                  className="h-10 sm:h-11 text-sm rounded-xl"
+                />
+              </div>
             </div>
-            <div>
-              <Label className="text-xs">Category</Label>
-              <Input
-                value={newTicket.category}
-                onChange={(e) => setNewTicket({ ...newTicket, category: e.target.value as any })}
-                className="h-9 text-xs mt-1"
-              />
-            </div>
-            <DialogFooter className="mt-4">
-              <Button type="button" variant="outline" size="sm" onClick={() => setModalOpen(false)}>
+
+            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+              <Button type="button" variant="outline" onClick={() => setModalOpen(false)} className="rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" className="bg-brand text-white">
+              <Button type="submit" className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
                 Submit Request
               </Button>
             </DialogFooter>

@@ -43,36 +43,36 @@ export function LegalRegistryPage() {
       </div>
 
       <Card className="bg-card border border-border overflow-hidden">
-        <div className="overflow-x-auto">
-          <table className="w-full text-xs text-left border-collapse">
+        <div className="overflow-x-auto -mx-4 px-4 sm:mx-0 sm:px-0">
+          <table className="w-full text-xs sm:text-sm text-left border-collapse min-w-[850px] whitespace-nowrap">
             <thead className="bg-muted/50 border-b border-border text-text-secondary font-semibold">
               <tr>
-                <th className="py-3 px-4">Docket Ref</th>
-                <th className="py-3 px-4">Purchaser Name</th>
-                <th className="py-3 px-4">Unit & Project</th>
-                <th className="py-3 px-4">Sub-Registrar Office</th>
-                <th className="py-3 px-4">Slot Date</th>
-                <th className="py-3 px-4">Stamp Duty Paid</th>
-                <th className="py-3 px-4">Lawyer</th>
-                <th className="py-3 px-4">Status</th>
+                <th className="py-3 px-4 whitespace-nowrap">Docket Ref</th>
+                <th className="py-3 px-4 whitespace-nowrap">Purchaser Name</th>
+                <th className="py-3 px-4 whitespace-nowrap">Unit & Project</th>
+                <th className="py-3 px-4 whitespace-nowrap">Sub-Registrar Office</th>
+                <th className="py-3 px-4 whitespace-nowrap">Slot Date</th>
+                <th className="py-3 px-4 whitespace-nowrap">Stamp Duty Paid</th>
+                <th className="py-3 px-4 whitespace-nowrap">Lawyer</th>
+                <th className="py-3 px-4 whitespace-nowrap">Status</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {registries.map((r) => (
                 <tr key={r.id} className="hover:bg-muted/30 transition-colors">
-                  <td className="py-3.5 px-4 font-mono font-bold text-brand">{r.docketNo}</td>
-                  <td className="py-3.5 px-4 font-bold text-foreground">{r.buyerName}</td>
-                  <td className="py-3.5 px-4">
+                  <td className="py-3.5 px-4 font-mono font-bold text-brand whitespace-nowrap">{r.docketNo}</td>
+                  <td className="py-3.5 px-4 font-bold text-foreground whitespace-nowrap">{r.buyerName}</td>
+                  <td className="py-3.5 px-4 whitespace-nowrap">
                     <p className="font-semibold text-foreground">{r.unitNumber}</p>
                     <p className="text-[11px] text-text-muted">{r.projectName}</p>
                   </td>
-                  <td className="py-3.5 px-4 text-text-secondary">{r.subRegistrarOffice}</td>
-                  <td className="py-3.5 px-4 font-medium text-foreground">{r.appointmentDate}</td>
-                  <td className="py-3.5 px-4 font-semibold text-emerald-600">
+                  <td className="py-3.5 px-4 text-text-secondary whitespace-nowrap">{r.subRegistrarOffice}</td>
+                  <td className="py-3.5 px-4 font-medium text-foreground whitespace-nowrap">{r.appointmentDate}</td>
+                  <td className="py-3.5 px-4 font-semibold text-emerald-600 whitespace-nowrap">
                     ₹{(r.challanAmount / 1000).toFixed(0)}k
                   </td>
-                  <td className="py-3.5 px-4 text-text-secondary">{r.advocateInCharge}</td>
-                  <td className="py-3.5 px-4">
+                  <td className="py-3.5 px-4 text-text-secondary whitespace-nowrap">{r.advocateInCharge}</td>
+                  <td className="py-3.5 px-4 whitespace-nowrap">
                     <span
                       className={`inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold ${
                         r.status === "Khatauni Mutation Done"

@@ -68,31 +68,31 @@ export function Navbar({ onToggleSidebar }: { onToggleSidebar: () => void }) {
     : [];
 
   return (
-    <header className="sticky top-0 z-30 flex h-16 items-center gap-3 border-b border-border bg-card px-4 md:px-6">
+    <header className="sticky top-0 z-30 flex h-16 items-center gap-2 sm:gap-3 border-b border-border bg-card px-3 sm:px-4 md:px-6">
       <button
         onClick={onToggleSidebar}
-        className="grid size-9 place-items-center rounded-[10px] text-text-secondary transition-colors hover:bg-muted"
+        className="grid size-9 shrink-0 place-items-center rounded-[10px] text-text-secondary transition-colors hover:bg-muted"
         aria-label="Toggle sidebar"
       >
         <Menu className="size-[19px]" />
       </button>
 
-      <div className="relative w-full max-w-[350px]">
+      <div className="relative flex-1 max-w-[200px] sm:max-w-[320px] md:max-w-[360px]">
         <Search className="absolute top-1/2 left-3 size-4 -translate-y-1/2 text-text-muted" />
         <input
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          placeholder="Search anything..."
-          className="h-10 w-full rounded-[10px] border border-[#E2E4ED] bg-muted pr-3 pl-9 text-[13px] outline-none placeholder:text-text-muted focus:border-brand focus:shadow-[0_0_0_3px_rgba(79,32,216,0.08)] dark:border-border"
+          placeholder="Search..."
+          className="h-10 w-full rounded-[10px] border border-[#E2E4ED] bg-muted pr-3 pl-9 text-xs sm:text-[13px] outline-none placeholder:text-text-muted focus:border-brand focus:shadow-[0_0_0_3px_rgba(79,32,216,0.08)] dark:border-border"
         />
         {results.length > 0 && (
-          <div className="absolute top-12 left-0 w-full overflow-hidden rounded-[12px] border border-border bg-popover shadow-[var(--shadow-pop)]">
+          <div className="absolute top-12 left-0 w-72 sm:w-full overflow-hidden rounded-[12px] border border-border bg-popover shadow-[var(--shadow-pop)] z-50">
             {results.map((r) => (
               <button
                 key={r.url}
                 onMouseDown={() => {
                   setQuery("");
-                  navigate({ to: r.url });
+                  if (r.url) navigate({ to: r.url as any });
                 }}
                 className="flex w-full items-center gap-2 px-3 py-2.5 text-left text-[13px] hover:bg-accent"
               >
@@ -104,15 +104,15 @@ export function Navbar({ onToggleSidebar }: { onToggleSidebar: () => void }) {
         )}
       </div>
 
-      <div className="ml-auto flex items-center gap-1.5">
+      <div className="ml-auto flex items-center gap-1 sm:gap-1.5 shrink-0">
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <button
-              className="relative grid size-9 place-items-center rounded-[10px] text-text-secondary hover:bg-muted"
+              className="relative grid size-8 sm:size-9 place-items-center rounded-[10px] text-text-secondary hover:bg-muted shrink-0"
               aria-label="Notifications"
             >
-              <Bell className="size-[18px]" />
-              <span className="absolute top-1 right-1 grid size-4 place-items-center rounded-full bg-brand text-[9px] font-bold text-white">
+              <Bell className="size-4 sm:size-[18px]" />
+              <span className="absolute top-0.5 right-0.5 sm:top-1 sm:right-1 grid size-3.5 sm:size-4 place-items-center rounded-full bg-brand text-[8px] sm:text-[9px] font-bold text-white">
                 4
               </span>
             </button>
@@ -137,33 +137,33 @@ export function Navbar({ onToggleSidebar }: { onToggleSidebar: () => void }) {
 
         <Link
           to="/enquiries"
-          className="relative hidden size-9 place-items-center rounded-[10px] text-text-secondary hover:bg-muted sm:grid"
+          className="relative hidden size-8 sm:size-9 place-items-center rounded-[10px] text-text-secondary hover:bg-muted sm:grid shrink-0"
           aria-label="Messages"
         >
-          <MessageSquare className="size-[18px]" />
+          <MessageSquare className="size-4 sm:size-[18px]" />
           <span className="absolute top-1 right-1 grid size-4 place-items-center rounded-full bg-brand text-[9px] font-bold text-white">
             6
           </span>
         </Link>
         <Link
           to="/calendar"
-          className="hidden size-9 place-items-center rounded-[10px] text-text-secondary hover:bg-muted sm:grid"
+          className="hidden size-8 sm:size-9 place-items-center rounded-[10px] text-text-secondary hover:bg-muted sm:grid shrink-0"
           aria-label="Calendar"
         >
-          <CalendarDays className="size-[18px]" />
+          <CalendarDays className="size-4 sm:size-[18px]" />
         </Link>
         <button
           onClick={toggleTheme}
-          className="grid size-9 place-items-center rounded-[10px] text-text-secondary hover:bg-muted"
+          className="grid size-8 sm:size-9 place-items-center rounded-[10px] text-text-secondary hover:bg-muted shrink-0"
           aria-label="Toggle dark mode"
         >
-          {dark ? <Sun className="size-[18px]" /> : <Moon className="size-[18px]" />}
+          {dark ? <Sun className="size-4 sm:size-[18px]" /> : <Moon className="size-4 sm:size-[18px]" />}
         </button>
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <button className="ml-1 flex items-center gap-2 rounded-[10px] py-1 pr-2 pl-1 hover:bg-muted">
-              <span className="grid size-9 place-items-center rounded-full bg-brand text-[13px] font-semibold text-white uppercase">
+            <button className="flex items-center gap-1 sm:gap-2 rounded-[10px] py-1 px-1 hover:bg-muted shrink-0">
+              <span className="grid size-8 sm:size-9 place-items-center rounded-full bg-brand text-xs sm:text-[13px] font-semibold text-white uppercase shrink-0">
                 {user?.name ? user.name.slice(0, 2) : "VR"}
               </span>
               <span className="hidden text-left md:block">
@@ -174,14 +174,26 @@ export function Navbar({ onToggleSidebar }: { onToggleSidebar: () => void }) {
                   {user?.role || "Staff Member"}
                 </span>
               </span>
-              <ChevronDown className="size-4 text-text-muted" />
+              <ChevronDown className="size-3.5 sm:size-4 text-text-muted shrink-0" />
             </button>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-52">
             <DropdownMenuItem
               onSelect={() => {
-                const isHr = user?.role === "hr" || window.location.pathname.startsWith("/hr-dashboard");
-                navigate({ to: isHr ? "/hr-dashboard/profile" : "/profile" });
+                const path = window.location.pathname;
+                let target = "/profile";
+                if (user?.role === "marketing" || path.startsWith("/marketing")) target = "/marketing/profile";
+                else if (user?.role === "accountant" || path.startsWith("/accountant")) target = "/accountant/profile";
+                else if (user?.role === "sales-manager" || path.startsWith("/sales-manager")) target = "/sales-manager/profile";
+                else if (user?.role === "broker" || path.startsWith("/broker")) target = "/broker/profile";
+                else if (user?.role === "site-engineer" || path.startsWith("/site-engineer")) target = "/site-engineer/profile";
+                else if (user?.role === "legal" || path.startsWith("/legal")) target = "/legal/profile";
+                else if (user?.role === "customer" || path.startsWith("/customer")) target = "/customer/profile";
+                else if (user?.role === "inventory" || path.startsWith("/inventory")) target = "/inventory/profile";
+                else if (user?.role === "hr" || path.startsWith("/hr-dashboard")) target = "/hr-dashboard/profile";
+                else if (user?.role === "team-leader" || path.startsWith("/team-leader")) target = "/team-leader/profile";
+                else if (user?.role === "staff" || path.startsWith("/staff")) target = "/staff/profile";
+                navigate({ to: target as any });
               }}
             >
               <User className="size-4" /> My Profile

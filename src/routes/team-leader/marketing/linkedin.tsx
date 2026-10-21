@@ -30,16 +30,18 @@ export function TeamLeaderLinkedInMarketingPage() {
             Target high net-worth professionals, corporate investors, and NRI commercial real estate buyers.
           </p>
         </div>
-        <Button
-          onClick={() => toast.success("LinkedIn Campaign created")}
-          className="text-xs bg-sky-700 hover:bg-sky-800 text-white font-semibold flex items-center gap-1.5"
-        >
-          <PlusCircle className="size-4" />
-          Create B2B Ad
-        </Button>
+        <div className="w-full sm:w-auto">
+          <Button
+            onClick={() => toast.success("LinkedIn Campaign created")}
+            className="w-full sm:w-auto text-xs bg-sky-700 hover:bg-sky-800 text-white font-semibold flex items-center justify-center gap-1.5"
+          >
+            <PlusCircle className="size-4" />
+            Create B2B Ad
+          </Button>
+        </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
         <Card className="border rounded-xl p-3 bg-white shadow-xs">
           <span className="text-xs font-semibold text-gray-500">B2B Impressions</span>
           <div className="text-xl sm:text-2xl font-extrabold text-gray-900 mt-1">42.7K</div>

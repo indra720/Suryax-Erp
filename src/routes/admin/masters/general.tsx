@@ -170,9 +170,11 @@ const moduleConfigs: Record<string, {
 
 const subModules = Object.keys(moduleConfigs);
 
+const defaultSub = subModules[0] ?? "Resident Category";
+
 function GeneralMastersPage() {
-  const [activeSub, setActiveSub] = useState(subModules[0]);
-  const config = moduleConfigs[activeSub] || { formFields: [], columns: [], data: [] };
+  const [activeSub, setActiveSub] = useState<string>(defaultSub);
+  const config = (moduleConfigs as Record<string, any>)[activeSub] || { formFields: [], columns: [], data: [] };
 
   return (
     <div className="space-y-3 w-full max-w-full">
@@ -214,7 +216,7 @@ function GeneralMastersPage() {
             {activeSub} details Master
           </h2>
           <form className="space-y-3">
-            {config.formFields.map((field) => (
+            {config.formFields.map((field: any) => (
               <div key={field.name}>
                 <label className="block text-xs font-bold text-gray-700 mb-1">
                   {field.label} <span className="text-red-500">*</span>
@@ -261,11 +263,11 @@ function GeneralMastersPage() {
             <table className="w-full text-left text-xs text-gray-600">
               <thead>
                 <tr className="bg-gray-50 border-b border-gray-200 font-bold text-gray-700">
-                  {config.columns.map((col) => <th key={col} className="px-3 py-2.5">{col}</th>)}
+                  {config.columns.map((col: any) => <th key={col} className="px-3 py-2.5">{col}</th>)}
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200">
-                {config.data.map((row, i) => (
+                {config.data.map((row: any, i: number) => (
                   <tr key={i} className="hover:bg-gray-50">
                     {row.values.map((val: any, j: number) => (
                       <td key={j} className="px-3 py-2">{val}</td>

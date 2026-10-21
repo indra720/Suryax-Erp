@@ -85,7 +85,8 @@ export function PmsDashboardView({ basePath = "/admin/project" }: PmsDashboardVi
       "Blocked": 0,
     };
     tasks.forEach((t) => {
-      if (map[t.status] !== undefined) map[t.status]++;
+      const cur = map[t.status];
+      if (cur !== undefined) map[t.status] = cur + 1;
     });
     return Object.entries(map).map(([name, value]) => ({ name, value }));
   }, [tasks]);
@@ -137,7 +138,7 @@ export function PmsDashboardView({ basePath = "/admin/project" }: PmsDashboardVi
             size="sm"
             className="text-xs flex items-center gap-1.5 h-8 bg-brand hover:bg-brand/90 text-white"
           >
-            <Link to={`${basePath}/all`}>
+            <Link to={`${basePath}/all` as any}>
               <Plus className="size-3.5" />
               New Project
             </Link>
@@ -210,7 +211,7 @@ export function PmsDashboardView({ basePath = "/admin/project" }: PmsDashboardVi
               <p className="text-[11px] text-gray-500">Live development milestones and budget allocations</p>
             </div>
             <Link
-              to={`${basePath}/all`}
+              to={`${basePath}/all` as any}
               className="text-xs font-semibold text-brand hover:underline flex items-center gap-1"
             >
               View All <ArrowRight className="size-3" />
@@ -333,7 +334,7 @@ export function PmsDashboardView({ basePath = "/admin/project" }: PmsDashboardVi
               <p className="text-[11px] text-gray-500">Live task progression across site sectors</p>
             </div>
             <Link
-              to={`${basePath}/tasks`}
+              to={`${basePath}/tasks` as any}
               className="text-xs font-semibold text-brand hover:underline flex items-center gap-1"
             >
               Task Board <ArrowRight className="size-3" />
@@ -436,7 +437,7 @@ export function PmsDashboardView({ basePath = "/admin/project" }: PmsDashboardVi
                 <Users className="size-3.5 text-brand" />
                 Resource Workload
               </h3>
-              <Link to={`${basePath}/team`} className="text-[10px] text-brand hover:underline font-semibold">
+              <Link to={`${basePath}/team` as any} className="text-[10px] text-brand hover:underline font-semibold">
                 Manage Team
               </Link>
             </div>

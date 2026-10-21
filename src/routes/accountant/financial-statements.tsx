@@ -27,32 +27,34 @@ export function FinancialStatementsPage() {
     <div className="space-y-6 pb-12">
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md">
-              <BarChart3 className="size-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="inline-flex size-8 sm:size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md shrink-0">
+              <BarChart3 className="size-4 sm:size-5" />
             </span>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
-              Profit & Loss and Balance Sheet (FY 2025-26)
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-foreground">
+              Profit & Loss and Balance Sheet
             </h1>
           </div>
-          <p className="mt-1 text-xs text-text-secondary">
+          <p className="mt-1 text-xs sm:text-sm text-text-secondary line-clamp-2 sm:line-clamp-none">
             Audited financial health, EBITDA margins, WIP real estate inventory valuations and liability disclosures.
           </p>
         </div>
 
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => toast.success("Downloading Audited Financial Statements (PDF)...")}
-          className="h-9 gap-1.5 text-xs"
-        >
-          <Download className="size-3.5" /> Download Financials (PDF)
-        </Button>
+        <div className="w-full sm:w-auto">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => toast.success("Downloading Audited Financial Statements (PDF)...")}
+            className="w-full sm:w-auto h-9 gap-1.5 text-xs border-border justify-center"
+          >
+            <Download className="size-3.5" /> Download Financials (PDF)
+          </Button>
+        </div>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-5">
         {/* Profit & Loss Statement */}
-        <Card className="p-5 bg-card border border-border shadow-sm">
+        <Card className="p-3.5 sm:p-5 bg-card border border-border shadow-sm">
           <div className="flex items-center justify-between pb-3 border-b border-border/60">
             <h2 className="text-sm font-bold text-foreground">Statement of Profit & Loss (P&L)</h2>
             <span className="text-xs font-semibold text-emerald-600">Net Margin: 22.8%</span>

@@ -64,30 +64,30 @@ export function SalesManagerDashboardPage() {
       {/* Page Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div>
-          <div className="flex items-center gap-2">
-            <span className="inline-flex size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md">
-              <FolderKanban className="size-5" />
+          <div className="flex items-center gap-2 sm:gap-2.5">
+            <span className="inline-flex size-8 sm:size-9 items-center justify-center rounded-xl bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-md shrink-0">
+              <FolderKanban className="size-4 sm:size-5" />
             </span>
-            <h1 className="text-2xl font-bold tracking-tight text-foreground">
+            <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-foreground">
               Sales Management Dashboard
             </h1>
           </div>
-          <p className="mt-1 text-xs text-text-secondary">
+          <p className="mt-1 text-xs sm:text-sm text-text-secondary line-clamp-2 sm:line-clamp-none">
             Live telemetry of active pipeline, team revenue attainment, site visits, and high-value deal conversions.
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 w-full sm:w-auto">
           <Button
             variant="outline"
             size="sm"
             onClick={() => toast.success("Sales telemetry refreshed")}
-            className="h-9 gap-1.5 text-xs"
+            className="flex-1 sm:flex-none h-9 gap-1.5 text-xs border-border justify-center"
           >
             <RefreshCw className="size-3.5" /> Refresh
           </Button>
-          <Link to="/sales-manager/pipeline">
-            <Button size="sm" className="h-9 gap-1.5 text-xs bg-brand text-white shadow-sm">
+          <Link to="/sales-manager/pipeline" className="flex-1 sm:flex-none">
+            <Button size="sm" className="w-full sm:w-auto h-9 gap-1.5 text-xs bg-brand text-white shadow-sm justify-center">
               <Plus className="size-3.5" /> New Deal / Lead
             </Button>
           </Link>
@@ -95,31 +95,31 @@ export function SalesManagerDashboardPage() {
       </div>
 
       {/* KPI Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-        <Card className="p-4 bg-card border border-border">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
+        <Card className="p-3.5 sm:p-4 bg-card border border-border">
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium text-text-secondary">Total Bookings MTD</span>
-            <span className="size-8 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center">
+            <span className="size-8 rounded-lg bg-emerald-500/10 text-emerald-600 flex items-center justify-center shrink-0">
               <BookMarked className="size-4" />
             </span>
           </div>
           <div className="mt-2">
-            <span className="text-2xl font-extrabold text-foreground">{kpis.totalBookingsMTD} Units</span>
+            <span className="text-xl sm:text-2xl font-extrabold text-foreground">{kpis.totalBookingsMTD} Units</span>
             <div className="flex items-center gap-1 mt-1 text-[11px] text-emerald-600 font-semibold">
               <ArrowUpRight className="size-3" /> +18.4% vs last month
             </div>
           </div>
         </Card>
 
-        <Card className="p-4 bg-card border border-border">
+        <Card className="p-3.5 sm:p-4 bg-card border border-border">
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium text-text-secondary">Revenue Realized MTD</span>
-            <span className="size-8 rounded-lg bg-purple-500/10 text-purple-600 flex items-center justify-center">
+            <span className="size-8 rounded-lg bg-purple-500/10 text-purple-600 flex items-center justify-center shrink-0">
               <IndianRupee className="size-4" />
             </span>
           </div>
           <div className="mt-2">
-            <span className="text-2xl font-extrabold text-foreground">
+            <span className="text-xl sm:text-2xl font-extrabold text-foreground">
               ₹{(kpis.totalRevenueMTD / 10000000).toFixed(2)} Cr
             </span>
             <div className="flex items-center gap-1 mt-1 text-[11px] text-emerald-600 font-semibold">
@@ -128,15 +128,15 @@ export function SalesManagerDashboardPage() {
           </div>
         </Card>
 
-        <Card className="p-4 bg-card border border-border">
+        <Card className="p-3.5 sm:p-4 bg-card border border-border">
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium text-text-secondary">Active Pipeline Value</span>
-            <span className="size-8 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center">
+            <span className="size-8 rounded-lg bg-blue-500/10 text-blue-600 flex items-center justify-center shrink-0">
               <TrendingUp className="size-4" />
             </span>
           </div>
           <div className="mt-2">
-            <span className="text-2xl font-extrabold text-foreground">
+            <span className="text-xl sm:text-2xl font-extrabold text-foreground">
               ₹{(kpis.pipelineValue / 10000000).toFixed(2)} Cr
             </span>
             <div className="flex items-center gap-1 mt-1 text-[11px] text-blue-600 font-semibold">
@@ -145,15 +145,15 @@ export function SalesManagerDashboardPage() {
           </div>
         </Card>
 
-        <Card className="p-4 bg-card border border-border">
+        <Card className="p-3.5 sm:p-4 bg-card border border-border">
           <div className="flex items-center justify-between">
             <span className="text-xs font-medium text-text-secondary">Site Visits Completed</span>
-            <span className="size-8 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center">
+            <span className="size-8 rounded-lg bg-amber-500/10 text-amber-600 flex items-center justify-center shrink-0">
               <MapPin className="size-4" />
             </span>
           </div>
           <div className="mt-2">
-            <span className="text-2xl font-extrabold text-foreground">{kpis.siteVisitsCompleted}</span>
+            <span className="text-xl sm:text-2xl font-extrabold text-foreground">{kpis.siteVisitsCompleted}</span>
             <div className="flex items-center gap-1 mt-1 text-[11px] text-amber-600 font-semibold">
               Conversion Ratio: {kpis.conversionRate}%
             </div>

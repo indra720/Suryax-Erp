@@ -347,19 +347,19 @@ export function TeamLeaderDashboardPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 flex items-center gap-2">
-            <Users className="size-6 text-[#6732F2]" />
+          <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-gray-900 flex items-center gap-2">
+            <Users className="size-5 sm:size-6 text-[#6732F2] shrink-0" />
             Team Leader Dashboard
           </h1>
-          <p className="text-xs sm:text-sm text-gray-500">
+          <p className="text-xs sm:text-sm text-gray-500 line-clamp-2 sm:line-clamp-none">
             Monitor telecalling team performance, daily calling queues, and staff conversion metrics.
           </p>
         </div>
-        <div className="flex items-center gap-2">
+        <div className="w-full sm:w-auto">
           <Button
             size="sm"
             onClick={handleOpenAddForm}
-            className="bg-gradient-to-r from-[#331fa3] to-[#6732F2] hover:opacity-95 text-white font-semibold text-xs flex items-center gap-1.5 shadow-sm"
+            className="w-full sm:w-auto bg-gradient-to-r from-[#331fa3] to-[#6732F2] hover:opacity-95 text-white font-semibold text-xs flex items-center justify-center gap-1.5 shadow-sm"
           >
             <PlusCircle className="size-4" />
             Add New Staff
@@ -368,7 +368,7 @@ export function TeamLeaderDashboardPage() {
       </div>
 
       {/* KPI Cards Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-2.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-2.5">
         {kpiData.map((item, index) => {
           const content = (
             <Card
@@ -593,10 +593,10 @@ export function TeamLeaderDashboardPage() {
 
       {/* Add New Staff Dialog */}
       <Dialog open={isAddFormOpen} onOpenChange={setIsAddFormOpen}>
-        <DialogContent className="sm:max-w-2xl max-h-[90vh] p-0 overflow-hidden flex flex-col rounded-2xl">
-          <DialogHeader className="p-4 sm:p-5 border-b bg-gray-50/50">
-            <DialogTitle className="text-base sm:text-lg font-bold">Add New Staff Telecaller</DialogTitle>
-            <DialogDescription className="text-xs text-gray-500">
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-4xl max-h-[90vh] p-0 overflow-hidden flex flex-col rounded-2xl shadow-2xl bg-card border-border">
+          <DialogHeader className="p-4 sm:p-6 border-b border-border bg-muted/20 shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold">Add New Staff Telecaller</DialogTitle>
+            <DialogDescription className="text-xs sm:text-sm text-muted-foreground mt-1">
               Provide personal, banking, and address credentials to onboard new staff.
             </DialogDescription>
           </DialogHeader>
@@ -859,12 +859,12 @@ export function TeamLeaderDashboardPage() {
       {/* Edit Staff Dialog */}
       {editingUser && (
         <Dialog open={isEditFormOpen} onOpenChange={setIsEditFormOpen}>
-          <DialogContent className="sm:max-w-2xl max-h-[90vh] p-0 overflow-hidden flex flex-col rounded-2xl">
-            <DialogHeader className="p-4 sm:p-5 border-b bg-gray-50/50">
-              <DialogTitle className="text-base sm:text-lg font-bold">
+          <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-4xl max-h-[90vh] p-0 overflow-hidden flex flex-col rounded-2xl shadow-2xl bg-card border-border">
+            <DialogHeader className="p-4 sm:p-6 border-b border-border bg-muted/20 shrink-0">
+              <DialogTitle className="text-lg sm:text-xl font-bold">
                 Edit Staff: {editingUser.name}
               </DialogTitle>
-              <DialogDescription className="text-xs text-gray-500">
+              <DialogDescription className="text-xs sm:text-sm text-muted-foreground mt-1">
                 Update account and personal information for this telecaller.
               </DialogDescription>
             </DialogHeader>

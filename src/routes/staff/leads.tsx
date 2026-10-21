@@ -165,8 +165,12 @@ export function StaffLeadsPage() {
 
   const handleCreateLead = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newLead.name || !newLead.mobile) {
-      toast.error("Name and mobile are required.");
+    if (!newLead.name.trim()) {
+      toast.error("Lead name is required.");
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(newLead.mobile)) {
+      toast.error("Please enter a valid 10-digit mobile number.");
       return;
     }
     setSavingNew(true);
@@ -217,19 +221,19 @@ export function StaffLeadsPage() {
         description="Daily calling records, phone triggers, and direct call outcome logs."
         breadcrumb={["Staff", "Leads"]}
         actions={
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
             <Button
               variant="outline"
               size="sm"
               onClick={loadLeads}
-              className="h-10 rounded-[10px] border-border text-foreground text-[13px] font-semibold gap-1.5"
+              className="flex-1 sm:flex-none h-9 sm:h-10 rounded-[10px] border-border text-foreground text-xs sm:text-[13px] font-semibold gap-1.5"
             >
               <RefreshCw className={`size-3.5 ${loading ? "animate-spin" : ""}`} />
               Refresh
             </Button>
             <Button
               onClick={() => setAddModalOpen(true)}
-              className="h-10 rounded-[10px] bg-brand hover:bg-brand-bright text-white text-[13px] font-semibold shadow-sm gap-1.5"
+              className="flex-1 sm:flex-none h-9 sm:h-10 rounded-[10px] bg-brand hover:bg-brand-bright text-white text-xs sm:text-[13px] font-semibold shadow-sm gap-1.5"
             >
               <Plus className="size-4" />
               Add Lead
@@ -239,12 +243,12 @@ export function StaffLeadsPage() {
       />
 
       {/* Filter Tabs */}
-      <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-xl bg-card border border-border w-fit">
+      <div className="flex items-center gap-1.5 p-1.5 rounded-xl bg-card border border-border overflow-x-auto no-scrollbar max-w-full">
         {statusCategories.map((cat) => (
           <button
             key={cat}
             onClick={() => setActiveFilter(cat)}
-            className={`px-3 py-1.5 rounded-lg text-[12.5px] font-semibold transition-all ${
+            className={`px-3 py-1.5 rounded-lg text-xs sm:text-[12.5px] font-semibold transition-all shrink-0 whitespace-nowrap ${
               activeFilter === cat
                 ? "bg-brand text-white shadow-sm"
                 : "text-text-secondary hover:text-foreground hover:bg-muted"
@@ -257,45 +261,46 @@ export function StaffLeadsPage() {
 
       {/* Main Table Card */}
       <Card className="p-0 overflow-hidden">
-        <div className="p-4 border-b border-border flex items-center justify-between">
+        <div className="p-3.5 sm:p-4 border-b border-border flex flex-col sm:flex-row gap-2.5 items-stretch sm:items-center justify-between">
           <div className="relative w-full sm:w-80">
             <Input
               type="text"
               placeholder="Search leads by name or phone..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-10 pl-9 rounded-[10px] bg-background border-border text-[13px]"
+              className="h-9 sm:h-10 pl-9 rounded-[10px] bg-background border-border text-xs sm:text-[13px]"
             />
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-text-muted pointer-events-none" />
           </div>
-          <span className="text-[12px] text-text-secondary font-medium">
-            Showing {filteredLeads.length} leads
-          </span>
+          <div className="flex items-center justify-between sm:justify-end gap-2 text-xs text-text-secondary font-medium">
+            <span className="text-[10px] sm:hidden text-text-muted">Swipe horizontally →</span>
+            <span>{filteredLeads.length} leads</span>
+          </div>
         </div>
 
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-[13.5px]">
+        <div className="overflow-x-auto -mx-3.5 px-3.5 sm:mx-0 sm:px-0">
+          <table className="w-full text-left text-xs sm:text-[13.5px] min-w-[850px] whitespace-nowrap">
             <thead className="bg-muted/60 border-b border-border text-[12px] font-semibold text-text-secondary uppercase tracking-wider">
               <tr>
-                <th className="px-5 py-3.5">Customer</th>
-                <th className="px-5 py-3.5">Contact Action</th>
-                <th className="px-5 py-3.5">Status</th>
-                <th className="px-5 py-3.5">Project</th>
-                <th className="px-5 py-3.5">Follow-up Remarks</th>
-                <th className="px-5 py-3.5 text-right">Action</th>
+                <th className="px-5 py-3.5 whitespace-nowrap">Customer</th>
+                <th className="px-5 py-3.5 whitespace-nowrap">Contact Action</th>
+                <th className="px-5 py-3.5 whitespace-nowrap">Status</th>
+                <th className="px-5 py-3.5 whitespace-nowrap">Project</th>
+                <th className="px-5 py-3.5 whitespace-nowrap">Follow-up Remarks</th>
+                <th className="px-5 py-3.5 text-right whitespace-nowrap">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {filteredLeads.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="text-center py-10 text-text-muted text-sm">
+                  <td colSpan={6} className="text-center py-10 text-text-muted text-sm whitespace-nowrap">
                     No leads found matching "{activeFilter}".
                   </td>
                 </tr>
               ) : (
                 filteredLeads.map((lead) => (
                   <tr key={lead.id} className="hover:bg-muted/40 transition-colors">
-                    <td className="px-5 py-3.5">
+                    <td className="px-5 py-3.5 whitespace-nowrap">
                       <div className="flex items-center gap-2.5">
                         <span className="grid size-8 rounded-full bg-brand-soft text-brand font-bold text-xs place-items-center">
                           {lead.name.charAt(0)}
@@ -307,7 +312,7 @@ export function StaffLeadsPage() {
                       </div>
                     </td>
 
-                    <td className="px-5 py-3.5">
+                    <td className="px-5 py-3.5 whitespace-nowrap">
                       <div className="flex items-center gap-2">
                         <a
                           href={`tel:+91${lead.call}`}
@@ -327,19 +332,19 @@ export function StaffLeadsPage() {
                       </div>
                     </td>
 
-                    <td className="px-5 py-3.5">
+                    <td className="px-5 py-3.5 whitespace-nowrap">
                       <StatusBadge value={lead.status} />
                     </td>
 
-                    <td className="px-5 py-3.5 text-[12.5px] text-foreground font-medium">
+                    <td className="px-5 py-3.5 text-[12.5px] text-foreground font-medium whitespace-nowrap">
                       {data.projects.find((p) => p.id === lead.project)?.name || "General Inquiry"}
                     </td>
 
-                    <td className="px-5 py-3.5 max-w-xs truncate text-[12.5px] text-text-secondary">
+                    <td className="px-5 py-3.5 max-w-xs truncate text-[12.5px] text-text-secondary whitespace-nowrap">
                       {lead.message || "--"}
                     </td>
 
-                    <td className="px-5 py-3.5 text-right">
+                    <td className="px-5 py-3.5 text-right whitespace-nowrap">
                       <Button
                         size="sm"
                         variant="outline"
@@ -359,137 +364,151 @@ export function StaffLeadsPage() {
 
       {/* Call Disposition Modal */}
       <Dialog open={statusModalOpen} onOpenChange={setStatusModalOpen}>
-        <DialogContent className="sm:max-w-md bg-card text-foreground border-border rounded-[16px] shadow-xl">
-          <DialogHeader>
-            <DialogTitle className="text-[17px] font-bold">
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
               Update Disposition: {selectedLead?.name}
             </DialogTitle>
-            <DialogDescription className="text-text-secondary text-[12.5px]">
-              Set the new lead status and note the customer feedback.
+            <DialogDescription className="text-text-secondary text-xs sm:text-sm mt-1">
+              Set the new lead stage disposition, schedule follow-ups, and document telecaller feedback.
             </DialogDescription>
           </DialogHeader>
 
-          <div className="space-y-4 py-2">
-            <div className="space-y-1.5">
-              <Label className="text-[12.5px] font-medium">Call Outcome Status</Label>
-              <Select value={editStatus} onValueChange={setEditStatus}>
-                <SelectTrigger className="h-10 rounded-[8px] bg-background border-border text-[13px]">
-                  <SelectValue placeholder="Select Status" />
-                </SelectTrigger>
-                <SelectContent>
-                  {statusCategories.filter((s) => s !== "All").map((opt) => (
-                    <SelectItem key={opt} value={opt}>
-                      {opt}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
+          <div className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Call Outcome Status</Label>
+                <Select value={editStatus} onValueChange={setEditStatus}>
+                  <SelectTrigger className="h-10 sm:h-11 rounded-xl bg-background border-border text-sm">
+                    <SelectValue placeholder="Select Status" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {statusCategories.filter((s) => s !== "All").map((opt) => (
+                      <SelectItem key={opt} value={opt}>
+                        {opt}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Remarks &amp; Next Action</Label>
+                <Textarea
+                  rows={4}
+                  placeholder="Details of call discussion, customer interest level, next follow-up date..."
+                  value={editMessage}
+                  onChange={(e) => setEditMessage(e.target.value)}
+                  className="rounded-xl bg-background border-border text-sm p-3 min-h-[100px]"
+                />
+              </div>
             </div>
 
-            <div className="space-y-1.5">
-              <Label className="text-[12.5px] font-medium">Remarks &amp; Next Action</Label>
-              <Textarea
-                rows={3}
-                placeholder="Details of call discussion, customer interest level, next follow-up..."
-                value={editMessage}
-                onChange={(e) => setEditMessage(e.target.value)}
-                className="rounded-[8px] bg-background border-border text-[13px]"
-              />
-            </div>
-          </div>
-
-          <DialogFooter className="gap-2 pt-2">
-            <DialogClose asChild>
-              <Button type="button" variant="outline" className="rounded-[8px] border-border text-[13px]">
-                Cancel
+            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+              <DialogClose asChild>
+                <Button type="button" variant="outline" className="rounded-xl h-10 px-5 text-sm">
+                  Cancel
+                </Button>
+              </DialogClose>
+              <Button
+                type="button"
+                disabled={savingStatus}
+                onClick={handleSaveStatus}
+                className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md"
+              >
+                {savingStatus ? "Saving..." : "Save Outcome"}
               </Button>
-            </DialogClose>
-            <Button
-              type="button"
-              disabled={savingStatus}
-              onClick={handleSaveStatus}
-              className="rounded-[8px] bg-brand hover:bg-brand-bright text-white text-[13px] font-semibold"
-            >
-              {savingStatus ? "Saving..." : "Save Outcome"}
-            </Button>
-          </DialogFooter>
+            </DialogFooter>
+          </div>
         </DialogContent>
       </Dialog>
 
       {/* Add Lead Modal */}
       <Dialog open={addModalOpen} onOpenChange={setAddModalOpen}>
-        <DialogContent className="sm:max-w-md bg-card text-foreground border-border rounded-[16px] shadow-xl">
-          <DialogHeader>
-            <DialogTitle className="text-[18px] font-bold">Add New Lead</DialogTitle>
-            <DialogDescription className="text-text-secondary text-[12.5px]">
-              Add a new inquiry directly to your calling queue.
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
+              Add New Lead to Calling Queue
+            </DialogTitle>
+            <DialogDescription className="text-text-secondary text-xs sm:text-sm mt-1">
+              Register a prospective buyer inquiry directly to your personal assignment queue.
             </DialogDescription>
           </DialogHeader>
 
-          <form onSubmit={handleCreateLead} className="space-y-3.5 py-2">
-            <div className="space-y-1.5">
-              <Label className="text-[12.5px] font-medium">Customer Name *</Label>
-              <Input
-                required
-                placeholder="Full Name"
-                value={newLead.name}
-                onChange={(e) => setNewLead({ ...newLead, name: e.target.value })}
-                className="h-10 rounded-[8px] bg-background border-border text-[13px]"
-              />
+          <form onSubmit={handleCreateLead} className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Customer Name *</Label>
+                  <Input
+                    required
+                    placeholder="Full Legal Name"
+                    value={newLead.name}
+                    onChange={(e) => setNewLead({ ...newLead, name: e.target.value })}
+                    className="h-10 sm:h-11 rounded-xl bg-background border-border text-sm"
+                  />
+                </div>
+
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Mobile Number (10 digits) *</Label>
+                  <Input
+                    required
+                    type="tel"
+                    maxLength={10}
+                    placeholder="10-digit mobile"
+                    value={newLead.mobile}
+                    onChange={(e) =>
+                      setNewLead({
+                        ...newLead,
+                        mobile: e.target.value.replace(/\D/g, "").slice(0, 10),
+                      })
+                    }
+                    className="h-10 sm:h-11 rounded-xl bg-background border-border text-sm"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Interested Project</Label>
+                <Select
+                  value={newLead.project}
+                  onValueChange={(val) => setNewLead({ ...newLead, project: val })}
+                >
+                  <SelectTrigger className="h-10 sm:h-11 rounded-xl bg-background border-border text-sm">
+                    <SelectValue placeholder="Select Project" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {data.projects.map((p) => (
+                      <SelectItem key={p.id} value={String(p.id)}>
+                        {p.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Inquiry Notes / Specific Requirements</Label>
+                <Textarea
+                  rows={3}
+                  placeholder="Customer budget, configuration preference (2BHK/3BHK), site visit interest..."
+                  value={newLead.description}
+                  onChange={(e) => setNewLead({ ...newLead, description: e.target.value })}
+                  className="rounded-xl bg-background border-border text-sm p-3 min-h-[90px]"
+                />
+              </div>
             </div>
 
-            <div className="space-y-1.5">
-              <Label className="text-[12.5px] font-medium">Mobile Number *</Label>
-              <Input
-                required
-                type="tel"
-                placeholder="10-digit mobile"
-                value={newLead.mobile}
-                onChange={(e) => setNewLead({ ...newLead, mobile: e.target.value })}
-                className="h-10 rounded-[8px] bg-background border-border text-[13px]"
-              />
-            </div>
-
-            <div className="space-y-1.5">
-              <Label className="text-[12.5px] font-medium">Project</Label>
-              <Select
-                value={newLead.project}
-                onValueChange={(val) => setNewLead({ ...newLead, project: val })}
-              >
-                <SelectTrigger className="h-10 rounded-[8px] bg-background border-border text-[13px]">
-                  <SelectValue placeholder="Select Project" />
-                </SelectTrigger>
-                <SelectContent>
-                  {data.projects.map((p) => (
-                    <SelectItem key={p.id} value={String(p.id)}>
-                      {p.name}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-1.5">
-              <Label className="text-[12.5px] font-medium">Inquiry Note</Label>
-              <Textarea
-                rows={2}
-                placeholder="Customer requirement..."
-                value={newLead.description}
-                onChange={(e) => setNewLead({ ...newLead, description: e.target.value })}
-                className="rounded-[8px] bg-background border-border text-[13px]"
-              />
-            </div>
-
-            <DialogFooter className="gap-2 pt-2">
+            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
               <DialogClose asChild>
-                <Button type="button" variant="outline" className="rounded-[8px] border-border text-[13px]">
+                <Button type="button" variant="outline" className="rounded-xl h-10 px-5 text-sm">
                   Cancel
                 </Button>
               </DialogClose>
               <Button
                 type="submit"
                 disabled={savingNew}
-                className="rounded-[8px] bg-brand hover:bg-brand-bright text-white text-[13px] font-semibold"
+                className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md"
               >
                 {savingNew ? "Saving..." : "Save Lead"}
               </Button>

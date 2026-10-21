@@ -237,6 +237,8 @@ export function AdminUsersPage() {
         ...formData,
         [name]: target.files ? target.files[0] : null,
       });
+    } else if (name === "mobile") {
+      setFormData({ ...formData, [name]: value.replace(/\D/g, "").slice(0, 10) });
     } else {
       setFormData({ ...formData, [name]: value });
     }
@@ -244,8 +246,13 @@ export function AdminUsersPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.mobile) {
+    if (!formData.name.trim() || !formData.email.trim() || !formData.mobile.trim()) {
       toast.error("Please fill required fields (Name, Email, Mobile)");
+      setActiveTab("personal");
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(formData.mobile)) {
+      toast.error("Please enter a valid 10-digit mobile number");
       setActiveTab("personal");
       return;
     }
@@ -673,9 +680,11 @@ export function AdminUsersPage() {
                         <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                         <Input
                           name="mobile"
+                          type="tel"
+                          maxLength={10}
                           value={formData.mobile}
                           onChange={handleFormChange}
-                          placeholder="9829012345"
+                          placeholder="10-digit mobile"
                           className="pl-9 h-9 rounded-xl text-xs"
                           required
                         />

@@ -188,8 +188,12 @@ export function StaffDashboardPage() {
 
   const handleCreateLead = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newLead.name || !newLead.mobile) {
-      toast.error("Name and mobile number are required.");
+    if (!newLead.name.trim()) {
+      toast.error("Lead name is required.");
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(newLead.mobile)) {
+      toast.error("Please enter a valid 10-digit mobile number.");
       return;
     }
     setSavingLead(true);
@@ -235,19 +239,19 @@ export function StaffDashboardPage() {
         description="Daily calling queue, status disposition, and lead assignment tracking."
         breadcrumb={["Staff", "Dashboard"]}
         actions={
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2 w-full sm:w-auto">
             <Button
               variant="outline"
               size="sm"
               onClick={() => loadData()}
-              className="h-10 rounded-[10px] border-border text-foreground text-[13px] font-semibold gap-1.5"
+              className="flex-1 sm:flex-none h-9 sm:h-10 rounded-[10px] border-border text-foreground text-xs sm:text-[13px] font-semibold gap-1.5"
             >
               <RefreshCw className={`size-3.5 ${loading ? "animate-spin" : ""}`} />
               Refresh
             </Button>
             <Button
               onClick={() => setAddLeadOpen(true)}
-              className="h-10 rounded-[10px] bg-brand hover:bg-brand-bright text-white text-[13px] font-semibold shadow-sm gap-1.5"
+              className="flex-1 sm:flex-none h-9 sm:h-10 rounded-[10px] bg-brand hover:bg-brand-bright text-white text-xs sm:text-[13px] font-semibold shadow-sm gap-1.5"
             >
               <Plus className="size-4" />
               Add Lead
@@ -257,75 +261,75 @@ export function StaffDashboardPage() {
       />
 
       {/* KPI Cards Row matching Vrindavan ERP Theme */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-        <div className="erp-card p-4 flex flex-col justify-between">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+        <div className="erp-card p-3.5 sm:p-4 flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <span className="text-[12px] font-semibold text-text-secondary uppercase tracking-wider">
               Total Leads
             </span>
-            <Users className="size-4 text-brand" />
+            <Users className="size-4 text-brand shrink-0" />
           </div>
-          <p className="mt-3 text-[26px] font-extrabold text-foreground leading-none">
+          <p className="mt-2 text-xl sm:text-[26px] font-extrabold text-foreground leading-none">
             {data.counts.total_leads}
           </p>
         </div>
 
-        <div className="erp-card p-4 flex flex-col justify-between">
+        <div className="erp-card p-3.5 sm:p-4 flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <span className="text-[12px] font-semibold text-text-secondary uppercase tracking-wider">
               Site Visits
             </span>
-            <MapPin className="size-4 text-success" />
+            <MapPin className="size-4 text-success shrink-0" />
           </div>
-          <p className="mt-3 text-[26px] font-extrabold text-success leading-none">
+          <p className="mt-2 text-xl sm:text-[26px] font-extrabold text-success leading-none">
             {data.counts.total_visits_leads}
           </p>
         </div>
 
-        <div className="erp-card p-4 flex flex-col justify-between">
+        <div className="erp-card p-3.5 sm:p-4 flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <span className="text-[12px] font-semibold text-text-secondary uppercase tracking-wider">
               Interested
             </span>
-            <CheckCircle2 className="size-4 text-brand" />
+            <CheckCircle2 className="size-4 text-brand shrink-0" />
           </div>
-          <p className="mt-3 text-[26px] font-extrabold text-brand leading-none">
+          <p className="mt-2 text-xl sm:text-[26px] font-extrabold text-brand leading-none">
             {data.counts.total_interested_leads}
           </p>
         </div>
 
-        <div className="erp-card p-4 flex flex-col justify-between">
+        <div className="erp-card p-3.5 sm:p-4 flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <span className="text-[12px] font-semibold text-text-secondary uppercase tracking-wider">
               Not Picked
             </span>
-            <Clock className="size-4 text-warning" />
+            <Clock className="size-4 text-warning shrink-0" />
           </div>
-          <p className="mt-3 text-[26px] font-extrabold text-warning leading-none">
+          <p className="mt-2 text-xl sm:text-[26px] font-extrabold text-warning leading-none">
             {data.counts.total_not_picked_leads}
           </p>
         </div>
 
-        <div className="erp-card p-4 flex flex-col justify-between">
+        <div className="erp-card p-3.5 sm:p-4 flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <span className="text-[12px] font-semibold text-text-secondary uppercase tracking-wider">
               Other Loc.
             </span>
-            <Building className="size-4 text-info" />
+            <Building className="size-4 text-info shrink-0" />
           </div>
-          <p className="mt-3 text-[26px] font-extrabold text-info leading-none">
+          <p className="mt-2 text-xl sm:text-[26px] font-extrabold text-info leading-none">
             {data.counts.total_other_location_leads}
           </p>
         </div>
 
-        <div className="erp-card p-4 flex flex-col justify-between">
+        <div className="erp-card p-3.5 sm:p-4 flex flex-col justify-between">
           <div className="flex items-center justify-between">
             <span className="text-[12px] font-semibold text-text-secondary uppercase tracking-wider">
               Not Interested
             </span>
-            <XCircle className="size-4 text-danger" />
+            <XCircle className="size-4 text-danger shrink-0" />
           </div>
-          <p className="mt-3 text-[26px] font-extrabold text-danger leading-none">
+          <p className="mt-2 text-xl sm:text-[26px] font-extrabold text-danger leading-none">
             {data.counts.total_not_interested_leads}
           </p>
         </div>
@@ -334,67 +338,70 @@ export function StaffDashboardPage() {
       {/* Main Calling Queue Card */}
       <Card className="p-0 overflow-hidden">
         {/* Table Control Bar */}
-        <div className="p-4 border-b border-border flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
+        <div className="p-3.5 sm:p-4 border-b border-border flex flex-col sm:flex-row gap-3 items-stretch sm:items-center justify-between">
           <div className="relative w-full sm:w-80">
             <Input
               type="text"
               placeholder="Search by name, phone or status..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="h-10 pl-9 rounded-[10px] bg-background border-border text-[13px]"
+              className="h-9 sm:h-10 pl-9 rounded-[10px] bg-background border-border text-xs sm:text-[13px]"
             />
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-4 text-text-muted pointer-events-none" />
           </div>
 
           {/* Date Filter */}
-          <form onSubmit={handleDateFilter} className="flex items-center gap-2">
-            <Input
-              type="date"
-              value={startDate}
-              onChange={(e) => setStartDate(e.target.value)}
-              className="h-10 rounded-[10px] bg-background border-border text-[12.5px] w-36"
-            />
-            <span className="text-text-muted text-xs">to</span>
-            <Input
-              type="date"
-              value={endDate}
-              onChange={(e) => setEndDate(e.target.value)}
-              className="h-10 rounded-[10px] bg-background border-border text-[12.5px] w-36"
-            />
-            <Button
-              type="submit"
-              variant="outline"
-              className="h-10 rounded-[10px] border-border text-foreground text-[12.5px] font-semibold"
-            >
-              Filter
-            </Button>
-          </form>
+          <div className="flex items-center justify-between sm:justify-end gap-2 w-full sm:w-auto">
+            <form onSubmit={handleDateFilter} className="flex items-center gap-1.5 w-full sm:w-auto">
+              <Input
+                type="date"
+                value={startDate}
+                onChange={(e) => setStartDate(e.target.value)}
+                className="h-8.5 sm:h-10 rounded-[10px] bg-background border-border text-xs flex-1 sm:w-36"
+              />
+              <span className="text-text-muted text-xs shrink-0">to</span>
+              <Input
+                type="date"
+                value={endDate}
+                onChange={(e) => setEndDate(e.target.value)}
+                className="h-8.5 sm:h-10 rounded-[10px] bg-background border-border text-xs flex-1 sm:w-36"
+              />
+              <Button
+                type="submit"
+                variant="outline"
+                className="h-8.5 sm:h-10 rounded-[10px] border-border text-foreground text-xs font-semibold shrink-0"
+              >
+                Filter
+              </Button>
+            </form>
+            <span className="text-[10px] sm:hidden text-text-muted shrink-0">Swipe →</span>
+          </div>
         </div>
 
         {/* Calling Table */}
-        <div className="overflow-x-auto">
-          <table className="w-full text-left text-[13.5px]">
+        <div className="overflow-x-auto -mx-3.5 px-3.5 sm:mx-0 sm:px-0">
+          <table className="w-full text-left text-xs sm:text-[13.5px] min-w-[850px] whitespace-nowrap">
             <thead className="bg-muted/60 border-b border-border text-[12px] font-semibold text-text-secondary uppercase tracking-wider">
               <tr>
-                <th className="px-5 py-3.5">Lead Name</th>
-                <th className="px-5 py-3.5">Contact Action</th>
-                <th className="px-5 py-3.5">Current Status</th>
-                <th className="px-5 py-3.5">Assigned Project</th>
-                <th className="px-5 py-3.5">Follow-up Notes</th>
-                <th className="px-5 py-3.5 text-right">Action</th>
+                <th className="px-5 py-3.5 whitespace-nowrap">Lead Name</th>
+                <th className="px-5 py-3.5 whitespace-nowrap">Contact Action</th>
+                <th className="px-5 py-3.5 whitespace-nowrap">Current Status</th>
+                <th className="px-5 py-3.5 whitespace-nowrap">Assigned Project</th>
+                <th className="px-5 py-3.5 whitespace-nowrap">Follow-up Notes</th>
+                <th className="px-5 py-3.5 text-right whitespace-nowrap">Action</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
               {filteredLeads.length === 0 ? (
                 <tr>
-                  <td colSpan={6} className="text-center py-10 text-text-muted text-sm">
+                  <td colSpan={6} className="text-center py-10 text-text-muted text-sm whitespace-nowrap">
                     No matching leads found in calling queue.
                   </td>
                 </tr>
               ) : (
                 filteredLeads.map((lead) => (
                   <tr key={lead.id} className="hover:bg-muted/40 transition-colors">
-                    <td className="px-5 py-3.5 font-medium text-foreground">
+                    <td className="px-5 py-3.5 font-medium text-foreground whitespace-nowrap">
                       <div className="flex items-center gap-2">
                         <span className="grid size-8 rounded-full bg-brand-soft text-brand font-bold text-xs place-items-center">
                           {lead.name.charAt(0)}
@@ -409,7 +416,7 @@ export function StaffDashboardPage() {
                     </td>
 
                     {/* Calling & WhatsApp Triggers */}
-                    <td className="px-5 py-3.5">
+                    <td className="px-5 py-3.5 whitespace-nowrap">
                       <div className="flex items-center gap-2">
                         <a
                           href={`tel:+91${lead.call}`}
@@ -431,11 +438,11 @@ export function StaffDashboardPage() {
                       </div>
                     </td>
 
-                    <td className="px-5 py-3.5">
+                    <td className="px-5 py-3.5 whitespace-nowrap">
                       <StatusBadge value={lead.status} />
                     </td>
 
-                    <td className="px-5 py-3.5">
+                    <td className="px-5 py-3.5 whitespace-nowrap">
                       <Select
                         value={lead.project ? String(lead.project) : "none"}
                         onValueChange={(val) =>
@@ -456,11 +463,11 @@ export function StaffDashboardPage() {
                       </Select>
                     </td>
 
-                    <td className="px-5 py-3.5 max-w-xs truncate text-[12.5px] text-text-secondary">
+                    <td className="px-5 py-3.5 max-w-xs truncate text-[12.5px] text-text-secondary whitespace-nowrap">
                       {lead.message || "--"}
                     </td>
 
-                    <td className="px-5 py-3.5 text-right">
+                    <td className="px-5 py-3.5 text-right whitespace-nowrap">
                       <Button
                         size="sm"
                         variant="outline"
@@ -480,152 +487,164 @@ export function StaffDashboardPage() {
 
       {/* Update Call Status Modal */}
       <Dialog open={statusModalOpen} onOpenChange={setStatusModalOpen}>
-        <DialogContent className="sm:max-w-md bg-card text-foreground border-border rounded-[16px] shadow-xl">
-          <DialogHeader>
-            <DialogTitle className="text-[17px] font-bold">
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
               Update Lead Status: {selectedLead?.name}
             </DialogTitle>
-            <DialogDescription className="text-text-secondary text-[12.5px]">
-              Record call outcome and follow-up notes.
+            <DialogDescription className="text-text-secondary text-xs sm:text-sm mt-1">
+              Record call outcome, customer interest status, and follow-up notes.
             </DialogDescription>
           </DialogHeader>
 
-          <div className="space-y-4 py-2">
-            <div className="space-y-1.5">
-              <Label className="text-[12.5px] font-medium">Lead Disposition Status</Label>
-              <Select value={editStatus} onValueChange={setEditStatus}>
-                <SelectTrigger className="h-10 rounded-[8px] bg-background border-border text-[13px]">
-                  <SelectValue placeholder="Select Status" />
-                </SelectTrigger>
-                <SelectContent>
-                  {statusOptions.map((opt) => (
-                    <SelectItem key={opt} value={opt}>
-                      {opt}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-1.5">
-              <Label className="text-[12.5px] font-medium">Remarks &amp; Follow-up Details</Label>
-              <Textarea
-                rows={3}
-                placeholder="Customer feedback, budget, preferred visit date..."
-                value={editMessage}
-                onChange={(e) => setEditMessage(e.target.value)}
-                className="rounded-[8px] bg-background border-border text-[13px]"
-              />
-            </div>
-          </div>
-
-          <DialogFooter className="gap-2 pt-2">
-            <DialogClose asChild>
-              <Button type="button" variant="outline" className="rounded-[8px] border-border text-[13px]">
-                Cancel
-              </Button>
-            </DialogClose>
-            <Button
-              type="button"
-              disabled={savingStatus}
-              onClick={handleSaveStatus}
-              className="rounded-[8px] bg-brand hover:bg-brand-bright text-white text-[13px] font-semibold"
-            >
-              {savingStatus ? "Saving..." : "Save Outcome"}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-
-      {/* Add Lead Modal */}
-      <Dialog open={addLeadOpen} onOpenChange={setAddLeadOpen}>
-        <DialogContent className="sm:max-w-lg bg-card text-foreground border-border rounded-[16px] shadow-xl">
-          <DialogHeader>
-            <DialogTitle className="text-[18px] font-bold">Register New Sales Lead</DialogTitle>
-            <DialogDescription className="text-text-secondary text-[12.5px]">
-              Enter prospective customer details to add to calling queue.
-            </DialogDescription>
-          </DialogHeader>
-
-          <form onSubmit={handleCreateLead} className="space-y-4 py-2">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="space-y-1.5">
-                <Label className="text-[12.5px] font-medium">Customer Name *</Label>
-                <Input
-                  required
-                  placeholder="e.g. Rajesh Sharma"
-                  value={newLead.name}
-                  onChange={(e) => setNewLead({ ...newLead, name: e.target.value })}
-                  className="h-10 rounded-[8px] bg-background border-border text-[13px]"
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <Label className="text-[12.5px] font-medium">Mobile Number *</Label>
-                <Input
-                  required
-                  type="tel"
-                  placeholder="e.g. 9876543210"
-                  value={newLead.mobile}
-                  onChange={(e) => setNewLead({ ...newLead, mobile: e.target.value })}
-                  className="h-10 rounded-[8px] bg-background border-border text-[13px]"
-                />
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-              <div className="space-y-1.5">
-                <Label className="text-[12.5px] font-medium">Email Address</Label>
-                <Input
-                  type="email"
-                  placeholder="customer@gmail.com"
-                  value={newLead.email}
-                  onChange={(e) => setNewLead({ ...newLead, email: e.target.value })}
-                  className="h-10 rounded-[8px] bg-background border-border text-[13px]"
-                />
-              </div>
-
-              <div className="space-y-1.5">
-                <Label className="text-[12.5px] font-medium">Project</Label>
-                <Select
-                  value={newLead.project}
-                  onValueChange={(val) => setNewLead({ ...newLead, project: val })}
-                >
-                  <SelectTrigger className="h-10 rounded-[8px] bg-background border-border text-[13px]">
-                    <SelectValue placeholder="Select Project" />
+          <div className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Lead Disposition Status</Label>
+                <Select value={editStatus} onValueChange={setEditStatus}>
+                  <SelectTrigger className="h-10 sm:h-11 rounded-xl bg-background border-border text-sm">
+                    <SelectValue placeholder="Select Status" />
                   </SelectTrigger>
                   <SelectContent>
-                    {data.projects.map((p) => (
-                      <SelectItem key={p.id} value={String(p.id)}>
-                        {p.name}
+                    {statusOptions.map((opt) => (
+                      <SelectItem key={opt} value={opt}>
+                        {opt}
                       </SelectItem>
                     ))}
                   </SelectContent>
                 </Select>
               </div>
+
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Remarks &amp; Follow-up Details</Label>
+                <Textarea
+                  rows={4}
+                  placeholder="Customer feedback, budget, preferred visit date..."
+                  value={editMessage}
+                  onChange={(e) => setEditMessage(e.target.value)}
+                  className="rounded-xl bg-background border-border text-sm p-3 min-h-[100px]"
+                />
+              </div>
             </div>
 
-            <div className="space-y-1.5">
-              <Label className="text-[12.5px] font-medium">Initial Notes / Requirements</Label>
-              <Textarea
-                rows={2}
-                placeholder="e.g. Looking for 2 BHK near Tonk Road, budget 45 Lacs"
-                value={newLead.description}
-                onChange={(e) => setNewLead({ ...newLead, description: e.target.value })}
-                className="rounded-[8px] bg-background border-border text-[13px]"
-              />
-            </div>
-
-            <DialogFooter className="gap-2 pt-2">
+            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
               <DialogClose asChild>
-                <Button type="button" variant="outline" className="rounded-[8px] border-border text-[13px]">
+                <Button type="button" variant="outline" className="rounded-xl h-10 px-5 text-sm">
+                  Cancel
+                </Button>
+              </DialogClose>
+              <Button
+                type="button"
+                disabled={savingStatus}
+                onClick={handleSaveStatus}
+                className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md"
+              >
+                {savingStatus ? "Saving..." : "Save Outcome"}
+              </Button>
+            </DialogFooter>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Add Lead Modal */}
+      <Dialog open={addLeadOpen} onOpenChange={setAddLeadOpen}>
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
+              Register New Sales Lead
+            </DialogTitle>
+            <DialogDescription className="text-text-secondary text-xs sm:text-sm mt-1">
+              Enter prospective customer details to add directly to your calling queue.
+            </DialogDescription>
+          </DialogHeader>
+
+          <form onSubmit={handleCreateLead} className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Customer Name *</Label>
+                  <Input
+                    required
+                    placeholder="e.g. Rajesh Sharma"
+                    value={newLead.name}
+                    onChange={(e) => setNewLead({ ...newLead, name: e.target.value })}
+                    className="h-10 sm:h-11 rounded-xl bg-background border-border text-sm"
+                  />
+                </div>
+
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Mobile Number (10 digits) *</Label>
+                  <Input
+                    required
+                    type="tel"
+                    maxLength={10}
+                    placeholder="10-digit mobile"
+                    value={newLead.mobile}
+                    onChange={(e) =>
+                      setNewLead({
+                        ...newLead,
+                        mobile: e.target.value.replace(/\D/g, "").slice(0, 10),
+                      })
+                    }
+                    className="h-10 sm:h-11 rounded-xl bg-background border-border text-sm"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Email Address</Label>
+                  <Input
+                    type="email"
+                    placeholder="customer@gmail.com"
+                    value={newLead.email}
+                    onChange={(e) => setNewLead({ ...newLead, email: e.target.value })}
+                    className="h-10 sm:h-11 rounded-xl bg-background border-border text-sm"
+                  />
+                </div>
+
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Interested Project</Label>
+                  <Select
+                    value={newLead.project}
+                    onValueChange={(val) => setNewLead({ ...newLead, project: val })}
+                  >
+                    <SelectTrigger className="h-10 sm:h-11 rounded-xl bg-background border-border text-sm">
+                      <SelectValue placeholder="Select Project" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {data.projects.map((p) => (
+                        <SelectItem key={p.id} value={String(p.id)}>
+                          {p.name}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Initial Notes / Requirements</Label>
+                <Textarea
+                  rows={3}
+                  placeholder="e.g. Looking for 2 BHK near Tonk Road, budget 45 Lacs, visit planned Sunday"
+                  value={newLead.description}
+                  onChange={(e) => setNewLead({ ...newLead, description: e.target.value })}
+                  className="rounded-xl bg-background border-border text-sm p-3 min-h-[90px]"
+                />
+              </div>
+            </div>
+
+            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+              <DialogClose asChild>
+                <Button type="button" variant="outline" className="rounded-xl h-10 px-5 text-sm">
                   Cancel
                 </Button>
               </DialogClose>
               <Button
                 type="submit"
                 disabled={savingLead}
-                className="rounded-[8px] bg-brand hover:bg-brand-bright text-white text-[13px] font-semibold"
+                className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md"
               >
                 {savingLead ? "Creating..." : "Add to Calling Queue"}
               </Button>

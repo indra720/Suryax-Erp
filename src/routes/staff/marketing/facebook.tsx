@@ -31,15 +31,17 @@ export function StaffFacebookMarketingPage() {
             Meta Ads Manager sync for instant lead capture and auto-CRM assignment.
           </p>
         </div>
-        <Button
-          onClick={() => toast.success("Meta instant lead forms synced successfully")}
-          className="text-xs bg-blue-600 hover:bg-blue-700 text-white font-semibold"
-        >
-          Sync Instant Forms
-        </Button>
+        <div className="w-full sm:w-auto">
+          <Button
+            onClick={() => toast.success("Meta instant lead forms synced successfully")}
+            className="w-full sm:w-auto text-xs bg-blue-600 hover:bg-blue-700 text-white font-semibold"
+          >
+            Sync Instant Forms
+          </Button>
+        </div>
       </div>
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
         <Card className="border rounded-xl p-3 bg-card shadow-xs">
           <span className="text-xs font-semibold text-muted-foreground">Total Reach</span>
           <div className="text-xl sm:text-2xl font-extrabold text-foreground mt-1">116.5K</div>

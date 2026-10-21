@@ -120,8 +120,12 @@ export function TeamLeaderLeadsPage() {
 
   const handleAddSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!newLeadData.name || !newLeadData.mobile) {
-      toast.error("Name and mobile number are required.");
+    if (!newLeadData.name.trim()) {
+      toast.error("Lead name is required.");
+      return;
+    }
+    if (!/^[6-9]\d{9}$/.test(newLeadData.mobile)) {
+      toast.error("Please enter a valid 10-digit mobile number.");
       return;
     }
     setIsSubmitting(true);
@@ -149,30 +153,32 @@ export function TeamLeaderLeadsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900 flex items-center gap-2">
-            <FolderOpen className="size-6 text-[#6732F2]" />
-            Team Leads
+          <h1 className="text-lg sm:text-xl md:text-2xl font-bold tracking-tight text-gray-900 flex items-center gap-2">
+            <FolderOpen className="size-5 sm:size-6 text-[#6732F2] shrink-0" />
+            Team Leads Pipeline
           </h1>
-          <p className="text-xs sm:text-sm text-gray-500">
+          <p className="text-xs sm:text-sm text-gray-500 line-clamp-2 sm:line-clamp-none">
             Assigned customer calling queue, instant WhatsApp outreach, and lead categorization.
           </p>
         </div>
-        <Button
-          size="sm"
-          onClick={() => setIsAddLeadOpen(true)}
-          className="bg-gradient-to-r from-[#331fa3] to-[#6732F2] hover:opacity-95 text-white font-semibold text-xs flex items-center gap-1.5 shadow-sm"
-        >
-          <PlusCircle className="size-4" />
-          Add New Lead
-        </Button>
+        <div className="w-full sm:w-auto">
+          <Button
+            size="sm"
+            onClick={() => setIsAddLeadOpen(true)}
+            className="w-full sm:w-auto bg-gradient-to-r from-[#331fa3] to-[#6732F2] hover:opacity-95 text-white font-semibold text-xs flex items-center justify-center gap-1.5 shadow-sm"
+          >
+            <PlusCircle className="size-4" />
+            Add New Lead
+          </Button>
+        </div>
       </div>
 
       {/* Aggregate Filter Bar */}
       <Card className="border rounded-xl bg-white shadow-xs">
         <CardContent className="p-3 sm:p-4">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-3">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2.5">
             <span className="text-xs font-semibold text-gray-600 shrink-0">Quick Filters:</span>
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 flex-1">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 flex-1">
               <Select onValueChange={(val) => val && navigate({ to: `/team-leader/leads/staff`, search: { id: val } })}>
                 <SelectTrigger className="h-8 text-xs">
                   <SelectValue placeholder="Assigned Staff" />
@@ -349,88 +355,105 @@ export function TeamLeaderLeadsPage() {
 
       {/* Add New Lead Dialog */}
       <Dialog open={isAddLeadOpen} onOpenChange={setIsAddLeadOpen}>
-        <DialogContent className="sm:max-w-md p-4 sm:p-5 rounded-2xl">
-          <DialogHeader>
-            <DialogTitle className="text-base sm:text-lg font-bold">Add New Lead</DialogTitle>
-            <DialogDescription className="text-xs text-gray-500">
-              Enter customer contact information to create a new calling lead.
+        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="pb-3 border-b border-border shrink-0">
+            <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
+              Add New Calling Lead
+            </DialogTitle>
+            <DialogDescription className="text-xs sm:text-sm text-muted-foreground mt-1">
+              Enter customer contact information to assign to telecallers and register immediate stage.
             </DialogDescription>
           </DialogHeader>
 
-          <form onSubmit={handleAddSubmit} className="space-y-3.5 pt-2">
-            <div className="space-y-1">
-              <Label className="text-xs font-semibold text-gray-700">Customer Name *</Label>
-              <Input
-                name="name"
-                value={newLeadData.name}
-                onChange={(e) => setNewLeadData({ ...newLeadData, name: e.target.value })}
-                placeholder="e.g. Ramesh Kumar"
-                className="h-9 text-xs"
-                required
-              />
+          <form onSubmit={handleAddSubmit} className="flex flex-col flex-1 overflow-hidden">
+            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Customer Name *</Label>
+                  <Input
+                    name="name"
+                    value={newLeadData.name}
+                    onChange={(e) => setNewLeadData({ ...newLeadData, name: e.target.value })}
+                    placeholder="e.g. Ramesh Kumar"
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Status *</Label>
+                  <Select
+                    value={newLeadData.status}
+                    onValueChange={(val) => setNewLeadData({ ...newLeadData, status: val })}
+                  >
+                    <SelectTrigger className="h-10 sm:h-11 text-sm rounded-xl">
+                      <SelectValue placeholder="Select Status" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Interested">Interested</SelectItem>
+                      <SelectItem value="Visit">Visit</SelectItem>
+                      <SelectItem value="Not Interested">Not Interested</SelectItem>
+                      <SelectItem value="Other Location">Other Location</SelectItem>
+                      <SelectItem value="Not Picked">Not Picked</SelectItem>
+                      <SelectItem value="Lost">Lost</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Mobile Number (10 digits) *</Label>
+                  <Input
+                    type="tel"
+                    name="mobile"
+                    maxLength={10}
+                    value={newLeadData.mobile}
+                    onChange={(e) =>
+                      setNewLeadData({
+                        ...newLeadData,
+                        mobile: e.target.value.replace(/\D/g, "").slice(0, 10),
+                      })
+                    }
+                    placeholder="10-digit mobile"
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Email Address</Label>
+                  <Input
+                    type="email"
+                    name="email"
+                    value={newLeadData.email}
+                    onChange={(e) => setNewLeadData({ ...newLeadData, email: e.target.value })}
+                    placeholder="customer@gmail.com"
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Remarks / Specific Requirement</Label>
+                <Textarea
+                  name="description"
+                  value={newLeadData.description}
+                  onChange={(e) => setNewLeadData({ ...newLeadData, description: e.target.value })}
+                  placeholder="e.g. Inquiring for 150 gaj plot near sector-5, site visit ready this Sunday"
+                  className="rounded-xl text-sm p-3 min-h-[90px]"
+                />
+              </div>
             </div>
 
-            <div className="space-y-1">
-              <Label className="text-xs font-semibold text-gray-700">Status *</Label>
-              <Select
-                value={newLeadData.status}
-                onValueChange={(val) => setNewLeadData({ ...newLeadData, status: val })}
-              >
-                <SelectTrigger className="h-9 text-xs">
-                  <SelectValue placeholder="Select Status" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Interested" className="text-xs">Interested</SelectItem>
-                  <SelectItem value="Visit" className="text-xs">Visit</SelectItem>
-                  <SelectItem value="Not Interested" className="text-xs">Not Interested</SelectItem>
-                  <SelectItem value="Other Location" className="text-xs">Other Location</SelectItem>
-                  <SelectItem value="Not Picked" className="text-xs">Not Picked</SelectItem>
-                  <SelectItem value="Lost" className="text-xs">Lost</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="space-y-1">
-              <Label className="text-xs font-semibold text-gray-700">Mobile Number *</Label>
-              <Input
-                type="tel"
-                name="mobile"
-                value={newLeadData.mobile}
-                onChange={(e) => setNewLeadData({ ...newLeadData, mobile: e.target.value })}
-                placeholder="9829012345"
-                className="h-9 text-xs"
-                required
-              />
-            </div>
-
-            <div className="space-y-1">
-              <Label className="text-xs font-semibold text-gray-700">Email Address</Label>
-              <Input
-                type="email"
-                name="email"
-                value={newLeadData.email}
-                onChange={(e) => setNewLeadData({ ...newLeadData, email: e.target.value })}
-                placeholder="customer@gmail.com"
-                className="h-9 text-xs"
-              />
-            </div>
-
-            <div className="space-y-1">
-              <Label className="text-xs font-semibold text-gray-700">Remarks / Requirement</Label>
-              <Textarea
-                name="description"
-                value={newLeadData.description}
-                onChange={(e) => setNewLeadData({ ...newLeadData, description: e.target.value })}
-                placeholder="e.g. Inquiring for 150 gaj plot near sector-5"
-                className="min-h-[60px] text-xs"
-              />
-            </div>
-
-            <DialogFooter className="pt-2">
+            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+              <Button type="button" variant="outline" onClick={() => setIsAddLeadOpen(false)} className="rounded-xl h-10 px-5 text-sm">
+                Cancel
+              </Button>
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-xs h-9"
+                className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md"
               >
                 {isSubmitting ? "Creating Lead..." : "Save Lead"}
               </Button>

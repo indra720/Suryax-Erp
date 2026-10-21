@@ -85,7 +85,7 @@ export function SprintsView({ basePath = "/admin/project" }: SprintsViewProps) {
     const s = getPmsSprints();
     setSprints(s);
     setTasks(getPmsTasks());
-    if (s.length > 0 && !selectedSprintId) {
+    if (s.length > 0 && !selectedSprintId && s[0]) {
       setSelectedSprintId(s[0].id);
     }
   };
