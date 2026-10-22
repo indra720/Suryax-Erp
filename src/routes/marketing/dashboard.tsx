@@ -186,160 +186,158 @@ export function MarketingDashboardPage() {
           </p>
         </div>
 
-        <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-2.5 w-full sm:w-auto">
-          <Button
-            size="sm"
-            onClick={() => setNewCampaignModal(true)}
-            className="w-full sm:w-auto h-9 gap-1.5 text-xs bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-sm font-semibold justify-center order-first sm:order-last"
-          >
-            <Plus className="size-3.5" />
-            <span>New Campaign</span>
-          </Button>
-
-          <div className="flex items-center gap-2 w-full sm:w-auto">
-            <div className="flex-1 sm:w-auto">
-              <Select value={selectedProject} onValueChange={setSelectedProject}>
-                <SelectTrigger className="w-full sm:w-[170px] h-9 text-xs bg-card border-border">
-                  <SelectValue placeholder="All Projects" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">All Projects</SelectItem>
-                  <SelectItem value="vh">Vrindavan Heights</SelectItem>
-                  <SelectItem value="gv">Green Valley Villas</SelectItem>
-                  <SelectItem value="ct">Cyber Techpark Tower</SelectItem>
-                  <SelectItem value="rg">Radha Govind City</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
+        <div className="flex flex-col sm:flex-row sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
+          <div className="grid grid-cols-2 sm:flex sm:items-center gap-2 w-full sm:w-auto">
+            <Select value={selectedProject} onValueChange={setSelectedProject}>
+              <SelectTrigger className="w-full sm:w-[170px] h-9 text-xs bg-card border-border">
+                <SelectValue placeholder="All Projects" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="all">All Projects</SelectItem>
+                <SelectItem value="vh">Vrindavan Heights</SelectItem>
+                <SelectItem value="gv">Green Valley Villas</SelectItem>
+                <SelectItem value="ct">Cyber Techpark Tower</SelectItem>
+                <SelectItem value="rg">Radha Govind City</SelectItem>
+              </SelectContent>
+            </Select>
 
             <Button
               variant="outline"
               size="sm"
               onClick={handleExportSummary}
-              className="flex-1 sm:flex-none h-9 gap-1.5 text-xs border-border justify-center"
+              className="h-9 gap-1.5 text-xs border-border justify-center"
             >
               <Download className="size-3.5" />
               <span>Export CSV</span>
             </Button>
           </div>
+
+          <Button
+            size="sm"
+            onClick={() => setNewCampaignModal(true)}
+            className="w-full sm:w-auto h-9 gap-1.5 text-xs bg-gradient-to-r from-[#4F20D8] to-[#5B2BE0] text-white shadow-sm font-semibold justify-center"
+          >
+            <Plus className="size-3.5" />
+            <span>New Campaign</span>
+          </Button>
         </div>
       </div>
 
-      {/* 8 Primary KPI Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-3.5">
-        <Card className="p-3.5 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm">
-          <div className="flex items-center justify-between text-text-secondary text-xs font-medium">
-            <span>Total Leads Gen</span>
-            <Users className="size-4 text-brand shrink-0" />
+      {/* 8 Primary KPI Cards - 2 cols on mobile for compact, executive UI */}
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
+        <Card className="p-3 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm rounded-xl sm:rounded-2xl flex flex-col justify-between">
+          <div className="flex items-center justify-between text-text-secondary text-[11px] sm:text-xs font-medium">
+            <span className="truncate pr-1">Total Leads Gen</span>
+            <Users className="size-3.5 sm:size-4 text-brand shrink-0" />
           </div>
-          <div className="mt-2 flex items-baseline justify-between sm:justify-start gap-2">
-            <span className="text-xl sm:text-2xl font-bold text-foreground">
+          <div className="mt-1.5 sm:mt-2 flex flex-col xs:flex-row items-start xs:items-baseline justify-between sm:justify-start gap-1 sm:gap-2">
+            <span className="text-lg sm:text-2xl font-bold text-foreground">
               {kpis.totalLeads.toLocaleString()}
             </span>
-            <span className="text-xs font-semibold text-emerald-600 flex items-center">
-              <ArrowUpRight className="size-3" />+{kpis.totalLeadsGrowth}%
+            <span className="text-[10px] sm:text-xs font-semibold text-emerald-600 flex items-center shrink-0">
+              <ArrowUpRight className="size-2.5 sm:size-3" />+{kpis.totalLeadsGrowth}%
             </span>
           </div>
-          <p className="text-xs text-text-muted mt-1">Verified inbound prospects</p>
+          <p className="text-[10px] sm:text-xs text-text-muted mt-1 truncate">Verified inbound prospects</p>
         </Card>
 
-        <Card className="p-3.5 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm">
-          <div className="flex items-center justify-between text-text-secondary text-xs font-medium">
-            <span>Cost Per Lead (CPL)</span>
-            <DollarSign className="size-4 text-emerald-600 shrink-0" />
+        <Card className="p-3 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm rounded-xl sm:rounded-2xl flex flex-col justify-between">
+          <div className="flex items-center justify-between text-text-secondary text-[11px] sm:text-xs font-medium">
+            <span className="truncate pr-1">Cost Per Lead</span>
+            <DollarSign className="size-3.5 sm:size-4 text-emerald-600 shrink-0" />
           </div>
-          <div className="mt-2 flex items-baseline justify-between sm:justify-start gap-2">
-            <span className="text-xl sm:text-2xl font-bold text-foreground">
+          <div className="mt-1.5 sm:mt-2 flex flex-col xs:flex-row items-start xs:items-baseline justify-between sm:justify-start gap-1 sm:gap-2">
+            <span className="text-lg sm:text-2xl font-bold text-foreground">
               ₹{kpis.costPerLead}
             </span>
-            <span className="text-xs font-semibold text-emerald-600 flex items-center">
+            <span className="text-[10px] sm:text-xs font-semibold text-emerald-600 flex items-center shrink-0">
               -{kpis.cplReduction}% opt
             </span>
           </div>
-          <p className="text-xs text-text-muted mt-1">Blended across platforms</p>
+          <p className="text-[10px] sm:text-xs text-text-muted mt-1 truncate">Blended across platforms</p>
         </Card>
 
-        <Card className="p-3.5 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm">
-          <div className="flex items-center justify-between text-text-secondary text-xs font-medium">
-            <span>Active Campaigns</span>
-            <Megaphone className="size-4 text-brand shrink-0" />
+        <Card className="p-3 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm rounded-xl sm:rounded-2xl flex flex-col justify-between">
+          <div className="flex items-center justify-between text-text-secondary text-[11px] sm:text-xs font-medium">
+            <span className="truncate pr-1">Active Campaigns</span>
+            <Megaphone className="size-3.5 sm:size-4 text-brand shrink-0" />
           </div>
-          <div className="mt-2 flex items-baseline justify-between sm:justify-start gap-2">
-            <span className="text-xl sm:text-2xl font-bold text-foreground">
+          <div className="mt-1.5 sm:mt-2 flex flex-col xs:flex-row items-start xs:items-baseline justify-between sm:justify-start gap-1 sm:gap-2">
+            <span className="text-lg sm:text-2xl font-bold text-foreground">
               {kpis.activeCampaigns}
             </span>
-            <span className="text-xs text-brand font-medium">Across 5 Networks</span>
+            <span className="text-[10px] sm:text-xs text-brand font-medium truncate">5 Networks</span>
           </div>
-          <p className="text-xs text-text-muted mt-1">Google, Meta, 99acres, WA</p>
+          <p className="text-[10px] sm:text-xs text-text-muted mt-1 truncate">Google, Meta, 99acres</p>
         </Card>
 
-        <Card className="p-3.5 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm">
-          <div className="flex items-center justify-between text-text-secondary text-xs font-medium">
-            <span>Conversion Rate</span>
-            <TrendingUp className="size-4 text-brand shrink-0" />
+        <Card className="p-3 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm rounded-xl sm:rounded-2xl flex flex-col justify-between">
+          <div className="flex items-center justify-between text-text-secondary text-[11px] sm:text-xs font-medium">
+            <span className="truncate pr-1">Conversion Rate</span>
+            <TrendingUp className="size-3.5 sm:size-4 text-brand shrink-0" />
           </div>
-          <div className="mt-2 flex items-baseline justify-between sm:justify-start gap-2">
-            <span className="text-xl sm:text-2xl font-bold text-foreground">
+          <div className="mt-1.5 sm:mt-2 flex flex-col xs:flex-row items-start xs:items-baseline justify-between sm:justify-start gap-1 sm:gap-2">
+            <span className="text-lg sm:text-2xl font-bold text-foreground">
               {kpis.conversionRate}%
             </span>
-            <span className="text-xs font-semibold text-emerald-600">Lead → Visit</span>
+            <span className="text-[10px] sm:text-xs font-semibold text-emerald-600 truncate">Lead → Visit</span>
           </div>
-          <p className="text-xs text-text-muted mt-1">Industry avg: 5.2%</p>
+          <p className="text-[10px] sm:text-xs text-text-muted mt-1 truncate">Industry avg: 5.2%</p>
         </Card>
 
-        <Card className="p-3.5 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm">
-          <div className="flex items-center justify-between text-text-secondary text-xs font-medium">
-            <span>Total Ad Spend</span>
-            <Target className="size-4 text-rose-600 shrink-0" />
+        <Card className="p-3 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm rounded-xl sm:rounded-2xl flex flex-col justify-between">
+          <div className="flex items-center justify-between text-text-secondary text-[11px] sm:text-xs font-medium">
+            <span className="truncate pr-1">Total Ad Spend</span>
+            <Target className="size-3.5 sm:size-4 text-rose-600 shrink-0" />
           </div>
-          <div className="mt-2 flex items-baseline justify-between sm:justify-start gap-2">
-            <span className="text-xl sm:text-2xl font-bold text-foreground">
+          <div className="mt-1.5 sm:mt-2 flex flex-col xs:flex-row items-start xs:items-baseline justify-between sm:justify-start gap-1 sm:gap-2">
+            <span className="text-lg sm:text-2xl font-bold text-foreground">
               ₹{(kpis.totalAdSpend / 100000).toFixed(1)}L
             </span>
-            <span className="text-xs text-text-muted">84% of budget</span>
+            <span className="text-[10px] sm:text-xs text-text-muted truncate">84% budget</span>
           </div>
-          <p className="text-xs text-text-muted mt-1">MTD ad budget utilized</p>
+          <p className="text-[10px] sm:text-xs text-text-muted mt-1 truncate">MTD ad budget utilized</p>
         </Card>
 
-        <Card className="p-3.5 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm">
-          <div className="flex items-center justify-between text-text-secondary text-xs font-medium">
-            <span>Marketing ROI</span>
-            <Sparkles className="size-4 text-amber-500 shrink-0" />
+        <Card className="p-3 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm rounded-xl sm:rounded-2xl flex flex-col justify-between">
+          <div className="flex items-center justify-between text-text-secondary text-[11px] sm:text-xs font-medium">
+            <span className="truncate pr-1">Marketing ROI</span>
+            <Sparkles className="size-3.5 sm:size-4 text-amber-500 shrink-0" />
           </div>
-          <div className="mt-2 flex items-baseline justify-between sm:justify-start gap-2">
-            <span className="text-xl sm:text-2xl font-bold text-emerald-600">
+          <div className="mt-1.5 sm:mt-2 flex flex-col xs:flex-row items-start xs:items-baseline justify-between sm:justify-start gap-1 sm:gap-2">
+            <span className="text-lg sm:text-2xl font-bold text-emerald-600">
               {kpis.roiMultiplier}x
             </span>
-            <span className="text-xs font-semibold text-emerald-600">Pipeline return</span>
+            <span className="text-[10px] sm:text-xs font-semibold text-emerald-600 truncate">Pipeline</span>
           </div>
-          <p className="text-xs text-text-muted mt-1">₹6.2 Cr booking pipeline</p>
+          <p className="text-[10px] sm:text-xs text-text-muted mt-1 truncate">₹6.2 Cr pipeline</p>
         </Card>
 
-        <Card className="p-3.5 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm">
-          <div className="flex items-center justify-between text-text-secondary text-xs font-medium">
-            <span>Site Visits Booked</span>
-            <Eye className="size-4 text-brand shrink-0" />
+        <Card className="p-3 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm rounded-xl sm:rounded-2xl flex flex-col justify-between">
+          <div className="flex items-center justify-between text-text-secondary text-[11px] sm:text-xs font-medium">
+            <span className="truncate pr-1">Site Visits</span>
+            <Eye className="size-3.5 sm:size-4 text-brand shrink-0" />
           </div>
-          <div className="mt-2 flex items-baseline justify-between sm:justify-start gap-2">
-            <span className="text-xl sm:text-2xl font-bold text-foreground">
+          <div className="mt-1.5 sm:mt-2 flex flex-col xs:flex-row items-start xs:items-baseline justify-between sm:justify-start gap-1 sm:gap-2">
+            <span className="text-lg sm:text-2xl font-bold text-foreground">
               {kpis.siteVisitsBooked}
             </span>
-            <span className="text-xs text-brand font-medium">+42 this week</span>
+            <span className="text-[10px] sm:text-xs text-brand font-medium truncate">+42 wk</span>
           </div>
-          <p className="text-xs text-text-muted mt-1">Confirmed drive pickups</p>
+          <p className="text-[10px] sm:text-xs text-text-muted mt-1 truncate">Confirmed pickups</p>
         </Card>
 
-        <Card className="p-3.5 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm">
-          <div className="flex items-center justify-between text-text-secondary text-xs font-medium">
-            <span>Top Lead Source</span>
-            <Award className="size-4 text-amber-500 shrink-0" />
+        <Card className="p-3 sm:p-4 bg-card border border-border/70 hover:border-brand/40 transition-all shadow-sm rounded-xl sm:rounded-2xl flex flex-col justify-between">
+          <div className="flex items-center justify-between text-text-secondary text-[11px] sm:text-xs font-medium">
+            <span className="truncate pr-1">Top Source</span>
+            <Award className="size-3.5 sm:size-4 text-amber-500 shrink-0" />
           </div>
-          <div className="mt-2 flex items-baseline justify-between sm:justify-start gap-2">
-            <span className="text-lg sm:text-xl font-bold text-foreground truncate">
+          <div className="mt-1.5 sm:mt-2 flex flex-col xs:flex-row items-start xs:items-baseline justify-between sm:justify-start gap-1 sm:gap-2">
+            <span className="text-base sm:text-xl font-bold text-foreground truncate">
               Google Ads
             </span>
           </div>
-          <p className="text-xs text-emerald-600 font-medium mt-1">980 Leads @ ₹460 CPL</p>
+          <p className="text-[10px] sm:text-xs text-emerald-600 font-medium mt-1 truncate">980 @ ₹460 CPL</p>
         </Card>
       </div>
 
@@ -808,8 +806,8 @@ export function MarketingDashboardPage() {
 
       {/* New Campaign Modal */}
       <Dialog open={newCampaignModal} onOpenChange={setNewCampaignModal}>
-        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
-          <DialogHeader className="pb-3 border-b border-border shrink-0">
+        <DialogContent className="w-[95vw] sm:max-w-xl md:max-w-2xl max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
             <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
               <Megaphone className="size-5 text-brand" /> Launch New Marketing Campaign
             </DialogTitle>
@@ -819,11 +817,11 @@ export function MarketingDashboardPage() {
             </p>
           </DialogHeader>
 
-          <form onSubmit={handleCreateCampaign} className="flex flex-col flex-1 overflow-hidden">
-            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+          <form onSubmit={handleCreateCampaign} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
               <div>
                 <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">
-                  Campaign Title
+                  Campaign Title *
                 </Label>
                 <Input
                   required
@@ -927,18 +925,18 @@ export function MarketingDashboardPage() {
               </div>
             </div>
 
-            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
               <Button
                 type="button"
                 variant="outline"
                 onClick={() => setNewCampaignModal(false)}
-                className="rounded-xl h-10 px-5 text-sm"
+                className="rounded-xl h-10 px-5 text-sm w-full sm:w-auto"
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
-                className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md"
+                className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md w-full sm:w-auto"
               >
                 Launch Campaign
               </Button>

@@ -888,18 +888,19 @@ export function SuperadminLeadsPage() {
 
       {/* Add New Lead Dialog */}
       <Dialog open={isAddModalOpen} onOpenChange={setIsAddModalOpen}>
-        <DialogContent className="sm:max-w-xl w-[94vw] max-h-[90vh] p-0 rounded-2xl shadow-2xl bg-card border-border flex flex-col overflow-hidden">
-          <DialogHeader className="p-5 pb-4 border-b border-border flex-shrink-0 bg-card">
+        <DialogContent className="sm:max-w-xl w-[95vw] max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl bg-card border-border flex flex-col overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left bg-card">
             <DialogTitle className="text-lg font-bold text-foreground flex items-center gap-2">
               <Building2 className="size-5 text-brand" />
               Add New Company Lead
             </DialogTitle>
-            <DialogDescription className="text-text-secondary text-xs">
+            <DialogDescription className="text-muted-foreground text-xs mt-0.5">
               Fill in prospect contact information and caller assignment.
             </DialogDescription>
           </DialogHeader>
 
-          <form onSubmit={handleAddLeadSubmit} className="flex-1 overflow-y-auto p-5 space-y-4">
+          <form onSubmit={handleAddLeadSubmit} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div className="space-y-1.5">
                 <Label className="text-xs font-semibold">Lead Full Name *</Label>
@@ -1020,18 +1021,18 @@ export function SuperadminLeadsPage() {
                 className="rounded-xl bg-background border-border text-xs resize-none"
               />
             </div>
+          </div>
 
-            <DialogFooter className="pt-3 border-t border-border flex justify-end gap-2">
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
               <DialogClose asChild>
-                <Button type="button" variant="outline" size="sm" className="rounded-xl text-xs">
+                <Button type="button" variant="outline" className="w-full sm:w-auto rounded-xl h-10 px-5 text-sm">
                   Cancel
                 </Button>
               </DialogClose>
               <Button
                 type="submit"
-                size="sm"
                 disabled={isSubmitting}
-                className="bg-brand hover:bg-brand-bright text-white rounded-xl text-xs font-semibold shadow-sm"
+                className="w-full sm:w-auto bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md"
               >
                 {isSubmitting ? "Creating Lead..." : "Save Lead"}
               </Button>
@@ -1042,85 +1043,86 @@ export function SuperadminLeadsPage() {
 
       {/* Status & Follow-Up Update Modal */}
       <Dialog open={statusModalOpen} onOpenChange={setStatusModalOpen}>
-        <DialogContent className="sm:max-w-md w-[92vw] rounded-2xl shadow-xl bg-card border-border p-5">
-          <DialogHeader>
-            <DialogTitle className="text-base font-bold text-foreground">
+        <DialogContent className="w-[95vw] sm:max-w-md max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
+            <DialogTitle className="text-base sm:text-lg font-bold text-foreground">
               Update Status: {selectedLeadForStatus?.name}
             </DialogTitle>
-            <DialogDescription className="text-xs text-text-secondary">
+            <DialogDescription className="text-xs text-muted-foreground mt-0.5">
               Record calling update, select pipeline stage, and schedule follow-up.
             </DialogDescription>
           </DialogHeader>
 
-          <form onSubmit={handleStatusSubmit} className="space-y-3.5 pt-2">
-            <div className="space-y-1.5">
-              <Label className="text-xs font-semibold">New Status *</Label>
-              <Select
-                value={statusPayload.status}
-                onValueChange={(val) => setStatusPayload({ ...statusPayload, status: val })}
-              >
-                <SelectTrigger className="h-10 rounded-xl bg-background border-border text-xs">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  {statusOptions.map((st) => (
-                    <SelectItem key={st} value={st}>
-                      {st}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="grid grid-cols-2 gap-2.5">
+          <form onSubmit={handleStatusSubmit} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
               <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">Next Follow-Up Date</Label>
-                <Input
-                  type="date"
-                  value={statusPayload.followDate}
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">New Status *</Label>
+                <Select
+                  value={statusPayload.status}
+                  onValueChange={(val) => setStatusPayload({ ...statusPayload, status: val })}
+                >
+                  <SelectTrigger className="h-10 sm:h-11 rounded-xl bg-background border-border text-sm">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    {statusOptions.map((st) => (
+                      <SelectItem key={st} value={st}>
+                        {st}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1.5">
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Next Follow-Up Date</Label>
+                  <Input
+                    type="date"
+                    value={statusPayload.followDate}
+                    onChange={(e) =>
+                      setStatusPayload({ ...statusPayload, followDate: e.target.value })
+                    }
+                    className="h-10 sm:h-11 rounded-xl bg-background border-border text-sm"
+                  />
+                </div>
+                <div className="space-y-1.5">
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Follow-Up Time</Label>
+                  <Input
+                    type="time"
+                    value={statusPayload.followTime}
+                    onChange={(e) =>
+                      setStatusPayload({ ...statusPayload, followTime: e.target.value })
+                    }
+                    className="h-10 sm:h-11 rounded-xl bg-background border-border text-sm"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1.5">
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Call Remarks / Notes</Label>
+                <Textarea
+                  placeholder="What did the prospect say? e.g. Call back on Monday, interested in 150 Gaj plot..."
+                  rows={3}
+                  value={statusPayload.message}
                   onChange={(e) =>
-                    setStatusPayload({ ...statusPayload, followDate: e.target.value })
+                    setStatusPayload({ ...statusPayload, message: e.target.value })
                   }
-                  className="h-10 rounded-xl bg-background border-border text-xs"
+                  className="rounded-xl bg-background border-border text-sm resize-none"
                 />
               </div>
-              <div className="space-y-1.5">
-                <Label className="text-xs font-semibold">Follow-Up Time</Label>
-                <Input
-                  type="time"
-                  value={statusPayload.followTime}
-                  onChange={(e) =>
-                    setStatusPayload({ ...statusPayload, followTime: e.target.value })
-                  }
-                  className="h-10 rounded-xl bg-background border-border text-xs"
-                />
-              </div>
             </div>
 
-            <div className="space-y-1.5">
-              <Label className="text-xs font-semibold">Call Remarks / Notes</Label>
-              <Textarea
-                placeholder="What did the prospect say? e.g. Call back on Monday, interested in 150 Gaj plot..."
-                rows={3}
-                value={statusPayload.message}
-                onChange={(e) =>
-                  setStatusPayload({ ...statusPayload, message: e.target.value })
-                }
-                className="rounded-xl bg-background border-border text-xs resize-none"
-              />
-            </div>
-
-            <DialogFooter className="pt-2 flex justify-end gap-2">
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
               <DialogClose asChild>
-                <Button type="button" variant="outline" size="sm" className="rounded-xl text-xs">
+                <Button type="button" variant="outline" className="w-full sm:w-auto rounded-xl h-10 px-5 text-sm">
                   Cancel
                 </Button>
               </DialogClose>
               <Button
                 type="submit"
-                size="sm"
                 disabled={updatingStatus}
-                className="bg-brand hover:bg-brand-bright text-white rounded-xl text-xs font-semibold"
+                className="w-full sm:w-auto bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md"
               >
                 {updatingStatus ? "Saving..." : "Update Status"}
               </Button>
@@ -1131,27 +1133,27 @@ export function SuperadminLeadsPage() {
 
       {/* Quick Lead History Timeline Drawer / Modal */}
       <Dialog open={timelineModalOpen} onOpenChange={setTimelineModalOpen}>
-        <DialogContent className="sm:max-w-lg w-[92vw] max-h-[85vh] rounded-2xl shadow-xl bg-card border-border p-5 flex flex-col overflow-hidden">
-          <DialogHeader className="pb-3 border-b border-border flex-shrink-0">
+        <DialogContent className="w-[95vw] sm:max-w-lg max-h-[85vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
             <DialogTitle className="text-base font-bold text-foreground flex items-center justify-between">
               <span>Activity Timeline: {selectedLeadForTimeline?.name}</span>
-              <span className="text-xs font-normal text-text-muted">
+              <span className="text-xs font-normal text-muted-foreground">
                 {selectedLeadForTimeline?.mobile}
               </span>
             </DialogTitle>
-            <DialogDescription className="text-xs text-text-secondary">
+            <DialogDescription className="text-xs text-muted-foreground mt-0.5">
               Chronological log of calls made, notes added, and status transitions.
             </DialogDescription>
           </DialogHeader>
 
-          <div className="flex-1 overflow-y-auto py-4 space-y-4">
+          <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
             {timelineLoading ? (
-              <div className="py-8 text-center text-text-secondary">
+              <div className="py-8 text-center text-muted-foreground">
                 <RefreshCw className="size-5 animate-spin mx-auto mb-2 text-brand" />
                 Loading activity logs...
               </div>
             ) : timelineEvents.length === 0 ? (
-              <div className="py-8 text-center text-text-muted text-xs">
+              <div className="py-8 text-center text-muted-foreground text-xs">
                 No past logs recorded for this lead yet.
               </div>
             ) : (
@@ -1164,17 +1166,17 @@ export function SuperadminLeadsPage() {
                         <span className="font-bold text-foreground capitalize">
                           {evt.status}
                         </span>
-                        <span className="text-[10px] text-text-muted font-mono">
+                        <span className="text-[10px] text-muted-foreground font-mono">
                           {evt.created_date
                             ? new Date(evt.created_date).toLocaleString()
                             : "Recent"}
                         </span>
                       </div>
-                      <p className="text-text-secondary mt-1">
+                      <p className="text-muted-foreground mt-1">
                         {evt.message || "Status updated."}
                       </p>
                       {evt.updated_by && (
-                        <p className="text-[10px] text-text-muted mt-1.5">
+                        <p className="text-[10px] text-muted-foreground mt-1.5">
                           By: <span className="font-medium text-foreground">{evt.updated_by}</span>
                         </p>
                       )}
@@ -1185,7 +1187,7 @@ export function SuperadminLeadsPage() {
             )}
           </div>
 
-          <DialogFooter className="pt-3 border-t border-border flex justify-between items-center sm:justify-between">
+          <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-row justify-between items-center gap-2">
             {selectedLeadForTimeline && (
               <Link
                 to="/superadmin/leads/history"
@@ -1197,7 +1199,7 @@ export function SuperadminLeadsPage() {
               </Link>
             )}
             <DialogClose asChild>
-              <Button variant="outline" size="sm" className="rounded-xl text-xs">
+              <Button variant="outline" className="rounded-xl h-9 px-4 text-xs">
                 Close
               </Button>
             </DialogClose>

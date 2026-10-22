@@ -177,35 +177,40 @@ export function BrokerWalletPage() {
 
       {/* Payout Modal */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="max-w-md bg-card text-foreground border-border">
-          <DialogHeader>
-            <DialogTitle>Request Payout to Bank Account</DialogTitle>
+        <DialogContent className="w-[95vw] sm:max-w-md max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
+            <DialogTitle className="text-base sm:text-lg font-bold text-foreground">
+              Request Payout to Bank Account
+            </DialogTitle>
+            <p className="text-xs text-muted-foreground mt-0.5">Direct IMPS settlement to your registered verified corporate account.</p>
           </DialogHeader>
-          <form onSubmit={handleWithdraw} className="space-y-3.5 py-2">
-            <div>
-              <Label className="text-xs">Withdrawal Amount (INR)</Label>
-              <Input
-                type="number"
-                value={withdrawAmount}
-                onChange={(e) => setWithdrawAmount(Number(e.target.value))}
-                max={kpis.walletAvailableBalance}
-                className="h-9 text-xs mt-1"
-                required
-              />
-              <span className="text-[11px] text-text-secondary mt-1 block">
-                Available to withdraw: ₹{kpis.walletAvailableBalance.toLocaleString("en-IN")}
-              </span>
+          <form onSubmit={handleWithdraw} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Withdrawal Amount (INR)</Label>
+                <Input
+                  type="number"
+                  value={withdrawAmount}
+                  onChange={(e) => setWithdrawAmount(Number(e.target.value))}
+                  max={kpis.walletAvailableBalance}
+                  className="h-10 sm:h-11 text-sm rounded-xl"
+                  required
+                />
+                <span className="text-xs text-muted-foreground mt-1.5 block">
+                  Available to withdraw: ₹{kpis.walletAvailableBalance.toLocaleString("en-IN")}
+                </span>
+              </div>
+              <div className="p-3.5 rounded-xl bg-muted/40 border border-border text-xs sm:text-sm text-muted-foreground space-y-1">
+                <p className="font-semibold text-foreground">Receiving Bank Account:</p>
+                <p>HDFC Bank Ltd • Current Account</p>
+                <p className="font-mono text-xs">A/c: 50200039281928 | IFSC: HDFC0000128</p>
+              </div>
             </div>
-            <div className="p-3 rounded-xl bg-muted/40 border border-border text-xs text-text-secondary space-y-1">
-              <p className="font-semibold text-foreground">Receiving Bank Account:</p>
-              <p>HDFC Bank Ltd • Current Account</p>
-              <p className="font-mono text-[11px]">A/c: 50200039281928 | IFSC: HDFC0000128</p>
-            </div>
-            <DialogFooter className="mt-4">
-              <Button type="button" variant="outline" size="sm" onClick={() => setModalOpen(false)}>
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
+              <Button type="button" variant="outline" onClick={() => setModalOpen(false)} className="w-full sm:w-auto rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" className="bg-emerald-600 hover:bg-emerald-700 text-white">
+              <Button type="submit" className="w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
                 Disburse Payout
               </Button>
             </DialogFooter>

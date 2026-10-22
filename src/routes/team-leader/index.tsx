@@ -593,24 +593,24 @@ export function TeamLeaderDashboardPage() {
 
       {/* Add New Staff Dialog */}
       <Dialog open={isAddFormOpen} onOpenChange={setIsAddFormOpen}>
-        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-4xl max-h-[90vh] p-0 overflow-hidden flex flex-col rounded-2xl shadow-2xl bg-card border-border">
-          <DialogHeader className="p-4 sm:p-6 border-b border-border bg-muted/20 shrink-0">
+        <DialogContent className="w-[95vw] sm:max-w-xl md:max-w-2xl lg:max-w-4xl max-h-[90vh] p-0 overflow-hidden flex flex-col rounded-2xl sm:rounded-3xl shadow-2xl bg-card border-border">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
             <DialogTitle className="text-lg sm:text-xl font-bold">Add New Staff Telecaller</DialogTitle>
             <DialogDescription className="text-xs sm:text-sm text-muted-foreground mt-1">
               Provide personal, banking, and address credentials to onboard new staff.
             </DialogDescription>
           </DialogHeader>
 
-          <form onSubmit={handleAddSubmit} className="flex-1 overflow-y-auto flex flex-col">
-            <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col">
-              <div className="px-4 sm:px-5 pt-3 border-b">
+          <form onSubmit={handleAddSubmit} className="flex-1 min-h-0 overflow-hidden flex flex-col">
+            <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 min-h-0 flex flex-col overflow-hidden">
+              <div className="px-5 sm:px-6 pt-3 border-b border-border shrink-0">
                 <TabsList className="grid w-full grid-cols-2">
                   <TabsTrigger value="personal" className="text-xs">Personal Details</TabsTrigger>
                   <TabsTrigger value="account" className="text-xs">Account Details</TabsTrigger>
                 </TabsList>
               </div>
 
-              <div className="p-4 sm:p-5 space-y-4 flex-1">
+              <div className="px-5 sm:px-6 py-4 space-y-4 flex-1 overflow-y-auto scrollbar-thin">
                 {activeTab === "personal" && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                     <div className="space-y-1">
@@ -816,7 +816,7 @@ export function TeamLeaderDashboardPage() {
                 )}
               </div>
 
-              <DialogFooter className="p-3 sm:p-4 border-t bg-gray-50/50 flex flex-row items-center justify-between gap-2">
+              <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-row items-center justify-between gap-2">
                 {activeTab === "personal" ? (
                   <div />
                 ) : (
@@ -825,7 +825,7 @@ export function TeamLeaderDashboardPage() {
                     variant="outline"
                     size="sm"
                     onClick={() => setActiveTab("personal")}
-                    className="text-xs flex items-center gap-1"
+                    className="text-xs flex items-center gap-1 rounded-xl h-9 px-4"
                   >
                     <ArrowLeft className="size-3.5" /> Previous
                   </Button>
@@ -836,7 +836,7 @@ export function TeamLeaderDashboardPage() {
                     type="button"
                     size="sm"
                     onClick={() => setActiveTab("account")}
-                    className="text-xs bg-[#6732F2] hover:bg-[#5524cf] text-white flex items-center gap-1"
+                    className="text-xs bg-brand hover:bg-brand/90 text-white flex items-center gap-1 rounded-xl h-9 px-4 font-semibold shadow-sm"
                   >
                     Next <ArrowRight className="size-3.5" />
                   </Button>
@@ -845,7 +845,7 @@ export function TeamLeaderDashboardPage() {
                     type="submit"
                     size="sm"
                     disabled={isSubmitting}
-                    className="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-semibold"
+                    className="text-xs bg-emerald-600 hover:bg-emerald-700 text-white font-semibold rounded-xl h-9 px-5 shadow-sm"
                   >
                     {isSubmitting ? "Saving..." : "Save Staff"}
                   </Button>
@@ -859,8 +859,8 @@ export function TeamLeaderDashboardPage() {
       {/* Edit Staff Dialog */}
       {editingUser && (
         <Dialog open={isEditFormOpen} onOpenChange={setIsEditFormOpen}>
-          <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-4xl max-h-[90vh] p-0 overflow-hidden flex flex-col rounded-2xl shadow-2xl bg-card border-border">
-            <DialogHeader className="p-4 sm:p-6 border-b border-border bg-muted/20 shrink-0">
+          <DialogContent className="w-[95vw] sm:max-w-xl md:max-w-2xl lg:max-w-4xl max-h-[90vh] p-0 overflow-hidden flex flex-col rounded-2xl sm:rounded-3xl shadow-2xl bg-card border-border">
+            <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
               <DialogTitle className="text-lg sm:text-xl font-bold">
                 Edit Staff: {editingUser.name}
               </DialogTitle>
@@ -869,16 +869,16 @@ export function TeamLeaderDashboardPage() {
               </DialogDescription>
             </DialogHeader>
 
-            <form onSubmit={handleEditSubmit} className="flex-1 overflow-y-auto flex flex-col">
-              <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 flex flex-col">
-                <div className="px-4 sm:px-5 pt-3 border-b">
+            <form onSubmit={handleEditSubmit} className="flex-1 min-h-0 overflow-hidden flex flex-col">
+              <Tabs value={activeTab} onValueChange={setActiveTab} className="flex-1 min-h-0 flex flex-col overflow-hidden">
+                <div className="px-5 sm:px-6 pt-3 border-b border-border shrink-0">
                   <TabsList className="grid w-full grid-cols-2">
                     <TabsTrigger value="personal" className="text-xs">Personal Details</TabsTrigger>
                     <TabsTrigger value="account" className="text-xs">Account Details</TabsTrigger>
                   </TabsList>
                 </div>
 
-                <div className="p-4 sm:p-5 space-y-4 flex-1">
+                <div className="px-5 sm:px-6 py-4 space-y-4 flex-1 overflow-y-auto scrollbar-thin">
                   {activeTab === "personal" && (
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                       <div className="space-y-1">
@@ -994,7 +994,7 @@ export function TeamLeaderDashboardPage() {
                   )}
                 </div>
 
-                <DialogFooter className="p-3 sm:p-4 border-t bg-gray-50/50 flex flex-row items-center justify-between gap-2">
+                <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-row items-center justify-between gap-2">
                   {activeTab === "personal" ? (
                     <div />
                   ) : (
@@ -1003,7 +1003,7 @@ export function TeamLeaderDashboardPage() {
                       variant="outline"
                       size="sm"
                       onClick={() => setActiveTab("personal")}
-                      className="text-xs"
+                      className="text-xs flex items-center gap-1 rounded-xl h-9 px-4"
                     >
                       <ArrowLeft className="size-3.5 mr-1" /> Previous
                     </Button>
@@ -1013,7 +1013,7 @@ export function TeamLeaderDashboardPage() {
                       type="button"
                       size="sm"
                       onClick={() => setActiveTab("account")}
-                      className="text-xs bg-[#6732F2] hover:bg-[#5524cf] text-white"
+                      className="text-xs bg-brand hover:bg-brand/90 text-white flex items-center gap-1 rounded-xl h-9 px-4 font-semibold shadow-sm"
                     >
                       Next <ArrowRight className="size-3.5 ml-1" />
                     </Button>
@@ -1022,7 +1022,7 @@ export function TeamLeaderDashboardPage() {
                       type="submit"
                       size="sm"
                       disabled={isSubmitting}
-                      className="text-xs bg-[#6732F2] hover:bg-[#5524cf] text-white font-semibold"
+                      className="text-xs bg-brand hover:bg-brand/90 text-white font-semibold rounded-xl h-9 px-5 shadow-sm"
                     >
                       {isSubmitting ? "Updating..." : "Save Changes"}
                     </Button>

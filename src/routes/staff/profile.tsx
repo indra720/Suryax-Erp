@@ -275,81 +275,84 @@ export function StaffProfilePage() {
 
       {/* Edit Profile Modal */}
       <Dialog open={showEditModal} onOpenChange={setShowEditModal}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-base font-bold flex items-center gap-2">
-              <Edit3 className="h-4 w-4 text-primary" />
+        <DialogContent className="w-[95vw] sm:max-w-lg max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
+            <DialogTitle className="text-base sm:text-lg font-bold flex items-center gap-2">
+              <Edit3 className="h-4 w-4 text-brand" />
               Edit Profile & Banking Details
             </DialogTitle>
+            <p className="text-xs text-muted-foreground mt-0.5">Keep contact and bank account details up to date for payroll.</p>
           </DialogHeader>
-          <form onSubmit={handleEditSubmit} className="space-y-3 text-xs">
-            <div className="grid grid-cols-2 gap-2">
+          <form onSubmit={handleEditSubmit} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">First Name</Label>
+                  <Input
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    value={editForm.first_name}
+                    onChange={(e) => setEditForm({ ...editForm, first_name: e.target.value })}
+                    required
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Last Name</Label>
+                  <Input
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    value={editForm.last_name}
+                    onChange={(e) => setEditForm({ ...editForm, last_name: e.target.value })}
+                    required
+                  />
+                </div>
+              </div>
+
               <div>
-                <Label className="text-xs font-semibold">First Name</Label>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Mobile Number</Label>
                 <Input
-                  className="h-8 text-xs mt-1"
-                  value={editForm.first_name}
-                  onChange={(e) => setEditForm({ ...editForm, first_name: e.target.value })}
+                  className="h-10 sm:h-11 text-sm rounded-xl"
+                  value={editForm.mobile}
+                  onChange={(e) => setEditForm({ ...editForm, mobile: e.target.value })}
                   required
                 />
               </div>
-              <div>
-                <Label className="text-xs font-semibold">Last Name</Label>
-                <Input
-                  className="h-8 text-xs mt-1"
-                  value={editForm.last_name}
-                  onChange={(e) => setEditForm({ ...editForm, last_name: e.target.value })}
-                  required
-                />
-              </div>
-            </div>
 
-            <div>
-              <Label className="text-xs font-semibold">Mobile Number</Label>
-              <Input
-                className="h-8 text-xs mt-1"
-                value={editForm.mobile}
-                onChange={(e) => setEditForm({ ...editForm, mobile: e.target.value })}
-                required
-              />
-            </div>
-
-            <div className="pt-2 border-t">
-              <p className="font-semibold text-xs text-foreground mb-2">Bank Details</p>
-              <div className="space-y-2">
-                <div>
-                  <Label className="text-xs font-semibold">Bank Name</Label>
-                  <Input
-                    className="h-8 text-xs mt-1"
-                    value={editForm.bank_name}
-                    onChange={(e) => setEditForm({ ...editForm, bank_name: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <Label className="text-xs font-semibold">Account Number</Label>
-                  <Input
-                    className="h-8 text-xs mt-1"
-                    value={editForm.account_number}
-                    onChange={(e) => setEditForm({ ...editForm, account_number: e.target.value })}
-                  />
-                </div>
-                <div>
-                  <Label className="text-xs font-semibold">IFSC Code</Label>
-                  <Input
-                    className="h-8 text-xs mt-1 uppercase"
-                    value={editForm.ifsc_code}
-                    onChange={(e) => setEditForm({ ...editForm, ifsc_code: e.target.value })}
-                  />
+              <div className="pt-2 border-t border-border">
+                <p className="font-semibold text-xs sm:text-sm text-foreground mb-3">Bank Details</p>
+                <div className="space-y-3">
+                  <div>
+                    <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Bank Name</Label>
+                    <Input
+                      className="h-10 sm:h-11 text-sm rounded-xl"
+                      value={editForm.bank_name}
+                      onChange={(e) => setEditForm({ ...editForm, bank_name: e.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Account Number</Label>
+                    <Input
+                      className="h-10 sm:h-11 text-sm rounded-xl"
+                      value={editForm.account_number}
+                      onChange={(e) => setEditForm({ ...editForm, account_number: e.target.value })}
+                    />
+                  </div>
+                  <div>
+                    <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">IFSC Code</Label>
+                    <Input
+                      className="h-10 sm:h-11 text-sm rounded-xl uppercase"
+                      value={editForm.ifsc_code}
+                      onChange={(e) => setEditForm({ ...editForm, ifsc_code: e.target.value })}
+                    />
+                  </div>
                 </div>
               </div>
             </div>
 
-            <DialogFooter className="pt-2">
-              <Button type="button" variant="outline" size="sm" onClick={() => setShowEditModal(false)}>
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
+              <Button type="button" variant="outline" onClick={() => setShowEditModal(false)} className="w-full sm:w-auto rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" disabled={saving}>
-                {saving && <Loader2 className="h-3 w-3 animate-spin mr-1" />}
+              <Button type="submit" disabled={saving} className="w-full sm:w-auto bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
+                {saving && <Loader2 className="h-4 w-4 animate-spin mr-1.5" />}
                 Save Changes
               </Button>
             </DialogFooter>
@@ -359,51 +362,54 @@ export function StaffProfilePage() {
 
       {/* Change Password Modal */}
       <Dialog open={showPasswordModal} onOpenChange={setShowPasswordModal}>
-        <DialogContent className="max-w-sm">
-          <DialogHeader>
-            <DialogTitle className="text-base font-bold flex items-center gap-2">
-              <KeyRound className="h-4 w-4 text-primary" />
+        <DialogContent className="w-[95vw] sm:max-w-md max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
+            <DialogTitle className="text-base sm:text-lg font-bold flex items-center gap-2">
+              <KeyRound className="h-4 w-4 text-brand" />
               Change Password
             </DialogTitle>
+            <p className="text-xs text-muted-foreground mt-0.5">Enter your current password to set a new security credential.</p>
           </DialogHeader>
-          <form onSubmit={handlePasswordSubmit} className="space-y-3 text-xs">
-            <div>
-              <Label className="text-xs font-semibold">Current Password</Label>
-              <Input
-                type="password"
-                className="h-8 text-xs mt-1"
-                value={passwordForm.old_password}
-                onChange={(e) => setPasswordForm({ ...passwordForm, old_password: e.target.value })}
-                required
-              />
-            </div>
-            <div>
-              <Label className="text-xs font-semibold">New Password</Label>
-              <Input
-                type="password"
-                className="h-8 text-xs mt-1"
-                value={passwordForm.new_password}
-                onChange={(e) => setPasswordForm({ ...passwordForm, new_password: e.target.value })}
-                required
-              />
-            </div>
-            <div>
-              <Label className="text-xs font-semibold">Confirm New Password</Label>
-              <Input
-                type="password"
-                className="h-8 text-xs mt-1"
-                value={passwordForm.confirm_password}
-                onChange={(e) => setPasswordForm({ ...passwordForm, confirm_password: e.target.value })}
-                required
-              />
+          <form onSubmit={handlePasswordSubmit} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Current Password</Label>
+                <Input
+                  type="password"
+                  className="h-10 sm:h-11 text-sm rounded-xl"
+                  value={passwordForm.old_password}
+                  onChange={(e) => setPasswordForm({ ...passwordForm, old_password: e.target.value })}
+                  required
+                />
+              </div>
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">New Password</Label>
+                <Input
+                  type="password"
+                  className="h-10 sm:h-11 text-sm rounded-xl"
+                  value={passwordForm.new_password}
+                  onChange={(e) => setPasswordForm({ ...passwordForm, new_password: e.target.value })}
+                  required
+                />
+              </div>
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Confirm New Password</Label>
+                <Input
+                  type="password"
+                  className="h-10 sm:h-11 text-sm rounded-xl"
+                  value={passwordForm.confirm_password}
+                  onChange={(e) => setPasswordForm({ ...passwordForm, confirm_password: e.target.value })}
+                  required
+                />
+              </div>
             </div>
 
-            <DialogFooter className="pt-2">
-              <Button type="button" variant="outline" size="sm" onClick={() => setShowPasswordModal(false)}>
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
+              <Button type="button" variant="outline" onClick={() => setShowPasswordModal(false)} className="w-full sm:w-auto rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" disabled={saving}>
-                {saving && <Loader2 className="h-3 w-3 animate-spin mr-1" />}
+              <Button type="submit" disabled={saving} className="w-full sm:w-auto bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
+                {saving && <Loader2 className="h-4 w-4 animate-spin mr-1.5" />}
                 Update Password
               </Button>
             </DialogFooter>

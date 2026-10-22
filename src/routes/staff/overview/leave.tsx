@@ -210,72 +210,75 @@ export function StaffLeavePage() {
 
       {/* Apply Leave Modal */}
       <Dialog open={showApplyModal} onOpenChange={setShowApplyModal}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-base font-bold flex items-center gap-2">
-              <PlusCircle className="h-5 w-5 text-primary" />
+        <DialogContent className="w-[95vw] sm:max-w-lg max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
+            <DialogTitle className="text-base sm:text-lg font-bold flex items-center gap-2">
+              <PlusCircle className="h-5 w-5 text-brand" />
               Apply For Leave
             </DialogTitle>
+            <p className="text-xs text-muted-foreground mt-0.5">Submit leave request for HR approval and roster adjustments.</p>
           </DialogHeader>
-          <form onSubmit={handleApply} className="space-y-3 text-xs">
-            <div>
-              <Label className="text-xs font-semibold">Select Leave Type</Label>
-              <Select
-                value={form.leave_type}
-                onValueChange={(val) => setForm({ ...form, leave_type: val })}
-              >
-                <SelectTrigger className="h-8 text-xs mt-1">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Casual Leave" className="text-xs">Casual Leave (CL)</SelectItem>
-                  <SelectItem value="Sick Leave" className="text-xs">Sick Leave (SL)</SelectItem>
-                  <SelectItem value="Earned Leave" className="text-xs">Earned Leave (EL)</SelectItem>
-                  <SelectItem value="Half Day" className="text-xs">Half Day</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="grid grid-cols-2 gap-2">
+          <form onSubmit={handleApply} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
               <div>
-                <Label className="text-xs font-semibold">From Date</Label>
-                <Input
-                  type="date"
-                  className="h-8 text-xs mt-1"
-                  value={form.start_date}
-                  onChange={(e) => setForm({ ...form, start_date: e.target.value })}
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Select Leave Type</Label>
+                <Select
+                  value={form.leave_type}
+                  onValueChange={(val) => setForm({ ...form, leave_type: val })}
+                >
+                  <SelectTrigger className="h-10 sm:h-11 text-sm rounded-xl">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Casual Leave" className="text-sm">Casual Leave (CL)</SelectItem>
+                    <SelectItem value="Sick Leave" className="text-sm">Sick Leave (SL)</SelectItem>
+                    <SelectItem value="Earned Leave" className="text-sm">Earned Leave (EL)</SelectItem>
+                    <SelectItem value="Half Day" className="text-sm">Half Day</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">From Date</Label>
+                  <Input
+                    type="date"
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    value={form.start_date}
+                    onChange={(e) => setForm({ ...form, start_date: e.target.value })}
+                    required
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">To Date</Label>
+                  <Input
+                    type="date"
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    value={form.end_date}
+                    onChange={(e) => setForm({ ...form, end_date: e.target.value })}
+                    required
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Detailed Reason</Label>
+                <Textarea
+                  placeholder="Explain the reason for taking leave..."
+                  className="rounded-xl text-sm p-3 resize-none min-h-[90px]"
+                  value={form.reason}
+                  onChange={(e) => setForm({ ...form, reason: e.target.value })}
                   required
                 />
               </div>
-              <div>
-                <Label className="text-xs font-semibold">To Date</Label>
-                <Input
-                  type="date"
-                  className="h-8 text-xs mt-1"
-                  value={form.end_date}
-                  onChange={(e) => setForm({ ...form, end_date: e.target.value })}
-                  required
-                />
-              </div>
             </div>
 
-            <div>
-              <Label className="text-xs font-semibold">Detailed Reason</Label>
-              <Textarea
-                placeholder="Explain the reason for taking leave..."
-                className="text-xs mt-1 resize-none h-20"
-                value={form.reason}
-                onChange={(e) => setForm({ ...form, reason: e.target.value })}
-                required
-              />
-            </div>
-
-            <DialogFooter className="pt-2">
-              <Button type="button" variant="outline" size="sm" onClick={() => setShowApplyModal(false)}>
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
+              <Button type="button" variant="outline" onClick={() => setShowApplyModal(false)} className="w-full sm:w-auto rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" disabled={submitting}>
-                {submitting && <Loader2 className="h-3 w-3 animate-spin mr-1" />}
+              <Button type="submit" disabled={submitting} className="w-full sm:w-auto bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
+                {submitting && <Loader2 className="h-4 w-4 animate-spin mr-1.5" />}
                 Submit Leave
               </Button>
             </DialogFooter>

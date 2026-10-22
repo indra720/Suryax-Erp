@@ -670,7 +670,7 @@ export function StaffUsersPage() {
                 </TabsList>
               </div>
 
-              <div className="p-6 overflow-y-auto flex-1">
+              <div className="px-5 sm:px-6 py-4 overflow-y-auto flex-1 scrollbar-thin">
                 {/* Tab 1: Personal */}
                 <TabsContent value="personal" className="mt-0 space-y-3.5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">

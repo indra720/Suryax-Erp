@@ -148,69 +148,73 @@ export function EventsPage() {
       </div>
 
       <Dialog open={modal} onOpenChange={setModal}>
-        <DialogContent className="max-w-md bg-card text-foreground">
-          <DialogHeader>
-            <DialogTitle className="text-base font-bold flex items-center gap-2">
+        <DialogContent className="w-[95vw] sm:max-w-xl max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
+            <DialogTitle className="text-base sm:text-lg font-bold flex items-center gap-2">
               <CalendarDays className="size-4 text-brand" /> Schedule Event / Site Drive
             </DialogTitle>
+            <p className="text-xs text-muted-foreground mt-0.5">Plan and launch promotional drives, site expos, and channel meets.</p>
           </DialogHeader>
 
-          <form onSubmit={handleCreate} className="space-y-3 py-2 text-xs">
-            <div>
-              <Label className="text-xs">Event Name</Label>
-              <Input
-                required
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                className="h-8 text-xs mt-1"
-                placeholder="e.g. Mega Sunday Site Visit Rally"
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-2">
+          <form onSubmit={handleCreate} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
               <div>
-                <Label className="text-xs">Event Type</Label>
-                <Select
-                  value={form.type}
-                  onValueChange={(val: any) => setForm({ ...form, type: val })}
-                >
-                  <SelectTrigger className="h-8 text-xs mt-1">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Site Visit Drive">Site Visit Drive</SelectItem>
-                    <SelectItem value="Channel Partner Meet">Channel Partner Meet</SelectItem>
-                    <SelectItem value="NRI Webinar">NRI Webinar</SelectItem>
-                    <SelectItem value="Property Expo">Property Expo</SelectItem>
-                  </SelectContent>
-                </Select>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Event Name</Label>
+                <Input
+                  required
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  className="h-10 sm:h-11 text-sm rounded-xl"
+                  placeholder="e.g. Mega Sunday Site Visit Rally"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Event Type</Label>
+                  <Select
+                    value={form.type}
+                    onValueChange={(val: any) => setForm({ ...form, type: val })}
+                  >
+                    <SelectTrigger className="h-10 sm:h-11 text-sm rounded-xl">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Site Visit Drive">Site Visit Drive</SelectItem>
+                      <SelectItem value="Channel Partner Meet">Channel Partner Meet</SelectItem>
+                      <SelectItem value="NRI Webinar">NRI Webinar</SelectItem>
+                      <SelectItem value="Property Expo">Property Expo</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Date</Label>
+                  <Input
+                    type="date"
+                    value={form.eventDate}
+                    onChange={(e) => setForm({ ...form, eventDate: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
               </div>
 
               <div>
-                <Label className="text-xs">Date</Label>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Venue / Location</Label>
                 <Input
-                  type="date"
-                  value={form.eventDate}
-                  onChange={(e) => setForm({ ...form, eventDate: e.target.value })}
-                  className="h-8 text-xs mt-1"
+                  value={form.location}
+                  onChange={(e) => setForm({ ...form, location: e.target.value })}
+                  className="h-10 sm:h-11 text-sm rounded-xl"
+                  placeholder="e.g. Site Experience Center, Vrindavan Park"
                 />
               </div>
             </div>
 
-            <div>
-              <Label className="text-xs">Venue / Location</Label>
-              <Input
-                value={form.location}
-                onChange={(e) => setForm({ ...form, location: e.target.value })}
-                className="h-8 text-xs mt-1"
-              />
-            </div>
-
-            <DialogFooter className="pt-2">
-              <Button type="button" variant="outline" size="sm" onClick={() => setModal(false)}>
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
+              <Button type="button" variant="outline" onClick={() => setModal(false)} className="w-full sm:w-auto rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" className="bg-brand text-white">
+              <Button type="submit" className="w-full sm:w-auto bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
                 Create Event
               </Button>
             </DialogFooter>

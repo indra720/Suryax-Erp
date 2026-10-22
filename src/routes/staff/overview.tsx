@@ -358,69 +358,72 @@ function StaffOverviewPage() {
 
       {/* Apply Leave Dialog */}
       <Dialog open={showLeaveModal} onOpenChange={setShowLeaveModal}>
-        <DialogContent className="max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-base font-bold flex items-center gap-2">
-              <FileText className="h-5 w-5 text-primary" />
+        <DialogContent className="w-[95vw] sm:max-w-lg max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
+            <DialogTitle className="text-base sm:text-lg font-bold flex items-center gap-2">
+              <FileText className="h-5 w-5 text-brand" />
               Submit Leave Request
             </DialogTitle>
+            <p className="text-xs text-muted-foreground mt-0.5">Submit attendance absence request for TL approval.</p>
           </DialogHeader>
-          <form onSubmit={handleLeaveSubmit} className="space-y-3 text-xs">
-            <div>
-              <Label className="text-xs font-semibold">Leave Type</Label>
-              <Select
-                value={leaveForm.leave_type}
-                onValueChange={(val) => setLeaveForm({ ...leaveForm, leave_type: val })}
-              >
-                <SelectTrigger className="h-8 text-xs mt-1">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="Casual Leave" className="text-xs">Casual Leave (CL)</SelectItem>
-                  <SelectItem value="Sick Leave" className="text-xs">Sick Leave (SL)</SelectItem>
-                  <SelectItem value="Half Day" className="text-xs">Half Day (First Half)</SelectItem>
-                  <SelectItem value="Emergency Leave" className="text-xs">Emergency Leave</SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="grid grid-cols-2 gap-2">
+          <form onSubmit={handleLeaveSubmit} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
               <div>
-                <Label className="text-xs font-semibold">Start Date</Label>
-                <Input
-                  type="date"
-                  className="h-8 text-xs mt-1"
-                  value={leaveForm.start_date}
-                  onChange={(e) => setLeaveForm({ ...leaveForm, start_date: e.target.value })}
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Leave Type</Label>
+                <Select
+                  value={leaveForm.leave_type}
+                  onValueChange={(val) => setLeaveForm({ ...leaveForm, leave_type: val })}
+                >
+                  <SelectTrigger className="h-10 sm:h-11 text-sm rounded-xl">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="Casual Leave" className="text-sm">Casual Leave (CL)</SelectItem>
+                    <SelectItem value="Sick Leave" className="text-sm">Sick Leave (SL)</SelectItem>
+                    <SelectItem value="Half Day" className="text-sm">Half Day (First Half)</SelectItem>
+                    <SelectItem value="Emergency Leave" className="text-sm">Emergency Leave</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Start Date</Label>
+                  <Input
+                    type="date"
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    value={leaveForm.start_date}
+                    onChange={(e) => setLeaveForm({ ...leaveForm, start_date: e.target.value })}
+                  />
+                </div>
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">End Date</Label>
+                  <Input
+                    type="date"
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    value={leaveForm.end_date}
+                    onChange={(e) => setLeaveForm({ ...leaveForm, end_date: e.target.value })}
+                  />
+                </div>
+              </div>
+
+              <div>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Reason for Absence</Label>
+                <Textarea
+                  placeholder="State your reason..."
+                  className="rounded-xl text-sm p-3 resize-none min-h-[90px]"
+                  value={leaveForm.reason}
+                  onChange={(e) => setLeaveForm({ ...leaveForm, reason: e.target.value })}
                 />
               </div>
-              <div>
-                <Label className="text-xs font-semibold">End Date</Label>
-                <Input
-                  type="date"
-                  className="h-8 text-xs mt-1"
-                  value={leaveForm.end_date}
-                  onChange={(e) => setLeaveForm({ ...leaveForm, end_date: e.target.value })}
-                />
-              </div>
             </div>
 
-            <div>
-              <Label className="text-xs font-semibold">Reason for Absence</Label>
-              <Textarea
-                placeholder="State your reason..."
-                className="text-xs mt-1 resize-none h-20"
-                value={leaveForm.reason}
-                onChange={(e) => setLeaveForm({ ...leaveForm, reason: e.target.value })}
-              />
-            </div>
-
-            <DialogFooter className="pt-2">
-              <Button type="button" variant="outline" size="sm" onClick={() => setShowLeaveModal(false)}>
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
+              <Button type="button" variant="outline" onClick={() => setShowLeaveModal(false)} className="w-full sm:w-auto rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" disabled={leaveLoading}>
-                {leaveLoading && <Loader2 className="h-3 w-3 animate-spin mr-1" />}
+              <Button type="submit" disabled={leaveLoading} className="w-full sm:w-auto bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
+                {leaveLoading && <Loader2 className="h-4 w-4 animate-spin mr-1.5" />}
                 Submit Request
               </Button>
             </DialogFooter>

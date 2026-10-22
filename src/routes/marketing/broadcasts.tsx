@@ -157,22 +157,22 @@ export function BroadcastsPage() {
 
       {/* Modal */}
       <Dialog open={modal} onOpenChange={setModal}>
-        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
-          <DialogHeader className="pb-3 border-b border-border shrink-0">
+        <DialogContent className="w-[95vw] sm:max-w-xl md:max-w-2xl max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
             <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
               <Send className="size-5 text-brand" /> Launch Broadcast
             </DialogTitle>
           </DialogHeader>
 
-          <form onSubmit={handleSend} className="flex flex-col flex-1 overflow-hidden">
-            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+          <form onSubmit={handleSend} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
               <div>
                 <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Broadcast Title</Label>
                 <Input
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="h-10 text-xs sm:text-sm"
+                  className="h-10 text-xs sm:text-sm rounded-xl"
                   placeholder="e.g. Special Villa Invitation"
                 />
               </div>
@@ -184,7 +184,7 @@ export function BroadcastsPage() {
                     value={formData.channel}
                     onValueChange={(val) => setFormData({ ...formData, channel: val })}
                   >
-                    <SelectTrigger className="h-10 text-xs sm:text-sm">
+                    <SelectTrigger className="h-10 text-xs sm:text-sm rounded-xl">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -201,7 +201,7 @@ export function BroadcastsPage() {
                     value={formData.targetGroup}
                     onValueChange={(val) => setFormData({ ...formData, targetGroup: val })}
                   >
-                    <SelectTrigger className="h-10 text-xs sm:text-sm">
+                    <SelectTrigger className="h-10 text-xs sm:text-sm rounded-xl">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
@@ -222,16 +222,16 @@ export function BroadcastsPage() {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Namaste {{name}}, Special invitation from Vrindavan Developers..."
-                  className="text-xs sm:text-sm"
+                  className="text-xs sm:text-sm rounded-xl"
                 />
               </div>
             </div>
 
-            <DialogFooter className="pt-3 border-t border-border flex justify-end gap-2 shrink-0">
-              <Button type="button" variant="outline" size="sm" onClick={() => setModal(false)}>
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
+              <Button type="button" variant="outline" size="sm" onClick={() => setModal(false)} className="rounded-xl h-10 px-5 text-sm w-full sm:w-auto">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" className="bg-brand text-white">
+              <Button type="submit" size="sm" className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md w-full sm:w-auto">
                 Queue & Send
               </Button>
             </DialogFooter>

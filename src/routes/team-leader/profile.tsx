@@ -258,7 +258,7 @@ export function TeamLeaderProfilePage() {
                 </TabsList>
               </div>
 
-              <div className="p-4 sm:p-6 space-y-4 flex-1 overflow-y-auto">
+              <div className="px-5 sm:px-6 py-4 space-y-4 flex-1 overflow-y-auto scrollbar-thin">
                 {activeTab === "personal" && (
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
@@ -372,19 +372,19 @@ export function TeamLeaderProfilePage() {
                 )}
               </div>
 
-              <DialogFooter className="p-4 sm:p-5 border-t border-border bg-muted/20 shrink-0 flex justify-end gap-2">
+              <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
                 <Button
                   type="button"
                   variant="outline"
                   onClick={() => setIsEditDialogOpen(false)}
-                  className="rounded-xl h-10 px-5 text-sm"
+                  className="w-full sm:w-auto rounded-xl h-10 px-5 text-sm"
                 >
                   Cancel
                 </Button>
                 <Button
                   type="submit"
                   disabled={saving}
-                  className="rounded-xl h-10 px-6 text-sm bg-brand hover:bg-brand/90 text-white font-semibold shadow-md"
+                  className="w-full sm:w-auto rounded-xl h-10 px-6 text-sm bg-brand hover:bg-brand/90 text-white font-semibold shadow-md"
                 >
                   {saving ? "Saving Changes..." : "Save Profile"}
                 </Button>

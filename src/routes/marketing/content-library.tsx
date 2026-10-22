@@ -199,97 +199,100 @@ export function ContentLibraryPage() {
 
       {/* Upload Creative Modal */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="max-w-md bg-card text-foreground">
-          <DialogHeader>
-            <DialogTitle className="text-base font-bold flex items-center gap-2">
+        <DialogContent className="w-[95vw] sm:max-w-xl max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
+            <DialogTitle className="text-base sm:text-lg font-bold flex items-center gap-2">
               <UploadCloud className="size-4 text-brand" /> Upload New Creative Asset
             </DialogTitle>
+            <p className="text-xs text-muted-foreground mt-0.5">Add marketing banners, walkthrus, and ad creatives for projects.</p>
           </DialogHeader>
 
-          <form onSubmit={handleUpload} className="space-y-3 py-2 text-xs">
-            <div>
-              <Label className="text-xs">Asset Title & Description</Label>
-              <Input
-                required
-                placeholder="e.g. Vrindavan Heights Night Elevation 3D Render"
-                value={newAsset.title}
-                onChange={(e) => setNewAsset({ ...newAsset, title: e.target.value })}
-                className="h-8 text-xs mt-1"
-              />
-            </div>
-
-            <div className="grid grid-cols-2 gap-2">
+          <form onSubmit={handleUpload} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
               <div>
-                <Label className="text-xs">Creative Category</Label>
-                <Select
-                  value={newAsset.category}
-                  onValueChange={(val) => {
-                    const type = val === "Drone Videos" ? "Video" : val === "Copywriting" ? "Doc" : "Image";
-                    setNewAsset({ ...newAsset, category: val, type });
-                  }}
-                >
-                  <SelectTrigger className="h-8 text-xs mt-1">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="Ad Creatives">Social & Ad Banners</SelectItem>
-                    <SelectItem value="Drone Videos">Drone Walkthrough Video</SelectItem>
-                    <SelectItem value="Copywriting">Copywriting Swipe File</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-
-              <div>
-                <Label className="text-xs">Aspect Ratio / Format</Label>
-                <Select
-                  value={newAsset.dimensions}
-                  onValueChange={(val) => setNewAsset({ ...newAsset, dimensions: val })}
-                >
-                  <SelectTrigger className="h-8 text-xs mt-1">
-                    <SelectValue />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value="1080 x 1080 (Square)">1:1 Square (Instagram/FB)</SelectItem>
-                    <SelectItem value="1080 x 1920 (9:16 Vertical)">9:16 Reels/Stories</SelectItem>
-                    <SelectItem value="1920 x 1080 (16:9 Landscape)">16:9 Landscape (YouTube/Display)</SelectItem>
-                    <SelectItem value="1200 x 628 (Feed Banner)">1200x628 Banner</SelectItem>
-                    <SelectItem value="Text Document (PDF/Doc)">Copy Document</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-2 gap-2">
-              <div>
-                <Label className="text-xs">File Size Estimate</Label>
+                <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Asset Title & Description</Label>
                 <Input
-                  value={newAsset.size}
-                  onChange={(e) => setNewAsset({ ...newAsset, size: e.target.value })}
-                  className="h-8 text-xs mt-1"
-                  placeholder="e.g. 24 MB"
+                  required
+                  placeholder="e.g. Vrindavan Heights Night Elevation 3D Render"
+                  value={newAsset.title}
+                  onChange={(e) => setNewAsset({ ...newAsset, title: e.target.value })}
+                  className="h-10 sm:h-11 text-sm rounded-xl"
                 />
               </div>
 
-              <div>
-                <Label className="text-xs">Target Project</Label>
-                <Input
-                  defaultValue="Vrindavan Heights"
-                  className="h-8 text-xs mt-1"
-                />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Creative Category</Label>
+                  <Select
+                    value={newAsset.category}
+                    onValueChange={(val) => {
+                      const type = val === "Drone Videos" ? "Video" : val === "Copywriting" ? "Doc" : "Image";
+                      setNewAsset({ ...newAsset, category: val, type });
+                    }}
+                  >
+                    <SelectTrigger className="h-10 sm:h-11 text-sm rounded-xl">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="Ad Creatives">Social & Ad Banners</SelectItem>
+                      <SelectItem value="Drone Videos">Drone Walkthrough Video</SelectItem>
+                      <SelectItem value="Copywriting">Copywriting Swipe File</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Aspect Ratio / Format</Label>
+                  <Select
+                    value={newAsset.dimensions}
+                    onValueChange={(val) => setNewAsset({ ...newAsset, dimensions: val })}
+                  >
+                    <SelectTrigger className="h-10 sm:h-11 text-sm rounded-xl">
+                      <SelectValue />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="1080 x 1080 (Square)">1:1 Square (Instagram/FB)</SelectItem>
+                      <SelectItem value="1080 x 1920 (9:16 Vertical)">9:16 Reels/Stories</SelectItem>
+                      <SelectItem value="1920 x 1080 (16:9 Landscape)">16:9 Landscape (YouTube/Display)</SelectItem>
+                      <SelectItem value="1200 x 628 (Feed Banner)">1200x628 Banner</SelectItem>
+                      <SelectItem value="Text Document (PDF/Doc)">Copy Document</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">File Size Estimate</Label>
+                  <Input
+                    value={newAsset.size}
+                    onChange={(e) => setNewAsset({ ...newAsset, size: e.target.value })}
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                    placeholder="e.g. 24 MB"
+                  />
+                </div>
+
+                <div>
+                  <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Target Project</Label>
+                  <Input
+                    defaultValue="Vrindavan Heights"
+                    className="h-10 sm:h-11 text-sm rounded-xl"
+                  />
+                </div>
+              </div>
+
+              <div className="p-4 border-2 border-dashed border-border rounded-xl text-center cursor-pointer hover:border-brand/50 transition-colors bg-muted/20">
+                <UploadCloud className="size-7 text-brand mx-auto mb-1" />
+                <p className="font-semibold text-foreground text-xs sm:text-sm">Drag & drop files or click to browse</p>
+                <p className="text-[11px] text-muted-foreground mt-0.5">Supports PNG, JPG, MP4, PDF up to 250MB</p>
               </div>
             </div>
 
-            <div className="p-4 border-2 border-dashed border-border rounded-lg text-center cursor-pointer hover:border-brand/50 transition-colors bg-muted/20">
-              <UploadCloud className="size-7 text-brand mx-auto mb-1" />
-              <p className="font-semibold text-foreground text-xs">Drag & drop files or click to browse</p>
-              <p className="text-[10px] text-text-muted mt-0.5">Supports PNG, JPG, MP4, PDF up to 250MB</p>
-            </div>
-
-            <DialogFooter className="pt-2">
-              <Button type="button" variant="outline" size="sm" onClick={() => setModalOpen(false)}>
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
+              <Button type="button" variant="outline" onClick={() => setModalOpen(false)} className="w-full sm:w-auto rounded-xl h-10 px-5 text-sm">
                 Cancel
               </Button>
-              <Button type="submit" size="sm" className="bg-brand text-white">
+              <Button type="submit" className="w-full sm:w-auto bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
                 Save & Publish
               </Button>
             </DialogFooter>

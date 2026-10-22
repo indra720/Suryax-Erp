@@ -1209,7 +1209,7 @@ export function ManageUsersPage() {
               </div>
 
               {/* Form Content Area */}
-              <div className="p-6 overflow-y-auto flex-1">
+              <div className="px-5 sm:px-6 py-4 overflow-y-auto flex-1 scrollbar-thin">
                 {/* TAB 1: Personal & Identity */}
                 <TabsContent value="personal" className="mt-0 space-y-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3.5">
@@ -1771,7 +1771,7 @@ export function ManageUsersPage() {
           </DialogHeader>
 
           {selectedUserForView && (
-            <div className="p-6 space-y-4 max-h-[60vh] overflow-y-auto text-[13px]">
+            <div className="px-5 sm:px-6 py-4 space-y-4 max-h-[60vh] overflow-y-auto scrollbar-thin text-[13px]">
               <div className="grid grid-cols-2 gap-3 p-3 rounded-xl bg-muted/30 border border-border">
                 <div>
                   <p className="text-[11px] text-text-muted uppercase font-semibold">Staff ID</p>

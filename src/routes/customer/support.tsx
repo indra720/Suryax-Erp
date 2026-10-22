@@ -121,8 +121,8 @@ export function CustomerSupportPage() {
 
       {/* Ticket Modal */}
       <Dialog open={modalOpen} onOpenChange={setModalOpen}>
-        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
-          <DialogHeader className="pb-3 border-b border-border shrink-0">
+        <DialogContent className="w-[95vw] sm:max-w-xl md:max-w-2xl max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
             <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
               Raise New Customer Service Ticket
             </DialogTitle>
@@ -131,8 +131,8 @@ export function CustomerSupportPage() {
             </p>
           </DialogHeader>
 
-          <form onSubmit={handleCreate} className="flex flex-col flex-1 overflow-hidden">
-            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+          <form onSubmit={handleCreate} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
               <div>
                 <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Request Subject / Query</Label>
                 <Input
@@ -155,11 +155,11 @@ export function CustomerSupportPage() {
               </div>
             </div>
 
-            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
-              <Button type="button" variant="outline" onClick={() => setModalOpen(false)} className="rounded-xl h-10 px-5 text-sm">
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
+              <Button type="button" variant="outline" onClick={() => setModalOpen(false)} className="rounded-xl h-10 px-5 text-sm w-full sm:w-auto">
                 Cancel
               </Button>
-              <Button type="submit" className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md">
+              <Button type="submit" className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md w-full sm:w-auto">
                 Submit Request
               </Button>
             </DialogFooter>

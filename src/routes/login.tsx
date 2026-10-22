@@ -709,13 +709,13 @@ function LoginPage() {
                 className="h-11 rounded-xl bg-background border-border text-foreground text-sm"
               />
             </div>
-            <DialogFooter className="pt-3 border-t border-border gap-2">
+            <DialogFooter className="pt-4 border-t border-border flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
               <DialogClose asChild>
-                <Button type="button" variant="outline" className="rounded-xl h-10 px-5 text-sm">
+                <Button type="button" variant="outline" className="w-full sm:w-auto rounded-xl h-10 px-5 text-sm">
                   Cancel
                 </Button>
               </DialogClose>
-              <Button type="submit" className="rounded-xl h-10 px-6 bg-brand hover:bg-brand/90 text-white text-sm font-semibold shadow-md">
+              <Button type="submit" className="w-full sm:w-auto rounded-xl h-10 px-6 bg-brand hover:bg-brand/90 text-white text-sm font-semibold shadow-md">
                 Send Reset Link
               </Button>
             </DialogFooter>

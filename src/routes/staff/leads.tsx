@@ -364,8 +364,8 @@ export function StaffLeadsPage() {
 
       {/* Call Disposition Modal */}
       <Dialog open={statusModalOpen} onOpenChange={setStatusModalOpen}>
-        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
-          <DialogHeader className="pb-3 border-b border-border shrink-0">
+        <DialogContent className="w-[95vw] sm:max-w-xl md:max-w-2xl max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
             <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
               Update Disposition: {selectedLead?.name}
             </DialogTitle>
@@ -374,8 +374,8 @@ export function StaffLeadsPage() {
             </DialogDescription>
           </DialogHeader>
 
-          <div className="flex flex-col flex-1 overflow-hidden">
-            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+          <div className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
               <div>
                 <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Call Outcome Status</Label>
                 <Select value={editStatus} onValueChange={setEditStatus}>
@@ -404,9 +404,9 @@ export function StaffLeadsPage() {
               </div>
             </div>
 
-            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
               <DialogClose asChild>
-                <Button type="button" variant="outline" className="rounded-xl h-10 px-5 text-sm">
+                <Button type="button" variant="outline" className="rounded-xl h-10 px-5 text-sm w-full sm:w-auto">
                   Cancel
                 </Button>
               </DialogClose>
@@ -414,7 +414,7 @@ export function StaffLeadsPage() {
                 type="button"
                 disabled={savingStatus}
                 onClick={handleSaveStatus}
-                className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md"
+                className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md w-full sm:w-auto"
               >
                 {savingStatus ? "Saving..." : "Save Outcome"}
               </Button>
@@ -425,8 +425,8 @@ export function StaffLeadsPage() {
 
       {/* Add Lead Modal */}
       <Dialog open={addModalOpen} onOpenChange={setAddModalOpen}>
-        <DialogContent className="w-[94vw] sm:max-w-xl md:max-w-2xl lg:max-w-3xl max-h-[90vh] p-6 sm:p-8 rounded-2xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
-          <DialogHeader className="pb-3 border-b border-border shrink-0">
+        <DialogContent className="w-[95vw] sm:max-w-xl md:max-w-2xl max-h-[90vh] p-0 rounded-2xl sm:rounded-3xl shadow-2xl flex flex-col bg-card border-border overflow-hidden">
+          <DialogHeader className="px-5 sm:px-6 pt-5 pb-4 border-b border-border shrink-0 text-left">
             <DialogTitle className="text-lg sm:text-xl font-bold flex items-center gap-2.5 text-foreground">
               Add New Lead to Calling Queue
             </DialogTitle>
@@ -435,8 +435,8 @@ export function StaffLeadsPage() {
             </DialogDescription>
           </DialogHeader>
 
-          <form onSubmit={handleCreateLead} className="flex flex-col flex-1 overflow-hidden">
-            <div className="flex-1 overflow-y-auto py-4 space-y-4 pr-1">
+          <form onSubmit={handleCreateLead} className="flex flex-col flex-1 min-h-0 overflow-hidden">
+            <div className="flex-1 overflow-y-auto px-5 sm:px-6 py-4 space-y-4 scrollbar-thin">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <Label className="text-xs sm:text-sm font-semibold mb-1.5 block">Customer Name *</Label>
@@ -499,16 +499,16 @@ export function StaffLeadsPage() {
               </div>
             </div>
 
-            <DialogFooter className="pt-3 border-t border-border shrink-0 gap-2">
+            <DialogFooter className="px-5 sm:px-6 py-3.5 border-t border-border bg-muted/20 shrink-0 flex flex-col-reverse sm:flex-row sm:justify-end gap-2 sm:gap-3">
               <DialogClose asChild>
-                <Button type="button" variant="outline" className="rounded-xl h-10 px-5 text-sm">
+                <Button type="button" variant="outline" className="rounded-xl h-10 px-5 text-sm w-full sm:w-auto">
                   Cancel
                 </Button>
               </DialogClose>
               <Button
                 type="submit"
                 disabled={savingNew}
-                className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md"
+                className="bg-brand hover:bg-brand/90 text-white rounded-xl h-10 px-6 text-sm font-semibold shadow-md w-full sm:w-auto"
               >
                 {savingNew ? "Saving..." : "Save Lead"}
               </Button>

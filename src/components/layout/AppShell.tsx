@@ -26,7 +26,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             else setCollapsed((v) => !v);
           }}
         />
-        <main className="min-w-0 flex-1 p-2 sm:p-3">{children}</main>
+        <main className="min-w-0 flex-1 p-3.5 sm:p-5 md:p-6">{children}</main>
       </div>
     </div>
   );
